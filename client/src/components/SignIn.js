@@ -25,6 +25,7 @@ function SignIn({setUser, onLogin}) {
       if (resp.ok) {
         resp.json().then((user) =>{
           setUser(user)
+          history.push("/dashboard")
         });
       } else {
         resp.json().then((data) => setErrors(data.errors));
