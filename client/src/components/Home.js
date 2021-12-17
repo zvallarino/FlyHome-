@@ -8,6 +8,7 @@ function Home({user, setUser}) {
   return (
     <div className = "home">
       <SignIn  setUser = {setUser}/>
+      <SignUp  setUser = {setUser}/>
       <Route exact path = "/signup">
         <SignUp />
       </Route>

@@ -46,6 +46,7 @@ code {
 
 .MiddleAppPage{
   display:flex;
+  flex-direction: column;
   width: 100vw;
   height: 90vh;
   justify-content: center;
@@ -64,6 +65,33 @@ code {
   display:flex;
   background-color: green;
   width: 100vw;
-  
   height: 100vh;
+}
+
+.GameCardContainer{
+  display:flex;
+  flex-direction:row;
+  border: 10px solid red;
+ justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+}
+
+.GameCard{
+  display:flex;
+  flex-direction:column;
+  border: 10px solid plum;
+  width: 20w;
+  height: 20vh;
+}
+
+.GameCard img{
+  display:flex;
+  width: 10vw;
+  height: 20vh;
+}
+
+.GameCard h1{
+  display:flex;
+  font-size: 0.8em;
 }

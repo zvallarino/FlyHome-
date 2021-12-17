@@ -3,7 +3,9 @@
 one:
   link: MyString
   picture: MyString
+  name: MyString
 
 two:
   link: MyString
   picture: MyString
+  name: MyString

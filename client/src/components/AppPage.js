@@ -4,10 +4,11 @@ import {useState} from "react"
 import GameStore from './GameStore';
 import Game from './Game';
 import GameTitleScreen from './GameTitleScreen';
+import FlyHome from './FlyHome';
+import GameCardContainer from './GameCardContainer';
 
 function AppPage({setUser, user}) {
 
-  console.log(user.username)
 
   const [disppearFlyHome, setDisappearFlyHome] = useState(false)
   
@@ -48,9 +49,10 @@ function AppPage({setUser, user}) {
       <button onClick={handleLogout}>Log Out</button>
       </div>
       <div className = "MiddleAppPage">
-      <NavLink to="/flyhome">
-         flyhome
-      </NavLink>
+         <div className = "GameCardContainer">
+            <GameCardContainer user = {user}/>
+          </div>
+          <FlyHome />
       </div>
       <div className = "BottomAppPage"></div>
      </div>
