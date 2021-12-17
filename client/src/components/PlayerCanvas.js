@@ -20,7 +20,7 @@ function PlayerCanvas() {
     canvas.height = window.innerHeight * 2;
     canvas.style.width = `${window.innerWidth}px`;
     canvas.style.height = `${window.innerHeight}px`;
-    canvas.style.backgroundColor = "#D1FFFD";
+    // canvas.style.backgroundColor = "#D1FFFD";
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
@@ -61,12 +61,12 @@ function PlayerCanvas() {
 
   const update = () => {
     drawPlane();
-    drawCircle(circleA);
-    circleMove(circleA);
-    drawCircle(circleB);
-    circleMove(circleB);
-    drawCircle(circleC);
-    circleMove(circleC);
+    // drawCircle(circleA);
+    // circleMove(circleA);
+    // drawCircle(circleB);
+    // circleMove(circleB);
+    // drawCircle(circleC);
+    // circleMove(circleC);
     requestAnimationFrame(update)
   }
 
