@@ -11,3 +11,87 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.home{
+  display:flex;
+  background-color: green;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.disappearX{
+  display:none;
+}
+
+.AppPage{
+  display:flex;
+  border: 10px solid plum;
+  flex-direction: column;
+  background-color: #e9ffcf;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+}
+
+.HeaderAppPage{
+  display:flex;
+  width: 100vw;
+  height: 5vh;
+  justify-content: center;
+  align-items: center;
+  border: 10px solid red;
+}
+
+.MiddleAppPage{
+  display:flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 90vh;
+  justify-content: center;
+  align-items: center;
+  border: 10px solid green;
+}
+
+.BottomAppPage{
+  display:flex;
+  width: 100vw;
+  height: 5vh;
+  border: 10px solid blue;
+}
+
+.gametitlescreen{
+  display:flex;
+  background-color: green;
+  width: 100vw;
+  height: 100vh;
+}
+
+.GameCardContainer{
+  display:flex;
+  flex-direction:row;
+  border: 10px solid red;
+ justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+}
+
+.GameCard{
+  display:flex;
+  flex-direction:column;
+  border: 10px solid plum;
+  width: 20w;
+  height: 20vh;
+}
+
+.GameCard img{
+  display:flex;
+  width: 10vw;
+  height: 20vh;
+}
+
+.GameCard h1{
+  display:flex;
+  font-size: 0.8em;
+}
