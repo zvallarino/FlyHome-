@@ -45,7 +45,67 @@ function RectangleCanvas() {
   }
 
 
+  let arrayS = [innerArrayOne,innerArrayTwo,innerArrayThree, innerArrayFour]
+
+
+
+
+// const outerLoop = (arrayz) => {
+//   let i = 0;
+//   for (i; i < arrayz.length;){
+//     console.log(arrayz[i]);
+//     i++;
+//     break;
+//       }
+// }
   
+// setInterval(outerLoop(arrayS), 3000)
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+
+let i = 0;
+let loopCounter = 0;
+let randomNumber = 1;
+
+
+
+// doesnt work at the moment but V close
+
+// const nonduplicatingFunction = () =>{
+//   if (randomNumber !== newNumber){
+//     randomNumber = newNumber
+//   } else if (randomNumber === 4){
+//     randomNumber = 3
+//   } else if (randomNumber === 0){
+//     randomNumber = 1
+//   } else {
+//     console.log(randomNumber)
+//     randomNumber = randomNumber + 1
+//   }
+// }
+
+
+
+const outerLoop = () => {
+    for (i; i < arrayS.length;){
+      console.log(arrayS[randomNumber][loopCounter])
+      i++;
+      loopCounter++;
+      if(loopCounter === 3){
+        loopCounter = 0
+        randomNumber = getRandomInt(4)
+      }
+      if(i === 4){
+        i = 0
+      }
+      break;
+      }
+}
+setInterval(outerLoop, 500);
+
+// setTimeout(function() {console.log('1');setTimeout(function(){console.log('2');},5000);}, 2500);
   
 
   update()
@@ -109,82 +169,37 @@ const drawRectOfDoom = (rectangleOfDoom) => {
 
 // Interval For Small Rectangles
 
-let innerArrayOne = ["red","fish","blue"]
+let innerArrayOne = [1,"red","fed"]
 
-let innerArrayTwo = ["green","fish","you"]
+let innerArrayTwo = [2,"blue","you"]
 
-let innerArrayThree = ["gold","fish","foo"]
+let innerArrayThree = [3,"green","bean"]
+
+let innerArrayFour = [4,"yellow","fellow"]
+
+let innerArrayFive = [5,"dog","bog"]
+
+let innerArraySix = [6,"pink","link"]
+
+let innerArraySeven = [7,"Cow","Mao"]
+
+let innerArrayEight = [8,"Wow","foo"]
   
-let arrayS = [innerArrayOne,innerArrayTwo,innerArrayThree]
+// let arrayS = [rectangleOne,rectangleTwo,rectangleThree, rectangleFour, rectangleFive, rectangleSix, rectangleSeven , rectangleEight]
 
-// const doubleLoop = (arrayOfDoom) => {
-
-    
-//     for(let i = 0; i < arrayOfDoom.length; i++){
-//       console.log("----")
-//       console.log(arrayOfDoom[i])
-//       console.log("----")
-//       for(let j = 0; j < arrayOfDoom[i].length;j++)
-//       console.log(arrayOfDoom[i][j])
-//     }
-// }
+let arrayS = [innerArrayOne,innerArrayTwo,innerArrayThree, innerArrayFour]
 
 
 
-function loop(count, callback, done) {
-  var counter = 0;
-  
-  var next = function () {setTimeout(iteration, 1000);};
-  
-  var iteration = function () {
-      if (counter < count) { callback(counter, next);
-      } else { done && done();}
-      counter++; }
-  iteration();
+
+const outerLoop = (arrayz) => {
+  let i = 0;
+  for (i; i < arrayz.length;){
+    console.log(arrayz[i]);
+    i++;
+    break;
+      }
 }
-
-loop(1000, function (i, next) {next();})
-
-
-loop(9, function (i, nextI) {loop(3, function (j, nextJ) {console.log(i+1 + '-' + j);nextJ();}, nextI);});
-
-// setInterval(doubleLoop(arrayS),1000)
-
-
-// setInterval(function(){
-//   for (i; i < arrayS.length;){
-//           console.log(arrayS[i]);
-//           i++;
-//           if(i === 8){
-//             i = 0
-//           }
-//           break;
-//             }
-//               }, 3000)
-              
-
-
-
-// let i = 0;
-
-// var a=0;
-// setInterval(function() {if(a==0){one();a++;}}, 2500);
-
-// setInterval(function() {two();a=0;}, 5000);
-
-// function one() {
-// console.log('1');
-// }
-
-// function two() {
-//  console.log('2');
-//  }
-              
-
-// Interval For Medium Rectanlges
-
-
-
 
 
 // function for Interval
