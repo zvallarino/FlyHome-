@@ -19,7 +19,7 @@ function Game() {
 
   return (
     <>
-    <PlayerCanvas />
+    <PlayerCanvas enemyXRef = {enemyXRef} enemyYRef = {enemyYRef} enemyWRef = {enemyWRef} enemyHRef = {enemyHRef} colorRef = {colorRef}/>
     <RectangleCanvas enemyXRef = {enemyXRef} enemyYRef = {enemyYRef} enemyWRef = {enemyWRef} enemyHRef={enemyHRef} colorRef = {colorRef} speed = {speed} />
 
     </>

@@ -59,46 +59,49 @@ let randomNumber = 0;
 
 
 
-const outerLoop = () => {
-    for (i; i < arrayS.length;){
-      drawRectOfDoom(arrayS[randomNumber][loopCounter])
-      loopCounter++;
-      i++;
+// const outerLoop = () => {
+//     for (i; i < arrayS.length;){
+//       drawRectOfDoom(arrayS[randomNumber][loopCounter])
+//       loopCounter++;
+//       i++;
     
-      if(loopCounter === 2){
+//       if(loopCounter === 2){
         
-        enemyXRef = arrayS[randomNumber][loopCounter].x
-        enemyYRef = arrayS[randomNumber][loopCounter].y
-        enemyWRef = arrayS[randomNumber][loopCounter].w
-        enemyHRef = arrayS[randomNumber][loopCounter].h
-        colorRef = arrayS[randomNumber][loopCounter].color
+//         enemyXRef = arrayS[randomNumber][loopCounter].x
+//         enemyYRef = arrayS[randomNumber][loopCounter].y
+//         enemyWRef = arrayS[randomNumber][loopCounter].w
+//         enemyHRef = arrayS[randomNumber][loopCounter].h
+//         colorRef = arrayS[randomNumber][loopCounter].color
 
-        console.log(enemyXRef)
-        console.log(enemyYRef)
-        console.log(enemyWRef)
-        console.log(enemyHRef)
-        console.log(colorRef)
+//       }else if (loopCounter === 3)
+//       {
 
-      }else if (loopCounter === 3)
-      {
+//         loopCounter = 0
+//         randomNumber = getRandomInt(8)
+//         // contextRef.current.clearRect(0,0,SCREEN_WIDTH,SCREEN_HEIGHT)
         
-        loopCounter = 0
-        randomNumber = getRandomInt(8)
-        // contextRef.current.clearRect(0,0,SCREEN_WIDTH,SCREEN_HEIGHT)
-        
-      }
-      if(i === 8){
-        i = 0
-      }
-      break;
-      }
-}
+//       }
+//       if(i === 8){
+//         i = 0
+//       }
+//       break;
+//       }
+// }
 
-setInterval(outerLoop, speed);  
+// setInterval(outerLoop, speed);  
+
+
 
 const update = () => {
 
-  // drawRectOfDoom(rectangleThreeS)
+
+enemyXRef.current = rectangleEightL.x
+enemyYRef.current = rectangleEightL.y
+enemyWRef.current = rectangleEightL.w
+enemyHRef.current = rectangleEightL.h
+colorRef.current = rectangleEightL.color
+
+drawRectOfDoom(rectangleEightL)
 
   requestAnimationFrame(update)
 }
@@ -199,6 +202,10 @@ const drawRectOfDoom = (rectangleOfDoom) => {
   contextRef.current.rect(rectangleOfDoom.x, rectangleOfDoom.y, rectangleOfDoom.w,rectangleOfDoom.h);
   contextRef.current.fillStyle = rectangleOfDoom.color
   contextRef.current.fill();
+
+
+  // console.log(enemyXRef)
+  
 }
 
   
@@ -256,6 +263,7 @@ function getRandomInt(max) {
 //Rectangle Drawings
 
 //HIT MARKERS
+// HIT for Circles
 
 // const hit = () => {
 //   if(playerRef.current.y + playerRef.current.h < enemyYRef.current - circleC.size || playerRef.current.y > enemyYRef.current + circleC.size || playerRef.current.x > enemyXRef.current + circleC.size || playerRef.current.x + playerRef.current.w < enemyXRef.current - circleC.size){
@@ -265,6 +273,10 @@ function getRandomInt(max) {
 //     colorRef.current = "red"
 //   }
 // }
+
+// Hit for Rectangles
+
+
 
 
 
