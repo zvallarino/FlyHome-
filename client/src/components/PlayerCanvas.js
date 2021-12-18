@@ -61,12 +61,6 @@ function PlayerCanvas() {
 
   const update = () => {
     drawPlane();
-    // drawCircle(circleA);
-    // circleMove(circleA);
-    // drawCircle(circleB);
-    // circleMove(circleB);
-    // drawCircle(circleC);
-    // circleMove(circleC);
     requestAnimationFrame(update)
   }
 
@@ -80,111 +74,191 @@ function PlayerCanvas() {
   const SCREEN_WIDTH = window.innerWidth;
   const SCREEN_HEIGHT = window.innerHeight;
 
-  //MOVEMENT FUNCTIONS
+  // MOVEMENT FUNCTIONS // First Level
 
-const moveUp = () => {
-  playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
+  const moveUp = () => {
+    playerRef.current.y = playerRef.current.y - SCREEN_HEIGHT/4
+    boundariesUp(playerRef.current)
 
-  boundariesUp(playerRef.current)
-  secondsCounter(counter => counter +3)
-}
-
-const moveLeft = () => {
-  playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
-  boundariesLeft(playerRef.current)
-  secondsCounter(counter => counter +3)
-  
-}
-const moveRight = () => {
-  playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
-
-  boundariesRight(playerRef.current)
-  secondsCounter(counter => counter +3)
-}
-
-const moveDown = () => {
-  playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
-  console.log(playerRef.current.y)
-
-  boundariesDown(playerRef.current)
-  secondsCounter(counter => counter +3)
-}
-
-const moveRightUp = () => {
-  playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
-  playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
-
-  boundariesRight(playerRef.current)
-  boundariesUp(playerRef.current)
-  secondsCounter(counter => counter +3)
-  
-}
-
-const moveRightDown = () => {
-  playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
-  playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
-
-  boundariesRight(playerRef.current)
-  boundariesDown(playerRef.current)
-  secondsCounter(counter => counter +3)
-}
-
-const moveLeftUp = () => {
-  playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
-  playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
-
-  boundariesLeft(playerRef.current)
-  boundariesUp(playerRef.current)
-  secondsCounter(counter => counter +3)
-}
-
-const moveLeftDown = () => {
-  playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
-  playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
-  boundariesDown(playerRef.current)
-  boundariesLeft(playerRef.current)
-  secondsCounter(counter => counter +3)
-}
-
-const movementFunction = (e) => {
-  if(e.key === "w"){
-    moveUp()
-  } else if (e.key ===  "d"){
-    moveRight()
-  } else if (e.key === "a"){
-    moveLeft()
-  }else if (e.key === "s"){
-    moveDown()
-  } else if (e.key === "q"){
-    moveLeftUp()
-  } else if(e.key === "e"){
-    moveRightUp()
-  }else if(e.key === "z"){
-    moveLeftDown()
-  } else if(e.key === "c"){
-    moveRightDown()
-  } else if( e.key === "l"){
-    imageRef.current = "https://i.imgur.com/9lDQkp9.png"
-    hit()
-  } else if ( e.key === "k"){
-    console.log("superBlater")
-  } else if ( e.key === " "){
-    imageRef.current = "https://i.imgur.com/Li6ZU6C.png"
-    console.log("boosters")
   }
-}
+  
+  const moveLeft = () => {
+    playerRef.current.x =  playerRef.current.x - SCREEN_WIDTH/4
+    boundariesLeft(playerRef.current)
+
+  }
+
+  const moveRight = () => {
+    playerRef.current.x = playerRef.current.x + SCREEN_WIDTH/4
+    boundariesRight(playerRef.current)
+
+  }
+  
+  const moveDown = () => {
+    playerRef.current.y = playerRef.current.y + SCREEN_HEIGHT/4
+
+    boundariesDown(playerRef.current)
+
+  }
+  
+  const moveRightUp = () => {
+    moveUp()
+    moveRight()
+    
+  }
+  
+  const moveRightDown = () => {
+    moveRight()
+    moveDown()
+
+
+  }
+  
+  const moveLeftUp = () => {
+    moveLeft()
+    moveUp()
+  
+
+  }
+  
+  const moveLeftDown = () => {
+    moveLeft()
+    moveDown()
+
+  }
+  
+  const movementFunction = (e) => {
+    if(e.key === "w"){
+      moveUp()
+    } else if (e.key ===  "d"){
+      moveRight()
+    } else if (e.key === "a"){
+      moveLeft()
+    } else if (e.key === "s"){
+      moveDown()
+    } else if (e.key === "q"){
+      moveLeftUp()
+    } else if(e.key === "e"){
+      moveRightUp()
+    }else if(e.key === "z"){
+      moveLeftDown()
+    } else if(e.key === "c"){
+      moveRightDown()
+    } else if( e.key === "l"){
+      imageRef.current = "https://i.imgur.com/9lDQkp9.png"
+      // hit()
+    } else if ( e.key === "k"){
+      console.log("superBlater")
+    } else if ( e.key === " "){
+      imageRef.current = "https://i.imgur.com/Li6ZU6C.png"
+      console.log("boosters")
+    }
+  }
+  //
+
+// const moveUp = () => {
+//   playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
+
+//   boundariesUp(playerRef.current)
+//   secondsCounter(counter => counter +3)
+// }
+
+// const moveLeft = () => {
+//   playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
+//   boundariesLeft(playerRef.current)
+//   secondsCounter(counter => counter +3)
+  
+// }
+// const moveRight = () => {
+//   playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
+
+//   boundariesRight(playerRef.current)
+//   secondsCounter(counter => counter +3)
+// }
+
+// const moveDown = () => {
+//   playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
+//   console.log(playerRef.current.y)
+
+//   boundariesDown(playerRef.current)
+//   secondsCounter(counter => counter +3)
+// }
+
+// const moveRightUp = () => {
+//   playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
+//   playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
+
+//   boundariesRight(playerRef.current)
+//   boundariesUp(playerRef.current)
+//   secondsCounter(counter => counter +3)
+  
+// }
+
+// const moveRightDown = () => {
+//   playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
+//   playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
+
+//   boundariesRight(playerRef.current)
+//   boundariesDown(playerRef.current)
+//   secondsCounter(counter => counter +3)
+// }
+
+// const moveLeftUp = () => {
+//   playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
+//   playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
+
+//   boundariesLeft(playerRef.current)
+//   boundariesUp(playerRef.current)
+//   secondsCounter(counter => counter +3)
+// }
+
+// const moveLeftDown = () => {
+//   playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
+//   playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
+//   boundariesDown(playerRef.current)
+//   boundariesLeft(playerRef.current)
+//   secondsCounter(counter => counter +3)
+// // }
+
+// const movementFunction = (e) => {
+//   if(e.key === "w"){
+//     moveUp()
+//   } else if (e.key ===  "d"){
+//     moveRight()
+//   } else if (e.key === "a"){
+//     moveLeft()
+//   }else if (e.key === "s"){
+//     moveDown()
+//   } else if (e.key === "q"){
+//     moveLeftUp()
+//   } else if(e.key === "e"){
+//     moveRightUp()
+//   }else if(e.key === "z"){
+//     moveLeftDown()
+//   } else if(e.key === "c"){
+//     moveRightDown()
+//   } else if( e.key === "l"){
+//     imageRef.current = "https://i.imgur.com/9lDQkp9.png"
+//     hit()
+//   } else if ( e.key === "k"){
+//     console.log("superBlater")
+//   } else if ( e.key === " "){
+//     imageRef.current = "https://i.imgur.com/Li6ZU6C.png"
+//     console.log("boosters")
+//   }
+// }
 
 // Boundaries //
 
 const boundariesLeft = (objectZ) => {
   if(objectZ.x < -300){
-    objectZ.x = 1900
+    objectZ.x = 0
   }
 }
 
 const boundariesRight = (objectZ) => {
   if(objectZ.x > 1900){
-    objectZ.x = -300
+    objectZ.x = 1516
   } 
 }
 
@@ -198,159 +272,18 @@ const boundariesDown = (objectZ) => {
     objectZ.y = 835
   }}  
 
-  const boundariesUpBall = (objectZ) => {
-    if(objectZ.y < 0){
-      objectZ.y = 835
-    }}
 
-
-  const boundariesDownBall = (objectZ) => {
-    if(objectZ.y > 835){
-      objectZ.y = 0
-  
-    }}
-
-
-// Randomizer for Rectangles
-
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
-
-//Rectangle Drawings
-
-const rectangleOne  = {
-  x:20,
-  y:20,
-  size:20, 
-}
-
-
-const drawRectRight = () => {
-  contextRef.current.beginPath();
-  contextRef.current.rect(0, 0, SCREEN_WIDTH/2, SCREEN_HEIGHT);
-  contextRef.current.fillStyle = "green"
-  contextRef.current.fill();
-}
-
-
-const drawRectRightRight = () => {
-  contextRef.current.beginPath();
-  contextRef.current.rect(0, 0, SCREEN_WIDTH*(3/4), SCREEN_HEIGHT);
-  contextRef.current.fillStyle = "blue"
-  contextRef.current.fill();
-}
-
-const drawRectLeft = () => {
-  contextRef.current.beginPath();
-  contextRef.current.lineWidth = "4";
-  contextRef.current.rect(SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2, SCREEN_HEIGHT);
-  contextRef.current.fillStyle = "blue"
-  contextRef.current.fill();
-}
-
-const drawRectLeftLeft = () => {
-  contextRef.current.beginPath();
-  contextRef.current.rect(SCREEN_WIDTH/4, 0, SCREEN_WIDTH*(3/4), SCREEN_HEIGHT);
-  contextRef.current.fillStyle = "blue"
-  contextRef.current.fill();
-}
-
-const drawRectUp = () => {
-  contextRef.current.beginPath();
-  contextRef.current.rect(0, SCREEN_HEIGHT/2, SCREEN_WIDTH, SCREEN_HEIGHT);
-  contextRef.current.fillStyle = "pink"
-  contextRef.current.fill();
-}
-
-const drawRectUpUp = () => {
-  contextRef.current.beginPath();
-  contextRef.current.rect(0, SCREEN_HEIGHT/4, SCREEN_WIDTH, SCREEN_HEIGHT*(3/4));
-  contextRef.current.fillStyle = "purple"
-  contextRef.current.fill();
-}
-
-const drawRectDown = () => {
-  contextRef.current.beginPath();
-  contextRef.current.rect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/2);
-  contextRef.current.fillStyle = "pink"
-  contextRef.current.fill();
-}
-
-const drawRectDownDown = () => {
-  contextRef.current.beginPath();
-  contextRef.current.rect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT*(3/4));
-  contextRef.current.fillStyle = "purple"
-  contextRef.current.fill();
-}
-
-//Draw Enemies
-
-// const circleC = {
-//   x:900,
-//   y:450,
-//   size:100,
-//   dx:0,
-//   dy:2,
-//   color: colorRef.current
-// }
-
-const circleC = {
-  x:700,
-  y:400,
-  size:100,
-  dx:4,
-  dy:0,
-  color: colorRef.current
-}
-
-const circleA = {
-  x:900,
-  y:800,
-  size:100,
-  dx:5,
-  dy:0,
-  color: "red"
-}
-
-const circleB = {
-  x:900,
-  y:100,
-  size:100,
-  dx:0,
-  dy:7,
-  color: "green"
-}
 
 //HIT MARKERS
 
-const hit = () => {
-  if(playerRef.current.y + playerRef.current.h < enemyYRef.current - circleC.size || playerRef.current.y > enemyYRef.current + circleC.size || playerRef.current.x > enemyXRef.current + circleC.size || playerRef.current.x + playerRef.current.w < enemyXRef.current - circleC.size){
-    console.log("miss")
-  } else {
-    console.log('hit')
-    colorRef.current = "red"
-  }
-}
-
-
-function drawCircle(circleObject){
-contextRef.current.beginPath();
-contextRef.current.arc(circleObject.x,circleObject.y,circleObject.size, 0, Math.PI * 2);
-contextRef.current.fillStyle = colorRef.current
-contextRef.current.fill();
-}
-
-
-function circleMove(circleObject){
-  circleObject.x += circleObject.dx
-  circleObject.y += circleObject.dy
-  enemyXRef.current = circleObject.x
-  enemyYRef.current = circleObject.y
-  boundariesLeft(circleObject)
-  boundariesRight(circleObject)
-  boundariesDownBall(circleObject)
-}
+  // const hit = () => {
+  //   if(playerRef.current.y + playerRef.current.h < enemyYRef.current - circleC.size || playerRef.current.y > enemyYRef.current + circleC.size || playerRef.current.x > enemyXRef.current + circleC.size || playerRef.current.x + playerRef.current.w < enemyXRef.current - circleC.size){
+  //     console.log("miss")
+  //   } else {
+  //     console.log('hit')
+  //     colorRef.current = "red"
+  //   }
+  // }
 
 const KeyUp = (e) => {
   if(e.key === "l"){
@@ -366,8 +299,6 @@ const KeyUp = (e) => {
     colorRef.current = "grey"
   }
 }
-
-
 
   return (
     <canvas

@@ -1,14 +1,13 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function RectangleCanvas() {
+function RectangleCanvas({enemyXRef, enemyYRef, enemyWRef, enemyHRef, speed, colorRef}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
-  const enemyXRef = useRef(1)
-  const enemyYRef = useRef(1)
-  const colorRef = useRef('grey')
-  const [speed,setSpeed] = useState(5)
+ 
+  const timerRef = useRef()
+
   const [counter,secondsCounter] =useState(0)
 
   useEffect(()=>{
@@ -32,34 +31,6 @@ function RectangleCanvas() {
     context.lineWidth = 5
     contextRef.current = context;
 
-
-
-  const update = () => {
-
-    // circleMove(circleA);
-    // drawCircle(circleB);
-    // circleMove(circleB);
-    // drawCircle(circleC);
-    // circleMove(circleC);
-    requestAnimationFrame(update)
-  }
-
-
-  let arrayS = [innerArrayOne,innerArrayTwo,innerArrayThree, innerArrayFour]
-
-
-
-
-// const outerLoop = (arrayz) => {
-//   let i = 0;
-//   for (i; i < arrayz.length;){
-//     console.log(arrayz[i]);
-//     i++;
-//     break;
-//       }
-// }
-  
-// setInterval(outerLoop(arrayS), 3000)
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -67,7 +38,7 @@ function getRandomInt(max) {
 
 let i = 0;
 let loopCounter = 0;
-let randomNumber = 1;
+let randomNumber = 0;
 
 
 
@@ -90,42 +61,52 @@ let randomNumber = 1;
 
 const outerLoop = () => {
     for (i; i < arrayS.length;){
-      console.log(arrayS[randomNumber][loopCounter])
-      i++;
+      drawRectOfDoom(arrayS[randomNumber][loopCounter])
       loopCounter++;
-      if(loopCounter === 3){
+      i++;
+    
+      if(loopCounter === 2){
+        
+        enemyXRef = arrayS[randomNumber][loopCounter].x
+        enemyYRef = arrayS[randomNumber][loopCounter].y
+        enemyWRef = arrayS[randomNumber][loopCounter].w
+        enemyHRef = arrayS[randomNumber][loopCounter].h
+        colorRef = arrayS[randomNumber][loopCounter].color
+
+        console.log(enemyXRef)
+        console.log(enemyYRef)
+        console.log(enemyWRef)
+        console.log(enemyHRef)
+        console.log(colorRef)
+
+      }else if (loopCounter === 3)
+      {
+        
         loopCounter = 0
-        randomNumber = getRandomInt(4)
+        randomNumber = getRandomInt(8)
+        // contextRef.current.clearRect(0,0,SCREEN_WIDTH,SCREEN_HEIGHT)
+        
       }
-      if(i === 4){
+      if(i === 8){
         i = 0
       }
       break;
       }
 }
-setInterval(outerLoop, 500);
 
-// setTimeout(function() {console.log('1');setTimeout(function(){console.log('2');},5000);}, 2500);
-  
+setInterval(outerLoop, speed);  
+
+const update = () => {
+
+  // drawRectOfDoom(rectangleThreeS)
+
+  requestAnimationFrame(update)
+}
+
 
   update()
   },[])
 
-
-
-
-  
-//     // let arrayZ = ["dog","fish","bird"]
-//     // let i = 0;
-//     // setInterval(function(){
-//     //   for (i; i < arrayZ.length;){
-//     //           console.log(arrayZ[i]);
-//     //           i++;
-//     //           break;
-//     //             }
-//     //                }, 3000)
-                  
-  
 
   //SCREEN HEIGHT/WIDTH
 
@@ -146,14 +127,69 @@ setInterval(outerLoop, 500);
 
   // Rectangles of Doom
 
-  const rectangleOne = new RectanglesOfDoom(0,0,SCREEN_WIDTH/2,SCREEN_HEIGHT,"green")
-  const rectangleTwo = new RectanglesOfDoom(0,0,SCREEN_WIDTH*(3/4),SCREEN_HEIGHT,"blue")
-  const rectangleThree = new RectanglesOfDoom(SCREEN_WIDTH/2,0,SCREEN_WIDTH/2,SCREEN_HEIGHT,"yellow")
-  const rectangleFour = new RectanglesOfDoom(SCREEN_WIDTH/4,0, SCREEN_WIDTH*(3/4),SCREEN_HEIGHT,"red")
-  const rectangleFive = new RectanglesOfDoom(0, SCREEN_HEIGHT/2, SCREEN_WIDTH,SCREEN_HEIGHT,"pink")
-  const rectangleSix = new RectanglesOfDoom(0, SCREEN_HEIGHT/4, SCREEN_WIDTH, SCREEN_HEIGHT*(3/4),"purple")
-  const rectangleSeven = new RectanglesOfDoom(0, 0, SCREEN_WIDTH,  SCREEN_HEIGHT/2,"orange")
-  const rectangleEight = new RectanglesOfDoom(0, 0, SCREEN_WIDTH,  SCREEN_HEIGHT*(3/4),"grey")
+    //green
+
+      const rectangleOneS = new RectanglesOfDoom(0,0,SCREEN_WIDTH*(1/5),SCREEN_HEIGHT/2,"#B3F5B3")
+      const rectangleOneM = new RectanglesOfDoom(0,0,SCREEN_WIDTH*(2/5),SCREEN_HEIGHT,"#7CA57C")
+      const rectangleOneL = new RectanglesOfDoom(0,0,SCREEN_WIDTH*(3/5),SCREEN_HEIGHT,"#3B503B")
+
+      const rectangleOne = [rectangleOneS, rectangleOneM, rectangleOneL]
+
+      //blue
+
+      const rectangleTwoS = new RectanglesOfDoom(0,0,SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/2,"#256AF8")
+      const rectangleTwoM = new RectanglesOfDoom(0,0,SCREEN_WIDTH*(5/8),SCREEN_HEIGHT,"#193E8A")
+      const rectangleTwoL = new RectanglesOfDoom(0,0,SCREEN_WIDTH*(7/8),SCREEN_HEIGHT,"#0F2552")
+
+      const rectangleTwo = [rectangleTwoS,rectangleTwoM,rectangleTwoL]
+      
+       //yellow
+
+      const rectangleThreeS = new RectanglesOfDoom(SCREEN_WIDTH*(3/4),0,SCREEN_WIDTH*(1/4),SCREEN_HEIGHT/2,"#F7FE63")
+      const rectangleThreeM = new RectanglesOfDoom(SCREEN_WIDTH/2,0,SCREEN_WIDTH/2,SCREEN_HEIGHT,"#B5BA49")
+      const rectangleThreeL = new RectanglesOfDoom(SCREEN_WIDTH/4,0,SCREEN_WIDTH*(3/4),SCREEN_HEIGHT,"#71752B")
+
+      const rectangleThree = [rectangleThreeS,rectangleThreeM,rectangleThreeL]
+
+      //red
+
+      const rectangleFourS = new RectanglesOfDoom(SCREEN_WIDTH*(3/4),0, SCREEN_WIDTH*(1/4),SCREEN_HEIGHT/2,"#E83E65")
+      const rectangleFourM = new RectanglesOfDoom(SCREEN_WIDTH/2,0, SCREEN_WIDTH*(5/8),SCREEN_HEIGHT,"#992D46")
+      const rectangleFourL = new RectanglesOfDoom(SCREEN_WIDTH/10,0, SCREEN_WIDTH*(9/10),SCREEN_HEIGHT,"#5F1A2A")
+
+      const rectangleFour = [rectangleFourS,rectangleFourM,rectangleFourL]
+
+      //pink
+
+                            
+      const rectangleFiveS = new RectanglesOfDoom(0, SCREEN_HEIGHT*(3/4), SCREEN_WIDTH/4,SCREEN_HEIGHT*(1/4),"#E784E4")
+      const rectangleFiveM = new RectanglesOfDoom(0, SCREEN_HEIGHT/2, SCREEN_WIDTH,SCREEN_HEIGHT/2,"#945292")
+      const rectangleFiveL = new RectanglesOfDoom(0, SCREEN_HEIGHT*(1/4), SCREEN_WIDTH,SCREEN_HEIGHT*(3/4),"#523051")
+
+      const rectangleFive = [rectangleFiveS, rectangleFiveM, rectangleFiveL]
+
+      //Purple
+
+      const rectangleSixS = new RectanglesOfDoom(0, SCREEN_HEIGHT*(3/4), SCREEN_WIDTH, SCREEN_HEIGHT*(1/4),"#DDC4EE")
+      const rectangleSixM = new RectanglesOfDoom(0, SCREEN_HEIGHT/2, SCREEN_WIDTH, SCREEN_HEIGHT/2,"#9C89A9")
+      const rectangleSixL = new RectanglesOfDoom(0, SCREEN_HEIGHT/9, SCREEN_WIDTH, SCREEN_HEIGHT*(8/9),"#766482")
+
+      const rectangleSix = [rectangleSixS, rectangleSixM, rectangleSixL]
+
+      //orange
+      
+      const rectangleSevenS = new RectanglesOfDoom(0, 0, SCREEN_WIDTH/4,  SCREEN_HEIGHT*(1/4),"#F3AD49")
+      const rectangleSevenM = new RectanglesOfDoom(0, 0, SCREEN_WIDTH,  SCREEN_HEIGHT*(2/4),"#C78B34")
+      const rectangleSevenL = new RectanglesOfDoom(0, 0, SCREEN_WIDTH,  SCREEN_HEIGHT*(3/4),"#875C1F")
+
+      const rectangleSeven = [rectangleSevenS,rectangleSevenM, rectangleSevenL]
+      //grey
+      const rectangleEightS = new RectanglesOfDoom(SCREEN_WIDTH*(3/4), 0, SCREEN_WIDTH/4,  SCREEN_HEIGHT/4,"#D3D3D3")
+      const rectangleEightM = new RectanglesOfDoom(0, 0, SCREEN_WIDTH,  SCREEN_HEIGHT/2,"#A09F9F")
+      const rectangleEightL = new RectanglesOfDoom(0, 0, SCREEN_WIDTH,  SCREEN_HEIGHT*(8.6/10),"#565656")
+
+      const rectangleEight = [rectangleEightS,rectangleEightM, rectangleEightL]
+
 
   // Drawing function for Rectangles of Doom
 
@@ -165,41 +201,9 @@ const drawRectOfDoom = (rectangleOfDoom) => {
   contextRef.current.fill();
 }
 
-// Interval For Rectangles of Doom
-
-// Interval For Small Rectangles
-
-let innerArrayOne = [1,"red","fed"]
-
-let innerArrayTwo = [2,"blue","you"]
-
-let innerArrayThree = [3,"green","bean"]
-
-let innerArrayFour = [4,"yellow","fellow"]
-
-let innerArrayFive = [5,"dog","bog"]
-
-let innerArraySix = [6,"pink","link"]
-
-let innerArraySeven = [7,"Cow","Mao"]
-
-let innerArrayEight = [8,"Wow","foo"]
   
-// let arrayS = [rectangleOne,rectangleTwo,rectangleThree, rectangleFour, rectangleFive, rectangleSix, rectangleSeven , rectangleEight]
+let arrayS = [rectangleOne,rectangleTwo,rectangleThree, rectangleFour, rectangleFive, rectangleSix, rectangleSeven , rectangleEight]
 
-let arrayS = [innerArrayOne,innerArrayTwo,innerArrayThree, innerArrayFour]
-
-
-
-
-const outerLoop = (arrayz) => {
-  let i = 0;
-  for (i; i < arrayz.length;){
-    console.log(arrayz[i]);
-    i++;
-    break;
-      }
-}
 
 
 // function for Interval
