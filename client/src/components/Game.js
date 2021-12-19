@@ -7,12 +7,12 @@ import RectangleCanvas from './RectangleCanvas';
 
 function Game() {
 
-  const [speed,setSpeed] = useState(1000);
+  const [speed,setSpeed] = useState(2000);
   const enemyXRef = useRef(1);
   const enemyYRef = useRef(1);
   const enemyWRef = useRef(1);
   const enemyHRef = useRef(1);
-  const colorRef = useRef('grey')
+  const colorRef = useRef('#08FF00')
 
 
 

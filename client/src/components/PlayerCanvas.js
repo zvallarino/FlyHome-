@@ -76,29 +76,33 @@ function PlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef }) 
 
   // MOVEMENT FUNCTIONS // First Level
 
-  const moveUp = () => {
-    playerRef.current.y = playerRef.current.y - SCREEN_HEIGHT/4
-  
-    boundariesUp(playerRef.current)
-  }
-  
-  const moveLeft = () => {
-    playerRef.current.x =  playerRef.current.x - SCREEN_WIDTH/4
-  
-    boundariesLeft(playerRef.current)
-  }
+const moveUp = () => {
+  playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
 
-  const moveRight = () => {
-    playerRef.current.x = playerRef.current.x + SCREEN_WIDTH/4
+  boundariesUp(playerRef.current)
+  secondsCounter(counter => counter +3)
+}
 
-    boundariesRight(playerRef.current)
-  }
+const moveLeft = () => {
+  playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
+  boundariesLeft(playerRef.current)
+  secondsCounter(counter => counter +3)
   
-  const moveDown = () => {
-    playerRef.current.y = playerRef.current.y + SCREEN_HEIGHT/4
+}
+const moveRight = () => {
+  playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
 
-    boundariesDown(playerRef.current)
-  }
+  boundariesRight(playerRef.current)
+  secondsCounter(counter => counter +3)
+}
+
+const moveDown = () => {
+  playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
+  console.log(playerRef.current.y)
+
+  boundariesDown(playerRef.current)
+  secondsCounter(counter => counter +3)
+}
   
   const moveRightUp = () => {
     moveUp()
@@ -204,23 +208,15 @@ const boundariesDown = (objectZ) => {
     objectZ.y = 835
   }}  
 
-
-
 //HIT MARKERS
 
   const hit = () => {
-    // if(playerRef.current.y + playerRef.current.h < enemyYRef.current - circleC.size || playerRef.current.y > enemyYRef.current + circleC.size || playerRef.current.x > enemyXRef.current + circleC.size || playerRef.current.x + playerRef.current.w < enemyXRef.current - circleC.size){
-      //playerRef.current.x + playerRef.current.w < enemyXRef.current
 
-
-      //playerRef.current.x + playerRef.current.w < enemyXRef.current
-
-      //Works on 3 and 4
-
-      if(playerRef.current.y > (enemyYRef.current + enemyHRef.current) || playerRef.current.x + playerRef.current.w < enemyXRef.current){
+      if(playerRef.current.y > enemyYRef.current + enemyHRef.current||playerRef.current.y +  playerRef.current.h < enemyYRef.current||playerRef.current.x > (enemyXRef.current+enemyWRef.current) || playerRef.current.x + playerRef.current.w < (enemyXRef.current)){
         console.log("miss")
       } else {
-        console.log('hit')
+        console.log("hit")
+        colorRef.current = "red"
       }
 
       console.log('This is the player')
@@ -238,22 +234,6 @@ const boundariesDown = (objectZ) => {
       // console.log(enemyWRef)
       // console.log(enemyHRef)
       // console.log(colorRef)
-
-
-
-
-      // if(playerRef.current.x + playerRef.current.w < enemyXRef.current){
-      //   console.log('miss')
-      //   colorRef.current = "grey"
-      //   console.log(enemyXRef)
-        
-      // } else {
-      //   console.log('hit')
-      //   colorRef.current = "red"
-      // }
-// console.log(playerRef.current.x + playerRef.current.w)
-//     if(playerRef.current.x + playerRef.current.w )
-
   }
 
 
@@ -262,7 +242,7 @@ const boundariesDown = (objectZ) => {
 const KeyUp = (e) => {
   if(e.key === "l"){
     imageRef.current = "https://i.imgur.com/iNJmBDq.png"
-    // colorRef.current = "grey"
+    colorRef.current = "green"
   } else if(e.key === " "){
     // imageRef.current = "https://i.imgur.com/iNJmBDq.png"
     // console.log("stop boosting")
@@ -270,7 +250,7 @@ const KeyUp = (e) => {
     console.log("stop super blasting")
   } else {
     secondsCounter(1)
-    // colorRef.current = "grey"
+    colorRef.current = "green"
   }
 }
 

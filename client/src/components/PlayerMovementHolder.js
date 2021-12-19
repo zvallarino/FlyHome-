@@ -90,3 +90,32 @@
 //     console.log("boosters")
 //   }
 // }
+
+
+// Hits for Enemies
+
+
+
+//  // const moveUp = () => {
+  //   playerRef.current.y = playerRef.current.y - SCREEN_HEIGHT/4
+  
+  //   boundariesUp(playerRef.current)
+  // }
+  
+  // const moveLeft = () => {
+  //   playerRef.current.x =  playerRef.current.x - SCREEN_WIDTH/4
+  
+  //   boundariesLeft(playerRef.current)
+  // }
+
+  // const moveRight = () => {
+  //   playerRef.current.x = playerRef.current.x + SCREEN_WIDTH/4
+
+  //   boundariesRight(playerRef.current)
+  // }
+  
+  // const moveDown = () => {
+  //   playerRef.current.y = playerRef.current.y + SCREEN_HEIGHT/4
+
+  //   boundariesDown(playerRef.current)
+  // }
