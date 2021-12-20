@@ -1,14 +1,11 @@
-import React, { useRef,useEffect,useState } from 'react';
+import React, { useRef,useEffect } from 'react';
 import './App.css';
 
 function RectangleCanvas({enemyXRef, enemyYRef, enemyWRef, enemyHRef, speed, colorRef}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
- 
-  const timerRef = useRef()
 
-  const [counter,secondsCounter] =useState(0)
 
   useEffect(()=>{
 
@@ -88,7 +85,7 @@ const outerLoop = () => {
       }
 }
 
-setInterval(outerLoop, speed);  
+setInterval(outerLoop, speed)  
 
 
 

@@ -1,13 +1,12 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef }) {
+function PlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef, setSpeed, speed}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
   const playerRef = useRef(null)
   // const colorRef = useRef('grey')
-  const [speed,setSpeed] = useState(5)
   const imageRef = useRef("https://i.imgur.com/5rjTnM5.png")
   const [counter,secondsCounter] =useState(0)
   const rotationRef = useRef(0)
@@ -70,6 +69,7 @@ function PlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef }) 
 
   const update = () => {
     drawPlane();
+    hit();
     requestAnimationFrame(update)
   }
 
@@ -85,18 +85,58 @@ function PlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef }) 
 
   // MOVEMENT FUNCTIONS // First Level
 
-const moveUp = () => {
-  playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
+// const moveUp = () => {
+//   playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
 
+//   boundariesUp(playerRef.current) 
+
+//   secondsCounter(counter => counter +3)
+// }
+
+// const moveLeft = () => {
+//   playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
+
+
+//   boundariesLeft(playerRef.current)
+
+//   secondsCounter(counter => counter +3)
   
+// }
+// const moveRight = () => {
+//   playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
+
+//   if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current === 4){
+//     boundariesRight(playerRef.current)
+//   } else{
+//     boundariesRightTurn(playerRef.current)
+//   }
+
+//   secondsCounter(counter => counter +3)
+// }
+
+// const moveDown = () => {
+//   playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
+
+
+//   if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current   === 4){
+//     boundariesDown(playerRef.current)
+//   } else {
+//     boundariesDownTurn(playerRef.current)
+//   }
+//   secondsCounter(counter => counter +3)
+// }
+
+
+
+const moveUp = () => {
+  playerRef.current.y = playerRef.current.y - SCREEN_HEIGHT/2
   boundariesUp(playerRef.current) 
- 
 
   secondsCounter(counter => counter +3)
 }
 
 const moveLeft = () => {
-  playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
+  playerRef.current.x =  playerRef.current.x - SCREEN_WIDTH/2
 
 
   boundariesLeft(playerRef.current)
@@ -105,7 +145,7 @@ const moveLeft = () => {
   
 }
 const moveRight = () => {
-  playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
+  playerRef.current.x = playerRef.current.x + SCREEN_WIDTH/2
 
   if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current === 4){
     boundariesRight(playerRef.current)
@@ -117,7 +157,7 @@ const moveRight = () => {
 }
 
 const moveDown = () => {
-  playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
+  playerRef.current.y = playerRef.current.y + SCREEN_HEIGHT/2
 
 
   if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current   === 4){
@@ -127,34 +167,6 @@ const moveDown = () => {
   }
   secondsCounter(counter => counter +3)
 }
-
-// const moveUp = () => {
-//   playerRef.current.y = playerRef.current.y - SCREEN_HEIGHT/2
-
-//   boundariesUp(playerRef.current)
-//   secondsCounter(counter => counter +3)
-// }
-
-// const moveLeft = () => {
-//   playerRef.current.x =  playerRef.current.x - SCREEN_WIDTH/2
-
-//   boundariesLeft(playerRef.current)
-//   secondsCounter(counter => counter +3)
-  
-// }
-// const moveRight = () => {
-//   playerRef.current.x = playerRef.current.x + SCREEN_WIDTH/2
-//   boundariesRight(playerRef.current)
-//   secondsCounter(counter => counter +3)
-// }
-
-// const moveDown = () => {
-//   playerRef.current.y = playerRef.current.y + (SCREEN_HEIGHT/2)
-
-//   boundariesDown(playerRef.current)
-//   secondsCounter(counter => counter +3)
-// }
-  
   
   const moveRightUp = () => {
     moveUp()
@@ -204,7 +216,9 @@ const moveDown = () => {
       imageRef.current = firingRotationArray[rotationRef.current]
       hit()
     } else if ( e.key === "k"){
-      console.log("superBlater")
+      console.log("superBlaster")
+      setSpeed(250)
+      console.log(speed)
     } else if ( e.key === " "){
       rotationCounter++
       rotationRef.current = rotationRef.current + 1
@@ -267,8 +281,6 @@ const boundariesRightTurn = (objectZ) => {
   }
 }
 
-
-
 const boundariesDownTurn = (objectZ) => {
     if(objectZ.y > 534){
       objectZ.y = 534
@@ -281,7 +293,7 @@ const boundariesDownTurn = (objectZ) => {
     
 
       if(playerRef.current.y > enemyYRef.current + enemyHRef.current||playerRef.current.y + playerRef.current.h < enemyYRef.current||playerRef.current.x > (enemyXRef.current+enemyWRef.current) || playerRef.current.x + playerRef.current.w < (enemyXRef.current)){
-        console.log("miss")
+        return
       } else {
         console.log("hit")
         rotationFunction()
@@ -318,6 +330,7 @@ const KeyUp = (e) => {
     // imageRef.current = "https://i.imgur.com/iNJmBDq.png"
     // console.log("stop boosting")
   } else if (e.key === "k"){
+    setSpeed(1000)
     console.log("stop super blasting")
   } else {
     // imageRef.current =rotationArray[rotationCounter]
