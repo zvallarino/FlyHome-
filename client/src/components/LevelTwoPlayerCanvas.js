@@ -1,12 +1,12 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef, setSpeed, speed}) {
+function LevelTwoPlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef, setSpeed, speed}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
   const playerRef = useRef(null)
-  // const colorRef = useRef('grey')
+
   const imageRef = useRef("https://i.imgur.com/5rjTnM5.png")
   const [counter,secondsCounter] =useState(0)
   const rotationRef = useRef(0)
@@ -81,60 +81,18 @@ function PlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef, se
   const SCREEN_WIDTH = window.innerWidth;
   const SCREEN_HEIGHT = window.innerHeight;
 
-  // MOVEMENT FUNCTIONS // First Level
-
-// const moveUp = () => {
-//   playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
-
-//   boundariesUp(playerRef.current) 
-
-//   secondsCounter(counter => counter +3)
-// }
-
-// const moveLeft = () => {
-//   playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
-
-
-//   boundariesLeft(playerRef.current)
-
-//   secondsCounter(counter => counter +3)
-  
-// }
-// const moveRight = () => {
-//   playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
-
-//   if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current === 4){
-//     boundariesRight(playerRef.current)
-//   } else{
-//     boundariesRightTurn(playerRef.current)
-//   }
-
-//   secondsCounter(counter => counter +3)
-// }
-
-// const moveDown = () => {
-//   playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
-
-
-//   if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current   === 4){
-//     boundariesDown(playerRef.current)
-//   } else {
-//     boundariesDownTurn(playerRef.current)
-//   }
-//   secondsCounter(counter => counter +3)
-// }
-
-
+  // MOVEMENT FUNCTIONS 
 
 const moveUp = () => {
-  playerRef.current.y = playerRef.current.y - SCREEN_HEIGHT/2
+  playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
+
   boundariesUp(playerRef.current) 
 
   secondsCounter(counter => counter +3)
 }
 
 const moveLeft = () => {
-  playerRef.current.x =  playerRef.current.x - SCREEN_WIDTH/2
+  playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
 
 
   boundariesLeft(playerRef.current)
@@ -143,7 +101,7 @@ const moveLeft = () => {
   
 }
 const moveRight = () => {
-  playerRef.current.x = playerRef.current.x + SCREEN_WIDTH/2
+  playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
 
   if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current === 4){
     boundariesRight(playerRef.current)
@@ -155,7 +113,7 @@ const moveRight = () => {
 }
 
 const moveDown = () => {
-  playerRef.current.y = playerRef.current.y + SCREEN_HEIGHT/2
+  playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
 
 
   if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current   === 4){
@@ -225,8 +183,6 @@ const moveDown = () => {
 
     }
   } 
-
-
    // Rotation Function 
 
    const rotationFunction = () => {
@@ -268,7 +224,6 @@ const boundariesDown = (objectZ) => {
     objectZ.y = 835
   }} 
   
-  
 
   // Turned Boundaries
 
@@ -295,7 +250,6 @@ const boundariesDownTurn = (objectZ) => {
       } else {
         console.log("hit")
         rotationFunction()
-        imageRef.current = ouchArray[rotationRef.current]
       }
 
       console.log('This is the player')
@@ -347,4 +301,4 @@ const KeyUp = (e) => {
   );
 }
 
-export default PlayerCanvas;
+export default LevelTwoPlayerCanvas;
