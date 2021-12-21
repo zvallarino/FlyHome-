@@ -5,6 +5,17 @@ import Home from './Home';
 
 function App() {
 
+  // Boss Plane
+
+
+  //https://i.imgur.com/zZpPzjM.png 
+
+  
+  //Fly Home Cover
+
+  //https://i.imgur.com/OF9NPa5.png
+
+
   const [user, setUser] = useState(null);
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function LevelTwoPlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef, setSpeed, speed}) {
+function LevelTwoPlayerCanvas({bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef, bossHitCounter}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -12,11 +12,14 @@ function LevelTwoPlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colo
   const rotationRef = useRef(0)
  
 
-    // Right Down Left Up
+    //  Up Right Down Left
   let rotationArray = ["https://i.imgur.com/5rjTnM5.png", "https://i.imgur.com/KuhriMc.png", "https://i.imgur.com/R1ZZM9i.png", "https://i.imgur.com/Zbuzj3K.png"]
   let firingRotationArray = ['https://i.imgur.com/9lDQkp9.png','https://i.imgur.com/6Zq7JC8.png','https://i.imgur.com/LlvH1ZX.png','https://i.imgur.com/YYMtBNz.png']
   let ouchArray = ["https://i.imgur.com/3BndMiB.png", "https://i.imgur.com/6drQQey.png", "https://i.imgur.com/hlwPzh2.png", "https://i.imgur.com/fiC5k5A.png"]
-  
+  //Dead Image 
+
+  // https://i.imgur.com/hBclQUa.png
+
   let rotationCounter = 0
 
 
@@ -32,7 +35,7 @@ function LevelTwoPlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colo
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 3;
+    canvas.style['z-index'] = 4;
     
     
     const context = canvas.getContext("2d");
@@ -67,7 +70,7 @@ function LevelTwoPlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colo
 
   const update = () => {
     drawPlane();
-    hit();
+    // hit();
     requestAnimationFrame(update)
   }
 
@@ -173,8 +176,6 @@ const moveDown = () => {
       hit()
     } else if ( e.key === "k"){
       console.log("superBlaster")
-      setSpeed(250)
-      console.log(speed)
     } else if ( e.key === " "){
       rotationCounter++
       rotationRef.current = rotationRef.current + 1
@@ -186,7 +187,7 @@ const moveDown = () => {
    // Rotation Function 
 
    const rotationFunction = () => {
-    console.log(rotationRef.current)
+ 
   if(rotationRef.current === 0||rotationRef.current === 2){
     playerRef.current.w = 400
     playerRef.current.h = 100
@@ -243,20 +244,41 @@ const boundariesDownTurn = (objectZ) => {
 //HIT MARKERS
 
   const hit = () => {
-    
 
-      if(playerRef.current.y > enemyYRef.current + enemyHRef.current||playerRef.current.y + playerRef.current.h < enemyYRef.current||playerRef.current.x > (enemyXRef.current+enemyWRef.current) || playerRef.current.x + playerRef.current.w < (enemyXRef.current)){
-        return
+    // console.log('This is the player')
+    // console.log('This is the x')
+    // console.log(playerRef.current.x)
+    // console.log('This is the y')
+    // console.log(playerRef.current.y)
+
+
+    //      console.log('This is the Enemy')
+
+    //   console.log(bossXRef.current)
+    //   console.log(bossWRef.current)
+  // }
+
+
+    // bossXRef,bossYRef, bossHRef, bossWRef
+
+    //playerRef.current.y > enemyYRef.current + enemyHRef.current||playerRef.current.y + playerRef.current.h < enemyYRef.current||playerRef.current.x > (enemyXRef.current+enemyWRef.current) || playerRef.current.x + playerRef.current.w < (enemyXRef.current)
+    
+    //playerRef.current.x > (enemyXRef.current+enemyWRef.current) || playerRef.current.x + playerRef.current.w < (enemyXRef.current
+    console.log(bossImgRef.current)
+      if(playerRef.current.x > (bossXRef.current+bossWRef.current) || playerRef.current.x + playerRef.current.w < (bossXRef.current) || playerRef.current.y > bossYRef.current + bossHRef.current||playerRef.current.y + playerRef.current.h < bossYRef.current){
+        console.log('miss')
       } else {
         console.log("hit")
+        bossHitCounter.current =  bossHitCounter.current + 1
+        if( bossHitCounter.current < 10){
+        bossImgRef.current = ouchArray[0]} 
+        else{
+          bossImgRef.current = "https://i.imgur.com/hBclQUa.png"
+        }
+        console.log(bossImgRef.current)
         rotationFunction()
       }
 
-      console.log('This is the player')
-      console.log('This is the x')
-      console.log(playerRef.current.x)
-      console.log('This is the y')
-      console.log(playerRef.current.y)
       // // console.log(playerRef.current.w)
       // // console.log(playerRef.current.h)
 
@@ -278,16 +300,15 @@ const KeyUp = (e) => {
   if(e.key === "l"){
     rotationFunction()
     imageRef.current =rotationArray[rotationRef.current]
+    bossImgRef.current = "https://i.imgur.com/3PjKfOy.png"
   } else if(e.key === " "){
     // imageRef.current = "https://i.imgur.com/iNJmBDq.png"
     // console.log("stop boosting")
   } else if (e.key === "k"){
-    setSpeed(1000)
+   
     console.log("stop super blasting")
   } else {
-    // imageRef.current =rotationArray[rotationCounter]
     secondsCounter(1)
-    colorRef.current = "green"
   }
 }
 
