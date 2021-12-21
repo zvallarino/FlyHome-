@@ -1,14 +1,11 @@
-import React, { useRef,useEffect,useState } from 'react';
+import React, { useRef,useEffect } from 'react';
 import './App.css';
 
 function RectangleCanvas({enemyXRef, enemyYRef, enemyWRef, enemyHRef, speed, colorRef}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
- 
-  const timerRef = useRef()
 
-  const [counter,secondsCounter] =useState(0)
 
   useEffect(()=>{
 
@@ -64,18 +61,18 @@ const outerLoop = () => {
       loopCounter++;
       i++;
     
-      if(loopCounter === 2){
-        
-        console.log("does it work in order")
-        // enemyXRef = arrayS[randomNumber][loopCounter].x
-        // enemyYRef = arrayS[randomNumber][loopCounter].y
-        // enemyWRef = arrayS[randomNumber][loopCounter].w
-        // enemyHRef = arrayS[randomNumber][loopCounter].h
-        // colorRef = arrayS[randomNumber][loopCounter].color
-
+      if(loopCounter === 1){
+        enemyXRef.current = -1
+        enemyYRef.current = -1
+        enemyWRef.current = 0
+        enemyHRef.current = 0
+      
       }else if (loopCounter === 3)
       {
-
+        enemyXRef.current = arrayOfDoom[randomNumber][loopCounter-1].x
+        enemyYRef.current = arrayOfDoom[randomNumber][loopCounter-1].y
+        enemyWRef.current = arrayOfDoom[randomNumber][loopCounter-1].w
+        enemyHRef.current = arrayOfDoom[randomNumber][loopCounter-1].h
         loopCounter = 0
         randomNumber = getRandomInt(12)
         // contextRef.current.clearRect(0,0,SCREEN_WIDTH,SCREEN_HEIGHT)
@@ -88,33 +85,11 @@ const outerLoop = () => {
       }
 }
 
-setInterval(outerLoop, speed);  
+setInterval(outerLoop, speed)  
 
 
 
 const update = () => {
-
-
-enemyXRef.current = rectangleEightM.x
-enemyYRef.current = rectangleEightM.y
-enemyWRef.current = rectangleEightM.w
-enemyHRef.current = rectangleEightM.h
-
-//
-
-
-
-// 1 W, 2 W
-//Top Left
-
-// 3 W, 4 W
-// Top Right
-
-//5 W, 6 W
-// Bottom Left
-
-
-// drawRectOfDoom(rectangleTenL)
 
   requestAnimationFrame(update)
 }
@@ -264,9 +239,10 @@ const drawRectOfDoom = (rectangleOfDoom) => {
   contextRef.current.beginPath();
   contextRef.current.rect(rectangleOfDoom.x, rectangleOfDoom.y, rectangleOfDoom.w,rectangleOfDoom.h);
   contextRef.current.fillStyle = rectangleOfDoom.color
-  // console.log(rectangleOfDoom.color)
   contextRef.current.fill();
 }
+
+
   
 let arrayOfDoom = [rectangleOne,rectangleTwo,rectangleThree, rectangleFour, rectangleFive, rectangleSix, rectangleSeven , rectangleEight, rectangleNine, rectangleTen, rectangleEleven, rectangleTwelve ]
 

@@ -3,90 +3,60 @@ import './App.css';
 
 function EnemiesCanvas() {
 
-//   const canvasRef = useRef(null)
-//   const contextRef = useRef(null)
-//   const enemyXRef = useRef(1)
-//   const enemyYRef = useRef(1)
-//   const colorRef = useRef('grey')
-//   const [speed,setSpeed] = useState(5)
-//   const imageRef = useRef("https://i.imgur.com/iNJmBDq.png")
-//   const [counter,secondsCounter] =useState(0)
 
-//   useEffect(()=>{
+  const canvasRef = useRef(null)
+  const contextRef = useRef(null)
 
-//     const canvas = canvasRef.current;
-//     canvas.width = window.innerWidth * 2; 
-//     canvas.height = window.innerHeight * 2;
-//     canvas.style.width = `${window.innerWidth}px`;
-//     canvas.style.height = `${window.innerHeight}px`;
-//     canvas.style.position = "absolute";
-//     canvas.style.left = 0;
-//     canvas.style.top = 0;
-//     canvas.style['z-index'] = 1;
+  const colorRef = useRef('grey')
+
+  useEffect(()=>{
+
+    const canvas = canvasRef.current;
+    canvas.width = window.innerWidth * 2; 
+    canvas.height = window.innerHeight * 2;
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
+    canvas.style.position = "absolute";
+    canvas.style.left = 0;
+    canvas.style.top = 0;
+    canvas.style['z-index'] = 2;
     
     
-//     const context = canvas.getContext("2d");
-//     context.scale(2,2);
-//     context.lineCap = "round"
-//     context.stokeStyle = "black"
-//     context.lineWidth = 5
-//     contextRef.current = context;
-
-//     //Player Initial Position and Movement Speed
-  
-//     const tryTwo = () => {
-//       let arrayZ = ["drawRectRight","drawRectRightRight","drawRectUpUp"]
-//       let i = 0;
-//       setInterval(function(){
-//         for (i; i < arrayZ.length;){
-//                console.log(arrayZ[i]);
-//                 i++;
-//                 if(i===arrayZ.length){
-//                   i=0
-//                 }
-//                 break;
-//                   }
-//                      }, 3000)
-//     };
-
-//     tryTwo()
-
-//     // let ObjectX = {}
-//     // ObjectX.A = drawRectRight();
-//     // ObjectX.B = drawRectUp();
-//     // console.log(ObjectX)
-
-//     // let arrayZ = ["dog","fish","bird"]
-//     // let i = 0;
-//     // setInterval(function(){
-//     //   for (i; i < arrayZ.length;){
-//     //           console.log(arrayZ[i]);
-//     //           i++;
-//     //           break;
-//     //             }
-//     //                }, 3000)
-                  
-  
-//   const update = () => {
-//     drawRectRight()
-//     requestAnimationFrame(update)
-//   }
+    const context = canvas.getContext("2d");
+    context.scale(2,2);
+    context.lineCap = "round"
+    context.stokeStyle = "black"
+    context.lineWidth = 5
+    contextRef.current = context;
 
 
-//   update()
-//   },[])
+  const drawEnemyPlane = (enemyPlane) => {
+
+    let plane = new Image();
+    plane.src = enemyPlane.img
+    plane.onload = function() {
+    // contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+    contextRef.current.drawImage(plane,enemyPlane.x,enemyPlane.y,enemyPlane.w,enemyPlane.h);  
+    contextRef.current.strokeRect(enemyPlane.x, enemyPlane.y, enemyPlane.w,enemyPlane.h);
+  }
+}
+
+    
+  const update = () => {
+    drawEnemyPlane(planeOne)
+    drawEnemyPlane(planeTwo)
+    drawEnemyPlane(planeThree)
+    requestAnimationFrame(update)
+  }
 
 
-//   //
-
-  
-
-
+  update()
+  },[])
 
 //   //SCREEN HEIGHT/WIDTH
 
-//   const SCREEN_WIDTH = window.innerWidth;
-//   const SCREEN_HEIGHT = window.innerHeight;
+  const SCREEN_WIDTH = window.innerWidth;
+  const SCREEN_HEIGHT = window.innerHeight;
 
 //   //MOVEMENT FUNCTIONS
 
@@ -121,101 +91,33 @@ function EnemiesCanvas() {
 //     }}
 
 
-//   const boundariesDownBall = (objectZ) => {
-//     if(objectZ.y > 835){
-//       objectZ.y = 0
-  
-//     }}
-
-
 // // Randomizer for Rectangles
 
 // function getRandomInt(max) {
 //   return Math.floor(Math.random() * max);
 // }
 
-// //Rectangle Drawings
+// Enemy Constructor
 
-// const rectangleOne  = {
-//   x:20,
-//   y:20,
-//   size:20, 
-// }
+class EnemyCreator {
+  constructor(img, x, y, width, height, dx, dy) {
+    this.img = img;
+    this.x = x;
+    this.y = y;
+    this.w = width;
+    this.h = height;
+    this.dx = dx;
+    this.dy = dy;
 
+  }
+}
 
+const planeOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',SCREEN_WIDTH*(1/8),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
+const planeTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',  SCREEN_WIDTH*(4/10), 200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
+const planeThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(8/10),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
 
+// console.log(planeOne)
 
-
-
-
-// const drawRectRight = () => {
-//   contextRef.current.beginPath();
-//   contextRef.current.rect(0, 0, SCREEN_WIDTH/2, SCREEN_HEIGHT);
-//   contextRef.current.fillStyle = "green"
-//   contextRef.current.fill();
-// }
-
-
-// const drawRectRightRight = () => {
-//   contextRef.current.beginPath();
-//   contextRef.current.rect(0, 0, SCREEN_WIDTH*(3/4), SCREEN_HEIGHT);
-//   contextRef.current.fillStyle = "blue"
-//   contextRef.current.fill();
-// }
-
-// const drawRectLeft = () => {
-//   contextRef.current.beginPath();
-//   contextRef.current.lineWidth = "4";
-//   contextRef.current.rect(SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2, SCREEN_HEIGHT);
-//   contextRef.current.fillStyle = "blue"
-//   contextRef.current.fill();
-// }
-
-// const drawRectLeftLeft = () => {
-//   contextRef.current.beginPath();
-//   contextRef.current.rect(SCREEN_WIDTH/4, 0, SCREEN_WIDTH*(3/4), SCREEN_HEIGHT);
-//   contextRef.current.fillStyle = "blue"
-//   contextRef.current.fill();
-// }
-
-// const drawRectUp = () => {
-//   contextRef.current.beginPath();
-//   contextRef.current.rect(0, SCREEN_HEIGHT/2, SCREEN_WIDTH, SCREEN_HEIGHT);
-//   contextRef.current.fillStyle = "pink"
-//   contextRef.current.fill();
-// }
-
-// const drawRectUpUp = () => {
-//   contextRef.current.beginPath();
-//   contextRef.current.rect(0, SCREEN_HEIGHT/4, SCREEN_WIDTH, SCREEN_HEIGHT*(3/4));
-//   contextRef.current.fillStyle = "purple"
-//   contextRef.current.fill();
-// }
-
-// const drawRectDown = () => {
-//   contextRef.current.beginPath();
-//   contextRef.current.rect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/2);
-//   contextRef.current.fillStyle = "pink"
-//   contextRef.current.fill();
-// }
-
-// const drawRectDownDown = () => {
-//   contextRef.current.beginPath();
-//   contextRef.current.rect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT*(3/4));
-//   contextRef.current.fillStyle = "purple"
-//   contextRef.current.fill();
-// }
-
-// //Draw Enemies
-
-// const circleC = {
-//   x:900,
-//   y:450,
-//   size:100,
-//   dx:0,
-//   dy:2,
-//   color: colorRef.current
-// }
 
 // // const circleC = {
 // //   x:700,
@@ -286,7 +188,7 @@ function EnemiesCanvas() {
     <canvas
     tabIndex="0" 
     // onKeyUp = {KeyUp}
-    // ref = {canvasRef}
+    ref = {canvasRef}
     />
   );
 }
