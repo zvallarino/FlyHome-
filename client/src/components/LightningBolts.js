@@ -39,16 +39,20 @@ let randomNumber = 0;
 
 const outerLoop = () => {
   for (i; i < boltsOfDoom.length;){
-    console.log(boltsOfDoom)
+    // console.log(boltsOfDoom)
     drawLightning(boltsOfDoom[randomNumber][loopCounter])
     loopCounter++;
     i++;
   
     if(loopCounter === 2)
     {
+      lightningBoltsXRef.current = boltsOfDoom[randomNumber][loopCounter-1].x
+      ligtningBoltsYRef.current = boltsOfDoom[randomNumber][loopCounter-1].y
+      lightningBoltsWRef.current = boltsOfDoom[randomNumber][loopCounter-1].w
+      lightningBoltsHRef.current = boltsOfDoom[randomNumber][loopCounter-1].h
     loopCounter = 0
     randomNumber = getRandomInt(7)
-  }
+    }
     if(i === 4){
       i = 0
     }
@@ -57,7 +61,7 @@ const outerLoop = () => {
 }
 
 
-setInterval(outerLoop, 500)  
+setInterval(outerLoop, 1000)  
 
 
 
@@ -169,7 +173,7 @@ const update = () => {
 
   
 const drawLightning = (bolt) => {
-  console.log(bolt)
+
   contextRef.current.beginPath();
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
   contextRef.current.rect(bolt.x, bolt.y, bolt.w,bolt.h);

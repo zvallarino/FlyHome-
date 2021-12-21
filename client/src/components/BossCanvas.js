@@ -3,10 +3,6 @@ import './App.css';
 
 function BossCanvas({bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef}) {
 
-  console.log(bossXRef.current)
-  console.log(bossHRef.current)
-  console.log(bossYRef.current)
-  console.log(bossWRef.current)
 
 
   const canvasRef = useRef(null)

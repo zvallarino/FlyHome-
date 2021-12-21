@@ -1,7 +1,8 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function LevelTwoPlayerCanvas({bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef, bossHitCounter}) {
+function LevelTwoPlayerCanvas({bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef, bossHitCounter, lightningBoltsXRef, ligtningBoltsYRef, lightningBoltsWRef, lightningBoltsHRef
+}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -10,6 +11,10 @@ function LevelTwoPlayerCanvas({bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef
   const imageRef = useRef("https://i.imgur.com/5rjTnM5.png")
   const [counter,secondsCounter] =useState(0)
   const rotationRef = useRef(0)
+
+
+
+
  
 
     //  Up Right Down Left
@@ -70,7 +75,7 @@ function LevelTwoPlayerCanvas({bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef
 
   const update = () => {
     drawPlane();
-    // hit();
+    lightningStrike();
     requestAnimationFrame(update)
   }
 
@@ -181,7 +186,6 @@ const moveDown = () => {
       rotationRef.current = rotationRef.current + 1
       rotationFunction()
       imageRef.current = rotationArray[rotationRef.current]
-
     }
   } 
    // Rotation Function 
@@ -245,26 +249,6 @@ const boundariesDownTurn = (objectZ) => {
 
   const hit = () => {
 
-    // console.log('This is the player')
-    // console.log('This is the x')
-    // console.log(playerRef.current.x)
-    // console.log('This is the y')
-    // console.log(playerRef.current.y)
-
-
-    //      console.log('This is the Enemy')
-
-    //   console.log(bossXRef.current)
-    //   console.log(bossWRef.current)
-  // }
-
-
-    // bossXRef,bossYRef, bossHRef, bossWRef
-
-    //playerRef.current.y > enemyYRef.current + enemyHRef.current||playerRef.current.y + playerRef.current.h < enemyYRef.current||playerRef.current.x > (enemyXRef.current+enemyWRef.current) || playerRef.current.x + playerRef.current.w < (enemyXRef.current)
-    
-    //playerRef.current.x > (enemyXRef.current+enemyWRef.current) || playerRef.current.x + playerRef.current.w < (enemyXRef.current
-    console.log(bossImgRef.current)
       if(playerRef.current.x > (bossXRef.current+bossWRef.current) || playerRef.current.x + playerRef.current.w < (bossXRef.current) || playerRef.current.y > bossYRef.current + bossHRef.current||playerRef.current.y + playerRef.current.h < bossYRef.current){
         console.log('miss')
       } else {
@@ -275,23 +259,42 @@ const boundariesDownTurn = (objectZ) => {
         else{
           bossImgRef.current = "https://i.imgur.com/hBclQUa.png"
         }
-        console.log(bossImgRef.current)
         rotationFunction()
       }
-
-      // // console.log(playerRef.current.w)
-      // // console.log(playerRef.current.h)
-
-
-      // console.log('This is the Enemy')
-
-      // console.log(enemyYRef.current+enemyHRef.current)
-      // // console.log(enemyXRef)
-      // // console.log(enemyYRef)
-      // // console.log(enemyWRef)
-      // console.log(enemyHRef)
-      // console.log(colorRef)
   }
+
+  // lightningBoltsXRef, ligtningBoltsYRef, lightningBoltsWRef, lightningBoltsHRef
+
+  const lightningStrike = () => {
+    
+    if(playerRef.current.y > ligtningBoltsYRef.current + lightningBoltsHRef.current||playerRef.current.y + playerRef.current.h < ligtningBoltsYRef.current||playerRef.current.x > (lightningBoltsXRef.current+lightningBoltsWRef.current) || playerRef.current.x + playerRef.current.w < (lightningBoltsXRef.current)){
+      return
+    } else {
+      console.log("hit")
+      rotationFunction()
+      imageRef.current = ouchArray[rotationRef.current]
+    }
+
+    console.log('This is the player')
+    console.log('This is the x')
+    console.log(playerRef.current.x)
+    console.log('This is the y')
+    console.log(playerRef.current.y)
+    // // console.log(playerRef.current.w)
+    // // console.log(playerRef.current.h)
+
+
+    // console.log('This is the Enemy')
+
+    // console.log(enemyYRef.current+enemyHRef.current)
+    // // console.log(enemyXRef)
+    // // console.log(enemyYRef)
+    // // console.log(enemyWRef)
+    // console.log(enemyHRef)
+    // console.log(colorRef)
+}
+
+
 
 
   
@@ -309,6 +312,8 @@ const KeyUp = (e) => {
     console.log("stop super blasting")
   } else {
     secondsCounter(1)
+    rotationFunction()
+    imageRef.current = rotationArray[rotationRef.current]
   }
 }
 
