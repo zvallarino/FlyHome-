@@ -6,7 +6,6 @@ function LightningBolts({ lightningBoltsXRef, ligtningBoltsYRef, lightningBoltsW
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
 
-.0
 
 
   useEffect(()=>{
