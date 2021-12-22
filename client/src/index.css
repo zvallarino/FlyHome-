@@ -103,3 +103,12 @@ code {
   display:flex;
   font-size: 0.8em;
 }
+
+.GameTitle {
+  display:flex;
+  box-sizing: border-box;
+  justify-content: center;
+  background-color: #1EADFF;
+  width: 100vw;
+  height: 100vh;
+}

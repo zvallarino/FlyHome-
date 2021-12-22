@@ -14,11 +14,10 @@ function RectangleCanvas({enemyXRef, enemyYRef, enemyWRef, enemyHRef, speed, col
     canvas.height = window.innerHeight * 2;
     canvas.style.width = `${window.innerWidth}px`;
     canvas.style.height = `${window.innerHeight}px`;
-    canvas.style.backgroundColor = "#E1FFE1";
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 1;
+    canvas.style['z-index'] = 2;
     
     
     const context = canvas.getContext("2d");
@@ -90,7 +89,6 @@ setInterval(outerLoop, speed)
 
 
 const update = () => {
-
   requestAnimationFrame(update)
 }
 
@@ -237,53 +235,13 @@ const update = () => {
   
 const drawRectOfDoom = (rectangleOfDoom) => {
   contextRef.current.beginPath();
+  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
   contextRef.current.rect(rectangleOfDoom.x, rectangleOfDoom.y, rectangleOfDoom.w,rectangleOfDoom.h);
   contextRef.current.fillStyle = rectangleOfDoom.color
   contextRef.current.fill();
 }
-
-
   
 let arrayOfDoom = [rectangleOne,rectangleTwo,rectangleThree, rectangleFour, rectangleFive, rectangleSix, rectangleSeven , rectangleEight, rectangleNine, rectangleTen, rectangleEleven, rectangleTwelve ]
-
-// function for Interval
-
-  //MOVEMENT FUNCTIONS
-
-
-const boundariesLeft = (objectZ) => {
-  if(objectZ.x < -300){
-    objectZ.x = 1900
-  }
-}
-
-const boundariesRight = (objectZ) => {
-  if(objectZ.x > 1900){
-    objectZ.x = -300
-  } 
-}
-
-const boundariesUp = (objectZ) => {
-  if(objectZ.y < 0){
-    objectZ.y = 0
-  }}
-  
-const boundariesDown = (objectZ) => {
-  if(objectZ.y > 835){
-    objectZ.y = 835
-  }}  
-
-  const boundariesUpBall = (objectZ) => {
-    if(objectZ.y < 0){
-      objectZ.y = 835
-    }}
-
-
-  const boundariesDownBall = (objectZ) => {
-    if(objectZ.y > 835){
-      objectZ.y = 0
-  
-    }}
 
 
 // Randomizer for Rectangles
@@ -291,53 +249,6 @@ const boundariesDown = (objectZ) => {
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
-
-//Rectangle Drawings
-
-//HIT MARKERS
-// HIT for Circles
-
-// const hit = () => {
-//   if(playerRef.current.y + playerRef.current.h < enemyYRef.current - circleC.size || playerRef.current.y > enemyYRef.current + circleC.size || playerRef.current.x > enemyXRef.current + circleC.size || playerRef.current.x + playerRef.current.w < enemyXRef.current - circleC.size){
-//     console.log("miss")
-//   } else {
-//     console.log('hit')
-//     colorRef.current = "red"
-//   }
-// }
-
-// Hit for Rectangles
-
-
-
-
-
-
-// function circleMove(circleObject){
-//   circleObject.x += circleObject.dx
-//   circleObject.y += circleObject.dy
-//   enemyXRef.current = circleObject.x
-//   enemyYRef.current = circleObject.y
-//   boundariesLeft(circleObject)
-//   boundariesRight(circleObject)
-//   boundariesDownBall(circleObject)
-// }
-
-const KeyUp = (e) => {
-  // if(e.key === "l"){
-  //   imageRef.current = "https://i.imgur.com/iNJmBDq.png"
-  //   colorRef.current = "grey"
-  // } else if(e.key === " "){
-  //   imageRef.current = "https://i.imgur.com/iNJmBDq.png"
-  //   console.log("stop boosting")
-  // } else if (e.key === "k"){
-  //   console.log("stop super blasting")
-  // } else {
-  //   secondsCounter(1)
-  //   colorRef.current = "grey"
-  // }
-}
-
 
 
   return (

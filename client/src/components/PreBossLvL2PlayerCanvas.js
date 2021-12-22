@@ -1,22 +1,29 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef, setSpeed, speed}) {
+function PreBossLvL2PlayerCanvas({enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,enemyPlaneHRef, enemyPlaneImageRef}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
   const playerRef = useRef(null)
-  // const colorRef = useRef('grey')
+
   const imageRef = useRef("https://i.imgur.com/5rjTnM5.png")
   const [counter,secondsCounter] =useState(0)
   const rotationRef = useRef(0)
+
+
+
+
  
 
-    // Right Down Left Up
+    //  Up Right Down Left
   let rotationArray = ["https://i.imgur.com/5rjTnM5.png", "https://i.imgur.com/KuhriMc.png", "https://i.imgur.com/R1ZZM9i.png", "https://i.imgur.com/Zbuzj3K.png"]
   let firingRotationArray = ['https://i.imgur.com/9lDQkp9.png','https://i.imgur.com/6Zq7JC8.png','https://i.imgur.com/LlvH1ZX.png','https://i.imgur.com/YYMtBNz.png']
   let ouchArray = ["https://i.imgur.com/3BndMiB.png", "https://i.imgur.com/6drQQey.png", "https://i.imgur.com/hlwPzh2.png", "https://i.imgur.com/fiC5k5A.png"]
-  
+  //Dead Image 
+
+  // https://i.imgur.com/hBclQUa.png
+
   let rotationCounter = 0
 
 
@@ -32,7 +39,7 @@ function PlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef, se
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 3;
+    canvas.style['z-index'] = 4;
     
     
     const context = canvas.getContext("2d");
@@ -62,12 +69,12 @@ function PlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef, se
     plane.onload = function() {
     contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
     contextRef.current.drawImage(plane,playerRef.current.x,playerRef.current.y,playerRef.current.w,playerRef.current.h);  
-    // contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
+    contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
   }}
 
   const update = () => {
     drawPlane();
-    hit();
+    // lightningStrike();
     requestAnimationFrame(update)
   }
 
@@ -81,60 +88,18 @@ function PlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef, se
   const SCREEN_WIDTH = window.innerWidth;
   const SCREEN_HEIGHT = window.innerHeight;
 
-  // MOVEMENT FUNCTIONS // First Level
-
-// const moveUp = () => {
-//   playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
-
-//   boundariesUp(playerRef.current) 
-
-//   secondsCounter(counter => counter +3)
-// }
-
-// const moveLeft = () => {
-//   playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
-
-
-//   boundariesLeft(playerRef.current)
-
-//   secondsCounter(counter => counter +3)
-  
-// }
-// const moveRight = () => {
-//   playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
-
-//   if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current === 4){
-//     boundariesRight(playerRef.current)
-//   } else{
-//     boundariesRightTurn(playerRef.current)
-//   }
-
-//   secondsCounter(counter => counter +3)
-// }
-
-// const moveDown = () => {
-//   playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
-
-
-//   if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current   === 4){
-//     boundariesDown(playerRef.current)
-//   } else {
-//     boundariesDownTurn(playerRef.current)
-//   }
-//   secondsCounter(counter => counter +3)
-// }
-
-
+  // MOVEMENT FUNCTIONS 
 
 const moveUp = () => {
-  playerRef.current.y = playerRef.current.y - SCREEN_HEIGHT/2
+  playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
+
   boundariesUp(playerRef.current) 
 
   secondsCounter(counter => counter +3)
 }
 
 const moveLeft = () => {
-  playerRef.current.x =  playerRef.current.x - SCREEN_WIDTH/2
+  playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
 
 
   boundariesLeft(playerRef.current)
@@ -143,7 +108,7 @@ const moveLeft = () => {
   
 }
 const moveRight = () => {
-  playerRef.current.x = playerRef.current.x + SCREEN_WIDTH/2
+  playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
 
   if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current === 4){
     boundariesRight(playerRef.current)
@@ -155,7 +120,7 @@ const moveRight = () => {
 }
 
 const moveDown = () => {
-  playerRef.current.y = playerRef.current.y + SCREEN_HEIGHT/2
+  playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
 
 
   if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current   === 4){
@@ -215,22 +180,17 @@ const moveDown = () => {
       hit()
     } else if ( e.key === "k"){
       console.log("superBlaster")
-      setSpeed(250)
-      console.log(speed)
     } else if ( e.key === " "){
       rotationCounter++
       rotationRef.current = rotationRef.current + 1
       rotationFunction()
       imageRef.current = rotationArray[rotationRef.current]
-
     }
   } 
-
-
    // Rotation Function 
 
    const rotationFunction = () => {
-    console.log(rotationRef.current)
+ 
   if(rotationRef.current === 0||rotationRef.current === 2){
     playerRef.current.w = 400
     playerRef.current.h = 100
@@ -268,7 +228,6 @@ const boundariesDown = (objectZ) => {
     objectZ.y = 835
   }} 
   
-  
 
   // Turned Boundaries
 
@@ -283,57 +242,41 @@ const boundariesDownTurn = (objectZ) => {
     if(objectZ.y > 534){
       objectZ.y = 534
     }} 
+
+
+    //enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,enemyPlaneHRef, enemyPlaneImageRef
     
 
 //HIT MARKERS
 
   const hit = () => {
-    
 
-      if(playerRef.current.y > enemyYRef.current + enemyHRef.current||playerRef.current.y + playerRef.current.h < enemyYRef.current||playerRef.current.x > (enemyXRef.current+enemyWRef.current) || playerRef.current.x + playerRef.current.w < (enemyXRef.current)){
-        return
+      if(playerRef.current.x > (enemyPlaneXRef.current+enemyPlaneWRef.current) || playerRef.current.x + playerRef.current.w < (enemyPlaneXRef.current) || playerRef.current.y > enemyPlaneYRef.current + enemyPlaneHRef.current||playerRef.current.y + playerRef.current.h < enemyPlaneYRef.current){
+        console.log('miss')
       } else {
-        console.log("hit")
+        enemyPlaneImageRef.current = "https://i.imgur.com/hBclQUa.png"
         rotationFunction()
-        imageRef.current = ouchArray[rotationRef.current]
       }
-
-      console.log('This is the player')
-      console.log('This is the x')
-      console.log(playerRef.current.x)
-      console.log('This is the y')
-      console.log(playerRef.current.y)
-      // // console.log(playerRef.current.w)
-      // // console.log(playerRef.current.h)
-
-
-      // console.log('This is the Enemy')
-
-      // console.log(enemyYRef.current+enemyHRef.current)
-      // // console.log(enemyXRef)
-      // // console.log(enemyYRef)
-      // // console.log(enemyWRef)
-      // console.log(enemyHRef)
-      // console.log(colorRef)
   }
 
-
-  
+ 
 
 const KeyUp = (e) => {
   if(e.key === "l"){
+    enemyPlaneImageRef.current = "https://i.imgur.com/qZaFU1N.png";
     rotationFunction()
     imageRef.current =rotationArray[rotationRef.current]
+
   } else if(e.key === " "){
     // imageRef.current = "https://i.imgur.com/iNJmBDq.png"
     // console.log("stop boosting")
   } else if (e.key === "k"){
-    setSpeed(1000)
+
     console.log("stop super blasting")
   } else {
-    // imageRef.current =rotationArray[rotationCounter]
     secondsCounter(1)
-    colorRef.current = "green"
+    rotationFunction()
+    imageRef.current = rotationArray[rotationRef.current]
   }
 }
 
@@ -347,4 +290,4 @@ const KeyUp = (e) => {
   );
 }
 
-export default PlayerCanvas;
+export default PreBossLvL2PlayerCanvas;

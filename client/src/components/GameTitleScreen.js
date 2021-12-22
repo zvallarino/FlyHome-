@@ -1,16 +1,16 @@
 import './App.css';
-import { Switch, Route, useHistory, NavLink } from "react-router-dom";
-import { useState } from "react"
-import GameMainMenu from './GameMainMenu';
-import Game from './Game';
 
-function GameTitleScreen({user}) {
+function GameTitleScreen() {
 
-  return (
-    <>
-     Hello
-    </>
-  );
+  const shootToLink = () => {
+    window.location.href = "/flyhome"
+  }
+  
+    return (
+      <div onClick = {shootToLink} className='GameTitle'>
+      <img src = "https://i.imgur.com/OF9NPa5.png"></img>
+      </div>
+    );
 }
 
 export default GameTitleScreen;

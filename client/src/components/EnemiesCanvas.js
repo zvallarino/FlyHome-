@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesCanvas() {
+function EnemiesCanvas({enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,enemyPlaneHRef, enemyPlaneImageRef}) {
 
 
   const canvasRef = useRef(null)
@@ -29,23 +29,12 @@ function EnemiesCanvas() {
     context.lineWidth = 5
     contextRef.current = context;
 
-
-  const drawEnemyPlane = (enemyPlane) => {
-
-    let plane = new Image();
-    plane.src = enemyPlane.img
-    plane.onload = function() {
-    // contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-    contextRef.current.drawImage(plane,enemyPlane.x,enemyPlane.y,enemyPlane.w,enemyPlane.h);  
-    contextRef.current.strokeRect(enemyPlane.x, enemyPlane.y, enemyPlane.w,enemyPlane.h);
-  }
-}
-
     
   const update = () => {
-    drawEnemyPlane(planeOne)
-    drawEnemyPlane(planeTwo)
+    // drawEnemyPlane(planeOne)
+    // drawEnemyPlane(planeTwo)
     drawEnemyPlane(planeThree)
+    moveEnemy(planeThree)
     requestAnimationFrame(update)
   }
 
@@ -57,45 +46,6 @@ function EnemiesCanvas() {
 
   const SCREEN_WIDTH = window.innerWidth;
   const SCREEN_HEIGHT = window.innerHeight;
-
-//   //MOVEMENT FUNCTIONS
-
-
-// // Boundaries //
-
-// const boundariesLeft = (objectZ) => {
-//   if(objectZ.x < -300){
-//     objectZ.x = 1900
-//   }
-// }
-
-// const boundariesRight = (objectZ) => {
-//   if(objectZ.x > 1900){
-//     objectZ.x = -300
-//   } 
-// }
-
-// const boundariesUp = (objectZ) => {
-//   if(objectZ.y < 0){
-//     objectZ.y = 0
-//   }}
-  
-// const boundariesDown = (objectZ) => {
-//   if(objectZ.y > 835){
-//     objectZ.y = 835
-//   }}  
-
-//   const boundariesUpBall = (objectZ) => {
-//     if(objectZ.y < 0){
-//       objectZ.y = 835
-//     }}
-
-
-// // Randomizer for Rectangles
-
-// function getRandomInt(max) {
-//   return Math.floor(Math.random() * max);
-// }
 
 // Enemy Constructor
 
@@ -114,73 +64,66 @@ class EnemyCreator {
 
 const planeOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',SCREEN_WIDTH*(1/8),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
 const planeTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',  SCREEN_WIDTH*(4/10), 200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
-const planeThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(8/10),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
-
-// console.log(planeOne)
+const planeThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(8/10),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,10,1)
 
 
-// // const circleC = {
-// //   x:700,
-// //   y:400,
-// //   size:100,
-// //   dx:4,
-// //   dy:0,
-// //   color: colorRef.current
-// // }
+//Draw Function
 
-// // const circleE = {
-// //   x:900,
-// //   y:400,
-// //   size:10,
-// //   dx:0,
-// //   dy:0,
-// //   color: "red"
-// // }
+let i = 0
 
-// // const circleF = {
-// //   x:900,
-// //   y:500,
-// //   size:10,
-// //   dx:0,
-// //   dy:0,
-// //   color: "green"
-// // }
+let enemy = {}
 
-// //HIT MARKERS
+function drawEnemyPlane(EnemyObject,i,enemy){
+  enemy = new Image();
+  enemy.src = enemyPlaneImageRef.current
+  enemy.onload = function() {
+  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+  contextRef.current.beginPath();
+  contextRef.current.drawImage(enemy, EnemyObject.x, EnemyObject.y, EnemyObject.w, EnemyObject.h)
+  contextRef.current.strokeRect(EnemyObject.x, EnemyObject.y, EnemyObject.w,EnemyObject.h);
+  contextRef.current.fill();}
+  i++;
+  }
+
+  
+function moveEnemy(enemyObject){
+  enemyObject.x += enemyObject.dx
+  enemyObject.y += enemyObject.dy
 
 
-// function drawCircle(circleObject){
-// contextRef.current.beginPath();
-// contextRef.current.arc(circleObject.x,circleObject.y,circleObject.size, 0, Math.PI * 2);
-// contextRef.current.fillStyle = colorRef.current
-// contextRef.current.fill();
-// }
+  enemyPlaneXRef.current = enemyObject.x
+  enemyPlaneYRef.current = enemyObject.y
+  enemyPlaneWRef.current = enemyObject.w
+  enemyPlaneHRef.current = enemyObject.h
 
 
-// function circleMove(circleObject){
-//   circleObject.x += circleObject.dx
-//   circleObject.y += circleObject.dy
-//   enemyXRef.current = circleObject.x
-//   enemyYRef.current = circleObject.y
-//   boundariesLeft(circleObject)
-//   boundariesRight(circleObject)
-//   boundariesDownBall(circleObject)
-// }
+  boundariesLeft(enemyObject)
+  boundariesRight(enemyObject)
+  boundariesUp(enemyObject)
+  boundariesDown(enemyObject)
+}
 
-// const KeyUp = (e) => {
-//   if(e.key === "l"){
-//     imageRef.current = "https://i.imgur.com/iNJmBDq.png"
-//     colorRef.current = "grey"
-//   } else if(e.key === " "){
-//     imageRef.current = "https://i.imgur.com/iNJmBDq.png"
-//     console.log("stop boosting")
-//   } else if (e.key === "k"){
-//     console.log("stop super blasting")
-//   } else {
-//     secondsCounter(1)
-//     colorRef.current = "grey"
-//   }
-// }
+const boundariesLeft = (objectZ) => {
+  if(objectZ.x < 0){
+    objectZ.dx *= -1
+  } 
+}
+
+const boundariesRight = (objectZ) => {
+  if(objectZ.x > 1600){
+    objectZ.dx *= -1
+  } 
+}
+
+const boundariesUp = (objectZ) => {
+  if(objectZ.y < 150){
+    objectZ.dy *= -1
+  }}
+  
+const boundariesDown = (objectZ) => {
+  if(objectZ.y > 300){
+    objectZ.dy *= -1
+  }}  
 
 
 
