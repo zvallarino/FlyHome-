@@ -29,20 +29,6 @@ function BossCanvas({bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef}) {
     context.lineWidth = 5
     contextRef.current = context;
 
-
-
-
-  const drawEnemyPlane = () => {
-    let MainBoss = new Image();
-    MainBoss.src = boss.img
-    // MainBoss.onload = function() {
-    // contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-    contextRef.current.drawImage(MainBoss,boss.x,boss.y,boss.w,boss.h); 
-    contextRef.current.strokeRect(boss.x, boss.y, boss.w,boss.h);
-  // }
-  // console.log(MainBoss)
-}
-
     
   const update = () => {
 
@@ -53,19 +39,6 @@ function BossCanvas({bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef}) {
 
   update()
   },[])
-
-  
-
-  
-//HIT MARKERS
-
-
-
-function moveBoss(circleObject){
-  // console.log(circleObject)
-  // circleObject.x += circleObject.dx
-  // circleObject.y += circleObject.dy
-}
 
 //   //SCREEN HEIGHT/WIDTH
 
@@ -136,9 +109,6 @@ const boundariesDown = (objectZ) => {
   if(objectZ.y > 300){
     objectZ.dy *= -1
   }}  
-
-
-
 
   return (
     <canvas

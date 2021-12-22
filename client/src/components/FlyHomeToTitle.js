@@ -3,19 +3,19 @@ import { Switch, Route, useHistory, NavLink } from "react-router-dom";
 import { useState } from "react"
 
 
-function FlyHome() {
+function FlyHomeToTitle() {
 
 
 const shootToLink = () => {
-  window.location.href = `/flyhome`
+  window.location.href = `/titleflyhome`
+ 
 }
 
   return (
     <div onClick = {shootToLink} className='GameCard'>
     <img src = "https://i.imgur.com/w9cmPDl.png"></img>
-    <h1>Fly Home</h1>
     </div>
   );
 }
 
-export default FlyHome;
+export default FlyHomeToTitle;

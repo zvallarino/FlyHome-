@@ -61,7 +61,7 @@ const outerLoop = () => {
 }
 
 
-setInterval(outerLoop, 1000)  
+setInterval(outerLoop, 750)  
 
 
 

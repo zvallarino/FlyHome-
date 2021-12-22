@@ -4,7 +4,7 @@ import {useState} from "react"
 import GameStore from './GameStore';
 import Game from './Game';
 import GameTitleScreen from './GameTitleScreen';
-import FlyHome from './FlyHome';
+import FlyHomeToTitle from './FlyHomeToTitle';
 import GameCardContainer from './GameCardContainer';
 
 function AppPage({setUser, user}) {
@@ -40,9 +40,12 @@ function AppPage({setUser, user}) {
       <Route exact path ="/flyhome">
         <Game user ={user} />
       </Route>
+      <Route exact path = "/titleflyhome">
+        <GameTitleScreen />
+      </Route>
       </Switch>
 
-
+      <div className = {disppearFlyHome? "disappearX" : ""}>
       <div className = "AppPage">
       <div className = "HeaderAppPage">
       {user.username}
@@ -52,9 +55,10 @@ function AppPage({setUser, user}) {
          <div className = "GameCardContainer">
             <GameCardContainer user = {user}/>
           </div>
-          <FlyHome />
+          <FlyHomeToTitle setDisappearFlyHome ={setDisappearFlyHome} disppearFlyHome = {disppearFlyHome} />
       </div>
       <div className = "BottomAppPage"></div>
+     </div>
      </div>
      </>
   );

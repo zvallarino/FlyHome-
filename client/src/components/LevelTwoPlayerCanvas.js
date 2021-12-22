@@ -263,10 +263,7 @@ const boundariesDownTurn = (objectZ) => {
       }
   }
 
-  // lightningBoltsXRef, ligtningBoltsYRef, lightningBoltsWRef, lightningBoltsHRef
-
   const lightningStrike = () => {
-    
     if(playerRef.current.y > ligtningBoltsYRef.current + lightningBoltsHRef.current||playerRef.current.y + playerRef.current.h < ligtningBoltsYRef.current||playerRef.current.x > (lightningBoltsXRef.current+lightningBoltsWRef.current) || playerRef.current.x + playerRef.current.w < (lightningBoltsXRef.current)){
       return
     } else {
@@ -274,30 +271,8 @@ const boundariesDownTurn = (objectZ) => {
       rotationFunction()
       imageRef.current = ouchArray[rotationRef.current]
     }
-
-    console.log('This is the player')
-    console.log('This is the x')
-    console.log(playerRef.current.x)
-    console.log('This is the y')
-    console.log(playerRef.current.y)
-    // // console.log(playerRef.current.w)
-    // // console.log(playerRef.current.h)
-
-
-    // console.log('This is the Enemy')
-
-    // console.log(enemyYRef.current+enemyHRef.current)
-    // // console.log(enemyXRef)
-    // // console.log(enemyYRef)
-    // // console.log(enemyWRef)
-    // console.log(enemyHRef)
-    // console.log(colorRef)
 }
 
-
-
-
-  
 
 const KeyUp = (e) => {
   if(e.key === "l"){
@@ -308,7 +283,7 @@ const KeyUp = (e) => {
     // imageRef.current = "https://i.imgur.com/iNJmBDq.png"
     // console.log("stop boosting")
   } else if (e.key === "k"){
-   
+
     console.log("stop super blasting")
   } else {
     secondsCounter(1)
