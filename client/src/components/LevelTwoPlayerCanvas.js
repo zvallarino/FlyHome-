@@ -214,8 +214,8 @@ const boundariesLeft = (objectZ) => {
 }
 
 const boundariesRight = (objectZ) => {
-  if(objectZ.x > 1516){
-    objectZ.x = 1516
+  if(objectZ.x > SCREEN_WIDTH-objectZ.w){
+    objectZ.x = SCREEN_WIDTH-objectZ.w
   }
 }
 
@@ -225,8 +225,8 @@ const boundariesUp = (objectZ) => {
   }}
   
 const boundariesDown = (objectZ) => {
-  if(objectZ.y > 835){
-    objectZ.y = 835
+  if(objectZ.y > SCREEN_HEIGHT-objectZ.h){
+    objectZ.y = SCREEN_HEIGHT-objectZ.h
   }} 
   
 
@@ -234,14 +234,14 @@ const boundariesDown = (objectZ) => {
 
   
 const boundariesRightTurn = (objectZ) => {
-  if(objectZ.x > 1816){
-    objectZ.x = 1816
+  if(objectZ.x > SCREEN_WIDTH-objectZ.w){
+    objectZ.x =  SCREEN_WIDTH-objectZ.w
   }
 }
 
 const boundariesDownTurn = (objectZ) => {
-    if(objectZ.y > 534){
-      objectZ.y = 534
+    if(objectZ.y > SCREEN_HEIGHT-objectZ.h){
+      objectZ.y = SCREEN_HEIGHT-objectZ.h
     }} 
     
 
