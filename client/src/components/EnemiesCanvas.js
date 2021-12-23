@@ -110,7 +110,7 @@ const boundariesLeft = (objectZ) => {
 }
 
 const boundariesRight = (objectZ) => {
-  if(objectZ.x > 1600){
+  if(objectZ.x > SCREEN_WIDTH-objectZ.w){
     objectZ.dx *= -1
   } 
 }
