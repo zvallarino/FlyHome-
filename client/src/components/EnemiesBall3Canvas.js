@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesBall3Canvas({enemyBall2ImageRef}) {
+function EnemiesBall3Canvas({enemyBall3Ref}) {
 
 
   const canvasRef = useRef(null)
@@ -19,7 +19,7 @@ function EnemiesBall3Canvas({enemyBall2ImageRef}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 2;
+    canvas.style['z-index'] = 7;
     
     
     const context = canvas.getContext("2d");
@@ -29,10 +29,12 @@ function EnemiesBall3Canvas({enemyBall2ImageRef}) {
     context.lineWidth = 5
     contextRef.current = context;
 
+    let i = 0
+
     
   const update = () => {
-    // drawEnemyPlane(ballThree)
-    // moveEnemy(ballThree)
+    drawEnemyPlane(ballThree,i,enemyBall3Ref)
+    moveEnemy(ballThree,enemyBall3Ref)
     requestAnimationFrame(update)
   }
 
@@ -65,13 +67,13 @@ const ballThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WID
 
 //Draw Function
 
-let i = 0
 
-let enemy = {}
 
-function drawEnemyPlane(EnemyObject,i,enemy){
-  enemy = new Image();
-  enemy.src = enemyBall2ImageRef.current
+
+function drawEnemyPlane(EnemyObject,i,refObject){
+  let enemy = new Image();
+  refObject.current.image = 'https://i.imgur.com/IGLm67Z.png'
+  enemy.src = refObject.current.image
   enemy.onload = function() {
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
   contextRef.current.beginPath();
@@ -82,15 +84,15 @@ function drawEnemyPlane(EnemyObject,i,enemy){
   }
 
   
-function moveEnemy(enemyObject){
+function moveEnemy(enemyObject,refObject){
   enemyObject.x += enemyObject.dx
   enemyObject.y += enemyObject.dy
 
     
-  // enemyBall2XRef.current = enemyObject.x
-  // enemyBall2YRef.current = enemyObject.y
-  // enemyBall2WRef.current = enemyObject.w
-  // enemyBall2HRef.current = enemyObject.h
+  refObject.current.x = enemyObject.x
+  refObject.current.y = enemyObject.y
+  refObject.current.w = enemyObject.w
+  refObject.current.h = enemyObject.h
 
 
   boundariesLeft(enemyObject)

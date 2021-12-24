@@ -62,11 +62,8 @@ function Game() {
   const enemyBall2HRef = useRef(0)
   const enemyBall2ImageRef = useRef("https://i.imgur.com/IGLm67Z.png")
 
-  const enemyBall3XRef = useRef(-1);
-  const enemyBall3YRef = useRef(-1);
-  const enemyBall3WRef = useRef(0);
-  const enemyBall3HRef = useRef(0);
-  const enemyBall3ImageRef = useRef("https://i.imgur.com/IGLm67Z.png")
+  const enemyBall3Ref = useRef({});
+ 
 
 
 
@@ -94,10 +91,12 @@ function Game() {
     <PreBossLvL2PlayerCanvas
     enemyPlaneXRef ={enemyPlaneXRef} enemyPlaneYRef = {enemyPlaneYRef} enemyPlaneWRef={enemyPlaneWRef} enemyPlaneHRef={enemyPlaneHRef} enemyPlaneImageRef ={enemyPlaneImageRef}
     enemyBallXRef ={enemyBallXRef} enemyBallYRef ={enemyBallYRef} enemyBallWRef ={enemyBallWRef} enemyBallHRef ={enemyBallHRef} enemyBallImageRef={enemyBallImageRef}
+    
+    
     />
     <EnemiesBall1Canvas enemyBallXRef = {enemyBallXRef} enemyBallYRef ={enemyBallYRef} enemyBallWRef ={enemyBallWRef} enemyBallHRef ={enemyBallHRef} enemyBallImageRef={enemyBallImageRef}/>
     <EnemiesBall2Canvas enemyBall2ImageRef = {enemyBall2ImageRef} />
-    <EnemiesBall3Canvas enemyBall3ImageRef = {enemyBall3ImageRef} />
+    <EnemiesBall3Canvas enemyBall3Ref = {enemyBall3Ref}/>
     <EnemiesCanvas enemyPlaneXRef ={enemyPlaneXRef} enemyPlaneYRef = {enemyPlaneYRef} enemyPlaneWRef={enemyPlaneWRef} enemyPlaneHRef={enemyPlaneHRef} enemyPlaneImageRef ={enemyPlaneImageRef}/>
     <BackgroundCanvas />
 

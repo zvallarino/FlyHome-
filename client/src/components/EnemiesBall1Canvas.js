@@ -19,7 +19,7 @@ function EnemiesBall1Canvas({enemyBallXRef, enemyBallYRef, enemyBallWRef, enemyB
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 2;
+    canvas.style['z-index'] = 9;
     
     
     const context = canvas.getContext("2d");

@@ -47,7 +47,7 @@ function PreBossLvL2PlayerCanvas({enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,e
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 4;
+    canvas.style['z-index'] = 10;
     
     
     const context = canvas.getContext("2d");
@@ -241,6 +241,7 @@ const moveDown = () => {
       imageRef.current = firingRotationArray[rotationRef.current]
       hitBalls()
       hit()
+   
 
     } else if ( e.key === "k"){
       console.log("superBlaster")
@@ -337,6 +338,8 @@ const boundariesDownTurn = (objectZ) => {
       }
   }
 
+  //enemyBall3XRef, enemyBall3YRef, enemyBall3HRef, enemyBall3WRef, enemyBall3ImageRef
+
   const hitBalls = () => {
 
     if(playerRef.current.x > (enemyBallXRef.current+enemyBallWRef.current)||
@@ -351,12 +354,14 @@ const boundariesDownTurn = (objectZ) => {
     }
 }
 
+
+
  
 
 const KeyUp = (e) => {
   if(e.key === "l"){
     enemyPlaneImageRef.current = "https://i.imgur.com/qZaFU1N.png";
-    enemyBallImageRef.current = "https://i.imgur.com/IGLm67Z.png"
+    enemyBallImageRef.current = "https://i.imgur.com/IGLm67Z.png";
     rotationFunction()
     imageRef.current =rotationArray[rotationRef.current]
 
