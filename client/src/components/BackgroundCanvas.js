@@ -58,7 +58,7 @@ function BackgroundCanvas() {
       
       function step() {
         frameCount++;
-        if (frameCount < 10) {
+        if (frameCount < 5) {
           window.requestAnimationFrame(step);
           return;
         }

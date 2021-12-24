@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesBallsCanvas({enemyBallXRef, enemyBallYRef, enemyBallWRef, enemyBallHRef, enemyBallImageRef}) {
+function EnemiesBall2Canvas({enemyBall2ImageRef}) {
 
 
   const canvasRef = useRef(null)
@@ -31,10 +31,8 @@ function EnemiesBallsCanvas({enemyBallXRef, enemyBallYRef, enemyBallWRef, enemyB
 
     
   const update = () => {
-    // drawEnemyPlane(planeOne)
-    // drawEnemyPlane(planeTwo)
-    drawEnemyPlane(ballOne)
-    moveEnemy(ballOne)
+    drawEnemyPlane(ballTwo)
+    moveEnemy(ballTwo)
     requestAnimationFrame(update)
   }
 
@@ -62,11 +60,7 @@ class EnemyCreator {
   }
 }
 
-const planeOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',SCREEN_WIDTH*(1/8),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
-const planeTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',  SCREEN_WIDTH*(4/10), 200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
-// const planeThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(8/10),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
-
-const ballOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(1/8),400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,2,0)
+const ballTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH/2,400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,2,0)
 
 
 //Draw Function
@@ -77,12 +71,12 @@ let enemy = {}
 
 function drawEnemyPlane(EnemyObject,i,enemy){
   enemy = new Image();
-  enemy.src = enemyBallImageRef.current
+  enemy.src = enemyBall2ImageRef.current
   enemy.onload = function() {
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
   contextRef.current.beginPath();
   contextRef.current.drawImage(enemy, EnemyObject.x, EnemyObject.y, EnemyObject.w, EnemyObject.h)
-  contextRef.current.strokeRect(EnemyObject.x, EnemyObject.y, EnemyObject.w,EnemyObject.h);
+  // contextRef.current.strokeRect(EnemyObject.x, EnemyObject.y, EnemyObject.w,EnemyObject.h);
   contextRef.current.fill();}
   i++;
   }
@@ -93,10 +87,10 @@ function moveEnemy(enemyObject){
   enemyObject.y += enemyObject.dy
 
     
-  enemyBallXRef.current = enemyObject.x
-  enemyBallYRef.current = enemyObject.y
-  enemyBallWRef.current = enemyObject.w
-  enemyBallHRef.current = enemyObject.h
+  // enemyBall2XRef.current = enemyObject.x
+  // enemyBall2YRef.current = enemyObject.y
+  // enemyBall2WRef.current = enemyObject.w
+  // enemyBall2HRef.current = enemyObject.h
 
 
   boundariesLeft(enemyObject)
@@ -138,4 +132,4 @@ const boundariesDown = (objectZ) => {
   );
 }
 
-export default EnemiesBallsCanvas;
+export default EnemiesBall2Canvas;

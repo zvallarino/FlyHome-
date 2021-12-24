@@ -71,17 +71,70 @@ function PreBossLvL2PlayerCanvas({enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,e
 
   playerRef.current = player
 
-  const drawPlane = () => {
-    let plane = new Image();
-    plane.src = imageRef.current
-    plane.onload = function() {
-    contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-    contextRef.current.drawImage(plane,playerRef.current.x,playerRef.current.y,playerRef.current.w,playerRef.current.h);  
-    contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
-  }}
+
+  
+  let plane = new Image();
+  let heightImage = 500;
+  let widthImage = 2000;
+  const scale = .25;
+  let scaledHeight = heightImage * scale;
+  let scaledWidth = widthImage * scale; 
+  plane.src = 'https://i.imgur.com/dAvqr1d.png';
+  plane.onload = function() {
+      init();
+    };
+
+function drawFrame(frameX, frameY, canvasX, canvasY) {
+  contextRef.current.drawImage(plane,
+    0, frameY * heightImage, widthImage, heightImage
+    ,canvasX, canvasY, scaledWidth, scaledHeight);
+    }
+
+    function init() {
+      drawFrame(0, 0, 0, 0);
+      drawFrame(1,  1, scaledWidth, 0);
+      drawFrame(0, 2, scaledWidth * 2, 0);
+    }
+
+    const cycleLoop = [0, 1, 2];
+    let currentLoopIndex = 0;
+    let frameCount = 0;
+    
+    function step() {
+      frameCount++;
+      if (frameCount < 4) {
+        window.requestAnimationFrame(step);
+        return;
+      }
+      frameCount = 0;
+      contextRef.current.clearRect(0, 0, canvas.width, canvas.height);
+      drawFrame(cycleLoop[currentLoopIndex], currentLoopIndex, playerRef.current.x, playerRef.current.y);
+      currentLoopIndex++;
+      if (currentLoopIndex >= cycleLoop.length) {
+        currentLoopIndex = 0;
+      }
+      window.requestAnimationFrame(step);
+    }
+
+    function init() {
+      window.requestAnimationFrame(step);
+    }
+
+
+  // const drawPlane = () => {
+  //   let plane = new Image();
+  //   plane.src = imageRef.current
+  //   plane.onload = function() {
+  //   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+  //   contextRef.current.drawImage(plane,playerRef.current.x,playerRef.current.y,playerRef.current.w,playerRef.current.h);  
+  //   contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
+  // }}
+
+
+
 
   const update = () => {
-    drawPlane();
+    // drawPlane();
     // lightningStrike();
     requestAnimationFrame(update)
   }

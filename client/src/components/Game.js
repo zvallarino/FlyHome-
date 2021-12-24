@@ -8,10 +8,12 @@ import EnemiesCanvas from './EnemiesCanvas';
 import LevelTwoPlayerCanvas from './LevelTwoPlayerCanvas';
 import LightningBolts from './LightningBolts';
 import BossCanvas from './BossCanvas';
-import EnemiesBallsCanvas from './EnemiesBallsCanvas';
 import SpaceCanvas from './SpaceCanvas';
 import PreBossLvL2PlayerCanvas from './PreBossLvL2PlayerCanvas';
 import Testing from './Testing';
+import EnemiesBall1Canvas from './EnemiesBall1Canvas';
+import EnemiesBall2Canvas from './EnemiesBall2Canvas';
+import EnemiesBall3Canvas from './EnemiesBall3Canvas';
 
 
 function Game() {
@@ -48,10 +50,25 @@ function Game() {
 
   
   const enemyBallXRef = useRef(-1);
-  const enemyBallYRef = useRef(-1)
-  const enemyBallWRef = useRef(0)
-  const enemyBallHRef = useRef(0)
-  const enemyBallImageRef = useRef("https://i.imgur.com/IGLm67Z.png")
+  const enemyBallYRef = useRef(-1);
+  const enemyBallWRef = useRef(0);
+  const enemyBallHRef = useRef(0);
+  const enemyBallImageRef = useRef("https://i.imgur.com/IGLm67Z.png");
+
+    
+  const enemyBall2XRef = useRef(-1);
+  const enemyBall2YRef = useRef(-1)
+  const enemyBall2WRef = useRef(0)
+  const enemyBall2HRef = useRef(0)
+  const enemyBall2ImageRef = useRef("https://i.imgur.com/IGLm67Z.png")
+
+  const enemyBall3XRef = useRef(-1);
+  const enemyBall3YRef = useRef(-1);
+  const enemyBall3WRef = useRef(0);
+  const enemyBall3HRef = useRef(0);
+  const enemyBall3ImageRef = useRef("https://i.imgur.com/IGLm67Z.png")
+
+
 
 
 
@@ -74,12 +91,14 @@ function Game() {
 
   
     {/* level 2 */}
-    {/* <PreBossLvL2PlayerCanvas
+    <PreBossLvL2PlayerCanvas
     enemyPlaneXRef ={enemyPlaneXRef} enemyPlaneYRef = {enemyPlaneYRef} enemyPlaneWRef={enemyPlaneWRef} enemyPlaneHRef={enemyPlaneHRef} enemyPlaneImageRef ={enemyPlaneImageRef}
     enemyBallXRef ={enemyBallXRef} enemyBallYRef ={enemyBallYRef} enemyBallWRef ={enemyBallWRef} enemyBallHRef ={enemyBallHRef} enemyBallImageRef={enemyBallImageRef}
     />
-    <EnemiesBallsCanvas enemyBallXRef = {enemyBallXRef} enemyBallYRef ={enemyBallYRef} enemyBallWRef ={enemyBallWRef} enemyBallHRef ={enemyBallHRef} enemyBallImageRef={enemyBallImageRef}/>
-    <EnemiesCanvas enemyPlaneXRef ={enemyPlaneXRef} enemyPlaneYRef = {enemyPlaneYRef} enemyPlaneWRef={enemyPlaneWRef} enemyPlaneHRef={enemyPlaneHRef} enemyPlaneImageRef ={enemyPlaneImageRef}/> */}
+    <EnemiesBall1Canvas enemyBallXRef = {enemyBallXRef} enemyBallYRef ={enemyBallYRef} enemyBallWRef ={enemyBallWRef} enemyBallHRef ={enemyBallHRef} enemyBallImageRef={enemyBallImageRef}/>
+    <EnemiesBall2Canvas enemyBall2ImageRef = {enemyBall2ImageRef} />
+    <EnemiesBall3Canvas enemyBall3ImageRef = {enemyBall3ImageRef} />
+    <EnemiesCanvas enemyPlaneXRef ={enemyPlaneXRef} enemyPlaneYRef = {enemyPlaneYRef} enemyPlaneWRef={enemyPlaneWRef} enemyPlaneHRef={enemyPlaneHRef} enemyPlaneImageRef ={enemyPlaneImageRef}/>
     <BackgroundCanvas />
 
     {/* level One */}
