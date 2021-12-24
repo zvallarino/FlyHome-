@@ -1,7 +1,9 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function LevelTwoPlayerCanvas({bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef, bossHitCounter, lightningBoltsXRef, ligtningBoltsYRef, lightningBoltsWRef, lightningBoltsHRef
+function LevelTwoPlayerCanvas({
+  bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef, bossHitCounter, lightningBoltsXRef, ligtningBoltsYRef, lightningBoltsWRef, lightningBoltsHRef
+  
 }) {
 
   const canvasRef = useRef(null)

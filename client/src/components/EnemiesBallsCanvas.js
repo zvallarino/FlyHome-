@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesCanvas({enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,enemyPlaneHRef, enemyPlaneImageRef}) {
+function EnemiesBallsCanvas({enemyBallXRef, enemyBallYRef, enemyBallWRef, enemyBallHRef, enemyBallImageRef}) {
 
 
   const canvasRef = useRef(null)
@@ -33,8 +33,8 @@ function EnemiesCanvas({enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,enemyPlaneH
   const update = () => {
     // drawEnemyPlane(planeOne)
     // drawEnemyPlane(planeTwo)
-    drawEnemyPlane(planeThree)
-    moveEnemy(planeThree)
+    drawEnemyPlane(ballOne)
+    moveEnemy(ballOne)
     requestAnimationFrame(update)
   }
 
@@ -66,7 +66,7 @@ const planeOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',SCREEN_WIDTH
 const planeTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',  SCREEN_WIDTH*(4/10), 200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
 // const planeThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(8/10),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
 
-const planeThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', 700, 200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,10,1)
+const ballOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(1/8),400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,2,0)
 
 
 //Draw Function
@@ -77,7 +77,7 @@ let enemy = {}
 
 function drawEnemyPlane(EnemyObject,i,enemy){
   enemy = new Image();
-  enemy.src = enemyPlaneImageRef.current
+  enemy.src = enemyBallImageRef.current
   enemy.onload = function() {
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
   contextRef.current.beginPath();
@@ -92,11 +92,11 @@ function moveEnemy(enemyObject){
   enemyObject.x += enemyObject.dx
   enemyObject.y += enemyObject.dy
 
-
-  enemyPlaneXRef.current = enemyObject.x
-  enemyPlaneYRef.current = enemyObject.y
-  enemyPlaneWRef.current = enemyObject.w
-  enemyPlaneHRef.current = enemyObject.h
+    
+  enemyBallXRef.current = enemyObject.x
+  enemyBallYRef.current = enemyObject.y
+  enemyBallWRef.current = enemyObject.w
+  enemyBallHRef.current = enemyObject.h
 
 
   boundariesLeft(enemyObject)
@@ -138,4 +138,4 @@ const boundariesDown = (objectZ) => {
   );
 }
 
-export default EnemiesCanvas;
+export default EnemiesBallsCanvas;

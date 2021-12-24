@@ -1,13 +1,21 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
+// import { render } from "react-dom";
+// import { Stage, Layer, Image } from "react-konva";
+// // gifler will be imported into global window object
+// import "/gifler";
 
-function PreBossLvL2PlayerCanvas({enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,enemyPlaneHRef, enemyPlaneImageRef}) {
+
+
+function PreBossLvL2PlayerCanvas({enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,enemyPlaneHRef, enemyPlaneImageRef,
+  enemyBallXRef,enemyBallYRef, enemyBallWRef, enemyBallHRef, enemyBallImageRef
+}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
   const playerRef = useRef(null)
 
-  const imageRef = useRef("https://i.imgur.com/5rjTnM5.png")
+  const imageRef = useRef("https://i.imgur.com/dAvqr1d.png")
   const [counter,secondsCounter] =useState(0)
   const rotationRef = useRef(0)
 
@@ -17,7 +25,7 @@ function PreBossLvL2PlayerCanvas({enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,e
  
 
     //  Up Right Down Left
-  let rotationArray = ["https://i.imgur.com/5rjTnM5.png", "https://i.imgur.com/KuhriMc.png", "https://i.imgur.com/R1ZZM9i.png", "https://i.imgur.com/Zbuzj3K.png"]
+  let rotationArray = ["https://i.imgur.com/GtyzjZb.png", "https://i.imgur.com/KuhriMc.png", "https://i.imgur.com/R1ZZM9i.png", "https://i.imgur.com/Zbuzj3K.png"]
   let firingRotationArray = ['https://i.imgur.com/9lDQkp9.png','https://i.imgur.com/6Zq7JC8.png','https://i.imgur.com/LlvH1ZX.png','https://i.imgur.com/YYMtBNz.png']
   let ouchArray = ["https://i.imgur.com/3BndMiB.png", "https://i.imgur.com/6drQQey.png", "https://i.imgur.com/hlwPzh2.png", "https://i.imgur.com/fiC5k5A.png"]
   //Dead Image 
@@ -78,6 +86,7 @@ function PreBossLvL2PlayerCanvas({enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,e
     requestAnimationFrame(update)
   }
 
+  // gifler('assets/gif/run.gif').animate('canvas.running-pikachu')
 
   update()
   },[])
@@ -177,7 +186,9 @@ const moveDown = () => {
     } else if( e.key === "l"){
       rotationFunction()
       imageRef.current = firingRotationArray[rotationRef.current]
+      hitBalls()
       hit()
+
     } else if ( e.key === "k"){
       console.log("superBlaster")
     } else if ( e.key === " "){
@@ -192,12 +203,23 @@ const moveDown = () => {
    const rotationFunction = () => {
  
   if(rotationRef.current === 0||rotationRef.current === 2){
+    // playerRef.current.x =  playerRef.current.x - (playerRef.current.w * (2))
+    // playerRef.current.y =  playerRef.current.y + 150
+
+    // playerRef.current.x =  playerRef.current.x
+    // playerRef.current.y = playerRef.current.y
     playerRef.current.w = 400
     playerRef.current.h = 100
   } else if ( rotationRef.current === 1||rotationRef.current === 3 ){
+    // playerRef.current.x =  playerRef.current.x + (playerRef.current.w/2)
+    // playerRef.current.y =  playerRef.current.y - 150
+
    playerRef.current.w = 100
     playerRef.current.h = 400
   } else if (rotationRef.current === 4){
+    // playerRef.current.x =  playerRef.current.x - (playerRef.current.w * (2))
+    // playerRef.current.y =  playerRef.current.y + 150
+
     playerRef.current.w = 400
     playerRef.current.h = 100
     rotationCounter = 0
@@ -251,7 +273,10 @@ const boundariesDownTurn = (objectZ) => {
 
   const hit = () => {
 
-      if(playerRef.current.x > (enemyPlaneXRef.current+enemyPlaneWRef.current) || playerRef.current.x + playerRef.current.w < (enemyPlaneXRef.current) || playerRef.current.y > enemyPlaneYRef.current + enemyPlaneHRef.current||playerRef.current.y + playerRef.current.h < enemyPlaneYRef.current){
+      if(playerRef.current.x > (enemyPlaneXRef.current+enemyPlaneWRef.current) ||
+       playerRef.current.x + playerRef.current.w < (enemyPlaneXRef.current) || 
+       playerRef.current.y > enemyPlaneYRef.current + enemyPlaneHRef.current||
+       playerRef.current.y + playerRef.current.h < enemyPlaneYRef.current){
         console.log('miss')
       } else {
         enemyPlaneImageRef.current = "https://i.imgur.com/hBclQUa.png"
@@ -259,11 +284,26 @@ const boundariesDownTurn = (objectZ) => {
       }
   }
 
+  const hitBalls = () => {
+
+    if(playerRef.current.x > (enemyBallXRef.current+enemyBallWRef.current)||
+    playerRef.current.x + playerRef.current.w < (enemyBallXRef.current)||
+    playerRef.current.y > enemyBallYRef.current + enemyBallHRef.current ||
+    playerRef.current.y + playerRef.current.h < enemyBallYRef.current){
+      console.log('miss balls')
+    } else {
+      console.log("hit balls")
+      enemyBallImageRef.current = "https://i.imgur.com/hBclQUa.png"
+      rotationFunction()
+    }
+}
+
  
 
 const KeyUp = (e) => {
   if(e.key === "l"){
     enemyPlaneImageRef.current = "https://i.imgur.com/qZaFU1N.png";
+    enemyBallImageRef.current = "https://i.imgur.com/IGLm67Z.png"
     rotationFunction()
     imageRef.current =rotationArray[rotationRef.current]
 
