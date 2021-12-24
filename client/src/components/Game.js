@@ -88,11 +88,11 @@ function Game() {
     {/* level 2 */}
     <PreBossLvL2PlayerCanvas
     enemyPlaneXRef ={enemyPlaneXRef} enemyPlaneYRef = {enemyPlaneYRef} enemyPlaneWRef={enemyPlaneWRef} enemyPlaneHRef={enemyPlaneHRef} enemyPlaneImageRef ={enemyPlaneImageRef}
-    enemyBallXRef ={enemyBallXRef} enemyBallYRef ={enemyBallYRef} enemyBallWRef ={enemyBallWRef} enemyBallHRef ={enemyBallHRef} enemyBallImageRef={enemyBallImageRef}
+    enemyBall1Ref = {enemyBall1Ref}
     
     
     />
-    <EnemiesBall1Canvas enemyBallXRef = {enemyBallXRef} enemyBallYRef ={enemyBallYRef} enemyBallWRef ={enemyBallWRef} enemyBallHRef ={enemyBallHRef} enemyBallImageRef={enemyBallImageRef}/>
+    <EnemiesBall1Canvas enemyBall1Ref = {enemyBall1Ref}/>
     <EnemiesBall2Canvas enemyBall2Ref = {enemyBall2Ref} />
     <EnemiesBall3Canvas enemyBall3Ref = {enemyBall3Ref}/>
     <EnemiesCanvas enemyPlaneXRef ={enemyPlaneXRef} enemyPlaneYRef = {enemyPlaneYRef} enemyPlaneWRef={enemyPlaneWRef} enemyPlaneHRef={enemyPlaneHRef} enemyPlaneImageRef ={enemyPlaneImageRef}/>

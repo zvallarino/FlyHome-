@@ -8,7 +8,7 @@ import './App.css';
 
 
 function PreBossLvL2PlayerCanvas({enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,enemyPlaneHRef, enemyPlaneImageRef,
-  enemyBallXRef,enemyBallYRef, enemyBallWRef, enemyBallHRef, enemyBallImageRef
+  enemyBall1Ref
 }) {
 
   const canvasRef = useRef(null)
@@ -239,7 +239,7 @@ const moveDown = () => {
     } else if( e.key === "l"){
       rotationFunction()
       imageRef.current = firingRotationArray[rotationRef.current]
-      hitBalls()
+      hitBalls(enemyBall1Ref)
       hit()
    
 
@@ -340,16 +340,17 @@ const boundariesDownTurn = (objectZ) => {
 
   //enemyBall3XRef, enemyBall3YRef, enemyBall3HRef, enemyBall3WRef, enemyBall3ImageRef
 
-  const hitBalls = () => {
+  const hitBalls = (refObject) => {
+    console.log(refObject.current)
 
-    if(playerRef.current.x > (enemyBallXRef.current+enemyBallWRef.current)||
-    playerRef.current.x + playerRef.current.w < (enemyBallXRef.current)||
-    playerRef.current.y > enemyBallYRef.current + enemyBallHRef.current ||
-    playerRef.current.y + playerRef.current.h < enemyBallYRef.current){
+    if(playerRef.current.x > (refObject.current.x+refObject.current.w)||
+    playerRef.current.x + playerRef.current.w < (refObject.current.x)||
+    playerRef.current.y > refObject.current.y + refObject.current.h ||
+    playerRef.current.y + playerRef.current.h < refObject.current.y){
       console.log('miss balls')
     } else {
       console.log("hit balls")
-      enemyBallImageRef.current = "https://i.imgur.com/hBclQUa.png"
+      refObject.current.image = "https://i.imgur.com/hBclQUa.png"
       rotationFunction()
     }
 }
@@ -361,7 +362,7 @@ const boundariesDownTurn = (objectZ) => {
 const KeyUp = (e) => {
   if(e.key === "l"){
     enemyPlaneImageRef.current = "https://i.imgur.com/qZaFU1N.png";
-    enemyBallImageRef.current = "https://i.imgur.com/IGLm67Z.png";
+    enemyBall1Ref.current.image = "https://i.imgur.com/IGLm67Z.png";
     rotationFunction()
     imageRef.current =rotationArray[rotationRef.current]
 

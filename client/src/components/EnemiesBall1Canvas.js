@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesBall1Canvas({enemyBallXRef, enemyBallYRef, enemyBallWRef, enemyBallHRef, enemyBallImageRef}) {
+function EnemiesBall1Canvas({enemyBall1Ref}) {
 
 
   const canvasRef = useRef(null)
@@ -29,12 +29,12 @@ function EnemiesBall1Canvas({enemyBallXRef, enemyBallYRef, enemyBallWRef, enemyB
     context.lineWidth = 5
     contextRef.current = context;
 
+    let i = 0
+
     
-  const update = () => {
-    // drawEnemyPlane(planeOne)
-    // drawEnemyPlane(planeTwo)
-    drawEnemyPlane(ballOne)
-    moveEnemy(ballOne)
+     const update = () => {
+    drawEnemyPlane(ballOne,i,enemyBall1Ref)
+    moveEnemy(ballOne,enemyBall1Ref)
     requestAnimationFrame(update)
   }
 
@@ -71,13 +71,12 @@ const ballOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH
 
 //Draw Function
 
-let i = 0
 
-let enemy = {}
 
-function drawEnemyPlane(EnemyObject,i,enemy){
-  enemy = new Image();
-  enemy.src = enemyBallImageRef.current
+function drawEnemyPlane(EnemyObject,i,refObject){
+  let enemy = new Image();
+  refObject.current.image = 'https://i.imgur.com/IGLm67Z.png'
+  enemy.src = refObject.current.image
   enemy.onload = function() {
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
   contextRef.current.beginPath();
@@ -88,15 +87,15 @@ function drawEnemyPlane(EnemyObject,i,enemy){
   }
 
   
-function moveEnemy(enemyObject){
+function moveEnemy(enemyObject,refObject){
   enemyObject.x += enemyObject.dx
   enemyObject.y += enemyObject.dy
 
     
-  enemyBallXRef.current = enemyObject.x
-  enemyBallYRef.current = enemyObject.y
-  enemyBallWRef.current = enemyObject.w
-  enemyBallHRef.current = enemyObject.h
+  refObject.current.x = enemyObject.x
+  refObject.current.y = enemyObject.y
+  refObject.current.w = enemyObject.w
+  refObject.current.h = enemyObject.h
 
 
   boundariesLeft(enemyObject)
