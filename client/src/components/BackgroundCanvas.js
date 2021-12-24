@@ -28,15 +28,63 @@ function BackgroundCanvas() {
     context.lineWidth = 5
     contextRef.current = context;
 
-const update = () => {
-  drawRectOfDoom(rectangleSea)
-  drawRectOfDoom(rectangleSky)
 
-  requestAnimationFrame(update)
-}
+    let img = new Image();
+    let heightImage = 502;
+    let widthImage = 2000;
+    const scale = 1;
+    let scaledHeight = heightImage * scale;
+    let scaledWidth = widthImage * scale; 
+    img.src = 'https://i.imgur.com/TfywBZ6.png';
+    img.onload = function() {
+        init();
+      };
+
+  function drawFrame(frameX, frameY, canvasX, canvasY) {
+    contextRef.current.drawImage(img,
+      0, frameY * heightImage, widthImage, heightImage
+      ,canvasX, canvasY, scaledWidth, scaledHeight);
+      }
+
+      function init() {
+        drawFrame(0, 0, 0, 0);
+        drawFrame(1, 1, scaledWidth, 0);
+        drawFrame(0, 2, scaledWidth * 2, 0);
+      }
+
+      const cycleLoop = [0, 1, 2,3,4,5];
+      let currentLoopIndex = 0;
+      let frameCount = 0;
+      
+      function step() {
+        frameCount++;
+        if (frameCount < 10) {
+          window.requestAnimationFrame(step);
+          return;
+        }
+        frameCount = 0;
+        contextRef.current.clearRect(0, 0, canvas.width, canvas.height);
+        drawFrame(cycleLoop[currentLoopIndex], currentLoopIndex, 0, 500);
+        currentLoopIndex++;
+        if (currentLoopIndex >= cycleLoop.length) {
+          currentLoopIndex = 0;
+        }
+        window.requestAnimationFrame(step);
+      }
+
+      function init() {
+        window.requestAnimationFrame(step);
+      }
+
+// const update = () => {
+//   drawRectOfDoom(rectangleSea)
+//   drawRectOfDoom(rectangleSky)
+
+//   requestAnimationFrame(update)
+// }
 
 
-  update()
+  // update()
   },[])
 
 

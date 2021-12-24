@@ -62,7 +62,7 @@ function Game() {
   return (
     <>
 
-    <Testing />
+    {/* <Testing /> */}
 
     {/* Boss Fight */}
     {/* <LevelTwoPlayerCanvas bossHitCounter = {bossHitCounter} bossImgRef ={bossImgRef} bossXRef = {bossXRef} bossHRef = {bossHRef} bossYRef ={bossYRef} bossWRef ={bossWRef}
@@ -79,8 +79,8 @@ function Game() {
     enemyBallXRef ={enemyBallXRef} enemyBallYRef ={enemyBallYRef} enemyBallWRef ={enemyBallWRef} enemyBallHRef ={enemyBallHRef} enemyBallImageRef={enemyBallImageRef}
     />
     <EnemiesBallsCanvas enemyBallXRef = {enemyBallXRef} enemyBallYRef ={enemyBallYRef} enemyBallWRef ={enemyBallWRef} enemyBallHRef ={enemyBallHRef} enemyBallImageRef={enemyBallImageRef}/>
-    <EnemiesCanvas enemyPlaneXRef ={enemyPlaneXRef} enemyPlaneYRef = {enemyPlaneYRef} enemyPlaneWRef={enemyPlaneWRef} enemyPlaneHRef={enemyPlaneHRef} enemyPlaneImageRef ={enemyPlaneImageRef}/>
-    <BackgroundCanvas /> */}
+    <EnemiesCanvas enemyPlaneXRef ={enemyPlaneXRef} enemyPlaneYRef = {enemyPlaneYRef} enemyPlaneWRef={enemyPlaneWRef} enemyPlaneHRef={enemyPlaneHRef} enemyPlaneImageRef ={enemyPlaneImageRef}/> */}
+    <BackgroundCanvas />
 
     {/* level One */}
     {/* <PlayerCanvas setSpeed = {setSpeed} speed ={speed} enemyXRef = {enemyXRef} enemyYRef = {enemyYRef} enemyWRef = {enemyWRef} enemyHRef = {enemyHRef} colorRef = {colorRef}/> 
