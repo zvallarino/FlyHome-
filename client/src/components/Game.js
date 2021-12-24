@@ -55,12 +55,10 @@ function Game() {
   const enemyBallHRef = useRef(0);
   const enemyBallImageRef = useRef("https://i.imgur.com/IGLm67Z.png");
 
+  const enemyBall1Ref = useRef({})
+
     
-  const enemyBall2XRef = useRef(-1);
-  const enemyBall2YRef = useRef(-1)
-  const enemyBall2WRef = useRef(0)
-  const enemyBall2HRef = useRef(0)
-  const enemyBall2ImageRef = useRef("https://i.imgur.com/IGLm67Z.png")
+  const enemyBall2Ref = useRef({});
 
   const enemyBall3Ref = useRef({});
  
@@ -95,7 +93,7 @@ function Game() {
     
     />
     <EnemiesBall1Canvas enemyBallXRef = {enemyBallXRef} enemyBallYRef ={enemyBallYRef} enemyBallWRef ={enemyBallWRef} enemyBallHRef ={enemyBallHRef} enemyBallImageRef={enemyBallImageRef}/>
-    <EnemiesBall2Canvas enemyBall2ImageRef = {enemyBall2ImageRef} />
+    <EnemiesBall2Canvas enemyBall2Ref = {enemyBall2Ref} />
     <EnemiesBall3Canvas enemyBall3Ref = {enemyBall3Ref}/>
     <EnemiesCanvas enemyPlaneXRef ={enemyPlaneXRef} enemyPlaneYRef = {enemyPlaneYRef} enemyPlaneWRef={enemyPlaneWRef} enemyPlaneHRef={enemyPlaneHRef} enemyPlaneImageRef ={enemyPlaneImageRef}/>
     <BackgroundCanvas />
