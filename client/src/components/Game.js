@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import './App.css';
 import PlayerCanvas from './PlayerCanvas';
 import RectangleCanvas from './RectangleCanvas';
-import BackgroundCanvas from './BackgroundCanvas';
+
 
 import LevelTwoPlayerCanvas from './LevelTwoPlayerCanvas';
 import LightningBolts from './LightningBolts';
@@ -11,6 +11,9 @@ import BossCanvas from './BossCanvas';
 import SpaceCanvas from './SpaceCanvas';
 import PreBossLvL2PlayerCanvas from './PreBossLvL2PlayerCanvas';
 import Testing from './Testing';
+import BackgroundCanvas from './BackgroundCanvas';
+import SeaCanvas from './SeaCanvas';
+import SkyCanvas from './SkyCanvas';
 import EnemyPlaneOneCanvas from './EnemyPlaneOneCanvas';
 import EnemiesBall1Canvas from './EnemiesBall1Canvas';
 import EnemiesBall2Canvas from './EnemiesBall2Canvas';
@@ -91,6 +94,8 @@ function Game() {
     <EnemiesBall2Canvas enemyBall2Ref = {enemyBall2Ref} />
     <EnemiesBall3Canvas enemyBall3Ref = {enemyBall3Ref}/>
     <EnemyPlaneOneCanvas enemyPlane1Ref = {enemyPlane1Ref}/>
+    <SkyCanvas />
+    <SeaCanvas />
     <BackgroundCanvas />
 
     {/* level One */}
