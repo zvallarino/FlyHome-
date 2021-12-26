@@ -3,6 +3,8 @@ import './App.css';
 
 function EnemiesBall1Canvas({enemyBall1Ref}) {
 
+  enemyBall1Ref.current.image = 'https://i.imgur.com/IGLm67Z.png'
+
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -21,7 +23,6 @@ function EnemiesBall1Canvas({enemyBall1Ref}) {
     canvas.style.top = 0;
     canvas.style['z-index'] = 9;
     
-    
     const context = canvas.getContext("2d");
     context.scale(2,2);
     context.lineCap = "round"
@@ -31,7 +32,6 @@ function EnemiesBall1Canvas({enemyBall1Ref}) {
 
     let i = 0
 
-    
      const update = () => {
     drawEnemyPlane(ballOne,i,enemyBall1Ref)
     moveEnemy(ballOne,enemyBall1Ref)
@@ -66,16 +66,13 @@ const planeOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',SCREEN_WIDTH
 const planeTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',  SCREEN_WIDTH*(4/10), 200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
 // const planeThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(8/10),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
 
-const ballOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(1/8),400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,2,0)
+const ballOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(1/8),400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,0,0)
 
 
 //Draw Function
 
-
-
 function drawEnemyPlane(EnemyObject,i,refObject){
   let enemy = new Image();
-  refObject.current.image = 'https://i.imgur.com/IGLm67Z.png'
   enemy.src = refObject.current.image
   enemy.onload = function() {
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  

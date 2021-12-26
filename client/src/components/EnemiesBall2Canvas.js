@@ -3,6 +3,8 @@ import './App.css';
 
 function EnemiesBall2Canvas({enemyBall2Ref}) {
 
+  enemyBall2Ref.current.image = 'https://i.imgur.com/IGLm67Z.png'
+
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -70,7 +72,6 @@ const ballTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH
 
 function drawEnemyPlane(EnemyObject,i,refObject){
   let enemy = new Image();
-  refObject.current.image = 'https://i.imgur.com/IGLm67Z.png'
   enemy.src = refObject.current.image
   enemy.onload = function() {
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  

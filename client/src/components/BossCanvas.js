@@ -19,7 +19,7 @@ function BossCanvas({bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 2;
+    canvas.style['z-index'] = 8;
     
     
     const context = canvas.getContext("2d");
@@ -29,10 +29,57 @@ function BossCanvas({bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef}) {
     context.lineWidth = 5
     contextRef.current = context;
 
+    let plane = new Image();
+  let heightImage = 1000;
+  let widthImage = 2000;
+  const scale = .75;
+  let scaledHeight = heightImage * scale;
+  let scaledWidth = widthImage * scale; 
+  plane.src = 'https://i.imgur.com/DBJLg7i.png';
+  plane.onload = function() {
+      init();
+    };
+
+function drawFrame(frameX, frameY, canvasX, canvasY) {
+  contextRef.current.drawImage(plane,
+    0, frameY * heightImage, widthImage, heightImage
+    ,canvasX, canvasY, scaledWidth, scaledHeight);
+    }
+
+    function init() {
+      drawFrame(0, 0, 0, 0);
+      drawFrame(1,  1, scaledWidth, 0);
+      drawFrame(0, 2, scaledWidth * 2, 0);
+    }
+
+    const cycleLoop = [0,1,2,3,4,5];
+    let currentLoopIndex = 0;
+    let frameCount = 0;
+    
+    function step() {
+      frameCount++;
+      if (frameCount < 7) {
+        window.requestAnimationFrame(step);
+        return;
+      }
+      frameCount = 0;
+      contextRef.current.clearRect(0, 0, canvas.width, canvas.height);
+      drawFrame(cycleLoop[currentLoopIndex], currentLoopIndex, boss.x, boss.y);
+      currentLoopIndex++;
+      if (currentLoopIndex >= cycleLoop.length) {
+        currentLoopIndex = 0;
+      }
+      window.requestAnimationFrame(step);
+    }
+
+    function init() {
+      window.requestAnimationFrame(step);
+    }
+
     
   const update = () => {
 
-    drawBoss(boss)
+    // drawBoss(boss)
     moveBoss(boss)
     requestAnimationFrame(update);
   }
@@ -54,7 +101,7 @@ let boss = {
   w: 800,
   h: 400,
   dx: 2,
-  dy: 3,
+  dy: 1,
   img: bossImgRef.current
 }
 
@@ -89,7 +136,7 @@ function moveBoss(bossObject){
 
 
 const boundariesLeft = (objectZ) => {
-  if(objectZ.x < 100){
+  if(objectZ.x < -100){
     objectZ.dx *= -1
   } 
 }
@@ -106,7 +153,7 @@ const boundariesUp = (objectZ) => {
   }}
   
 const boundariesDown = (objectZ) => {
-  if(objectZ.y > 300){
+  if(objectZ.y > 100){
     objectZ.dy *= -1
   }}  
 

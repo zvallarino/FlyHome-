@@ -1,9 +1,10 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesBall3Canvas({enemyBall3Ref}) {
+function EnemyPlane2Canvas({enemyPlane2Ref}) {
 
-  enemyBall3Ref.current.image = 'https://i.imgur.com/IGLm67Z.png'
+
+  enemyPlane2Ref.current.image = 'https://i.imgur.com/qZaFU1N.png'
 
 
   const canvasRef = useRef(null)
@@ -21,7 +22,7 @@ function EnemiesBall3Canvas({enemyBall3Ref}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 7;
+    canvas.style['z-index'] = 5;
     
     
     const context = canvas.getContext("2d");
@@ -33,10 +34,9 @@ function EnemiesBall3Canvas({enemyBall3Ref}) {
 
     let i = 0
 
-    
   const update = () => {
-    drawEnemyPlane(ballThree,i,enemyBall3Ref)
-    moveEnemy(ballThree,enemyBall3Ref)
+    drawEnemyPlane(planeTwo,i,enemyPlane2Ref)
+    moveEnemy(planeTwo, enemyPlane2Ref)
     requestAnimationFrame(update)
   }
 
@@ -64,11 +64,13 @@ class EnemyCreator {
   }
 }
 
-const ballThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH/4,400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,2,0)
+
+const planeTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', 200, 250, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
 
 
 //Draw Function
 
+let i = 0
 
 
 
@@ -94,7 +96,6 @@ function moveEnemy(enemyObject,refObject){
   refObject.current.y = enemyObject.y
   refObject.current.w = enemyObject.w
   refObject.current.h = enemyObject.h
-
 
   boundariesLeft(enemyObject)
   boundariesRight(enemyObject)
@@ -135,4 +136,4 @@ const boundariesDown = (objectZ) => {
   );
 }
 
-export default EnemiesBall3Canvas;
+export default EnemyPlane2Canvas;

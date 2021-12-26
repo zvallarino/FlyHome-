@@ -3,21 +3,29 @@ import React, { useRef, useState } from 'react';
 import './App.css';
 import PlayerCanvas from './PlayerCanvas';
 import RectangleCanvas from './RectangleCanvas';
+import Testing from './Testing';
 
 
-import LevelTwoPlayerCanvas from './LevelTwoPlayerCanvas';
+import PlayerCanvasBoss from './PlayerCanvasBoss';
 import LightningBolts from './LightningBolts';
 import BossCanvas from './BossCanvas';
-import SpaceCanvas from './SpaceCanvas';
-import PreBossLvL2PlayerCanvas from './PreBossLvL2PlayerCanvas';
-import Testing from './Testing';
-import BackgroundCanvas from './BackgroundCanvas';
-import SeaCanvas from './SeaCanvas';
-import SkyCanvas from './SkyCanvas';
-import EnemyPlaneOneCanvas from './EnemyPlaneOneCanvas';
+
+
+import PlayerCanvasLvL2PreBoss from './PlayerCanvasLvL2PreBoss';
+
+import EnemyPlane1Canvas from './EnemyPlane1Canvas';
+import EnemyPlane2Canvas from './EnemyPlane2Canvas';
+import EnemyPlane3Canvas from './EnemyPlane3Canvas';
+
 import EnemiesBall1Canvas from './EnemiesBall1Canvas';
 import EnemiesBall2Canvas from './EnemiesBall2Canvas';
 import EnemiesBall3Canvas from './EnemiesBall3Canvas';
+
+import SpaceCanvas from './SpaceCanvas';
+import SeaCanvas from './SeaCanvas';
+import SkyCanvas from './SkyCanvas';
+
+import BackgroundCanvas from './BackgroundCanvas';
 
 
 function Game() {
@@ -46,13 +54,11 @@ function Game() {
   const lightningBoltsHRef = useRef(0);
 
 
-  const enemyPlaneXRef = useRef(-1);
-  const enemyPlaneYRef = useRef(-1);
-  const enemyPlaneWRef = useRef(0);
-  const enemyPlaneHRef = useRef(0);
-  const enemyPlaneImageRef = useRef('https://i.imgur.com/qZaFU1N.png')
+  
 
   const enemyPlane1Ref = useRef({})
+  const enemyPlane2Ref = useRef({})
+  const enemyPlane3Ref = useRef({})                                                                
 
   const enemyBall1Ref = useRef({})
     
@@ -75,25 +81,33 @@ function Game() {
     {/* <Testing /> */}
 
     {/* Boss Fight */}
-    {/* <LevelTwoPlayerCanvas bossHitCounter = {bossHitCounter} bossImgRef ={bossImgRef} bossXRef = {bossXRef} bossHRef = {bossHRef} bossYRef ={bossYRef} bossWRef ={bossWRef}
+    {/* <PlayerCanvasBoss bossHitCounter = {bossHitCounter} bossImgRef ={bossImgRef} bossXRef = {bossXRef} bossHRef = {bossHRef} bossYRef ={bossYRef} bossWRef ={bossWRef}
     lightningBoltsXRef = {lightningBoltsXRef} ligtningBoltsYRef = {ligtningBoltsYRef} lightningBoltsWRef = {lightningBoltsWRef} lightningBoltsHRef = {lightningBoltsHRef} 
     />
     <LightningBolts lightningBoltsXRef = {lightningBoltsXRef} ligtningBoltsYRef ={ligtningBoltsYRef} lightningBoltsWRef = {lightningBoltsWRef} lightningBoltsHRef ={lightningBoltsHRef}/>
     <BossCanvas bossImgRef = {bossImgRef} bossXRef = {bossXRef} bossHRef = {bossHRef} bossYRef ={bossYRef} bossWRef ={bossWRef} />
+    <SkyCanvas />
+    <SeaCanvas />
     <BackgroundCanvas /> */}
 
   
     {/* level 2 */}
-    <PreBossLvL2PlayerCanvas
-    enemyPlaneXRef ={enemyPlaneXRef} enemyPlaneYRef = {enemyPlaneYRef} enemyPlaneWRef={enemyPlaneWRef} enemyPlaneHRef={enemyPlaneHRef} enemyPlaneImageRef ={enemyPlaneImageRef}
+    <PlayerCanvasLvL2PreBoss
+    enemyPlane1Ref = {enemyPlane1Ref}
+    enemyPlane2Ref = {enemyPlane2Ref}
+    enemyPlane3Ref = {enemyPlane3Ref}
+    
     enemyBall1Ref = {enemyBall1Ref}
-    
-    
+    enemyBall2Ref = {enemyBall2Ref}
+    enemyBall3Ref = {enemyBall3Ref}
     />
     <EnemiesBall1Canvas enemyBall1Ref = {enemyBall1Ref}/>
     <EnemiesBall2Canvas enemyBall2Ref = {enemyBall2Ref} />
     <EnemiesBall3Canvas enemyBall3Ref = {enemyBall3Ref}/>
-    <EnemyPlaneOneCanvas enemyPlane1Ref = {enemyPlane1Ref}/>
+    <EnemyPlane1Canvas enemyPlane1Ref = {enemyPlane1Ref}/>
+    <EnemyPlane2Canvas enemyPlane2Ref = {enemyPlane2Ref}/>
+    <EnemyPlane3Canvas enemyPlane3Ref = {enemyPlane3Ref}/>
+
     <SkyCanvas />
     <SeaCanvas />
     <BackgroundCanvas />

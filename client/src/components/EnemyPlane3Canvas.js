@@ -1,7 +1,9 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemyPlaneOneCanvas({enemyPlane1Ref}) {
+function EnemyPlane3Canvas({enemyPlane3Ref}) {
+
+  enemyPlane3Ref.current.image = 'https://i.imgur.com/qZaFU1N.png'
 
 
   const canvasRef = useRef(null)
@@ -19,7 +21,7 @@ function EnemyPlaneOneCanvas({enemyPlane1Ref}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 6;
+    canvas.style['z-index'] = 4;
     
     
     const context = canvas.getContext("2d");
@@ -32,8 +34,8 @@ function EnemyPlaneOneCanvas({enemyPlane1Ref}) {
     let i = 0
 
   const update = () => {
-    drawEnemyPlane(planeThree,i,enemyPlane1Ref)
-    moveEnemy(planeThree, enemyPlane1Ref)
+    drawEnemyPlane(planeThree,i,enemyPlane3Ref)
+    moveEnemy(planeThree, enemyPlane3Ref)
     requestAnimationFrame(update)
   }
 
@@ -61,11 +63,8 @@ class EnemyCreator {
   }
 }
 
-const planeOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',SCREEN_WIDTH*(1/8),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
-const planeTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',  SCREEN_WIDTH*(4/10), 200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
-// const planeThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(8/10),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
 
-const planeThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', 700, 200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,10,1)
+const planeThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', 400, 175, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,10,1)
 
 
 //Draw Function
@@ -76,7 +75,6 @@ let i = 0
 
 function drawEnemyPlane(EnemyObject,i,refObject){
   let enemy = new Image();
-  refObject.current.image = 'https://i.imgur.com/qZaFU1N.png'
   enemy.src = refObject.current.image
   enemy.onload = function() {
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
@@ -137,4 +135,4 @@ const boundariesDown = (objectZ) => {
   );
 }
 
-export default EnemyPlaneOneCanvas;
+export default EnemyPlane3Canvas;
