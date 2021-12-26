@@ -84,7 +84,18 @@ const outerLoop = () => {
       }
 }
 
-setInterval(outerLoop, speed)  
+const myInterval = setInterval(outerLoop, 1000);
+
+function myStopFunction() {
+  clearInterval(myInterval);
+}
+
+setTimeout(myStopFunction, 10000);
+
+
+// myInterval
+
+// setInterval(outerLoop, speed)  
 
 
 

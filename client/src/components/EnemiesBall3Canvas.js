@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesCanvas({enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,enemyPlaneHRef, enemyPlaneImageRef}) {
+function EnemiesBall3Canvas({enemyBall3Ref}) {
 
 
   const canvasRef = useRef(null)
@@ -19,7 +19,7 @@ function EnemiesCanvas({enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,enemyPlaneH
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 2;
+    canvas.style['z-index'] = 7;
     
     
     const context = canvas.getContext("2d");
@@ -29,12 +29,12 @@ function EnemiesCanvas({enemyPlaneXRef,enemyPlaneYRef,enemyPlaneWRef,enemyPlaneH
     context.lineWidth = 5
     contextRef.current = context;
 
+    let i = 0
+
     
   const update = () => {
-    // drawEnemyPlane(planeOne)
-    // drawEnemyPlane(planeTwo)
-    drawEnemyPlane(planeThree)
-    moveEnemy(planeThree)
+    drawEnemyPlane(ballThree,i,enemyBall3Ref)
+    moveEnemy(ballThree,enemyBall3Ref)
     requestAnimationFrame(update)
   }
 
@@ -62,39 +62,37 @@ class EnemyCreator {
   }
 }
 
-const planeOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',SCREEN_WIDTH*(1/8),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
-const planeTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',  SCREEN_WIDTH*(4/10), 200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
-const planeThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(8/10),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,10,1)
+const ballThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH/4,400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,2,0)
 
 
 //Draw Function
 
-let i = 0
 
-let enemy = {}
 
-function drawEnemyPlane(EnemyObject,i,enemy){
-  enemy = new Image();
-  enemy.src = enemyPlaneImageRef.current
+
+function drawEnemyPlane(EnemyObject,i,refObject){
+  let enemy = new Image();
+  refObject.current.image = 'https://i.imgur.com/IGLm67Z.png'
+  enemy.src = refObject.current.image
   enemy.onload = function() {
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
   contextRef.current.beginPath();
   contextRef.current.drawImage(enemy, EnemyObject.x, EnemyObject.y, EnemyObject.w, EnemyObject.h)
-  contextRef.current.strokeRect(EnemyObject.x, EnemyObject.y, EnemyObject.w,EnemyObject.h);
+  // contextRef.current.strokeRect(EnemyObject.x, EnemyObject.y, EnemyObject.w,EnemyObject.h);
   contextRef.current.fill();}
   i++;
   }
 
   
-function moveEnemy(enemyObject){
+function moveEnemy(enemyObject,refObject){
   enemyObject.x += enemyObject.dx
   enemyObject.y += enemyObject.dy
 
-
-  enemyPlaneXRef.current = enemyObject.x
-  enemyPlaneYRef.current = enemyObject.y
-  enemyPlaneWRef.current = enemyObject.w
-  enemyPlaneHRef.current = enemyObject.h
+    
+  refObject.current.x = enemyObject.x
+  refObject.current.y = enemyObject.y
+  refObject.current.w = enemyObject.w
+  refObject.current.h = enemyObject.h
 
 
   boundariesLeft(enemyObject)
@@ -136,4 +134,4 @@ const boundariesDown = (objectZ) => {
   );
 }
 
-export default EnemiesCanvas;
+export default EnemiesBall3Canvas;
