@@ -57,7 +57,7 @@ function SkyCanvas() {
       
       function step() {
         frameCount++;
-        if (frameCount < 10) {
+        if (frameCount < 15) {
           window.requestAnimationFrame(step);
           return;
         }

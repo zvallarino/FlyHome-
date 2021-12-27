@@ -14,11 +14,11 @@ function SeaCanvas() {
     canvas.height = window.innerHeight * 2;
     canvas.style.width = `${window.innerWidth}px`;
     canvas.style.height = `${window.innerHeight}px`;
-    canvas.style.backgroundColor = "#E1FFE1";
+    // canvas.style.backgroundColor = "#E1FFE1";
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 2;
+    canvas.style['z-index'] = 4;
     
     
     const context = canvas.getContext("2d");

@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function RectangleCanvas({enemyXRef, enemyYRef, enemyWRef, enemyHRef, speed, colorRef}) {
+function RectangleOfDoom2Canvas({rectOfDoom2Ref}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -48,10 +48,18 @@ function getRandomInt(max) {
 // }
 
 
+//30 Seconds then Hurry Up
+//15 Seconds of Double Speed
+//Blast Off to Earth/
+
 
 let i = 0;
 let loopCounter = 0;
 let randomNumber = 0;
+
+//OuterLoop cant take any parameters or it stops firing idk why
+
+// Checks if on the way up it hits not the other way? 
 
 
 const outerLoop = () => {
@@ -61,17 +69,13 @@ const outerLoop = () => {
       i++;
     
       if(loopCounter === 1){
-        enemyXRef.current = -1
-        enemyYRef.current = -1
-        enemyWRef.current = 0
-        enemyHRef.current = 0
       
       }else if (loopCounter === 3)
       {
-        enemyXRef.current = arrayOfDoom[randomNumber][loopCounter-1].x
-        enemyYRef.current = arrayOfDoom[randomNumber][loopCounter-1].y
-        enemyWRef.current = arrayOfDoom[randomNumber][loopCounter-1].w
-        enemyHRef.current = arrayOfDoom[randomNumber][loopCounter-1].h
+        rectOfDoom2Ref.current.x = arrayOfDoom[randomNumber][loopCounter-1].x
+        rectOfDoom2Ref.current.y = arrayOfDoom[randomNumber][loopCounter-1].y
+        rectOfDoom2Ref.current.w = arrayOfDoom[randomNumber][loopCounter-1].w
+        rectOfDoom2Ref.current.h = arrayOfDoom[randomNumber][loopCounter-1].h
         loopCounter = 0
         randomNumber = getRandomInt(12)
         // contextRef.current.clearRect(0,0,SCREEN_WIDTH,SCREEN_HEIGHT)
@@ -84,19 +88,67 @@ const outerLoop = () => {
       }
 }
 
-const myInterval = setInterval(outerLoop, 1000);
+const planetSmall = {
+  w:SCREEN_WIDTH/8,
+  h:SCREEN_HEIGHT/7,
+  x:SCREEN_WIDTH*(.4),
+  y:SCREEN_HEIGHT/5,
+}
+
+const planetMedium = {
+  w:SCREEN_WIDTH/4,
+  h:SCREEN_HEIGHT/3,
+  x:SCREEN_WIDTH/3,
+  y:SCREEN_HEIGHT/5,
+}
+
+const planetLarge = {
+  w:SCREEN_WIDTH/2,
+  h:SCREEN_HEIGHT*(2/3),
+  x:SCREEN_WIDTH/5,
+  y:SCREEN_HEIGHT/5,
+}
+
+
+const drawplanet = (planetObject) => {
+let planet = new Image();
+planet.src = "https://i.imgur.com/e65aHji.png"
+planet.onload = function() {
+contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+contextRef.current.drawImage(planet,planetObject.x,planetObject.y,planetObject.w,planetObject.h);  
+// contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
+}
+console.log('this just fired')
+}
+
+const myInterval = setInterval(outerLoop, 500);
+
+const drawPlanetSmall = () =>{
+  //  drawplanet(planetObject)
+  drawplanet(planetSmall)
+}
+
+const drawPlanetMedium = () =>{
+  drawplanet(planetMedium)
+   console.log("I fire now")
+}
+
+const drawPlanetLarge = () =>{
+  drawplanet(planetLarge)
+   console.log("I fire now")
+}
 
 function myStopFunction() {
   clearInterval(myInterval);
+  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+  setTimeout(drawPlanetSmall,1000)
+  setTimeout(drawPlanetMedium,2000)
+  setTimeout(drawPlanetLarge,3000)
 }
 
-setTimeout(myStopFunction, 10000);
 
 
-// myInterval
-
-// setInterval(outerLoop, speed)  
-
+setTimeout(myStopFunction, 20000);
 
 
 const update = () => {
@@ -238,12 +290,8 @@ const update = () => {
       const rectangleTwelve = [rectangleTwelveS,rectangleTwelveM, rectangleTwelveL]
 
 
-      const rectangleMiddle = new RectanglesOfDoom(SCREEN_WIDTH/4,  SCREEN_HEIGHT/4 , SCREEN_WIDTH/2,  SCREEN_HEIGHT/2,colorRef.current)
-
-
   // Drawing function for Rectangles of Doom
 
-  
 const drawRectOfDoom = (rectangleOfDoom) => {
   contextRef.current.beginPath();
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
@@ -272,4 +320,4 @@ function getRandomInt(max) {
   );
 }
 
-export default RectangleCanvas;
+export default RectangleOfDoom2Canvas;
