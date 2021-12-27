@@ -293,16 +293,16 @@ const boundariesDownTurn = (objectZ) => {
       if(playerRef.current.y > enemyYRef.current + enemyHRef.current||playerRef.current.y + playerRef.current.h < enemyYRef.current||playerRef.current.x > (enemyXRef.current+enemyWRef.current) || playerRef.current.x + playerRef.current.w < (enemyXRef.current)){
         return
       } else {
-        console.log("hit")
+        // console.log("hit")
         rotationFunction()
         imageRef.current = ouchArray[rotationRef.current]
       }
 
-      console.log('This is the player')
-      console.log('This is the x')
-      console.log(playerRef.current.x)
-      console.log('This is the y')
-      console.log(playerRef.current.y)
+      // console.log('This is the player')
+      // console.log('This is the x')
+      // console.log(playerRef.current.x)
+      // console.log('This is the y')
+      // console.log(playerRef.current.y)
       // // console.log(playerRef.current.w)
       // // console.log(playerRef.current.h)
 

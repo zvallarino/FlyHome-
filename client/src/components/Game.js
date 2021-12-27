@@ -116,14 +116,16 @@ function Game() {
     <BackgroundCanvas /> */}
 
     {/* level One */}
-    {/* <PlayerCanvas setSpeed = {setSpeed} speed ={speed} enemyXRef = {enemyXRef} enemyYRef = {enemyYRef} enemyWRef = {enemyWRef} enemyHRef = {enemyHRef} colorRef = {colorRef}/> 
+    <PlayerCanvas setSpeed = {setSpeed} speed ={speed} enemyXRef = {enemyXRef} enemyYRef = {enemyYRef} enemyWRef = {enemyWRef} enemyHRef = {enemyHRef} colorRef = {colorRef}/> 
     <RectangleCanvas enemyXRef = {enemyXRef} enemyYRef = {enemyYRef} enemyWRef = {enemyWRef} enemyHRef={enemyHRef} colorRef = {colorRef}  speed = {speed} />
-    <SpaceCanvas /> */}
+    <SpaceCanvas />
 
     {/* Prelude */}
-    <PlayerTitleCanvas />
+    {/* <PlayerTitleCanvas />
 
-    <BackgroundPreludeCanvas />
+
+
+    <BackgroundPreludeCanvas /> */}
     </>
   );
 }
