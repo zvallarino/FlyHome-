@@ -1,7 +1,21 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef, setSpeed, speed}) {
+function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref}) {
+
+  //This prevents it from checking at the beginning for the hit
+
+  rectOfDoomRef.current.x = -1
+  rectOfDoomRef.current.y = -1
+  rectOfDoomRef.current.h = 0
+  rectOfDoomRef.current.w = 0
+
+  
+  rectOfDoom2Ref.current.x = -1
+  rectOfDoom2Ref.current.y = -1
+  rectOfDoom2Ref.current.h = 0
+  rectOfDoom2Ref.current.w = 0
+
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -49,7 +63,6 @@ function PlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef, se
       h:100,
       x:700,
       y:400,
-      speed:10,
       dx:3,
       dy:3
     }
@@ -67,7 +80,8 @@ function PlayerCanvas({ enemyXRef, enemyYRef, enemyWRef, enemyHRef, colorRef, se
 
   const update = () => {
     drawPlane();
-    hit();
+    hit(rectOfDoomRef);
+    hit(rectOfDoom2Ref);
     requestAnimationFrame(update)
   }
 
@@ -212,11 +226,9 @@ const moveDown = () => {
     } else if( e.key === "l"){
       rotationFunction()
       imageRef.current = firingRotationArray[rotationRef.current]
-      hit()
+      // hit()
     } else if ( e.key === "k"){
       console.log("superBlaster")
-      setSpeed(250)
-      console.log(speed)
     } else if ( e.key === " "){
       rotationCounter++
       rotationRef.current = rotationRef.current + 1
@@ -287,10 +299,10 @@ const boundariesDownTurn = (objectZ) => {
 
 //HIT MARKERS
 
-  const hit = () => {
+  const hit = (refObject) => {
     
 
-      if(playerRef.current.y > enemyYRef.current + enemyHRef.current||playerRef.current.y + playerRef.current.h < enemyYRef.current||playerRef.current.x > (enemyXRef.current+enemyWRef.current) || playerRef.current.x + playerRef.current.w < (enemyXRef.current)){
+      if(playerRef.current.y > refObject.current.y + refObject.current.h||playerRef.current.y + playerRef.current.h < refObject.current.y||playerRef.current.x > (refObject.current.x+refObject.current.w) || playerRef.current.x + playerRef.current.w < (refObject.current.x)){
         return
       } else {
         // console.log("hit")
@@ -328,12 +340,11 @@ const KeyUp = (e) => {
     // imageRef.current = "https://i.imgur.com/iNJmBDq.png"
     // console.log("stop boosting")
   } else if (e.key === "k"){
-    setSpeed(1000)
+
     console.log("stop super blasting")
   } else {
     // imageRef.current =rotationArray[rotationCounter]
     secondsCounter(1)
-    colorRef.current = "green"
   }
 }
 

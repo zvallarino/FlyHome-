@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import './App.css';
 import PlayerTitleCanvas from './PlayerTitleCanvas';
 import PlayerCanvas from './PlayerCanvas';
-import RectangleCanvas from './RectangleCanvas';
+import RectangleOfDoom1Canvas from './RectangleOfDoom1Canvas';
 import Testing from './Testing';
 
 
@@ -29,16 +29,17 @@ import SeaCanvas from './SeaCanvas';
 import SkyCanvas from './SkyCanvas';
 
 import BackgroundCanvas from './BackgroundCanvas';
+import RectangleOfDoom2Canvas from './RectangleOfDoom2Canvas';
 
 
 function Game() {
 
-  
-  const enemyXRef = useRef(1);
-  const enemyYRef = useRef(1);
-  const enemyWRef = useRef(1);
-  const enemyHRef = useRef(1);
-  const colorRef = useRef('#08FF00')
+
+
+  const rectOfDoomRef = useRef({})
+  const rectOfDoom2Ref = useRef({})
+
+  const [doomOfRectState,setdoomOfRectState] = useState(false)
 
   const [speed, setSpeed] = useState(750)
 
@@ -116,16 +117,14 @@ function Game() {
     <BackgroundCanvas /> */}
 
     {/* level One */}
-    <PlayerCanvas setSpeed = {setSpeed} speed ={speed} enemyXRef = {enemyXRef} enemyYRef = {enemyYRef} enemyWRef = {enemyWRef} enemyHRef = {enemyHRef} colorRef = {colorRef}/> 
-    <RectangleCanvas enemyXRef = {enemyXRef} enemyYRef = {enemyYRef} enemyWRef = {enemyWRef} enemyHRef={enemyHRef} colorRef = {colorRef}  speed = {speed} />
-    <SpaceCanvas />
+    {/* <PlayerCanvas rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/> 
+
+    {doomOfRectState? <RectangleOfDoom2Canvas rectOfDoom2Ref = {rectOfDoom2Ref}/>:<RectangleOfDoom1Canvas setdoomOfRectState ={setdoomOfRectState} rectOfDoomRef = {rectOfDoomRef} />}
+    <SpaceCanvas /> */}
 
     {/* Prelude */}
-    {/* <PlayerTitleCanvas />
-
-
-
-    <BackgroundPreludeCanvas /> */}
+    <PlayerTitleCanvas />
+    <BackgroundPreludeCanvas />
     </>
   );
 }
