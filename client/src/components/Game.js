@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 
 import './App.css';
+import PlayerTitleCanvas from './PlayerTitleCanvas';
 import PlayerCanvas from './PlayerCanvas';
 import RectangleCanvas from './RectangleCanvas';
 import Testing from './Testing';
@@ -21,6 +22,8 @@ import EnemiesBall1Canvas from './EnemiesBall1Canvas';
 import EnemiesBall2Canvas from './EnemiesBall2Canvas';
 import EnemiesBall3Canvas from './EnemiesBall3Canvas';
 
+
+import BackgroundPreludeCanvas from './BackgroundPreludeCanvas';
 import SpaceCanvas from './SpaceCanvas';
 import SeaCanvas from './SeaCanvas';
 import SkyCanvas from './SkyCanvas';
@@ -92,7 +95,7 @@ function Game() {
 
   
     {/* level 2 */}
-    <PlayerCanvasLvL2PreBoss
+    {/* <PlayerCanvasLvL2PreBoss
     enemyPlane1Ref = {enemyPlane1Ref}
     enemyPlane2Ref = {enemyPlane2Ref}
     enemyPlane3Ref = {enemyPlane3Ref}
@@ -110,12 +113,17 @@ function Game() {
 
     <SkyCanvas />
     <SeaCanvas />
-    <BackgroundCanvas />
+    <BackgroundCanvas /> */}
 
     {/* level One */}
     {/* <PlayerCanvas setSpeed = {setSpeed} speed ={speed} enemyXRef = {enemyXRef} enemyYRef = {enemyYRef} enemyWRef = {enemyWRef} enemyHRef = {enemyHRef} colorRef = {colorRef}/> 
     <RectangleCanvas enemyXRef = {enemyXRef} enemyYRef = {enemyYRef} enemyWRef = {enemyWRef} enemyHRef={enemyHRef} colorRef = {colorRef}  speed = {speed} />
     <SpaceCanvas /> */}
+
+    {/* Prelude */}
+    <PlayerTitleCanvas />
+
+    <BackgroundPreludeCanvas />
     </>
   );
 }
