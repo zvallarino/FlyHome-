@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function SkyCanvas() {
+function CloudsMoving() {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -17,7 +17,7 @@ function SkyCanvas() {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 3;
+    canvas.style['z-index'] = 4;
     
     
     const context = canvas.getContext("2d");
@@ -29,12 +29,12 @@ function SkyCanvas() {
 
 
     let img = new Image();
-    let heightImage = 1000;
+    let heightImage = 500;
     let widthImage = 2000;
     const scale = 1;
-    let scaledHeight = heightImage * 0.5;
+    let scaledHeight = heightImage * scale;
     let scaledWidth = widthImage * scale; 
-    img.src = 'https://i.imgur.com/UbvGaMx.png';
+    img.src = 'https://i.imgur.com/py8FAwc.png';
     img.onload = function() {
         init();
       };
@@ -51,13 +51,13 @@ function SkyCanvas() {
         drawFrame(0, 2, scaledWidth * 2, 0);
       }
 
-      const cycleLoop = [0, 1, 2,3,4,5,6];
+      const cycleLoop = [0,1,2,3,4,5,6,7,8,9];
       let currentLoopIndex = 0;
       let frameCount = 0;
       
       function step() {
         frameCount++;
-        if (frameCount < 15) {
+        if (frameCount < 20) {
           window.requestAnimationFrame(step);
           return;
         }
@@ -106,4 +106,4 @@ function SkyCanvas() {
   );
 }
 
-export default SkyCanvas;
+export default CloudsMoving;

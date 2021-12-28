@@ -21,7 +21,7 @@ function EnemyPlane1Canvas({enemyPlane1Ref}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 6;
+    canvas.style['z-index'] = 13;
     
     
     const context = canvas.getContext("2d");

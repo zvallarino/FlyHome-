@@ -9,7 +9,8 @@ import './App.css';
 
 function PlayerCanvasLvL2PreBoss({
   enemyBall1Ref, enemyBall2Ref, enemyBall3Ref,
-  enemyPlane1Ref, enemyPlane2Ref, enemyPlane3Ref
+  enemyPlane1Ref, enemyPlane2Ref, enemyPlane3Ref,
+  enemySeed1Ref, enemySeed2Ref, enemySeed3Ref
 }) {
 
 
@@ -46,7 +47,7 @@ function PlayerCanvasLvL2PreBoss({
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 10;
+    canvas.style['z-index'] = 20;
     
     
     const context = canvas.getContext("2d");
@@ -236,12 +237,15 @@ const moveDown = () => {
     } else if( e.key === "l"){
       rotationFunction()
       imageRef.current = firingRotationArray[rotationRef.current]
-      // hit(enemyBall1Ref)
-      // hit(enemyBall2Ref)
-      // hit(enemyBall3Ref)
-      // hit(enemyPlane1Ref)
+      hit(enemyBall1Ref)
+      hit(enemyBall2Ref)
+      hit(enemyBall3Ref)
+      hit(enemyPlane1Ref)
       hit(enemyPlane2Ref)
       hit(enemyPlane3Ref)
+      hit(enemySeed1Ref)
+      hit(enemySeed2Ref)
+      hit(enemySeed3Ref)
 
       // hit()
   
@@ -352,7 +356,8 @@ const boundariesDownTurn = (objectZ) => {
       console.log('miss balls')
     } else {
       console.log("hit balls")
-      refObject.current.image = "https://i.imgur.com/hBclQUa.png"
+      // refObject.current.image = "https://i.imgur.com/hBclQUa.png"
+      refObject.current.image = "https://i.imgur.com/J6s56fV.png"
       console.log(refObject.current.image)
       rotationFunction()
     }
@@ -372,6 +377,10 @@ const KeyUp = (e) => {
     enemyPlane1Ref.current.image = "https://i.imgur.com/qZaFU1N.png";
     enemyPlane2Ref.current.image = "https://i.imgur.com/qZaFU1N.png";
     enemyPlane3Ref.current.image = "https://i.imgur.com/qZaFU1N.png";
+
+    enemySeed1Ref.current.image = 'https://i.imgur.com/cqiU108.png';
+    enemySeed2Ref.current.image = 'https://i.imgur.com/cqiU108.png';
+    enemySeed3Ref.current.image = 'https://i.imgur.com/cqiU108.png';
   
     rotationFunction()
     imageRef.current =rotationArray[rotationRef.current]

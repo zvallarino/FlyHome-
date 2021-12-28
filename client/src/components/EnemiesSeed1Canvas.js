@@ -1,9 +1,9 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemyPlane3Canvas({enemyPlane3Ref}) {
+function EnemiesSeed1Canvas({enemySeed1Ref}) {
 
-  enemyPlane3Ref.current.image = 'https://i.imgur.com/qZaFU1N.png'
+ enemySeed1Ref.current.image = 'https://i.imgur.com/cqiU108.png'
 
 
   const canvasRef = useRef(null)
@@ -21,8 +21,7 @@ function EnemyPlane3Canvas({enemyPlane3Ref}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 11;
-    
+    canvas.style['z-index'] = 16;
     
     const context = canvas.getContext("2d");
     context.scale(2,2);
@@ -33,9 +32,9 @@ function EnemyPlane3Canvas({enemyPlane3Ref}) {
 
     let i = 0
 
-  const update = () => {
-    drawEnemyPlane(planeThree,i,enemyPlane3Ref)
-    moveEnemy(planeThree, enemyPlane3Ref)
+     const update = () => {
+    drawSeed(seedOne,i,enemySeed1Ref)
+    moveEnemy(seedOne,enemySeed1Ref)
     requestAnimationFrame(update)
   }
 
@@ -64,16 +63,12 @@ class EnemyCreator {
 }
 
 
-const planeThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', 400, 175, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,10,1)
+const seedOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(1/8),400, SCREEN_WIDTH/8,SCREEN_HEIGHT/4,10,0)
 
 
 //Draw Function
 
-let i = 0
-
-
-
-function drawEnemyPlane(EnemyObject,i,refObject){
+function drawSeed(EnemyObject,i,refObject){
   let enemy = new Image();
   enemy.src = refObject.current.image
   enemy.onload = function() {
@@ -95,6 +90,7 @@ function moveEnemy(enemyObject,refObject){
   refObject.current.y = enemyObject.y
   refObject.current.w = enemyObject.w
   refObject.current.h = enemyObject.h
+
 
   boundariesLeft(enemyObject)
   boundariesRight(enemyObject)
@@ -124,8 +120,6 @@ const boundariesDown = (objectZ) => {
     objectZ.dy *= -1
   }}  
 
-
-
   return (
     <canvas
     tabIndex="0" 
@@ -135,4 +129,4 @@ const boundariesDown = (objectZ) => {
   );
 }
 
-export default EnemyPlane3Canvas;
+export default EnemiesSeed1Canvas;

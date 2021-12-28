@@ -6,10 +6,12 @@ import PlayerCanvas from './PlayerCanvas';
 import RectangleOfDoom1Canvas from './RectangleOfDoom1Canvas';
 import Testing from './Testing';
 
+import CloudsStatic from './CloudsStatic';
 
 import PlayerCanvasBoss from './PlayerCanvasBoss';
 import LightningBolts from './LightningBolts';
 import BossCanvas from './BossCanvas';
+import Level2 from './Level2';
 
 
 import PlayerCanvasLvL2PreBoss from './PlayerCanvasLvL2PreBoss';
@@ -17,6 +19,10 @@ import PlayerCanvasLvL2PreBoss from './PlayerCanvasLvL2PreBoss';
 import EnemyPlane1Canvas from './EnemyPlane1Canvas';
 import EnemyPlane2Canvas from './EnemyPlane2Canvas';
 import EnemyPlane3Canvas from './EnemyPlane3Canvas';
+
+import EnemiesSeed1Canvas from './EnemiesSeed1Canvas';
+import EnemiesSeed2Canvas from './EnemiesSeed2Canvas';
+import EnemiesSeed3Canvas from './EnemiesSeed3Canvas';
 
 import EnemiesBall1Canvas from './EnemiesBall1Canvas';
 import EnemiesBall2Canvas from './EnemiesBall2Canvas';
@@ -26,7 +32,7 @@ import EnemiesBall3Canvas from './EnemiesBall3Canvas';
 import BackgroundPreludeCanvas from './BackgroundPreludeCanvas';
 import SpaceCanvas from './SpaceCanvas';
 import SeaCanvas from './SeaCanvas';
-import SkyCanvas from './SkyCanvas';
+import CloudsMoving from './CloudsMoving';
 
 import BackgroundCanvas from './BackgroundCanvas';
 import RectangleOfDoom2Canvas from './RectangleOfDoom2Canvas';
@@ -60,14 +66,16 @@ function Game() {
 
   
 
-  const enemyPlane1Ref = useRef({})
-  const enemyPlane2Ref = useRef({})
-  const enemyPlane3Ref = useRef({})                                                                
+  const enemyPlane1Ref = useRef({});
+  const enemyPlane2Ref = useRef({});
+  const enemyPlane3Ref = useRef({});
+  
+  const enemySeed1Ref = useRef({});
+  const enemySeed2Ref = useRef({});
+  const enemySeed3Ref = useRef({})
 
   const enemyBall1Ref = useRef({})
-    
   const enemyBall2Ref = useRef({});
-
   const enemyBall3Ref = useRef({});
  
 
@@ -96,25 +104,11 @@ function Game() {
 
   
     {/* level 2 */}
-    {/* <PlayerCanvasLvL2PreBoss
-    enemyPlane1Ref = {enemyPlane1Ref}
-    enemyPlane2Ref = {enemyPlane2Ref}
-    enemyPlane3Ref = {enemyPlane3Ref}
-    
-    enemyBall1Ref = {enemyBall1Ref}
-    enemyBall2Ref = {enemyBall2Ref}
-    enemyBall3Ref = {enemyBall3Ref}
-    />
-    <EnemiesBall1Canvas enemyBall1Ref = {enemyBall1Ref}/>
-    <EnemiesBall2Canvas enemyBall2Ref = {enemyBall2Ref} />
-    <EnemiesBall3Canvas enemyBall3Ref = {enemyBall3Ref}/>
-    <EnemyPlane1Canvas enemyPlane1Ref = {enemyPlane1Ref}/>
-    <EnemyPlane2Canvas enemyPlane2Ref = {enemyPlane2Ref}/>
-    <EnemyPlane3Canvas enemyPlane3Ref = {enemyPlane3Ref}/>
-
-    <SkyCanvas />
+    <Level2 />
+    <CloudsMoving />
+    <CloudsStatic />
     <SeaCanvas />
-    <BackgroundCanvas /> */}
+    <BackgroundCanvas />
 
     {/* level One */}
     {/* <PlayerCanvas rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/> 
@@ -123,8 +117,8 @@ function Game() {
     <SpaceCanvas /> */}
 
     {/* Prelude */}
-    <PlayerTitleCanvas />
-    <BackgroundPreludeCanvas />
+    {/* <PlayerTitleCanvas />
+    <BackgroundPreludeCanvas /> */}
     </>
   );
 }

@@ -21,7 +21,7 @@ function EnemiesBall1Canvas({enemyBall1Ref}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 9;
+    canvas.style['z-index'] = 19;
     
     const context = canvas.getContext("2d");
     context.scale(2,2);
@@ -62,9 +62,6 @@ class EnemyCreator {
   }
 }
 
-const planeOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',SCREEN_WIDTH*(1/8),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
-const planeTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png',  SCREEN_WIDTH*(4/10), 200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
-// const planeThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(8/10),200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
 
 const ballOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(1/8),400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,0,0)
 
