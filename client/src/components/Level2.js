@@ -72,13 +72,13 @@ function Level2() {
 
 
   
-    <EnemiesBall1Canvas enemyBall1Ref = {enemyBall1Ref}/>
+    {/* <EnemiesBall1Canvas enemyBall1Ref = {enemyBall1Ref}/>
     <EnemiesBall2Canvas enemyBall2Ref = {enemyBall2Ref} />
     <EnemiesBall3Canvas enemyBall3Ref = {enemyBall3Ref}/>
     
     <EnemyPlane1Canvas enemyPlane1Ref = {enemyPlane1Ref}/>
     <EnemyPlane2Canvas enemyPlane2Ref = {enemyPlane2Ref}/>
-    <EnemyPlane3Canvas enemyPlane3Ref = {enemyPlane3Ref}/>
+    <EnemyPlane3Canvas enemyPlane3Ref = {enemyPlane3Ref}/> */}
     </>
   );
 }
