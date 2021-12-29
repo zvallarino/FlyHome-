@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function LightningBolts({ lightningBoltsXRef, ligtningBoltsYRef, lightningBoltsWRef, lightningBoltsHRef }) {
+function LightningBolts({ lightningBoltsRef }) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -46,10 +46,10 @@ const outerLoop = () => {
   
     if(loopCounter === 2)
     {
-      lightningBoltsXRef.current = boltsOfDoom[randomNumber][loopCounter-1].x
-      ligtningBoltsYRef.current = boltsOfDoom[randomNumber][loopCounter-1].y
-      lightningBoltsWRef.current = boltsOfDoom[randomNumber][loopCounter-1].w
-      lightningBoltsHRef.current = boltsOfDoom[randomNumber][loopCounter-1].h
+      lightningBoltsRef.current.x = boltsOfDoom[randomNumber][loopCounter-1].x
+      lightningBoltsRef.current.y = boltsOfDoom[randomNumber][loopCounter-1].y
+      lightningBoltsRef.current.w = boltsOfDoom[randomNumber][loopCounter-1].w
+      lightningBoltsRef.current.h = boltsOfDoom[randomNumber][loopCounter-1].h
     loopCounter = 0
     randomNumber = getRandomInt(7)
     }
@@ -66,29 +66,6 @@ setInterval(outerLoop, 750)
 
 
 const update = () => {
-
-
-  // drawLightning(boltOneL)
-  // drawLightning(boltOneS)
-
-  // drawLightning(boltTwoL)
-  // drawLightning(boltTwoS)
-
-  // drawLightning(boltThreeL)
-  // drawLightning(boltThreeS)
-
-  // drawLightning(boltFourL)
-  // drawLightning(boltFourS)
-
-  // drawLightning(boltFiveL)
-  // drawLightning(boltFiveS)
-
-  // drawLightning(boltSixL)
-  // drawLightning(boltSixS)
-
-  // drawLightning(boltSevenL)
-  // drawLightning(boltSevenS)
-
   requestAnimationFrame(update)
 }
 
@@ -160,14 +137,6 @@ const update = () => {
       const boltSeven = [boltSevenS, boltSevenL]
 
     const boltsOfDoom = [boltOne, boltTwo, boltThree, boltFour, boltFive, boltSix, boltSeven]
-
- 
-
-      // const boltTwo = [boltTwoS, boltTwoL]
-      
-
- 
-
 
   // Drawing function for Rectangles of Doom
 

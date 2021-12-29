@@ -42,7 +42,7 @@ function CloudsStatic() {
   
     const drawClouds = () => {
       let cloudZ = new Image();
-      cloudZ.src = "https://i.imgur.com/OpjNtEZ.png"
+      cloudZ.src = "https://i.imgur.com/PwbWghf.png"
       cloudZ.onload = function() {
       contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
       contextRef.current.drawImage(cloudZ,clouds.x,clouds.y,clouds.w,clouds.h);  

@@ -34,7 +34,7 @@ function CloudsMoving() {
     const scale = 1;
     let scaledHeight = heightImage * scale;
     let scaledWidth = widthImage * scale; 
-    img.src = 'https://i.imgur.com/py8FAwc.png';
+    img.src = 'https://i.imgur.com/srXybJF.png';
     img.onload = function() {
         init();
       };

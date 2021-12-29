@@ -347,15 +347,15 @@ const boundariesDownTurn = (objectZ) => {
   //enemyBall3XRef, enemyBall3YRef, enemyBall3HRef, enemyBall3WRef, enemyBall3ImageRef
 
   const hit = (refObject) => {
-    console.log(refObject.current)
+    // console.log(refObject.current)
 
     if(playerRef.current.x > (refObject.current.x+refObject.current.w)||
     playerRef.current.x + playerRef.current.w < (refObject.current.x)||
     playerRef.current.y > refObject.current.y + refObject.current.h ||
     playerRef.current.y + playerRef.current.h < refObject.current.y){
-      console.log('miss balls')
+      // console.log('miss balls')
     } else {
-      console.log("hit balls")
+      // console.log("hit balls")
       // refObject.current.image = "https://i.imgur.com/hBclQUa.png"
       refObject.current.image = "https://i.imgur.com/J6s56fV.png"
       console.log(refObject.current.image)
@@ -370,9 +370,9 @@ const boundariesDownTurn = (objectZ) => {
 const KeyUp = (e) => {
   if(e.key === "l"){
 
-    enemyBall1Ref.current.image = "https://i.imgur.com/IGLm67Z.png";
-    enemyBall2Ref.current.image = "https://i.imgur.com/IGLm67Z.png";
-    enemyBall3Ref.current.image = "https://i.imgur.com/IGLm67Z.png";
+    enemyBall1Ref.current.image = "https://i.imgur.com/09CdZNf.png";
+    enemyBall2Ref.current.image = "https://i.imgur.com/09CdZNf.png";
+    enemyBall3Ref.current.image = "https://i.imgur.com/09CdZNf.png";
 
     enemyPlane1Ref.current.image = "https://i.imgur.com/qZaFU1N.png";
     enemyPlane2Ref.current.image = "https://i.imgur.com/qZaFU1N.png";

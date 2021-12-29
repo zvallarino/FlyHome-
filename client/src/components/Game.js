@@ -55,7 +55,10 @@ function Game() {
   const bossYRef = useRef(-1);
   const bossWRef = useRef(0);
   const bossHRef = useRef(0);
+
   const bossImgRef = useRef("https://i.imgur.com/3PjKfOy.png")
+
+  const bossRef = useRef({})
   const bossHitCounter = useRef(0)
 
   const lightningBoltsXRef = useRef(-1);
@@ -63,8 +66,8 @@ function Game() {
   const lightningBoltsWRef = useRef(0);
   const lightningBoltsHRef = useRef(0);
 
+  const lightningBoltsRef = useRef({});
 
-  
 
   const enemyPlane1Ref = useRef({});
   const enemyPlane2Ref = useRef({});
@@ -93,22 +96,24 @@ function Game() {
     {/* <Testing /> */}
 
     {/* Boss Fight */}
-    {/* <PlayerCanvasBoss bossHitCounter = {bossHitCounter} bossImgRef ={bossImgRef} bossXRef = {bossXRef} bossHRef = {bossHRef} bossYRef ={bossYRef} bossWRef ={bossWRef}
+    <PlayerCanvasBoss
+    bossHitCounter = {bossHitCounter} bossImgRef ={bossImgRef} bossXRef = {bossXRef} bossHRef = {bossHRef} bossYRef ={bossYRef} bossWRef ={bossWRef}
     lightningBoltsXRef = {lightningBoltsXRef} ligtningBoltsYRef = {ligtningBoltsYRef} lightningBoltsWRef = {lightningBoltsWRef} lightningBoltsHRef = {lightningBoltsHRef} 
     />
-    <LightningBolts lightningBoltsXRef = {lightningBoltsXRef} ligtningBoltsYRef ={ligtningBoltsYRef} lightningBoltsWRef = {lightningBoltsWRef} lightningBoltsHRef ={lightningBoltsHRef}/>
-    <BossCanvas bossImgRef = {bossImgRef} bossXRef = {bossXRef} bossHRef = {bossHRef} bossYRef ={bossYRef} bossWRef ={bossWRef} />
-    <SkyCanvas />
-    <SeaCanvas />
-    <BackgroundCanvas /> */}
-
-  
-    {/* level 2 */}
-    <Level2 />
+    <LightningBolts lightningBoltsRef = {lightningBoltsRef} lightningBoltsXRef = {lightningBoltsXRef} ligtningBoltsYRef ={ligtningBoltsYRef} lightningBoltsWRef = {lightningBoltsWRef} lightningBoltsHRef ={lightningBoltsHRef}/>
+    <BossCanvas bossRef = {bossRef} bossImgRef = {bossImgRef} bossXRef = {bossXRef} bossHRef = {bossHRef} bossYRef ={bossYRef} bossWRef ={bossWRef} />
     <CloudsMoving />
     <CloudsStatic />
     <SeaCanvas />
     <BackgroundCanvas />
+
+  
+    {/* level 2 */}
+    {/* <Level2 />
+    <CloudsMoving />
+    <CloudsStatic />
+    <SeaCanvas />
+    <BackgroundCanvas /> */}
 
     {/* level One */}
     {/* <PlayerCanvas rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/> 

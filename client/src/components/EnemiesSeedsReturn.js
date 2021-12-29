@@ -7,7 +7,7 @@ import EnemiesSeed2Canvas from './EnemiesSeed2Canvas';
 import EnemiesSeed3Canvas from './EnemiesSeed3Canvas';
 
 
-function EnemiesSeedsReturn({enemySeed1Ref,enemySeed2Ref,enemySeed3Ref  }) {
+function EnemiesSeedsReturn({enemySeed1Ref,enemySeed2Ref,enemySeed3Ref}) {
 
    
     function getRandomInt(max) {
@@ -38,11 +38,8 @@ function EnemiesSeedsReturn({enemySeed1Ref,enemySeed2Ref,enemySeed3Ref  }) {
     <>
     {/* level 2 */}
     {seedsStack(randomNumber)}
-        {/* <EnemiesSeed1Canvas enemySeed1Ref = {enemySeed1Ref}/> */}
-    {/* <EnemiesSeed2Canvas enemySeed2Ref = {enemySeed2Ref}/>
-    <EnemiesSeed3Canvas enemySeed3Ref = {enemySeed3Ref}/> */}
     </>
-  );
+    );
 }
 
 export default EnemiesSeedsReturn;

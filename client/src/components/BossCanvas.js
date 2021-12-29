@@ -1,9 +1,9 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function BossCanvas({bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef}) {
+function BossCanvas({bossRef}) {
 
-
+  bossRef.current.image = "https://i.imgur.com/3PjKfOy.png"
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -29,19 +29,19 @@ function BossCanvas({bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef}) {
     context.lineWidth = 5
     contextRef.current = context;
 
-    let plane = new Image();
+    let bossA = new Image();
   let heightImage = 1000;
   let widthImage = 2000;
   const scale = .75;
   let scaledHeight = heightImage * scale;
   let scaledWidth = widthImage * scale; 
-  plane.src = 'https://i.imgur.com/DBJLg7i.png';
-  plane.onload = function() {
+  bossA.src = 'https://i.imgur.com/DBJLg7i.png';
+  bossA.onload = function() {
       init();
     };
 
 function drawFrame(frameX, frameY, canvasX, canvasY) {
-  contextRef.current.drawImage(plane,
+  contextRef.current.drawImage(bossA,
     0, frameY * heightImage, widthImage, heightImage
     ,canvasX, canvasY, scaledWidth, scaledHeight);
     }
@@ -102,18 +102,7 @@ let boss = {
   h: 400,
   dx: 2,
   dy: 1,
-  img: bossImgRef.current
-}
-
-function drawBoss(bossObject){
-let MainBoss = new Image();
-MainBoss.src = bossImgRef.current
-MainBoss.onload = function() {
-contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-contextRef.current.beginPath();
-contextRef.current.drawImage(MainBoss, bossObject.x, bossObject.y, bossObject.w, bossObject.h)
-contextRef.current.strokeRect(boss.x, boss.y, boss.w,boss.h);
-contextRef.current.fill();}
+  img: bossRef.current.image
 }
 
 
@@ -121,11 +110,11 @@ function moveBoss(bossObject){
   bossObject.x += bossObject.dx
   bossObject.y += bossObject.dy
 
-
-  bossXRef.current = bossObject.x
-  bossYRef.current = bossObject.y
-  bossWRef.current = bossObject.w
-  bossHRef.current = bossObject.h
+  
+  bossRef.current.x = bossObject.x
+  bossRef.current.y = bossObject.y
+  bossRef.current.w = bossObject.w
+  bossRef.current.h = bossObject.h
 
   boundariesRight(bossObject)
   boundariesLeft(bossObject)

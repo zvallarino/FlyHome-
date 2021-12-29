@@ -3,7 +3,7 @@ import './App.css';
 
 function EnemiesBall3Canvas({enemyBall3Ref}) {
 
-  enemyBall3Ref.current.image = 'https://i.imgur.com/IGLm67Z.png'
+  enemyBall3Ref.current.image = 'https://i.imgur.com/09CdZNf.png'
 
 
   const canvasRef = useRef(null)
