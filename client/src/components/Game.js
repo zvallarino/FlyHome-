@@ -96,7 +96,7 @@ function Game() {
     {/* <Testing /> */}
 
     {/* Boss Fight */}
-    <PlayerCanvasBoss
+    {/* <PlayerCanvasBoss
     bossHitCounter = {bossHitCounter} lightningBoltsRef ={lightningBoltsRef} bossRef ={bossRef}
     />
     <LightningBolts lightningBoltsRef = {lightningBoltsRef} lightningBoltsXRef = {lightningBoltsXRef} ligtningBoltsYRef ={ligtningBoltsYRef} lightningBoltsWRef = {lightningBoltsWRef} lightningBoltsHRef ={lightningBoltsHRef}/>
@@ -104,15 +104,15 @@ function Game() {
     <CloudsMoving />
     <CloudsStatic />
     <SeaCanvas />
-    <BackgroundCanvas />
+    <BackgroundCanvas /> */}
 
   
     {/* level 2 */}
-    {/* <Level2 />
+    <Level2 />
     <CloudsMoving />
     <CloudsStatic />
     <SeaCanvas />
-    <BackgroundCanvas /> */}
+    <BackgroundCanvas />
 
     {/* level One */}
     {/* <PlayerCanvas rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/> 

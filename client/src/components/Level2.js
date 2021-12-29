@@ -12,6 +12,8 @@ import EnemiesBallsReturn from './EnemiesBallsReturn';
 import EnemiesPlanesReturn from './EnemyPlanesReturn';
 import RandomizerOfEnemies from './RandomizerOfEnemies';
 
+import EnemiesSeed1Canvas from './EnemiesSeed1Canvas';
+
 
 
 function Level2() {
@@ -41,7 +43,6 @@ function Level2() {
   }
 
   const seedsSetter = () =>{
-    setBalls(false)
     setSeeds(true)
   }
 
@@ -73,28 +74,41 @@ useEffect(()=>{
 },[])
   
 
+// const ifAttempt = () =>{
+//   if(balls){
+//     return  <>
+//     <EnemiesBallsReturn 
+//     enemyBall1Ref = {enemyBall1Ref}
+//     enemyBall2Ref = {enemyBall2Ref}
+//     enemyBall3Ref = {enemyBall3Ref} />
+//     </>
+//   } else if (seeds){
+//     return <>
+//      <EnemiesSeedsReturn 
+//     enemySeed1Ref = {enemySeed1Ref}
+//     enemySeed2Ref = {enemySeed2Ref}
+//     enemySeed3Ref = {enemySeed3Ref}/> 
+//     </>
+//   } else if (planes){
+//     return<>
+//     <EnemiesPlanesReturn
+//     enemyPlane1Ref = {enemyPlane1Ref}
+//     enemyPlane2Ref = {enemyPlane2Ref}
+//     enemyPlane3Ref = {enemyPlane3Ref}
+//     />
+//     </>
+//   }
+// }
+
+
 const ifAttempt = () =>{
-  if(balls){
-    return  <>
-    <EnemiesBallsReturn 
-    enemyBall1Ref = {enemyBall1Ref}
-    enemyBall2Ref = {enemyBall2Ref}
-    enemyBall3Ref = {enemyBall3Ref} />
-    </>
-  } else if (seeds){
+  if (seeds){
     return <>
      <EnemiesSeedsReturn 
     enemySeed1Ref = {enemySeed1Ref}
     enemySeed2Ref = {enemySeed2Ref}
-    enemySeed3Ref = {enemySeed3Ref}/> 
-    </>
-  } else if (planes){
-    return<>
-    <EnemiesPlanesReturn
-    enemyPlane1Ref = {enemyPlane1Ref}
-    enemyPlane2Ref = {enemyPlane2Ref}
-    enemyPlane3Ref = {enemyPlane3Ref}
-    />
+    enemySeed3Ref = {enemySeed3Ref}
+    /> 
     </>
   }
 }
@@ -121,7 +135,9 @@ const ifAttempt = () =>{
     enemySeed3Ref = {enemySeed3Ref}
     />
 
-    {ifAttempt()}
+    <EnemiesSeed1Canvas  enemySeed1Ref = {enemySeed1Ref}/>
+
+    {/* {ifAttempt()} */}
     
     {/* {seeds? <EnemiesSeedsReturn enemySeed1Ref = {enemySeed1Ref} enemySeed2Ref = {enemySeed2Ref}enemySeed3Ref = {enemySeed3Ref} />:null}
     {planes? <EnemiesPlanesReturn enemyPlane1Ref = {enemyPlane1Ref} enemyPlane2Ref = {enemyPlane2Ref}enemyPlane3Ref = {enemyPlane3Ref} />:null} */}

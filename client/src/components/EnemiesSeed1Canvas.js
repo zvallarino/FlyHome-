@@ -33,10 +33,34 @@ function EnemiesSeed1Canvas({enemySeed1Ref}) {
     let i = 0
 
      const update = () => {
+      
     drawSeed(seedOne,i,enemySeed1Ref)
     moveEnemy(seedOne,enemySeed1Ref)
+  
     requestAnimationFrame(update)
   }
+
+  const movementStopper = () => {
+    console.log("noway")
+    seedOne.dx = 0;
+    seedOne.dy = 0;
+    enemySeed1Ref.current.image = "https://i.imgur.com/9Gtot1h.png"
+  }
+
+  const explosionMaker = () => {
+    console.log("superNoWay")
+    enemySeed1Ref.current.image = "https://i.imgur.com/Tg4i9DW.png"
+  }
+
+  const disappearMaker = () => {
+    console.log("Not gonna happen")
+    contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+    console.log( enemySeed1Ref.current.image)
+  }
+
+  setTimeout(movementStopper,3000)
+  setTimeout(explosionMaker,4000)
+  setTimeout(disappearMaker,5000)
 
 
   update()
@@ -63,7 +87,7 @@ class EnemyCreator {
 }
 
 
-const seedOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(1/8),400, SCREEN_WIDTH/8,SCREEN_HEIGHT/4,10,0)
+const seedOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(1/8),400, SCREEN_WIDTH/8,SCREEN_HEIGHT/4,15,2)
 
 
 //Draw Function

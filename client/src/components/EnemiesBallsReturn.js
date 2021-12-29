@@ -18,29 +18,32 @@ function EnemiesBallsReturn ({enemyBall1Ref, enemyBall2Ref, enemyBall3Ref}) {
     }
 
     let randomNumber = getRandomInt(3);
+   
     
-    const ballsStack = () => {
-        if(randomNumber === 2){
-        return <>
-    <EnemiesBall1Canvas  enemyBall1Ref = {enemyBall1Ref}/>
-    <EnemiesBall2Canvas enemyBall2Ref = {enemyBall2Ref}/>
-    <EnemiesBall3Canvas enemyBall3Ref = {enemyBall3Ref}/>
-    </>
-    }
-    else if (randomNumber === 1){
-    return <>
-        <EnemiesBall1Canvas enemyBall1Ref = {enemyBall1Ref}/>
-        <EnemiesBall2Canvas enemyBall2Ref = {enemyBall2Ref}/>
-        </>
-    } else {
-        return <><EnemiesBall1Canvas  enemyBall1Ref = {enemyBall1Ref}/></>
-    }}
+    // const ballsStack = () => {
+    //        randomNumber = 0; 
+    //     if(randomNumber === 2){
+    //     return <>
+    // <EnemiesBall1Canvas  enemyBall1Ref = {enemyBall1Ref}/>
+    // <EnemiesBall2Canvas enemyBall2Ref = {enemyBall2Ref}/>
+    // <EnemiesBall3Canvas enemyBall3Ref = {enemyBall3Ref}/>
+    // </>
+    // }
+    // else if (randomNumber === 1){
+    // return <>
+    //     <EnemiesBall1Canvas enemyBall1Ref = {enemyBall1Ref}/>
+    //     <EnemiesBall2Canvas enemyBall2Ref = {enemyBall2Ref}/>
+    //     </>
+    // } else {
+    //     return <><EnemiesBall1Canvas  enemyBall1Ref = {enemyBall1Ref}/></>
+    // }}
 
   
   return (
     <>
     {/* level 2 */}
-    {ballsStack(randomNumber)}
+    {/* {ballsStack(randomNumber)} */}
+    <EnemiesBall1Canvas  enemyBall1Ref = {enemyBall1Ref}/>
     </>
     );
 }
