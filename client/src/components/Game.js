@@ -97,8 +97,7 @@ function Game() {
 
     {/* Boss Fight */}
     <PlayerCanvasBoss
-    bossHitCounter = {bossHitCounter} bossImgRef ={bossImgRef} bossXRef = {bossXRef} bossHRef = {bossHRef} bossYRef ={bossYRef} bossWRef ={bossWRef}
-    lightningBoltsXRef = {lightningBoltsXRef} ligtningBoltsYRef = {ligtningBoltsYRef} lightningBoltsWRef = {lightningBoltsWRef} lightningBoltsHRef = {lightningBoltsHRef} 
+    bossHitCounter = {bossHitCounter} lightningBoltsRef ={lightningBoltsRef} bossRef ={bossRef}
     />
     <LightningBolts lightningBoltsRef = {lightningBoltsRef} lightningBoltsXRef = {lightningBoltsXRef} ligtningBoltsYRef ={ligtningBoltsYRef} lightningBoltsWRef = {lightningBoltsWRef} lightningBoltsHRef ={lightningBoltsHRef}/>
     <BossCanvas bossRef = {bossRef} bossImgRef = {bossImgRef} bossXRef = {bossXRef} bossHRef = {bossHRef} bossYRef ={bossYRef} bossWRef ={bossWRef} />

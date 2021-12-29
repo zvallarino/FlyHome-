@@ -1,21 +1,26 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
+// import { render } from "react-dom";
+// import { Stage, Layer, Image } from "react-konva";
+// // gifler will be imported into global window object
+// import "/gifler";
+
+
 
 function PlayerCanvasBoss({
-  bossXRef,bossYRef, bossHRef, bossWRef, bossImgRef, bossHitCounter, lightningBoltsXRef, ligtningBoltsYRef, lightningBoltsWRef, lightningBoltsHRef
-  
+  bossRef, lightningBoltsRef
 }) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
   const playerRef = useRef(null)
 
-  const imageRef = useRef("https://i.imgur.com/5rjTnM5.png")
+  const imageRef = useRef("https://i.imgur.com/dAvqr1d.png")
   const [counter,secondsCounter] =useState(0)
   const rotationRef = useRef(0)
 
-  //  Up Right Down Left
-  let rotationArray = ["https://i.imgur.com/5rjTnM5.png", "https://i.imgur.com/KuhriMc.png", "https://i.imgur.com/R1ZZM9i.png", "https://i.imgur.com/Zbuzj3K.png"]
+    //  Up Right Down Left
+  let rotationArray = ["https://i.imgur.com/GtyzjZb.png", "https://i.imgur.com/KuhriMc.png", "https://i.imgur.com/R1ZZM9i.png", "https://i.imgur.com/Zbuzj3K.png"]
   let firingRotationArray = ['https://i.imgur.com/9lDQkp9.png','https://i.imgur.com/6Zq7JC8.png','https://i.imgur.com/LlvH1ZX.png','https://i.imgur.com/YYMtBNz.png']
   let ouchArray = ["https://i.imgur.com/3BndMiB.png", "https://i.imgur.com/6drQQey.png", "https://i.imgur.com/hlwPzh2.png", "https://i.imgur.com/fiC5k5A.png"]
   //Dead Image 
@@ -23,6 +28,7 @@ function PlayerCanvasBoss({
   // https://i.imgur.com/hBclQUa.png
 
   let rotationCounter = 0
+
 
   //left, down, right
 
@@ -36,7 +42,7 @@ function PlayerCanvasBoss({
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 10;
+    canvas.style['z-index'] = 20;
     
     
     const context = canvas.getContext("2d");
@@ -59,22 +65,74 @@ function PlayerCanvasBoss({
     }
 
   playerRef.current = player
+  
+  let plane = new Image();
+  let heightImage = 500;
+  let widthImage = 2000;
+  const scale = .25;
+  let scaledHeight = heightImage * scale;
+  let scaledWidth = widthImage * scale; 
+  plane.src = 'https://i.imgur.com/dAvqr1d.png';
+  plane.onload = function() {
+      init();
+    };
 
-  const drawPlane = () => {
-    let plane = new Image();
-    plane.src = imageRef.current
-    plane.onload = function() {
-    contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-    contextRef.current.drawImage(plane,playerRef.current.x,playerRef.current.y,playerRef.current.w,playerRef.current.h);  
-    contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
-  }}
+function drawFrame(frameX, frameY, canvasX, canvasY) {
+  contextRef.current.drawImage(plane,
+    0, frameY * heightImage, widthImage, heightImage
+    ,canvasX, canvasY, scaledWidth, scaledHeight);
+    }
+
+    function init() {
+      drawFrame(0, 0, 0, 0);
+      drawFrame(1,  1, scaledWidth, 0);
+      drawFrame(0, 2, scaledWidth * 2, 0);
+    }
+
+    const cycleLoop = [0, 1, 2];
+    let currentLoopIndex = 0;
+    let frameCount = 0;
+    
+    function step() {
+      frameCount++;
+      if (frameCount < 4) {
+        window.requestAnimationFrame(step);
+        return;
+      }
+      frameCount = 0;
+      contextRef.current.clearRect(0, 0, canvas.width, canvas.height);
+      drawFrame(cycleLoop[currentLoopIndex], currentLoopIndex, playerRef.current.x, playerRef.current.y);
+      currentLoopIndex++;
+      if (currentLoopIndex >= cycleLoop.length) {
+        currentLoopIndex = 0;
+      }
+      window.requestAnimationFrame(step);
+    }
+
+    function init() {
+      window.requestAnimationFrame(step);
+    }
+
+
+  // const drawPlane = () => {
+  //   let plane = new Image();
+  //   plane.src = imageRef.current
+  //   plane.onload = function() {
+  //   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+  //   contextRef.current.drawImage(plane,playerRef.current.x,playerRef.current.y,playerRef.current.w,playerRef.current.h);  
+  //   contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
+  // }}
+
+
+
 
   const update = () => {
-    drawPlane();
-    lightningStrike();
+    // drawPlane();
+    hit(lightningBoltsRef)
     requestAnimationFrame(update)
   }
 
+  // gifler('assets/gif/run.gif').animate('canvas.running-pikachu')
 
   update()
   },[])
@@ -174,7 +232,10 @@ const moveDown = () => {
     } else if( e.key === "l"){
       rotationFunction()
       imageRef.current = firingRotationArray[rotationRef.current]
-      hit()
+      hit(bossRef)
+
+      // hit()
+  
     } else if ( e.key === "k"){
       console.log("superBlaster")
     } else if ( e.key === " "){
@@ -189,12 +250,23 @@ const moveDown = () => {
    const rotationFunction = () => {
  
   if(rotationRef.current === 0||rotationRef.current === 2){
+    // playerRef.current.x =  playerRef.current.x - (playerRef.current.w * (2))
+    // playerRef.current.y =  playerRef.current.y + 150
+
+    // playerRef.current.x =  playerRef.current.x
+    // playerRef.current.y = playerRef.current.y
     playerRef.current.w = 400
     playerRef.current.h = 100
   } else if ( rotationRef.current === 1||rotationRef.current === 3 ){
+    // playerRef.current.x =  playerRef.current.x + (playerRef.current.w/2)
+    // playerRef.current.y =  playerRef.current.y - 150
+
    playerRef.current.w = 100
     playerRef.current.h = 400
   } else if (rotationRef.current === 4){
+    // playerRef.current.x =  playerRef.current.x - (playerRef.current.w * (2))
+    // playerRef.current.y =  playerRef.current.y + 150
+
     playerRef.current.w = 400
     playerRef.current.h = 100
     rotationCounter = 0
@@ -231,7 +303,7 @@ const boundariesDown = (objectZ) => {
   
 const boundariesRightTurn = (objectZ) => {
   if(objectZ.x > SCREEN_WIDTH-objectZ.w){
-    objectZ.x =  SCREEN_WIDTH-objectZ.w
+    objectZ.x = SCREEN_WIDTH-objectZ.w
   }
 }
 
@@ -239,42 +311,34 @@ const boundariesDownTurn = (objectZ) => {
     if(objectZ.y > SCREEN_HEIGHT-objectZ.h){
       objectZ.y = SCREEN_HEIGHT-objectZ.h
     }} 
-    
 
-//HIT MARKERS
 
-  const hit = () => {
 
-      if(playerRef.current.x > (bossXRef.current+bossWRef.current) || playerRef.current.x + playerRef.current.w < (bossXRef.current) || playerRef.current.y > bossYRef.current + bossHRef.current||playerRef.current.y + playerRef.current.h < bossYRef.current){
-        console.log('miss')
-      } else {
-        console.log("hit")
-        bossHitCounter.current =  bossHitCounter.current + 1
-        if( bossHitCounter.current < 10){
-        bossImgRef.current = ouchArray[0]} 
-        else{
-          bossImgRef.current = "https://i.imgur.com/hBclQUa.png"
-        }
-        rotationFunction()
-      }
-  }
+  const hit = (refObject) => {
+    // console.log(refObject.current)
 
-  const lightningStrike = () => {
-    if(playerRef.current.y > ligtningBoltsYRef.current + lightningBoltsHRef.current||playerRef.current.y + playerRef.current.h < ligtningBoltsYRef.current||playerRef.current.x > (lightningBoltsXRef.current+lightningBoltsWRef.current) || playerRef.current.x + playerRef.current.w < (lightningBoltsXRef.current)){
-      return
+    if(playerRef.current.x > (refObject.current.x+refObject.current.w)||
+    playerRef.current.x + playerRef.current.w < (refObject.current.x)||
+    playerRef.current.y > refObject.current.y + refObject.current.h ||
+    playerRef.current.y + playerRef.current.h < refObject.current.y){
+
     } else {
-      console.log("hit")
+      console.log('hit')
+      refObject.current.image = "https://i.imgur.com/J6s56fV.png"
       rotationFunction()
-      imageRef.current = ouchArray[rotationRef.current]
     }
 }
 
 
+
+ 
+
 const KeyUp = (e) => {
   if(e.key === "l"){
+
     rotationFunction()
     imageRef.current =rotationArray[rotationRef.current]
-    bossImgRef.current = "https://i.imgur.com/3PjKfOy.png"
+
   } else if(e.key === " "){
     // imageRef.current = "https://i.imgur.com/iNJmBDq.png"
     // console.log("stop boosting")
