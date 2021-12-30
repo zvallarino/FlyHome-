@@ -69,7 +69,7 @@ function Level2() {
 
   const timingOfLevel2 = () => {
     // setTimeout(ballsSetter, 5000);
-    setTimeout(seedsSetter, 5000);
+    // setTimeout(seedsSetter, 5000);
     // setTimeout(planesSetter, 25000);
     // setTimeout(setterOfEnemies, 30000);
     setTimeout(() => {console.log("the end")},40000);
@@ -106,6 +106,13 @@ useEffect(()=>{
     enemySeed3Ref = {enemySeed3Ref}
     />
 
+    {/* w */}
+    
+    <EnemiesPlanesReturn 
+      enemyPlane1Ref = {enemyPlane1Ref}
+      enemyPlane2Ref = {enemyPlane2Ref}
+      enemyPlane3Ref = {enemyPlane3Ref}
+    />
     {/* <EnemiesSeed1Canvas  enemySeed1Ref = {enemySeed1Ref} enemySeed1ExplosionRef = {enemySeed1ExplosionRef}/>
     <EnemiesSeed2Canvas  enemySeed2Ref = {enemySeed2Ref} enemySeed2ExplosionRef = {enemySeed2ExplosionRef} />
     <EnemiesSeed3Canvas  enemySeed3Ref = {enemySeed3Ref} enemySeed3ExplosionRef = {enemySeed3ExplosionRef}/> */}

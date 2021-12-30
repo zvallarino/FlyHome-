@@ -20,12 +20,16 @@ function PlayerCanvasLvL2PreBoss({
 
   const imageRef = useRef("https://i.imgur.com/dAvqr1d.png")
   const [counter,secondsCounter] =useState(0)
-  const rotationRef = useRef(2)
+  const isFiring = useRef(false)
+  const rotationRef = useRef(0)
 
     //  Up Right Down Left
   let rotationArray = ["https://i.imgur.com/dAvqr1d.png", "https://i.imgur.com/AyWRtSI.png", "https://i.imgur.com/G28wS3P.png", "https://i.imgur.com/9aBmrcS.png"]
-  let firingRotationArray = ['https://i.imgur.com/9lDQkp9.png','https://i.imgur.com/6Zq7JC8.png','https://i.imgur.com/LlvH1ZX.png','https://i.imgur.com/YYMtBNz.png']
+  let firingRotationArray = ['https://i.imgur.com/fStANNs.png','https://i.imgur.com/cmGOL5k.png','https://i.imgur.com/fSGTCkL.png','https://i.imgur.com/gZeIFJA.png']
   let ouchArray = ["https://i.imgur.com/3BndMiB.png", "https://i.imgur.com/6drQQey.png", "https://i.imgur.com/hlwPzh2.png", "https://i.imgur.com/fiC5k5A.png"]
+  
+  let imageHeight = [500,2000]
+  let imageWidth = [2000,500]
   //Dead Image 
 
   // https://i.imgur.com/hBclQUa.png
@@ -58,10 +62,11 @@ function PlayerCanvasLvL2PreBoss({
     //Player Initial Position and Movement Speed
   
     const player = {
-      w:400,
-      h:100,
+  
       x:700,
       y:400,
+      w:2000,
+      h:500,
       speed:10,
       dx:3,
       dy:3
@@ -70,8 +75,8 @@ function PlayerCanvasLvL2PreBoss({
   playerRef.current = player
   
   let plane = new Image();
-  let heightImage = 500;
-  let widthImage = 2000;
+  let heightImage = playerRef.current.h;
+  let widthImage = playerRef.current.w;
   const scale = .25;
   let scaledHeight = heightImage * scale;
   let scaledWidth = widthImage * scale; 
@@ -81,7 +86,34 @@ function PlayerCanvasLvL2PreBoss({
     };
 
 function drawFrame(frameX, frameY, canvasX, canvasY) {
-  plane.src = rotationArray[rotationRef.current]
+
+  if (isFiring.current === true){
+    plane.src = firingRotationArray[rotationRef.current]
+  } else {
+    plane.src = rotationArray[rotationRef.current]
+  }
+
+
+  if(rotationRef.current === 0|| rotationRef.current === 2){
+    widthImage = 2000
+    heightImage = 500
+
+    scaledWidth = widthImage *.25
+    scaledHeight = heightImage *.25
+  } else if (rotationRef.current === 1|| rotationRef.current === 3){
+    widthImage = 500
+    heightImage = 2000
+    scaledWidth = widthImage *.25
+    scaledHeight = heightImage *.25
+  } else if (rotationRef.current === 4){
+    widthImage = 2000
+    heightImage = 500
+
+    scaledWidth = widthImage *.25
+    scaledHeight = heightImage *.25
+  }
+  
+
   contextRef.current.drawImage(plane,
     0, frameY * heightImage, widthImage, heightImage
     ,canvasX, canvasY, scaledWidth, scaledHeight);
@@ -231,17 +263,16 @@ const moveDown = () => {
     } else if(e.key === "c"){
       moveRightDown()
     } else if( e.key === "l"){
-      rotationFunction()
-      imageRef.current = firingRotationArray[rotationRef.current]
-      hit(enemyBall1Ref)
-      hit(enemyBall2Ref)
-      hit(enemyBall3Ref)
-      hit(enemyPlane1Ref)
-      hit(enemyPlane2Ref)
-      hit(enemyPlane3Ref)
-      hit(enemySeed1Ref)
-      hit(enemySeed2Ref)
-      hit(enemySeed3Ref)
+      isFiring.current = true
+      // hit(enemyBall1Ref)
+      // hit(enemyBall2Ref)
+      // hit(enemyBall3Ref)
+      // hit(enemyPlane1Ref)
+      // hit(enemyPlane2Ref)
+      // hit(enemyPlane3Ref)
+      // hit(enemySeed1Ref)
+      // hit(enemySeed2Ref)
+      // hit(enemySeed3Ref)
 
       // hit()
   
@@ -350,6 +381,7 @@ const boundariesDownTurn = (objectZ) => {
 
 const KeyUp = (e) => {
   if(e.key === "l"){
+    isFiring.current = false
 
     enemyBall1Ref.current.image = "https://i.imgur.com/09CdZNf.png";
     enemyBall2Ref.current.image = "https://i.imgur.com/09CdZNf.png";

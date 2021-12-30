@@ -3,7 +3,7 @@ import './App.css';
 
 function EnemyPlane1Canvas({enemyPlane1Ref}) {
 
-  enemyPlane1Ref.current.image = 'https://i.imgur.com/qZaFU1N.png'
+  enemyPlane1Ref.current.image = 'https://i.imgur.com/FJ20n1X.png'
 
 
   const canvasRef = useRef(null)
@@ -64,7 +64,7 @@ class EnemyCreator {
 }
 
 
-const planeOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', 700, 200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,10,1)
+const planeOne = new EnemyCreator('https://i.imgur.com/FJ20n1X.png', 700, 200, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,10,1)
 
 
 //Draw Function
