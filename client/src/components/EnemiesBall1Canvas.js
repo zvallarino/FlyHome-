@@ -4,6 +4,7 @@ import './App.css';
 function EnemiesBall1Canvas({enemyBall1Ref}) {
 
 
+
   enemyBall1Ref.current.image = 'https://i.imgur.com/09CdZNf.png'
 
 

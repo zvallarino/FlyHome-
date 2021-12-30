@@ -1,7 +1,13 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesSeed2Canvas({enemySeed2Ref}) {
+function EnemiesSeed2Canvas({enemySeed2Ref, enemySeed2ExplosionRef}) {
+
+  
+  enemySeed2ExplosionRef.current.x = -1;
+  enemySeed2ExplosionRef.current.y = -1;
+  enemySeed2ExplosionRef.current.w = 0;
+  enemySeed2ExplosionRef.current.h = 0;
 
     enemySeed2Ref.current.image = 'https://i.imgur.com/cqiU108.png'
 
@@ -35,6 +41,37 @@ function EnemiesSeed2Canvas({enemySeed2Ref}) {
     moveEnemy(seedTwo,enemySeed2Ref)
     requestAnimationFrame(update)
   }
+
+  
+  const movementStopper = () => {
+    console.log("noway")
+    seedTwo.dx = 0;
+    seedTwo.dy = 0;
+    enemySeed2Ref.current.image = "https://i.imgur.com/9Gtot1h.png"
+  }
+
+  const explosionMaker = () => {
+    console.log("superNoWay")
+    enemySeed2Ref.current.image = "https://i.imgur.com/Tg4i9DW.png"
+    enemySeed2ExplosionRef.current.x = enemySeed2Ref.current.x;
+    enemySeed2ExplosionRef.current.y = enemySeed2Ref.current.y;
+    enemySeed2ExplosionRef.current.w = enemySeed2Ref.current.w;
+    enemySeed2ExplosionRef.current.h = enemySeed2Ref.current.h;
+  }
+
+  const disappearMaker = () => {
+    console.log("Not gonna happen")
+    contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+    console.log( enemySeed2Ref.current.image)
+    enemySeed2ExplosionRef.current.x = -1;
+    enemySeed2ExplosionRef.current.y = -1;
+    enemySeed2ExplosionRef.current.w = 0;
+    enemySeed2ExplosionRef.current.h = 0;
+  }
+
+  setTimeout(movementStopper,3000)
+  setTimeout(explosionMaker,4000)
+  setTimeout(disappearMaker,5000)
 
 
   update()

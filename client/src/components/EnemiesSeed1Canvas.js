@@ -1,7 +1,8 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesSeed1Canvas({enemySeed1Ref}) {
+function EnemiesSeed1Canvas({enemySeed1Ref, enemySeed1ExplosionRef}) {
+
 
  enemySeed1Ref.current.image = 'https://i.imgur.com/cqiU108.png'
 
@@ -50,12 +51,20 @@ function EnemiesSeed1Canvas({enemySeed1Ref}) {
   const explosionMaker = () => {
     console.log("superNoWay")
     enemySeed1Ref.current.image = "https://i.imgur.com/Tg4i9DW.png"
+    enemySeed1ExplosionRef.current.x = enemySeed1Ref.current.x;
+    enemySeed1ExplosionRef.current.y = enemySeed1Ref.current.y;
+    enemySeed1ExplosionRef.current.w = enemySeed1Ref.current.w;
+    enemySeed1ExplosionRef.current.h = enemySeed1Ref.current.h;
   }
 
   const disappearMaker = () => {
     console.log("Not gonna happen")
     contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
     console.log( enemySeed1Ref.current.image)
+    enemySeed1ExplosionRef.current.x = -1;
+    enemySeed1ExplosionRef.current.y = -1;
+    enemySeed1ExplosionRef.current.w = 0;
+    enemySeed1ExplosionRef.current.h = 0;
   }
 
   setTimeout(movementStopper,3000)

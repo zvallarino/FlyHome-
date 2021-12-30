@@ -13,6 +13,8 @@ import EnemiesPlanesReturn from './EnemyPlanesReturn';
 import RandomizerOfEnemies from './RandomizerOfEnemies';
 
 import EnemiesSeed1Canvas from './EnemiesSeed1Canvas';
+import EnemiesSeed2Canvas from './EnemiesSeed2Canvas';
+import EnemiesSeed3Canvas from './EnemiesSeed3Canvas';
 
 
 
@@ -27,6 +29,10 @@ function Level2() {
   const enemySeed1Ref = useRef({});
   const enemySeed2Ref = useRef({});
   const enemySeed3Ref = useRef({});
+
+  const enemySeed1ExplosionRef = useRef({}) 
+  const enemySeed2ExplosionRef = useRef({}) 
+  const enemySeed3ExplosionRef = useRef({}) 
 
   const enemyBall1Ref = useRef({});
   const enemyBall2Ref = useRef({});
@@ -72,46 +78,7 @@ function Level2() {
 useEffect(()=>{
   timingOfLevel2()
 },[])
-  
 
-// const ifAttempt = () =>{
-//   if(balls){
-//     return  <>
-//     <EnemiesBallsReturn 
-//     enemyBall1Ref = {enemyBall1Ref}
-//     enemyBall2Ref = {enemyBall2Ref}
-//     enemyBall3Ref = {enemyBall3Ref} />
-//     </>
-//   } else if (seeds){
-//     return <>
-//      <EnemiesSeedsReturn 
-//     enemySeed1Ref = {enemySeed1Ref}
-//     enemySeed2Ref = {enemySeed2Ref}
-//     enemySeed3Ref = {enemySeed3Ref}/> 
-//     </>
-//   } else if (planes){
-//     return<>
-//     <EnemiesPlanesReturn
-//     enemyPlane1Ref = {enemyPlane1Ref}
-//     enemyPlane2Ref = {enemyPlane2Ref}
-//     enemyPlane3Ref = {enemyPlane3Ref}
-//     />
-//     </>
-//   }
-// }
-
-
-const ifAttempt = () =>{
-  if (seeds){
-    return <>
-     <EnemiesSeedsReturn 
-    enemySeed1Ref = {enemySeed1Ref}
-    enemySeed2Ref = {enemySeed2Ref}
-    enemySeed3Ref = {enemySeed3Ref}
-    /> 
-    </>
-  }
-}
 
 
 
@@ -130,39 +97,19 @@ const ifAttempt = () =>{
     enemyBall2Ref = {enemyBall2Ref}
     enemyBall3Ref = {enemyBall3Ref}
 
+    enemySeed1ExplosionRef = {enemySeed1ExplosionRef}
+    enemySeed2ExplosionRef = {enemySeed2ExplosionRef} 
+    enemySeed3ExplosionRef = {enemySeed3ExplosionRef}
+
     enemySeed1Ref = {enemySeed1Ref}
     enemySeed2Ref = {enemySeed2Ref}
     enemySeed3Ref = {enemySeed3Ref}
     />
 
-    <EnemiesSeed1Canvas  enemySeed1Ref = {enemySeed1Ref}/>
+    {/* <EnemiesSeed1Canvas  enemySeed1Ref = {enemySeed1Ref} enemySeed1ExplosionRef = {enemySeed1ExplosionRef}/>
+    <EnemiesSeed2Canvas  enemySeed2Ref = {enemySeed2Ref} enemySeed2ExplosionRef = {enemySeed2ExplosionRef} />
+    <EnemiesSeed3Canvas  enemySeed3Ref = {enemySeed3Ref} enemySeed3ExplosionRef = {enemySeed3ExplosionRef}/> */}
 
-    {/* {ifAttempt()} */}
-    
-    {/* {seeds? <EnemiesSeedsReturn enemySeed1Ref = {enemySeed1Ref} enemySeed2Ref = {enemySeed2Ref}enemySeed3Ref = {enemySeed3Ref} />:null}
-    {planes? <EnemiesPlanesReturn enemyPlane1Ref = {enemyPlane1Ref} enemyPlane2Ref = {enemyPlane2Ref}enemyPlane3Ref = {enemyPlane3Ref} />:null} */}
-    {/* <EnemiesSeedsReturn 
-      enemySeed1Ref = {enemySeed1Ref}
-      enemySeed2Ref = {enemySeed2Ref}
-      enemySeed3Ref = {enemySeed3Ref}
-    /> 
-
-    <EnemiesBallsReturn 
-    enemyBall1Ref = {enemyBall1Ref}
-    enemyBall2Ref = {enemyBall2Ref}
-    enemyBall3Ref = {enemyBall3Ref}
-    />
-
-
-    <EnemiesPlanesReturn 
-    enemyPlane1Ref = {enemyPlane1Ref}
-    enemyPlane2Ref = {enemyPlane2Ref}
-    enemyPlane3Ref = {enemyPlane3Ref}
-    /> */}
-    
-    {/* <EnemyPlane1Canvas enemyPlane1Ref = {enemyPlane1Ref}/>
-    <EnemyPlane2Canvas enemyPlane2Ref = {enemyPlane2Ref}/>
-    <EnemyPlane3Canvas enemyPlane3Ref = {enemyPlane3Ref}/> */}
     </>
   );
 }

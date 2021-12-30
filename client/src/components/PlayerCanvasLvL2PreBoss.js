@@ -10,11 +10,9 @@ import './App.css';
 function PlayerCanvasLvL2PreBoss({
   enemyBall1Ref, enemyBall2Ref, enemyBall3Ref,
   enemyPlane1Ref, enemyPlane2Ref, enemyPlane3Ref,
-  enemySeed1Ref, enemySeed2Ref, enemySeed3Ref
+  enemySeed1Ref, enemySeed2Ref, enemySeed3Ref,
+  enemySeed1ExplosionRef, enemySeed2ExplosionRef, enemySeed3ExplosionRef
 }) {
-
-
-
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -22,10 +20,10 @@ function PlayerCanvasLvL2PreBoss({
 
   const imageRef = useRef("https://i.imgur.com/dAvqr1d.png")
   const [counter,secondsCounter] =useState(0)
-  const rotationRef = useRef(0)
+  const rotationRef = useRef(2)
 
     //  Up Right Down Left
-  let rotationArray = ["https://i.imgur.com/GtyzjZb.png", "https://i.imgur.com/KuhriMc.png", "https://i.imgur.com/R1ZZM9i.png", "https://i.imgur.com/Zbuzj3K.png"]
+  let rotationArray = ["https://i.imgur.com/dAvqr1d.png", "https://i.imgur.com/AyWRtSI.png", "https://i.imgur.com/G28wS3P.png", "https://i.imgur.com/9aBmrcS.png"]
   let firingRotationArray = ['https://i.imgur.com/9lDQkp9.png','https://i.imgur.com/6Zq7JC8.png','https://i.imgur.com/LlvH1ZX.png','https://i.imgur.com/YYMtBNz.png']
   let ouchArray = ["https://i.imgur.com/3BndMiB.png", "https://i.imgur.com/6drQQey.png", "https://i.imgur.com/hlwPzh2.png", "https://i.imgur.com/fiC5k5A.png"]
   //Dead Image 
@@ -77,21 +75,16 @@ function PlayerCanvasLvL2PreBoss({
   const scale = .25;
   let scaledHeight = heightImage * scale;
   let scaledWidth = widthImage * scale; 
-  plane.src = 'https://i.imgur.com/dAvqr1d.png';
+  plane.src = rotationArray[rotationRef.current];
   plane.onload = function() {
       init();
     };
 
 function drawFrame(frameX, frameY, canvasX, canvasY) {
+  plane.src = rotationArray[rotationRef.current]
   contextRef.current.drawImage(plane,
     0, frameY * heightImage, widthImage, heightImage
     ,canvasX, canvasY, scaledWidth, scaledHeight);
-    }
-
-    function init() {
-      drawFrame(0, 0, 0, 0);
-      drawFrame(1,  1, scaledWidth, 0);
-      drawFrame(0, 2, scaledWidth * 2, 0);
     }
 
     const cycleLoop = [0, 1, 2];
@@ -118,22 +111,25 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
       window.requestAnimationFrame(step);
     }
 
+  const initialStateSetter = (rebObject) =>{
+    rebObject.current.x = -1;
+    rebObject.current.y = -1;
+    rebObject.current.w = 0;
+    rebObject.current.h = 0;
+  }
 
-  // const drawPlane = () => {
-  //   let plane = new Image();
-  //   plane.src = imageRef.current
-  //   plane.onload = function() {
-  //   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-  //   contextRef.current.drawImage(plane,playerRef.current.x,playerRef.current.y,playerRef.current.w,playerRef.current.h);  
-  //   contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
-  // }}
-
+  initialStateSetter(enemySeed1ExplosionRef)
+  initialStateSetter(enemySeed2ExplosionRef)
+  initialStateSetter(enemySeed3ExplosionRef)
 
 
 
   const update = () => {
     // drawPlane();
-    // lightningStrike();
+    hit(enemySeed1ExplosionRef);
+    hit(enemySeed2ExplosionRef);
+    hit(enemySeed3ExplosionRef);
+    
     requestAnimationFrame(update)
   }
 
@@ -254,8 +250,8 @@ const moveDown = () => {
     } else if ( e.key === " "){
       rotationCounter++
       rotationRef.current = rotationRef.current + 1
+      console.log(rotationRef.current)
       rotationFunction()
-      imageRef.current = rotationArray[rotationRef.current]
     }
   } 
    // Rotation Function 
@@ -331,21 +327,6 @@ const boundariesDownTurn = (objectZ) => {
 
 //HIT MARKERS
 
-  // const hit = () => {
-
-  //     if(playerRef.current.x > (enemyPlaneXRef.current+enemyPlaneWRef.current) ||
-  //      playerRef.current.x + playerRef.current.w < (enemyPlaneXRef.current) || 
-  //      playerRef.current.y > enemyPlaneYRef.current + enemyPlaneHRef.current||
-  //      playerRef.current.y + playerRef.current.h < enemyPlaneYRef.current){
-  //       console.log('miss')
-  //     } else {
-  //       enemyPlaneImageRef.current = "https://i.imgur.com/hBclQUa.png"
-  //       rotationFunction()
-  //     }
-  // }
-
-  //enemyBall3XRef, enemyBall3YRef, enemyBall3HRef, enemyBall3WRef, enemyBall3ImageRef
-
   const hit = (refObject) => {
     // console.log(refObject.current)
 
@@ -355,7 +336,7 @@ const boundariesDownTurn = (objectZ) => {
     playerRef.current.y + playerRef.current.h < refObject.current.y){
       // console.log('miss balls')
     } else {
-      // console.log("hit balls")
+      console.log("hit balls")
       // refObject.current.image = "https://i.imgur.com/hBclQUa.png"
       refObject.current.image = "https://i.imgur.com/J6s56fV.png"
       console.log(refObject.current.image)

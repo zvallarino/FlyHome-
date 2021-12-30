@@ -1,9 +1,16 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesSeed3Canvas({enemySeed3Ref}) {
+function EnemiesSeed3Canvas({enemySeed3Ref, enemySeed3ExplosionRef}) {
+
+    
+    enemySeed3ExplosionRef.current.x = -1;
+    enemySeed3ExplosionRef.current.y = -1;
+    enemySeed3ExplosionRef.current.w = 0;
+    enemySeed3ExplosionRef.current.h = 0;
 
     enemySeed3Ref.current.image = 'https://i.imgur.com/cqiU108.png'
+    
 
 
   const canvasRef = useRef(null)
@@ -29,6 +36,37 @@ function EnemiesSeed3Canvas({enemySeed3Ref}) {
     contextRef.current = context;
 
     let i = 0
+
+    const movementStopper = () => {
+      console.log("noway")
+      seedThree.dx = 0;
+      seedThree.dy = 0;
+      enemySeed3Ref.current.image = "https://i.imgur.com/9Gtot1h.png"
+    }
+  
+    const explosionMaker = () => {
+      console.log("superNoWay")
+      enemySeed3Ref.current.image = "https://i.imgur.com/Tg4i9DW.png"
+      enemySeed3ExplosionRef.current.x = enemySeed3Ref.current.x;
+      enemySeed3ExplosionRef.current.y = enemySeed3Ref.current.y;
+      enemySeed3ExplosionRef.current.w = enemySeed3Ref.current.w;
+      enemySeed3ExplosionRef.current.h = enemySeed3Ref.current.h;
+    }
+  
+    const disappearMaker = () => {
+      console.log("Not gonna happen")
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+      console.log( enemySeed3Ref.current.image)
+      enemySeed3ExplosionRef.current.x = -1;
+      enemySeed3ExplosionRef.current.y = -1;
+      enemySeed3ExplosionRef.current.w = 0;
+      enemySeed3ExplosionRef.current.h = 0;
+    }
+  
+    setTimeout(movementStopper,3000)
+    setTimeout(explosionMaker,4000)
+    setTimeout(disappearMaker,5000)
+  
 
      const update = () => {
     drawSeed(seedThree,i,enemySeed3Ref)
