@@ -45,35 +45,76 @@ function Level2() {
   const [planes,setPlanes] = useState(false)
   const [RandomizerOfEnemies,setRandomizerOfEnemies] = useState(false)
   const [resetterOfEnemies, setReset] = useState(false)
-  const pleaseStop = useRef(true)
+  const ballOneStartRef = useRef(true)
 
   const ballsSetter = () =>{
-    setBalls(true)
+    setBalls(foxs=>!foxs)
   }
 
   const seedsSetter = () =>{
-  pleaseStop.current = false
+    ballOneStartRef.current = false
   setSeeds(true)
+  setBalls(foxs=>!foxs)
   }
 
   const planesSetter = () =>{
-  pleaseStop.current = true
+    ballOneStartRef.current = true
     setPlanes(true)
+    setBalls(foxs=>!foxs)
     console.log('this fired')
   }
 
 
   const setterOfEnemies = () =>{
-  pleaseStop.current = false
-  console.log(pleaseStop.current)
+    ballOneStartRef.current = false
+    setBalls(foxs=>!foxs)
+  console.log(ballOneStartRef.current)
   }
+
+  const oneMore = () =>{
+    ballOneStartRef.current = true
+    setBalls(foxs=>!foxs)
+  }
+
+  const canIChangeThis = () =>{
+    ballOneStartRef.current = false
+    setBalls(foxs=>!foxs)
+  }
+
+  const TwoMore = () =>{
+    ballOneStartRef.current = true
+    setBalls(foxs=>!foxs)
+  }
+
+  const canIChangeThis2 = () =>{
+    ballOneStartRef.current = false
+    setBalls(foxs=>!foxs)
+  }
+
+  const threeMore = () =>{
+    ballOneStartRef.current = true
+    setBalls(foxs=>!foxs)
+  }
+
+  const canIChangeThis3 = () =>{
+    ballOneStartRef.current = false
+    setBalls(foxs=>!foxs)
+    console.log("no faith but lets go")
+  }
+
+
+
 
 
   const timingOfLevel2 = () => {
     setTimeout(ballsSetter, 5000);
-    setTimeout(seedsSetter, 10000);
-    setTimeout(planesSetter, 15000);
-    setTimeout(setterOfEnemies, 20000);
+    setTimeout(seedsSetter, 7000);
+    setTimeout(planesSetter, 10000);
+    setTimeout(setterOfEnemies, 13000);
+    setTimeout(oneMore,16000)
+    setTimeout(canIChangeThis2,19000)
+    setTimeout(threeMore,21000)
+    setTimeout(canIChangeThis3,24000)
     setTimeout(() => {console.log("the end")},40000);
   }
 
@@ -108,7 +149,7 @@ useEffect(()=>{
     enemySeed3Ref = {enemySeed3Ref}
 
     />
-    <EnemiesBall1Canvas balls = {balls} pleaseStop = {pleaseStop} enemyBall1Ref = {enemyBall1Ref}/>
+    <EnemiesBall1Canvas balls = {balls} ballOneStartRef = {ballOneStartRef} enemyBall1Ref = {enemyBall1Ref}/>
     {/* {seeds? <EnemiesSeed1Canvas enemySeed1Ref = {enemySeed1Ref} enemySeed1ExplosionRef = {enemySeed1ExplosionRef} />:null} */}
    
     {/* <EnemiesSeed1Canvas  enemySeed1Ref = {enemySeed1Ref} enemySeed1ExplosionRef = {enemySeed1ExplosionRef}/>
