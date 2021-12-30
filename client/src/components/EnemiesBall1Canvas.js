@@ -1,12 +1,11 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesBall1Canvas({enemyBall1Ref}) {
+function EnemiesBall1Canvas({enemyBall1Ref, balls, pleaseStop}) {
 
-
+ 
 
   enemyBall1Ref.current.image = 'https://i.imgur.com/09CdZNf.png'
-
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -14,6 +13,8 @@ function EnemiesBall1Canvas({enemyBall1Ref}) {
   const colorRef = useRef('grey')
 
   useEffect(()=>{
+
+    
 
     const canvas = canvasRef.current;
     canvas.width = window.innerWidth * 2; 
@@ -35,14 +36,18 @@ function EnemiesBall1Canvas({enemyBall1Ref}) {
     let i = 0
 
      const update = () => {
+       if(pleaseStop.current){
     drawEnemyPlane(ballOne,i,enemyBall1Ref)
     moveEnemy(ballOne,enemyBall1Ref)
-    requestAnimationFrame(update)
+    requestAnimationFrame(update)}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+      return
+    }
   }
-
-
-  update()
-  },[])
+  
+    update()
+  },[pleaseStop])
 
 //   //SCREEN HEIGHT/WIDTH
 
@@ -71,6 +76,8 @@ const ballOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH
 //Draw Function
 
 function drawEnemyPlane(EnemyObject,i,refObject){
+
+  
   let enemy = new Image();
   enemy.src = refObject.current.image
   enemy.onload = function() {
