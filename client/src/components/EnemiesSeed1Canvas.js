@@ -42,14 +42,14 @@ function EnemiesSeed1Canvas({enemySeed1Ref, enemySeed1ExplosionRef}) {
   }
 
   const movementStopper = () => {
-    console.log("noway")
+    // console.log("noway")
     seedOne.dx = 0;
     seedOne.dy = 0;
     enemySeed1Ref.current.image = "https://i.imgur.com/9Gtot1h.png"
   }
 
   const explosionMaker = () => {
-    console.log("superNoWay")
+    // console.log("superNoWay")
     enemySeed1Ref.current.image = "https://i.imgur.com/Tg4i9DW.png"
     enemySeed1ExplosionRef.current.x = enemySeed1Ref.current.x;
     enemySeed1ExplosionRef.current.y = enemySeed1Ref.current.y;
@@ -58,9 +58,9 @@ function EnemiesSeed1Canvas({enemySeed1Ref, enemySeed1ExplosionRef}) {
   }
 
   const disappearMaker = () => {
-    console.log("Not gonna happen")
+    // console.log("Not gonna happen")
     contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-    console.log( enemySeed1Ref.current.image)
+    // console.log( enemySeed1Ref.current.image)
     enemySeed1ExplosionRef.current.x = -1;
     enemySeed1ExplosionRef.current.y = -1;
     enemySeed1ExplosionRef.current.w = 0;

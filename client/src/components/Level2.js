@@ -57,23 +57,23 @@ function Level2() {
   }
 
   const planesSetter = () =>{
+  pleaseStop.current = true
     setPlanes(true)
+    console.log('this fired')
   }
 
 
   const setterOfEnemies = () =>{
-    setBalls(false)
-    setSeeds(false)
-    setPlanes(false)
-
+  pleaseStop.current = false
+  console.log(pleaseStop.current)
   }
 
 
   const timingOfLevel2 = () => {
     setTimeout(ballsSetter, 5000);
     setTimeout(seedsSetter, 10000);
-    // setTimeout(planesSetter, 20000);
-    // setTimeout(setterOfEnemies, 30000);
+    setTimeout(planesSetter, 15000);
+    setTimeout(setterOfEnemies, 20000);
     setTimeout(() => {console.log("the end")},40000);
   }
 
@@ -107,19 +107,9 @@ useEffect(()=>{
     enemySeed2Ref = {enemySeed2Ref}
     enemySeed3Ref = {enemySeed3Ref}
 
-    pleaseStop ={pleaseStop}
     />
-
-    {/* w */}
-    
-    {/* <EnemiesPlanesReturn 
-      enemyPlane1Ref = {enemyPlane1Ref}
-      enemyPlane2Ref = {enemyPlane2Ref}
-      enemyPlane3Ref = {enemyPlane3Ref}
-    /> */}
-     {/* <EnemiesBall1Canvas enemyBall1Ref = {enemyBall1Ref}/> */}
-     <EnemiesBall1Canvas balls = {balls} pleaseStop = {pleaseStop} enemyBall1Ref = {enemyBall1Ref}/>
-    {seeds? <EnemiesSeed1Canvas enemySeed1Ref = {enemySeed1Ref} enemySeed1ExplosionRef = {enemySeed1ExplosionRef} />:null}
+    <EnemiesBall1Canvas balls = {balls} pleaseStop = {pleaseStop} enemyBall1Ref = {enemyBall1Ref}/>
+    {/* {seeds? <EnemiesSeed1Canvas enemySeed1Ref = {enemySeed1Ref} enemySeed1ExplosionRef = {enemySeed1ExplosionRef} />:null} */}
    
     {/* <EnemiesSeed1Canvas  enemySeed1Ref = {enemySeed1Ref} enemySeed1ExplosionRef = {enemySeed1ExplosionRef}/>
     <EnemiesSeed2Canvas  enemySeed2Ref = {enemySeed2Ref} enemySeed2ExplosionRef = {enemySeed2ExplosionRef} />

@@ -36,6 +36,7 @@ function EnemiesBall1Canvas({enemyBall1Ref, balls, pleaseStop}) {
     let i = 0
 
      const update = () => {
+       console.log(pleaseStop.current)
        if(pleaseStop.current){
     drawEnemyPlane(ballOne,i,enemyBall1Ref)
     moveEnemy(ballOne,enemyBall1Ref)
@@ -47,7 +48,7 @@ function EnemiesBall1Canvas({enemyBall1Ref, balls, pleaseStop}) {
   }
   
     update()
-  },[pleaseStop])
+  },[pleaseStop.current])
 
 //   //SCREEN HEIGHT/WIDTH
 

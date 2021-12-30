@@ -367,10 +367,10 @@ const boundariesDownTurn = (objectZ) => {
     playerRef.current.y + playerRef.current.h < refObject.current.y){
       // console.log('miss balls')
     } else {
-      console.log("hit balls")
+      // console.log("hit balls")
       // refObject.current.image = "https://i.imgur.com/hBclQUa.png"
       refObject.current.image = "https://i.imgur.com/J6s56fV.png"
-      console.log(refObject.current.image)
+      // console.log(refObject.current.image)
       rotationFunction()
     }
 }
