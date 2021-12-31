@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesSeed2Canvas({enemySeed2Ref, enemySeed2ExplosionRef}) {
+function EnemiesSeed2Canvas({enemySeed2Ref, enemySeed2ExplosionRef, seed2,seed2StartRef}) {
 
   
   enemySeed2ExplosionRef.current.x = -1;
@@ -37,9 +37,14 @@ function EnemiesSeed2Canvas({enemySeed2Ref, enemySeed2ExplosionRef}) {
     let i = 0
 
      const update = () => {
+       if(seed2StartRef.current){
     drawSeed(seedTwo,i,enemySeed2Ref)
     moveEnemy(seedTwo,enemySeed2Ref)
-    requestAnimationFrame(update)
+    requestAnimationFrame(update)}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+      return
+    }
   }
 
   
@@ -75,7 +80,7 @@ function EnemiesSeed2Canvas({enemySeed2Ref, enemySeed2ExplosionRef}) {
 
 
   update()
-  },[])
+  },[seed2])
 
 //   //SCREEN HEIGHT/WIDTH
 

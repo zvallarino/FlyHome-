@@ -11,7 +11,7 @@ import CloudsStatic from './CloudsStatic';
 import PlayerCanvasBoss from './PlayerCanvasBoss';
 import LightningBolts from './LightningBolts';
 import BossCanvas from './BossCanvas';
-import Level2 from './Level2';
+import EnemiesALevel2 from './EnemiesALevel2';
 
 
 import PlayerCanvasLvL2PreBoss from './PlayerCanvasLvL2PreBoss';
@@ -108,7 +108,7 @@ function Game() {
 
   
     {/* level 2 */}
-    <Level2 />
+    <EnemiesALevel2 />
     <CloudsMoving />
     <CloudsStatic />
     <SeaCanvas />

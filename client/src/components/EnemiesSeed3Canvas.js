@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesSeed3Canvas({enemySeed3Ref, enemySeed3ExplosionRef}) {
+function EnemiesSeed3Canvas({enemySeed3Ref, enemySeed3ExplosionRef, seed3,seed3StartRef}) {
 
     
     enemySeed3ExplosionRef.current.x = -1;
@@ -69,14 +69,19 @@ function EnemiesSeed3Canvas({enemySeed3Ref, enemySeed3ExplosionRef}) {
   
 
      const update = () => {
-    drawSeed(seedThree,i,enemySeed3Ref)
+       if(seed3StartRef.current)
+    {drawSeed(seedThree,i,enemySeed3Ref)
     moveEnemy(seedThree,enemySeed3Ref)
-    requestAnimationFrame(update)
+    requestAnimationFrame(update)}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+      return
+    }
   }
 
 
   update()
-  },[])
+  },[seed3])
 
 //   //SCREEN HEIGHT/WIDTH
 

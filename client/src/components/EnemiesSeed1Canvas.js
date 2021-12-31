@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesSeed1Canvas({enemySeed1Ref, enemySeed1ExplosionRef}) {
+function EnemiesSeed1Canvas({enemySeed1Ref, enemySeed1ExplosionRef, seed1, seed1StartRef}) {
 
 
  enemySeed1Ref.current.image = 'https://i.imgur.com/cqiU108.png'
@@ -34,11 +34,14 @@ function EnemiesSeed1Canvas({enemySeed1Ref, enemySeed1ExplosionRef}) {
     let i = 0
 
      const update = () => {
-      
-    drawSeed(seedOne,i,enemySeed1Ref)
-    moveEnemy(seedOne,enemySeed1Ref)
-  
-    requestAnimationFrame(update)
+       if(seed1StartRef.current){
+      drawSeed(seedOne,i,enemySeed1Ref)
+      moveEnemy(seedOne,enemySeed1Ref)
+      requestAnimationFrame(update)}
+      else{
+        contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+        return
+      }
   }
 
   const movementStopper = () => {
@@ -73,7 +76,7 @@ function EnemiesSeed1Canvas({enemySeed1Ref, enemySeed1ExplosionRef}) {
 
 
   update()
-  },[])
+  },[seed1])
 
 //   //SCREEN HEIGHT/WIDTH
 

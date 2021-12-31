@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemyPlane1Canvas({enemyPlane1Ref}) {
+function EnemyPlane1Canvas({enemyPlane1Ref, plane1, plane1StartRef }) {
 
   enemyPlane1Ref.current.image = 'https://i.imgur.com/FJ20n1X.png'
 
@@ -34,14 +34,19 @@ function EnemyPlane1Canvas({enemyPlane1Ref}) {
     let i = 0
 
   const update = () => {
+    if(plane1StartRef.current){
     drawEnemyPlane(planeOne,i,enemyPlane1Ref)
     moveEnemy(planeOne, enemyPlane1Ref)
-    requestAnimationFrame(update)
+    requestAnimationFrame(update)}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+      return
+    }
   }
 
 
   update()
-  },[])
+  },[plane1])
 
 //   //SCREEN HEIGHT/WIDTH
 

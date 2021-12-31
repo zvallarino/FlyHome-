@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesBall1Canvas({enemyBall1Ref, balls, ballOneStartRef}) {
+function EnemiesBall1Canvas({enemyBall1Ref, balls1, ballOneStartRef}) {
 
  
 
@@ -48,7 +48,7 @@ function EnemiesBall1Canvas({enemyBall1Ref, balls, ballOneStartRef}) {
   }
   
     update()
-  },[ballOneStartRef.current,balls])
+  },[balls1])
 
 //   //SCREEN HEIGHT/WIDTH
 

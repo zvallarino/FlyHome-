@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesBall2Canvas({enemyBall2Ref, ballTwoStart}) {
+function EnemiesBall2Canvas({enemyBall2Ref, ballTwoStartRef, ball2}) {
 
   enemyBall2Ref.current.image = 'https://i.imgur.com/09CdZNf.png'
 
@@ -35,10 +35,11 @@ function EnemiesBall2Canvas({enemyBall2Ref, ballTwoStart}) {
 
     
   const update = () => {
-    if(ballTwoStart.current){
+    if(ballTwoStartRef.current){
     drawEnemyPlane(ballTwo,i,enemyBall2Ref)
     moveEnemy(ballTwo,enemyBall2Ref)
-    requestAnimationFrame(update)}else{
+    requestAnimationFrame(update)}
+    else{
       contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
       return
     }
@@ -46,7 +47,7 @@ function EnemiesBall2Canvas({enemyBall2Ref, ballTwoStart}) {
 
 
   update()
-  },[ballTwoStart.current])
+  },[ball2])
 
 //   //SCREEN HEIGHT/WIDTH
 
