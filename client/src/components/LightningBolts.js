@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function LightningBolts({ lightningBoltsRef }) {
+function LightningBolts({ lightningBoltsRef, lightning, lightningStartRef }) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -66,18 +66,25 @@ const outerLoop = () => {
     }
 }
 
-
-setInterval(outerLoop, 750)  
-
+if(lightningStartRef.current){
+let myInterval = setInterval(outerLoop, 750)  
+const clearingOfInterval = () => {
+  clearInterval(myInterval)
+  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
+}
+setTimeout(clearingOfInterval,5000)}else{
+  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
+  return
+}
 
 
 const update = () => {
-  requestAnimationFrame(update)
+ requestAnimationFrame(update)
 }
 
 
   update()
-  },[])
+  },[lightning])
 
 
   //SCREEN HEIGHT/WIDTH

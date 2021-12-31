@@ -99,8 +99,8 @@ function Game() {
     {/* <PlayerCanvasBoss
     bossHitCounter = {bossHitCounter} lightningBoltsRef ={lightningBoltsRef} bossRef ={bossRef}
     />
-    <LightningBolts lightningBoltsRef = {lightningBoltsRef} lightningBoltsXRef = {lightningBoltsXRef} ligtningBoltsYRef ={ligtningBoltsYRef} lightningBoltsWRef = {lightningBoltsWRef} lightningBoltsHRef ={lightningBoltsHRef}/>
-    <BossCanvas bossRef = {bossRef} bossImgRef = {bossImgRef} bossXRef = {bossXRef} bossHRef = {bossHRef} bossYRef ={bossYRef} bossWRef ={bossWRef} />
+    <LightningBolts lightningBoltsRef = {lightningBoltsRef} />
+    <BossCanvas bossRef = {bossRef} />
     <CloudsMoving />
     <CloudsStatic />
     <SeaCanvas />

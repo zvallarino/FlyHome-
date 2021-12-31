@@ -57,8 +57,8 @@ function CloudsMoving() {
       
       function step() {
         frameCount++;
-        if (frameCount < 20) {
-          window.requestAnimationFrame(step);
+        if (frameCount < 10) {
+          requestAnimationFrame(step);
           return;
         }
         frameCount = 0;
@@ -68,11 +68,11 @@ function CloudsMoving() {
         if (currentLoopIndex >= cycleLoop.length) {
           currentLoopIndex = 0;
         }
-        window.requestAnimationFrame(step);
+        requestAnimationFrame(step);
       }
 
       function init() {
-        window.requestAnimationFrame(step);
+        requestAnimationFrame(step);
       }
 
 // const update = () => {

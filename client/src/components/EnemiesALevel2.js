@@ -24,6 +24,9 @@ import EnemyPlane1Canvas from './EnemyPlane1Canvas';
 import EnemyPlane2Canvas from './EnemyPlane2Canvas';
 import EnemyPlane3Canvas from './EnemyPlane3Canvas';
 
+import LightningBolts from './LightningBolts';
+import BossCanvas from './BossCanvas';
+
 
 
 
@@ -47,19 +50,20 @@ function EnemiesALevel2() {
   const enemyBall2Ref = useRef({});
   const enemyBall3Ref = useRef({});
 
+  const lightningBoltsRef = useRef({});
 
-  const [seeds,setSeeds] = useState(false)
-  const [planes,setPlanes] = useState(false)
-  const [RandomizerOfEnemies,setRandomizerOfEnemies] = useState(false)
-  const [resetterOfEnemies, setReset] = useState(false)
+  const bossRef = useRef({})
+  const bossHitCounter = useRef(0)
 
-  const [balls1,setBalls1] = useState(false)
+  //Ref and States for Reappearing and Disappearing. The ref is for 
+
+  const [ball1,setBall1] = useState(false)
   const [ball2,setBall2] = useState(false)
   const [ball3,setBall3] = useState(false)
 
-  const ballOneStartRef = useRef(false)
-  const ballTwoStartRef = useRef(false)
-  const ballThreeStartRef = useRef(true)
+  const ball1StartRef = useRef(false)
+  const ball2StartRef = useRef(false)
+  const ball3StartRef = useRef(false)
 
   const [seed1,setSeed1] = useState(false)
   const [seed2,setSeed2] = useState(false)
@@ -77,7 +81,21 @@ function EnemiesALevel2() {
   const plane2StartRef = useRef(false)
   const plane3StartRef = useRef(false)
 
+  const [lightning,setLightning] =useState(false)
+
+  const lightningStartRef = useRef(false)
+
+  const [bossSet,setBoss] = useState(false)
+
+  const bossStartRef = useRef(false)
+
   const ballsSetter = () =>{
+    ball1StartRef.current = true
+    ball2StartRef.current = true
+    ball3StartRef.current = true
+    setBall1(foxs=>!foxs)
+    setBall2(foxs=>!foxs)
+    setBall3(foxs=>!foxs)
   }
 
   const seedsSetter = () =>{
@@ -100,7 +118,16 @@ function EnemiesALevel2() {
   }
 
 
-  const setterOfEnemies = () =>{
+  const ballsStopper = () =>{
+    ball1StartRef.current = false
+    ball2StartRef.current = false
+    ball3StartRef.current = false
+    setBall1(foxs=>!foxs)
+    setBall2(foxs=>!foxs)
+    setBall3(foxs=>!foxs)
+  }
+
+  const seedsStopper = () =>{
     seed1StartRef.current = false
     seed2StartRef.current = false
     seed3StartRef.current = false
@@ -109,7 +136,7 @@ function EnemiesALevel2() {
     setSeed3(foxs=>!foxs)
   }
 
-  const oneMore = () =>{
+  const planesStopper = () =>{
     plane1StartRef.current = false
     plane2StartRef.current = false
     plane3StartRef.current = false
@@ -119,33 +146,92 @@ function EnemiesALevel2() {
     setPlane3(whales=>!whales)
   }
 
+
+
+
+
+  const lightningSetter = () =>{
+    lightningStartRef.current = true
+    setLightning(hats=>!hats)
+  }
+  
+  const lightningStopper = () =>{
+    lightningStartRef.current = false
+    setLightning(hats=>!hats)
+  }
+
+  const bossSetter = ()=>{
+    bossStartRef.current = true
+    console.log('this fired')
+    setBoss(dogs=>!dogs)
+  }
+
+  const bossStopper = ()=>{
+    bossStartRef.current = false
+    console.log('this fired')
+    setBoss(dogs=>!dogs)
+  }
+
+
+  const setterOfEnemies = () =>{
+    bossStartRef.current = false
+    console.log('this fired')
+    setBoss(dogs=>!dogs)
+  }
+
+
+
+  const oneMore = () =>{
+    bossStartRef.current = true
+    setBoss(dogs=>!dogs)
+  }
+
   const canIChangeThis2 = () =>{
-    
-    setSeed1(foxs=>!foxs)
-    setSeed2(foxs=>!foxs)
- 
+    bossStartRef.current = false
+    setBoss(dogs=>!dogs)
   }
 
   const threeMore = () =>{
+    plane1StartRef.current = true
+    plane2StartRef.current = true
+    plane3StartRef.current = true
 
-    setBalls1(foxs=>!foxs)
+    setPlane1(whales=>!whales)
+    setPlane2(whales=>!whales)
+    setPlane3(whales=>!whales)
+
   }
 
   const canIChangeThis3 = () =>{
+    plane1StartRef.current = false
+    plane2StartRef.current = false
+    plane3StartRef.current = false
 
-    setSeed1(foxs=>!foxs)
-    setSeed2(foxs=>!foxs)
+    setPlane1(whales=>!whales)
+    setPlane2(whales=>!whales)
+    setPlane3(whales=>!whales)
+
   }
 
   const timingOfLevel2 = () => {
-    setTimeout(ballsSetter, 5000);
-    setTimeout(seedsSetter, 7000);
-    setTimeout(planesSetter, 10000);
-    setTimeout(setterOfEnemies, 13000);
-    setTimeout(oneMore,16000)
-    setTimeout(canIChangeThis2,19000)
-    setTimeout(threeMore,21000)
-    setTimeout(canIChangeThis3,24000)
+    // setTimeout(ballsSetter, 5000);
+    // setTimeout(seedsSetter, 7000);
+    setTimeout(bossSetter, 14000);
+    setTimeout(bossStopper, 20000);
+    setTimeout(bossSetter, 25000);
+    setTimeout(bossStopper, 30000);
+    setTimeout(bossSetter, 35000);
+    setTimeout(bossStopper, 40000);
+    setTimeout(bossSetter, 45000);
+    setTimeout(bossStopper, 50000);
+    // setTimeout(seedsStopper, 15000);
+    // setTimeout(planesSetter,15000)
+    // setTimeout(ballsSetter,15000)
+    // setTimeout(ballsStopper,20000)
+    // setTimeout(seedsSetter,23000)
+    // setTimeout(seedsStopper,26000)
+    // setTimeout(threeMore,21000)
+    // setTimeout(canIChangeThis3,24000)
     setTimeout(() => {console.log("the end")},40000);
   }
 
@@ -180,15 +266,20 @@ useEffect(()=>{
     enemySeed3Ref = {enemySeed3Ref}
 
     />
-    {/* <EnemiesBall1Canvas balls1 = {balls1} ballOneStartRef = {ballOneStartRef} enemyBall1Ref = {enemyBall1Ref}/>
-    <EnemiesBall2Canvas ball2 = {ball2} ballTwoStartRef = {ballTwoStartRef} enemyBall2Ref = {enemyBall2Ref}/>
-    <EnemiesBall3Canvas ball3 = {ball3} ballThreeStartRef = {ballThreeStartRef} enemyBall3Ref = {enemyBall3Ref}/> */}
+
+    {/* <LightningBolts lightning = {lightning} lightningBoltsRef = {lightningBoltsRef} lightningStartRef ={lightningStartRef} /> */}
+    <BossCanvas bossSet = {bossSet} bossRef = {bossRef} bossStartRef = {bossStartRef} />
+
+{/*     
+    <EnemiesBall1Canvas ball1 = {ball1} ball1StartRef = {ball1StartRef} enemyBall1Ref = {enemyBall1Ref}/>
+    <EnemiesBall2Canvas ball2 = {ball2} ball2StartRef = {ball2StartRef} enemyBall2Ref = {enemyBall2Ref}/>
+    <EnemiesBall3Canvas ball3 = {ball3} ball3StartRef = {ball3StartRef} enemyBall3Ref = {enemyBall3Ref}/>
    
-    {/* <EnemiesSeed1Canvas seed1 = {seed1} seed1StartRef = {seed1StartRef} enemySeed1Ref = {enemySeed1Ref} enemySeed1ExplosionRef = {enemySeed1ExplosionRef}/>
+    <EnemiesSeed1Canvas seed1 = {seed1} seed1StartRef = {seed1StartRef} enemySeed1Ref = {enemySeed1Ref} enemySeed1ExplosionRef = {enemySeed1ExplosionRef}/>
     <EnemiesSeed2Canvas seed2 = {seed2} seed2StartRef = {seed2StartRef} enemySeed2Ref = {enemySeed2Ref} enemySeed2ExplosionRef = {enemySeed2ExplosionRef} />
-    <EnemiesSeed3Canvas seed3 = {seed3} seed3StartRef = {seed3StartRef} enemySeed3Ref = {enemySeed3Ref} enemySeed3ExplosionRef = {enemySeed3ExplosionRef}/> */}
+    <EnemiesSeed3Canvas seed3 = {seed3} seed3StartRef = {seed3StartRef} enemySeed3Ref = {enemySeed3Ref} enemySeed3ExplosionRef = {enemySeed3ExplosionRef}/>
     
-    {/* <EnemyPlane1Canvas plane1 = {plane1} plane1StartRef = {plane1StartRef} enemyPlane1Ref ={enemyPlane1Ref}/>
+    <EnemyPlane1Canvas plane1 = {plane1} plane1StartRef = {plane1StartRef} enemyPlane1Ref ={enemyPlane1Ref}/>
     <EnemyPlane2Canvas plane2 = {plane2} plane2StartRef = {plane2StartRef} enemyPlane2Ref={enemyPlane2Ref}/>
     <EnemyPlane3Canvas plane3 = {plane3} plane3StartRef = {plane3StartRef} enemyPlane3Ref={enemyPlane3Ref}/> */}
 

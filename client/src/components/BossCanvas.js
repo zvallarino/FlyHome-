@@ -1,7 +1,9 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function BossCanvas({bossRef}) {
+function BossCanvas({bossRef, bossStartRef, bossSet}) {
+
+  console.log(bossStartRef.current)
 
   bossRef.current.image = "https://i.imgur.com/3PjKfOy.png"
 
@@ -29,7 +31,9 @@ function BossCanvas({bossRef}) {
     context.lineWidth = 5
     contextRef.current = context;
 
-    let bossA = new Image();
+
+  if(bossStartRef.current){
+  let bossA = new Image();
   let heightImage = 1000;
   let widthImage = 2000;
   const scale = .75;
@@ -46,19 +50,15 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
     ,canvasX, canvasY, scaledWidth, scaledHeight);
     }
 
-    function init() {
-      drawFrame(0, 0, 0, 0);
-      drawFrame(1,  1, scaledWidth, 0);
-      drawFrame(0, 2, scaledWidth * 2, 0);
-    }
-
     const cycleLoop = [0,1,2,3,4,5];
     let currentLoopIndex = 0;
     let frameCount = 0;
     
     function step() {
+      if(bossStartRef.current){
+      
       frameCount++;
-      if (frameCount < 7) {
+      if (frameCount < 2) {
         window.requestAnimationFrame(step);
         return;
       }
@@ -70,7 +70,9 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
         currentLoopIndex = 0;
       }
       window.requestAnimationFrame(step);
-    }
+    }else{
+      return
+    }}
 
     function init() {
       window.requestAnimationFrame(step);
@@ -78,14 +80,15 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
 
     
   const update = () => {
-
-    // drawBoss(boss)
+    // if(bossStartRef.current){
     moveBoss(boss)
-    requestAnimationFrame(update);
+    window.requestAnimationFrame(update);
   }
 
-  update()
-  },[])
+  update()}else{
+    return
+  }
+  },[bossSet])
 
 //   //SCREEN HEIGHT/WIDTH
 

@@ -58,7 +58,7 @@ function SeaCanvas() {
       
       function step() {
         frameCount++;
-        if (frameCount < 5) {
+        if (frameCount < 2) {
           window.requestAnimationFrame(step);
           return;
         }
@@ -85,6 +85,8 @@ function SeaCanvas() {
 
 
   // update()
+
+
   },[])
 
 
