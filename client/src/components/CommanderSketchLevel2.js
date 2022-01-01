@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function CommanderSketch({levelOneState, levelOneRef, doomStartRef, setStartofDoom}) {
+function CommanderSketchLevel2({levelOneState, levelOneRef, doomStartRef, setStartofDoom}) {
    
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -59,19 +59,33 @@ function CommanderSketch({levelOneState, levelOneRef, doomStartRef, setStartofDo
         contextRef.current.strokeText("Commander Sketch:",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20))
       }
 
- const drawText2 = () => {
+    const drawText2 = () => {
             drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Private, I need you home now.",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
+        contextRef.current.strokeText("Good Work.",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
       }
 
-      const drawText3 = () => {
+    const drawText3 = () => {
+        drawRectangle()
+    contextRef.current.font = "30px Arial  "
+    contextRef.current.lineWidth = 1
+    contextRef.current.strokeText("I will take the West",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
+    }
+
+      const drawText4 = () => {
         drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Professor Gillian is attacking!",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
-      }
+        contextRef.current.strokeText("Take down Professor Gillian",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
+     }
+
+     const drawText5 = () => {
+        drawRectangle()
+        contextRef.current.font = "30px Arial  "
+        contextRef.current.lineWidth = 1
+        contextRef.current.strokeText("I'm counting on you",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
+     }
 
       const drawRectangle = () => {
         contextRef.current.fillStyle = "white";
@@ -85,32 +99,31 @@ function CommanderSketch({levelOneState, levelOneRef, doomStartRef, setStartofDo
         doomStartRef.current = true
         setStartofDoom(true)
       }
-
-  
-    const update = () => {
-        if(levelOneRef.current)
-      {  
-        drawFunction();}
-        else{
-            contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
-            return
-        }
-    }
-  
-    const drawFunction = () => {
+      
+      const drawFunction = () => {
 
         setTimeout(drawSketch,2000)
         setTimeout(drawText1,3000)
-        setTimeout(drawText2,5000)
-        setTimeout(drawText3,7000)
-        setTimeout(clearRect,9000)
+        setTimeout(drawText2,4000)
+        setTimeout(drawText3,6000)
+        setTimeout(drawText4,8000)
+        setTimeout(drawText5,10000)
+        setTimeout(clearRect,12000)
         
     }
+  
+    const update = () => {
+      
+        drawFunction();
+       
+    }
+  
+   
 
 
     update()
 
-  },[levelOneState])
+  },[])
 
 
   //SCREEN HEIGHT/WIDTH
@@ -130,4 +143,4 @@ function CommanderSketch({levelOneState, levelOneRef, doomStartRef, setStartofDo
   );
 }
 
-export default CommanderSketch;
+export default CommanderSketchLevel2;

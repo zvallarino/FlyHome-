@@ -138,12 +138,17 @@ const drawPlanetLarge = () =>{
    console.log("I fire now")
 }
 
+const sendToLevelTwo = () => {
+  window.location.href = "/flyhomelevel2"
+}
+
 function myStopFunction() {
   clearInterval(myInterval);
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
   setTimeout(drawPlanetSmall,1000)
   setTimeout(drawPlanetMedium,2000)
   setTimeout(drawPlanetLarge,3000)
+  setTimeout(sendToLevelTwo,5000)
 }
 
 

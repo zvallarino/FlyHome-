@@ -7,6 +7,7 @@ import FlyHomeTitleScreen from './FlyHomeTitleScreen';
 import FlyHomeCardAppPage from './FlyHomeCardAppPage';
 import FlyHomeMainMenu from './FlyHomeMainMenu';
 import GameCardContainer from './GameCardContainer';
+import FlyHomeLevel2 from './FlyHomeLevel2';
 import HomeLogo from './HomeLogo';
 
 function AppPage({setUser, user}) {
@@ -47,6 +48,9 @@ function AppPage({setUser, user}) {
       </Route>
       <Route exact path ="/flyhome">
         <Game user ={user} />
+      </Route>
+      <Route exact path ="/flyhomelevel2">
+        <FlyHomeLevel2 />
       </Route>
   
       </Switch>

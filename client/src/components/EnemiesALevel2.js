@@ -268,7 +268,7 @@ useEffect(()=>{
     />
 
     {/* <LightningBolts lightning = {lightning} lightningBoltsRef = {lightningBoltsRef} lightningStartRef ={lightningStartRef} /> */}
-    <BossCanvas bossSet = {bossSet} bossRef = {bossRef} bossStartRef = {bossStartRef} />
+    {/* <BossCanvas bossSet = {bossSet} bossRef = {bossRef} bossStartRef = {bossStartRef} /> */}
 
 {/*     
     <EnemiesBall1Canvas ball1 = {ball1} ball1StartRef = {ball1StartRef} enemyBall1Ref = {enemyBall1Ref}/>

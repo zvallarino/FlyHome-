@@ -45,7 +45,7 @@ let randomNumber = 0;
 
 
 const outerLoop = () => {
-  console.log("this is firing")
+
     for (i; i < arrayOfDoom.length;){
       drawRectOfDoom(arrayOfDoom[randomNumber][loopCounter])
       loopCounter++;

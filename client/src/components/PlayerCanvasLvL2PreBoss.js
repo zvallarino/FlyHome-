@@ -65,8 +65,8 @@ function PlayerCanvasLvL2PreBoss({
   
       x:700,
       y:400,
-      w:2000,
-      h:500,
+      w:SCREEN_WIDTH*(4/20),
+      h:SCREEN_HEIGHT*(2/20),
       speed:10,
       dx:3,
       dy:3
