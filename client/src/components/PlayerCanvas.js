@@ -3,6 +3,8 @@ import './App.css';
 
 function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref}) {
 
+
+
   //This prevents it from checking at the beginning for the hit
 
   rectOfDoomRef.current.x = -1

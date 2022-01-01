@@ -56,6 +56,9 @@ function Game() {
   const [levelOneState,setLevelOneState] = useState(false)
   const levelOneRef = useRef(false)
 
+  const [prefixStopper, setPrefixStopper] = useState(true)
+  const pleaseStopRef = useRef(true)
+
 
   return (
     <>
@@ -70,15 +73,15 @@ function Game() {
     <BackgroundCanvas /> */}
 
     {/* level One */}
-    {/* <PlayerCanvas rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/>  */}
+    <PlayerCanvas rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/> 
     {/* <CommanderSketch /> */}
     {/* {doomOfRectState? <RectangleOfDoom2Canvas rectOfDoom2Ref = {rectOfDoom2Ref}/>:<RectangleOfDoom1Canvas setdoomOfRectState ={setdoomOfRectState} rectOfDoomRef = {rectOfDoomRef} />}
     <SpaceCanvas /> */}
 
     {/* Prelude */}
     <TextTitle textRef ={textRef} textState={textState} />
-    <PlayerTitleCanvas textRef = {textRef} setText ={setText} setLevelOneState ={setLevelOneState}/>
-    <BackgroundPreludeCanvas levelOneRef = {levelOneRef}/>
+    <PlayerTitleCanvas pleaseStopRef = {pleaseStopRef} prefixStopper = {prefixStopper} setPrefixStopper ={setPrefixStopper} levelOneState = {levelOneState} textRef = {textRef} setText ={setText} levelOneRef = {levelOneRef} setLevelOneState ={setLevelOneState}/>
+    <BackgroundPreludeCanvas pleaseStopRef = {pleaseStopRef} prefixStopper = {prefixStopper} setPrefixStopper ={setPrefixStopper} levelOneState = {levelOneState} levelOneRef = {levelOneRef}/>
     </>
   );
 }

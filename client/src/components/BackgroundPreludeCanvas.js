@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function BackgroundPreludeCanvas() {
+function BackgroundPreludeCanvas({pleaseStopRef, prefixStopper, setPrefixStopper}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -50,14 +50,19 @@ function BackgroundPreludeCanvas() {
     }}
   
     const update = () => {
-     drawSpace();
-      
+      console.log(pleaseStopRef.current)
+      if(pleaseStopRef.current)
+    { drawSpace()
       requestAnimationFrame(update)
-    }
-  
-  
+      ;}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+      return
+    }}
+
     update()
-  },[])
+  
+  },[prefixStopper])
 
 
   //SCREEN HEIGHT/WIDTH

@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerTitleCanvas({textRef,setText}) {
+function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, PrefixStopper}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -11,6 +11,8 @@ function PlayerTitleCanvas({textRef,setText}) {
   //left, down, right
 
   useEffect(()=>{
+    // console.log(levelOneRef.current)
+    
     const canvas = canvasRef.current;
     canvas.width = window.innerWidth * 2; 
     canvas.height = window.innerHeight * 2;
@@ -52,16 +54,29 @@ function PlayerTitleCanvas({textRef,setText}) {
     contextRef.current.drawImage(plane,playerRef.current.x,playerRef.current.y,playerRef.current.w,playerRef.current.h);  
     // contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
   }}
-
+  
   const update = () => {
+    console.log(pleaseStopRef.current)
+    if(pleaseStopRef.current)
+    {NextLevel();
     drawPlane();
     moveLeft();
-    requestAnimationFrame(update)
+    requestAnimationFrame(update)}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+      return
+    }
   }
 
+  if(pleaseStopRef.current){
+    update()
+  }
+  else{
+    console.log("It hit")
+  return
+  }
 
-  update()
-  },[])
+  },[PrefixStopper])
 
 
   //SCREEN HEIGHT/WIDTH
@@ -81,10 +96,15 @@ const moveLeft = () => {
     textRef.current = true
     setText(true)
   }
-  console.log(textRef.current)
-  boundariesLeft(playerRef.current)
-  // console.log(playerRef.current.x)
-  
+}
+
+const NextLevel = () =>{
+  if(playerRef.current.x < -100){
+    pleaseStopRef.current = false
+    setPrefixStopper(true)
+    playerRef.current.dx = 0
+    contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+  }
 }
 
 
