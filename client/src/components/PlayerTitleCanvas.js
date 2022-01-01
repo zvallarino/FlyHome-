@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, PrefixStopper}) {
+function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, PrefixStopper, levelOneRef,setLevelOneState}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -64,6 +64,8 @@ function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, Pr
     requestAnimationFrame(update)}
     else{
       contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+      levelOneRef.current = true
+      setLevelOneState(true)
       return
     }
   }

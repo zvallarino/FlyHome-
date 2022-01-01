@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref}) {
+function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref, levelOneRef, levelOneState}) {
 
 
 
@@ -48,7 +48,7 @@ function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 3;
+    canvas.style['z-index'] = 4;
     
     
     const context = canvas.getContext("2d");
@@ -81,15 +81,20 @@ function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref}) {
   }}
 
   const update = () => {
+    if(levelOneRef.current){
     drawPlane();
     hit(rectOfDoomRef);
     hit(rectOfDoom2Ref);
-    requestAnimationFrame(update)
+    requestAnimationFrame(update)}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+      return
+    }
   }
 
 
   update()
-  },[])
+  },[levelOneState])
 
 
   //SCREEN HEIGHT/WIDTH

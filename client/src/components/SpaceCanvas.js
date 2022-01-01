@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function SpaceCanvas() {
+function SpaceCanvas({levelOneRef,levelOneState}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -29,12 +29,17 @@ function SpaceCanvas() {
     contextRef.current = context;
 
 const update = () => {
-  requestAnimationFrame(update)
+  if(levelOneRef.current)
+  {requestAnimationFrame(update)}
+  else{
+    contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+    return
+  }
 }
 
 
   update()
-  },[])
+  },[levelOneState])
 
 
   //SCREEN HEIGHT/WIDTH

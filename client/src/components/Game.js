@@ -73,15 +73,15 @@ function Game() {
     <BackgroundCanvas /> */}
 
     {/* level One */}
-    <PlayerCanvas rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/> 
-    {/* <CommanderSketch /> */}
-    {/* {doomOfRectState? <RectangleOfDoom2Canvas rectOfDoom2Ref = {rectOfDoom2Ref}/>:<RectangleOfDoom1Canvas setdoomOfRectState ={setdoomOfRectState} rectOfDoomRef = {rectOfDoomRef} />}
-    <SpaceCanvas /> */}
+    <PlayerCanvas levelOneState = {levelOneState} levelOneRef = {levelOneRef} rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/> 
+    <CommanderSketch levelOneState = {levelOneState} levelOneRef = {levelOneRef} levelOneRef = {levelOneRef} />
+    {/* {doomOfRectState? <RectangleOfDoom2Canvas rectOfDoom2Ref = {rectOfDoom2Ref}/>:<RectangleOfDoom1Canvas setdoomOfRectState ={setdoomOfRectState} rectOfDoomRef = {rectOfDoomRef} />} */}
+    <SpaceCanvas levelOneState = {levelOneState} levelOneRef = {levelOneRef} levelOneRef ={levelOneRef}/>
 
     {/* Prelude */}
     <TextTitle textRef ={textRef} textState={textState} />
-    <PlayerTitleCanvas pleaseStopRef = {pleaseStopRef} prefixStopper = {prefixStopper} setPrefixStopper ={setPrefixStopper} levelOneState = {levelOneState} textRef = {textRef} setText ={setText} levelOneRef = {levelOneRef} setLevelOneState ={setLevelOneState}/>
-    <BackgroundPreludeCanvas pleaseStopRef = {pleaseStopRef} prefixStopper = {prefixStopper} setPrefixStopper ={setPrefixStopper} levelOneState = {levelOneState} levelOneRef = {levelOneRef}/>
+    <PlayerTitleCanvas setLevelOneState = {setLevelOneState} levelOneRef = {levelOneRef} pleaseStopRef = {pleaseStopRef} prefixStopper = {prefixStopper} setPrefixStopper ={setPrefixStopper} levelOneState = {levelOneState} textRef = {textRef} setText ={setText} />
+    <BackgroundPreludeCanvas pleaseStopRef = {pleaseStopRef} prefixStopper = {prefixStopper} setPrefixStopper ={setPrefixStopper} />
     </>
   );
 }

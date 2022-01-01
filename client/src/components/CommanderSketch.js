@@ -1,8 +1,8 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function CommanderSketch() {
-
+function CommanderSketch({levelOneState, levelOneRef}) {
+   
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
 
@@ -70,7 +70,7 @@ function CommanderSketch() {
         drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Professor Gillian is attacking!.",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
+        contextRef.current.strokeText("Professor Gillian is attacking!",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
       }
 
       const drawRectangle = () => {
@@ -86,11 +86,13 @@ function CommanderSketch() {
 
   
     const update = () => {
-        drawSketch();
-        TextFunction();
-
-        
-        // requestAnimationFrame(update)
+        if(levelOneRef.current)
+      {  drawSketch();
+        TextFunction();}
+        else{
+            contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+            return
+        }
     }
   
     const TextFunction = () => {
@@ -105,7 +107,7 @@ function CommanderSketch() {
 
     update()
 
-  },[])
+  },[levelOneState])
 
 
   //SCREEN HEIGHT/WIDTH
