@@ -17,7 +17,7 @@ code {
   display:flex;
   width: 100vw;
   height: 100vh;
-  background-image: url("https://i.imgur.com/XwjwZ4T.png");
+  background-image: url("https://i.imgur.com/mTmGfvm.png");
   box-sizing: border-box;
   background-color: rgb(134, 255, 255);
   justify-content: center;
@@ -39,7 +39,10 @@ code {
 
 .AppPage{
   display:flex;
-  
+  background-image: url("https://i.imgur.com/dIF9cL7.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   /* border: 10px solid plum; */
   flex-direction: column;
   background-color: #e9ffcf;
@@ -51,16 +54,49 @@ code {
 .MainMenu{
   display:flex;
   box-sizing: border-box;
+  flex-direction: column;
+  background-image: url("https://i.imgur.com/9nEzIth.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100vw;
   height: 100vh;
   /* background-image:url("https://i.imgur.com/FNpMme4.png"); */
  }
 
- .MainMenu img{
+ .MainMenuTop {
+   display:flex;
+    /* border: 10px solid green; */
+    width:100vw;
+    justify-content: center;
+    height: 10vh;
+ }
+
+ .MainMenuTop h1{
+  font-size: 3em;
+ }
+
+ .MainMenuMiddle{
+  display:flex;
+  justify-content:space-between;
+  /* border: 10px solid blue; */
+  width:100vw;
+  height: 15vh;
+
+ }
+
+ .MainMenuBottom{
+  display:flex;
+  /* border: 10px solid red; */
+  width:100vw;
+  height: 75vh;
+
+ }
+ /* .MainMenu img{
   display:flex;
   width: 70vw;
   height: 100vh;
- }
+ } */
 
 
 
@@ -71,7 +107,7 @@ code {
   height: 10vh;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 255, 60);
+  /* background-color: rgb(255, 255, 60); */
   border: 10px solid black;
 }
 
@@ -93,7 +129,7 @@ code {
   box-sizing: border-box;
   width: 100vw;
   height: 10vh;
-  background-color: rgb(255, 255, 60);
+  /* background-color: rgb(255, 255, 60); */
   border: 10px solid black;
 }
 
