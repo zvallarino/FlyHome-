@@ -53,6 +53,10 @@ function Game() {
   const [textState,setText] = useState(false)
   const textRef = useRef(false)
 
+  const [levelOneState,setLevelOneState] = useState(false)
+  const levelOneRef = useRef(false)
+
+
   return (
     <>
 
@@ -66,15 +70,15 @@ function Game() {
     <BackgroundCanvas /> */}
 
     {/* level One */}
-    <PlayerCanvas rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/> 
+    {/* <PlayerCanvas rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/>  */}
     {/* <CommanderSketch /> */}
-    {doomOfRectState? <RectangleOfDoom2Canvas rectOfDoom2Ref = {rectOfDoom2Ref}/>:<RectangleOfDoom1Canvas setdoomOfRectState ={setdoomOfRectState} rectOfDoomRef = {rectOfDoomRef} />}
-    <SpaceCanvas />
+    {/* {doomOfRectState? <RectangleOfDoom2Canvas rectOfDoom2Ref = {rectOfDoom2Ref}/>:<RectangleOfDoom1Canvas setdoomOfRectState ={setdoomOfRectState} rectOfDoomRef = {rectOfDoomRef} />}
+    <SpaceCanvas /> */}
 
     {/* Prelude */}
-    {/* <TextTitle textRef ={textRef} textState={textState} />
-    <PlayerTitleCanvas textRef = {textRef} setText ={setText} />
-    <BackgroundPreludeCanvas /> */}
+    <TextTitle textRef ={textRef} textState={textState} />
+    <PlayerTitleCanvas textRef = {textRef} setText ={setText} setLevelOneState ={setLevelOneState}/>
+    <BackgroundPreludeCanvas levelOneRef = {levelOneRef}/>
     </>
   );
 }

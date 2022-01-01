@@ -138,21 +138,56 @@ const drawPlanetLarge = () =>{
    console.log("I fire now")
 }
 
+const sketch = {
+  w:300,
+  h:400,
+  x:SCREEN_WIDTH*(15.5/20),
+  y:10,
+  speed:0,
+  dx:0,
+  dy:0
+}
+
+const drawSketch = () => {
+  let sketchOne = new Image();
+  sketchOne.src = "https://i.imgur.com/PpJW78X.png"
+  sketchOne.onload = function() {
+  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
+  contextRef.current.fillStyle = "grey"
+  contextRef.current.fillRect(sketch.x, sketch.y, sketch.w, sketch.h);
+  contextRef.current.fillStyle = "white" 
+  contextRef.current.fillRect(sketch.x+20, sketch.y+5, sketch.w-40, sketch.h-20); 
+  contextRef.current.drawImage(sketchOne,sketch.x,sketch.y,sketch.w,sketch.h); 
+  drawRectangle()
+  contextRef.current.font = "30px Arial"
+  contextRef.current.lineWidth = 1
+  contextRef.current.strokeText("Hurry Up, Private!",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
+}}
+
+
+
+const drawRectangle = () => {
+  contextRef.current.fillStyle = "white";
+  contextRef.current.fillRect(SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
+  contextRef.current.strokeStyle = "black";
+  contextRef.current.strokeRect(SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
+}
+
 function myStopFunction() {
   clearInterval(myInterval);
-  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-  //Makes it so you dont hit a regular and die when they are invisible
-  // rectOfDoomRef.current = -1
-  // enemyYRef.current = -1
-  // enemyWRef.current = 0
-  // enemyHRef.current = 0
-  // setTimeout(drawPlanetSmall,1000)
-  // setTimeout(drawPlanetMedium,2000)
-  // setTimeout(drawPlanetLarge,3000)
-  setdoomOfRectState(true)
+  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
+  drawSketch()
+  // drawRectangle()
+
+  setTimeout(timeoutAttempt,2000) 
+  // setdoomOfRectState(true)
 }
 
 
+
+const timeoutAttempt = () => {
+  setdoomOfRectState(true)
+}
 
 setTimeout(myStopFunction, 20000);
 

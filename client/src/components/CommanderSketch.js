@@ -39,7 +39,6 @@ function CommanderSketch() {
         dy:0
       }
   
-  
     const drawSketch = () => {
       let sketchOne = new Image();
       sketchOne.src = "https://i.imgur.com/PpJW78X.png"
@@ -57,11 +56,10 @@ function CommanderSketch() {
     const drawText1 = () => {
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Commander Sketch:",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
-
+        contextRef.current.strokeText("Commander Sketch:",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20))
       }
 
-      const drawText2 = () => {
+ const drawText2 = () => {
             drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
