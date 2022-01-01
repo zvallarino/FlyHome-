@@ -3,7 +3,7 @@ import { Switch, Route, useHistory, NavLink } from "react-router-dom";
 import { useState } from "react"
 
 
-function FlyHomeToTitle() {
+function FlyHomeCardAppPage() {
 
 
 const shootToLink = () => {
@@ -18,4 +18,4 @@ const shootToLink = () => {
   );
 }
 
-export default FlyHomeToTitle;
+export default FlyHomeCardAppPage;

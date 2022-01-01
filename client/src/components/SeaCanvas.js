@@ -95,6 +95,10 @@ function SeaCanvas() {
   const SCREEN_WIDTH = window.innerWidth;
   const SCREEN_HEIGHT = window.innerHeight;
 
+  console.log(SCREEN_WIDTH)
+  console.log(SCREEN_HEIGHT)
+
+
   //Constructor for Rectangles
 
   class RectanglesOfDoom {

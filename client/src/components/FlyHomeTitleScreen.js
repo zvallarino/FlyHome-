@@ -1,9 +1,11 @@
 import './App.css';
 
-function GameTitleScreen() {
+function FlyHomeTitleScreen({setDisappearFlyHome}) {
+  setDisappearFlyHome(true)
 
   const shootToLink = () => {
-    window.location.href = "/flyhome"
+    setDisappearFlyHome(true)
+    window.location.href = "/flyhomemainmenu"
   }
   
     return (
@@ -13,4 +15,4 @@ function GameTitleScreen() {
     );
 }
 
-export default GameTitleScreen;
+export default FlyHomeTitleScreen;

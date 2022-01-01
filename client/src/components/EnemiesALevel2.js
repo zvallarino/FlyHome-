@@ -216,14 +216,14 @@ function EnemiesALevel2() {
   const timingOfLevel2 = () => {
     // setTimeout(ballsSetter, 5000);
     // setTimeout(seedsSetter, 7000);
-    setTimeout(bossSetter, 14000);
-    setTimeout(bossStopper, 20000);
-    setTimeout(bossSetter, 25000);
-    setTimeout(bossStopper, 30000);
-    setTimeout(bossSetter, 35000);
-    setTimeout(bossStopper, 40000);
-    setTimeout(bossSetter, 45000);
-    setTimeout(bossStopper, 50000);
+    // setTimeout(bossSetter, 14000);
+    // setTimeout(bossStopper, 20000);
+    // setTimeout(bossSetter, 25000);
+    // setTimeout(bossStopper, 30000);
+    // setTimeout(bossSetter, 35000);
+    // setTimeout(bossStopper, 40000);
+    // setTimeout(bossSetter, 45000);
+    // setTimeout(bossStopper, 50000);
     // setTimeout(seedsStopper, 15000);
     // setTimeout(planesSetter,15000)
     // setTimeout(ballsSetter,15000)
