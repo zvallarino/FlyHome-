@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerTitleCanvas({}) {
+function PlayerTitleCanvas({textRef,setText}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -74,8 +74,16 @@ function PlayerTitleCanvas({}) {
 
 const moveLeft = () => {
   playerRef.current.x -= playerRef.current.dx
-
+  if(playerRef.current.x>1200||playerRef.current.x<500){
+    textRef.current = false
+    setText(false)
+  }else{
+    textRef.current = true
+    setText(true)
+  }
+  console.log(textRef.current)
   boundariesLeft(playerRef.current)
+  // console.log(playerRef.current.x)
   
 }
 

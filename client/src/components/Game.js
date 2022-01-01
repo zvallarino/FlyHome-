@@ -36,11 +36,12 @@ import CloudsMoving from './CloudsMoving';
 
 import BackgroundCanvas from './BackgroundCanvas';
 import RectangleOfDoom2Canvas from './RectangleOfDoom2Canvas';
+import TextTitle from './TextTitle';
+
+import CommanderSketch from './CommanderSketch';
 
 
 function Game() {
-
-
 
   const rectOfDoomRef = useRef({})
   const rectOfDoom2Ref = useRef({})
@@ -49,79 +50,30 @@ function Game() {
 
   const [speed, setSpeed] = useState(750)
 
-
-
-  const bossXRef = useRef(-1);
-  const bossYRef = useRef(-1);
-  const bossWRef = useRef(0);
-  const bossHRef = useRef(0);
-
-  const bossImgRef = useRef("https://i.imgur.com/3PjKfOy.png")
-
-  const bossRef = useRef({})
-  const bossHitCounter = useRef(0)
-
-  const lightningBoltsXRef = useRef(-1);
-  const ligtningBoltsYRef = useRef(-1);
-  const lightningBoltsWRef = useRef(0);
-  const lightningBoltsHRef = useRef(0);
-
-  const lightningBoltsRef = useRef({});
-
-
-  const enemyPlane1Ref = useRef({});
-  const enemyPlane2Ref = useRef({});
-  const enemyPlane3Ref = useRef({});
-  
-  const enemySeed1Ref = useRef({});
-  const enemySeed2Ref = useRef({});
-  const enemySeed3Ref = useRef({})
-
-  const enemyBall1Ref = useRef({})
-  const enemyBall2Ref = useRef({});
-  const enemyBall3Ref = useRef({});
- 
-
-
-
-
-
-
-
-
+  const [textState,setText] = useState(false)
+  const textRef = useRef(false)
 
   return (
     <>
 
     {/* <Testing /> */}
 
-    {/* Boss Fight */}
-    {/* <PlayerCanvasBoss
-    bossHitCounter = {bossHitCounter} lightningBoltsRef ={lightningBoltsRef} bossRef ={bossRef}
-    />
-    <LightningBolts lightningBoltsRef = {lightningBoltsRef} />
-    <BossCanvas bossRef = {bossRef} />
+    {/* level 2 */}
+    {/* <EnemiesALevel2 />
     <CloudsMoving />
     <CloudsStatic />
     <SeaCanvas />
     <BackgroundCanvas /> */}
 
-  
-    {/* level 2 */}
-    <EnemiesALevel2 />
-    <CloudsMoving />
-    <CloudsStatic />
-    <SeaCanvas />
-    <BackgroundCanvas />
-
     {/* level One */}
-    {/* <PlayerCanvas rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/> 
-
+    <PlayerCanvas rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/> 
+    {/* <CommanderSketch /> */}
     {doomOfRectState? <RectangleOfDoom2Canvas rectOfDoom2Ref = {rectOfDoom2Ref}/>:<RectangleOfDoom1Canvas setdoomOfRectState ={setdoomOfRectState} rectOfDoomRef = {rectOfDoomRef} />}
-    <SpaceCanvas /> */}
+    <SpaceCanvas />
 
     {/* Prelude */}
-    {/* <PlayerTitleCanvas />
+    {/* <TextTitle textRef ={textRef} textState={textState} />
+    <PlayerTitleCanvas textRef = {textRef} setText ={setText} />
     <BackgroundPreludeCanvas /> */}
     </>
   );
