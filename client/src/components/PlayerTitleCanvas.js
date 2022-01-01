@@ -56,7 +56,6 @@ function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, Pr
   }}
   
   const update = () => {
-    console.log(pleaseStopRef.current)
     if(pleaseStopRef.current)
     {NextLevel();
     drawPlane();

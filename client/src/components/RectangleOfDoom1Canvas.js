@@ -1,11 +1,12 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function RectangleOfDoom1Canvas({rectOfDoomRef, setdoomOfRectState}) {
+function RectangleOfDoom1Canvas({rectOfDoomRef, setdoomOfRectState, doomStartRef, startOfDoom}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
 
+  
 
   useEffect(()=>{
 
@@ -27,30 +28,11 @@ function RectangleOfDoom1Canvas({rectOfDoomRef, setdoomOfRectState}) {
     context.lineWidth = 5
     contextRef.current = context;
 
+    if(doomStartRef.current){
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
-
-//
-// doesnt work at the moment but V close
-
-// const nonduplicatingFunction = () =>{
-//   if (randomNumber !== newNumber){
-//     randomNumber = newNumber
-//   } else if (randomNumber === 4){
-//     randomNumber = 3
-//   } else if (randomNumber === 0){
-//     randomNumber = 1
-//   } else {
-//     console.log(randomNumber)
-//     randomNumber = randomNumber + 1
-//   }
-// }
-
-
-//30 Seconds then Hurry Up
-//15 Seconds of Double Speed
-//Blast Off to Earth/
 
 
 let i = 0;
@@ -63,6 +45,7 @@ let randomNumber = 0;
 
 
 const outerLoop = () => {
+  console.log("this is firing")
     for (i; i < arrayOfDoom.length;){
       drawRectOfDoom(arrayOfDoom[randomNumber][loopCounter])
       loopCounter++;
@@ -118,7 +101,7 @@ contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.heigh
 contextRef.current.drawImage(planet,planetObject.x,planetObject.y,planetObject.w,planetObject.h);  
 // contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
 }
-console.log('this just fired')
+
 }
 
 const myInterval = setInterval(outerLoop, 1500);
@@ -177,10 +160,7 @@ function myStopFunction() {
   clearInterval(myInterval);
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
   drawSketch()
-  // drawRectangle()
-
   setTimeout(timeoutAttempt,2000) 
-  // setdoomOfRectState(true)
 }
 
 
@@ -189,7 +169,12 @@ const timeoutAttempt = () => {
   setdoomOfRectState(true)
 }
 
-setTimeout(myStopFunction, 20000);
+if(doomStartRef.current)
+{setTimeout(myStopFunction, 20000);}
+else{
+  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
+  return
+}
 
 
 // myInterval
@@ -199,12 +184,16 @@ setTimeout(myStopFunction, 20000);
 
 
 const update = () => {
-  requestAnimationFrame(update)
+ 
+    requestAnimationFrame(update)
+ 
 }
 
 
-  update()
-  },[])
+  update()} else{
+    return
+  }
+  },[startOfDoom])
 
 
   //SCREEN HEIGHT/WIDTH

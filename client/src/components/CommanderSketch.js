@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function CommanderSketch({levelOneState, levelOneRef}) {
+function CommanderSketch({levelOneState, levelOneRef, doomStartRef, setStartofDoom}) {
    
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -81,7 +81,9 @@ function CommanderSketch({levelOneState, levelOneRef}) {
       }
 
       const clearRect = () =>{
-        contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
+        contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+        doomStartRef.current = true
+        setStartofDoom(true)
       }
 
   

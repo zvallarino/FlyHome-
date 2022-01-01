@@ -249,7 +249,7 @@ const moveDown = () => {
    // Rotation Function 
 
    const rotationFunction = () => {
-    console.log(rotationRef.current)
+    // console.log(rotationRef.current)
   if(rotationRef.current === 0||rotationRef.current === 2){
     playerRef.current.w = 400
     playerRef.current.h = 100

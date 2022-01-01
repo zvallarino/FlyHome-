@@ -50,7 +50,7 @@ function BackgroundPreludeCanvas({pleaseStopRef, prefixStopper, setPrefixStopper
     }}
   
     const update = () => {
-      console.log(pleaseStopRef.current)
+     
       if(pleaseStopRef.current)
     { drawSpace()
       requestAnimationFrame(update)

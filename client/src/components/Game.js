@@ -59,6 +59,9 @@ function Game() {
   const [prefixStopper, setPrefixStopper] = useState(true)
   const pleaseStopRef = useRef(true)
 
+  const [startOfDoom, setStartofDoom] = useState(false)
+  const doomStartRef = useRef(false)
+
 
   return (
     <>
@@ -74,8 +77,8 @@ function Game() {
 
     {/* level One */}
     <PlayerCanvas levelOneState = {levelOneState} levelOneRef = {levelOneRef} rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/> 
-    <CommanderSketch levelOneState = {levelOneState} levelOneRef = {levelOneRef} levelOneRef = {levelOneRef} />
-    {/* {doomOfRectState? <RectangleOfDoom2Canvas rectOfDoom2Ref = {rectOfDoom2Ref}/>:<RectangleOfDoom1Canvas setdoomOfRectState ={setdoomOfRectState} rectOfDoomRef = {rectOfDoomRef} />} */}
+    <CommanderSketch doomStartRef = {doomStartRef} setStartofDoom = {setStartofDoom} levelOneState = {levelOneState} levelOneRef = {levelOneRef} levelOneRef = {levelOneRef} />
+    {doomOfRectState? <RectangleOfDoom2Canvas rectOfDoom2Ref = {rectOfDoom2Ref}/>:<RectangleOfDoom1Canvas doomStartRef = {doomStartRef} startOfDoom = {startOfDoom} setdoomOfRectState ={setdoomOfRectState} rectOfDoomRef = {rectOfDoomRef} />}
     <SpaceCanvas levelOneState = {levelOneState} levelOneRef = {levelOneRef} levelOneRef ={levelOneRef}/>
 
     {/* Prelude */}
