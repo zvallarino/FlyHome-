@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import './App.css';
 
-
-import PlayerCanvasLvL2PreBoss from './PlayerCanvasLvL2PreBoss';
+import PlayerCanvasLvL2Static from './PlayerCanvasLvl2Static';
+import PlayerCanvasLvL2Gif from './PlayerCanvasLvL2Gif';
 
 
 import EnemiesSeedsReturn from './EnemiesSeedsReturn';
@@ -229,8 +229,8 @@ useEffect(()=>{
   return (
     <>
     {/* level 2 */}
-    
-    <PlayerCanvasLvL2PreBoss
+
+    <PlayerCanvasLvL2Static
     enemyPlane1Ref = {enemyPlane1Ref}
     enemyPlane2Ref = {enemyPlane2Ref}
     enemyPlane3Ref = {enemyPlane3Ref}
@@ -248,8 +248,27 @@ useEffect(()=>{
     enemySeed3Ref = {enemySeed3Ref}
 
     />
+    
+    {/* <PlayerCanvasLvL2Gif
+    enemyPlane1Ref = {enemyPlane1Ref}
+    enemyPlane2Ref = {enemyPlane2Ref}
+    enemyPlane3Ref = {enemyPlane3Ref}
+    
+    enemyBall1Ref = {enemyBall1Ref}
+    enemyBall2Ref = {enemyBall2Ref}
+    enemyBall3Ref = {enemyBall3Ref}
 
-    <LightningBolts lightning = {lightning} lightningBoltsRef = {lightningBoltsRef} lightningStartRef ={lightningStartRef} />
+    enemySeed1ExplosionRef = {enemySeed1ExplosionRef}
+    enemySeed2ExplosionRef = {enemySeed2ExplosionRef} 
+    enemySeed3ExplosionRef = {enemySeed3ExplosionRef}
+
+    enemySeed1Ref = {enemySeed1Ref}
+    enemySeed2Ref = {enemySeed2Ref}
+    enemySeed3Ref = {enemySeed3Ref}
+
+    /> */}
+
+    {/* <LightningBolts lightning = {lightning} lightningBoltsRef = {lightningBoltsRef} lightningStartRef ={lightningStartRef} />
     <BossCanvas bossSet = {bossSet} bossRef = {bossRef} bossStartRef = {bossStartRef} />
 
     
@@ -263,7 +282,7 @@ useEffect(()=>{
     
     <EnemyPlane1Canvas plane1 = {plane1} plane1StartRef = {plane1StartRef} enemyPlane1Ref ={enemyPlane1Ref}/>
     <EnemyPlane2Canvas plane2 = {plane2} plane2StartRef = {plane2StartRef} enemyPlane2Ref={enemyPlane2Ref}/>
-    <EnemyPlane3Canvas plane3 = {plane3} plane3StartRef = {plane3StartRef} enemyPlane3Ref={enemyPlane3Ref}/>
+    <EnemyPlane3Canvas plane3 = {plane3} plane3StartRef = {plane3StartRef} enemyPlane3Ref={enemyPlane3Ref}/> */}
 
 
     </>

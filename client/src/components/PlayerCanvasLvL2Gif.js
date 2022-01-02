@@ -4,7 +4,7 @@ import './App.css';
 
 
 
-function PlayerCanvasLvL2PreBoss({
+function PlayerCanvasLvL2Gif({
   enemyBall1Ref, enemyBall2Ref, enemyBall3Ref,
   enemyPlane1Ref, enemyPlane2Ref, enemyPlane3Ref,
   enemySeed1Ref, enemySeed2Ref, enemySeed3Ref,
@@ -46,7 +46,7 @@ function PlayerCanvasLvL2PreBoss({
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 20;
+    canvas.style['z-index'] = 22;
     
     
     const context = canvas.getContext("2d");
@@ -418,4 +418,4 @@ const KeyUp = (e) => {
   );
 }
 
-export default PlayerCanvasLvL2PreBoss;
+export default PlayerCanvasLvL2Gif;
