@@ -1,7 +1,9 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref}) {
+function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref, levelOneRef, levelOneState}) {
+
+
 
   //This prevents it from checking at the beginning for the hit
 
@@ -46,7 +48,7 @@ function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 3;
+    canvas.style['z-index'] = 4;
     
     
     const context = canvas.getContext("2d");
@@ -79,15 +81,20 @@ function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref}) {
   }}
 
   const update = () => {
+    if(levelOneRef.current){
     drawPlane();
     hit(rectOfDoomRef);
     hit(rectOfDoom2Ref);
-    requestAnimationFrame(update)
+    requestAnimationFrame(update)}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+      return
+    }
   }
 
 
   update()
-  },[])
+  },[levelOneState])
 
 
   //SCREEN HEIGHT/WIDTH
@@ -242,7 +249,7 @@ const moveDown = () => {
    // Rotation Function 
 
    const rotationFunction = () => {
-    console.log(rotationRef.current)
+    // console.log(rotationRef.current)
   if(rotationRef.current === 0||rotationRef.current === 2){
     playerRef.current.w = 400
     playerRef.current.h = 100

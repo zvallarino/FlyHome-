@@ -1,20 +1,21 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesBall1Canvas({enemyBall1Ref, ball1, ball1StartRef}) {
+function EnemiesSeed2Canvas({enemySeed2Ref, enemySeed2ExplosionRef, seed2,seed2StartRef}) {
 
- 
+  
+  enemySeed2ExplosionRef.current.x = -1;
+  enemySeed2ExplosionRef.current.y = -1;
+  enemySeed2ExplosionRef.current.w = 0;
+  enemySeed2ExplosionRef.current.h = 0;
 
-  enemyBall1Ref.current.image = 'https://i.imgur.com/09CdZNf.png'
+    enemySeed2Ref.current.image = 'https://i.imgur.com/cqiU108.png'
+
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
 
-  const colorRef = useRef('grey')
-
   useEffect(()=>{
-
-    
 
     const canvas = canvasRef.current;
     canvas.width = window.innerWidth * 2; 
@@ -24,7 +25,7 @@ function EnemiesBall1Canvas({enemyBall1Ref, ball1, ball1StartRef}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 19;
+    canvas.style['z-index'] = 15;
     
     const context = canvas.getContext("2d");
     context.scale(2,2);
@@ -36,18 +37,50 @@ function EnemiesBall1Canvas({enemyBall1Ref, ball1, ball1StartRef}) {
     let i = 0
 
      const update = () => {
-    if(ball1StartRef.current){
-      drawEnemyPlane(ballOne,i,enemyBall1Ref)
-      moveEnemy(ballOne,enemyBall1Ref)
-      requestAnimationFrame(update)}
+       if(seed2StartRef.current){
+    drawSeed(seedTwo,i,enemySeed2Ref)
+    moveEnemy(seedTwo,enemySeed2Ref)
+    requestAnimationFrame(update)}
     else{
       contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
       return
     }
   }
+
   
-    update()
-  },[ball1])
+  const movementStopper = () => {
+    console.log("noway")
+    seedTwo.dx = 0;
+    seedTwo.dy = 0;
+    enemySeed2Ref.current.image = "https://i.imgur.com/9Gtot1h.png"
+  }
+
+  const explosionMaker = () => {
+    console.log("superNoWay")
+    enemySeed2Ref.current.image = "https://i.imgur.com/Tg4i9DW.png"
+    enemySeed2ExplosionRef.current.x = enemySeed2Ref.current.x;
+    enemySeed2ExplosionRef.current.y = enemySeed2Ref.current.y;
+    enemySeed2ExplosionRef.current.w = enemySeed2Ref.current.w;
+    enemySeed2ExplosionRef.current.h = enemySeed2Ref.current.h;
+  }
+
+  const disappearMaker = () => {
+    console.log("Not gonna happen")
+    contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+    console.log( enemySeed2Ref.current.image)
+    enemySeed2ExplosionRef.current.x = -1;
+    enemySeed2ExplosionRef.current.y = -1;
+    enemySeed2ExplosionRef.current.w = 0;
+    enemySeed2ExplosionRef.current.h = 0;
+  }
+
+  setTimeout(movementStopper,3000)
+  setTimeout(explosionMaker,4000)
+  setTimeout(disappearMaker,5000)
+
+
+  update()
+  },[seed2])
 
 //   //SCREEN HEIGHT/WIDTH
 
@@ -70,14 +103,12 @@ class EnemyCreator {
 }
 
 
-const ballOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(1/8),400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,5,0)
+const seedTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH/3,400, SCREEN_WIDTH/8,SCREEN_HEIGHT/4,15,1)
 
 
 //Draw Function
 
-function drawEnemyPlane(EnemyObject,i,refObject){
-
-  
+function drawSeed(EnemyObject,i,refObject){
   let enemy = new Image();
   enemy.src = refObject.current.image
   enemy.onload = function() {
@@ -125,19 +156,16 @@ const boundariesUp = (objectZ) => {
   }}
   
 const boundariesDown = (objectZ) => {
-  if(objectZ.y > 300){
+  if(objectZ.y > 600){
     objectZ.dy *= -1
   }}  
-
-
 
   return (
     <canvas
     tabIndex="0" 
-    // onKeyUp = {KeyUp}
     ref = {canvasRef}
     />
   );
 }
 
-export default EnemiesBall1Canvas;
+export default EnemiesSeed2Canvas;

@@ -18,7 +18,7 @@ function SeaCanvas() {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 4;
+    canvas.style['z-index'] = 2;
     
     
     const context = canvas.getContext("2d");
@@ -58,7 +58,7 @@ function SeaCanvas() {
       
       function step() {
         frameCount++;
-        if (frameCount < 5) {
+        if (frameCount < 2) {
           window.requestAnimationFrame(step);
           return;
         }
@@ -85,6 +85,8 @@ function SeaCanvas() {
 
 
   // update()
+
+
   },[])
 
 
@@ -92,6 +94,10 @@ function SeaCanvas() {
 
   const SCREEN_WIDTH = window.innerWidth;
   const SCREEN_HEIGHT = window.innerHeight;
+
+  console.log(SCREEN_WIDTH)
+  console.log(SCREEN_HEIGHT)
+
 
   //Constructor for Rectangles
 

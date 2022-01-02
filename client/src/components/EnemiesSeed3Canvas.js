@@ -1,20 +1,22 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesBall1Canvas({enemyBall1Ref, ball1, ball1StartRef}) {
+function EnemiesSeed3Canvas({enemySeed3Ref, enemySeed3ExplosionRef, seed3,seed3StartRef}) {
 
- 
+    
+    enemySeed3ExplosionRef.current.x = -1;
+    enemySeed3ExplosionRef.current.y = -1;
+    enemySeed3ExplosionRef.current.w = 0;
+    enemySeed3ExplosionRef.current.h = 0;
 
-  enemyBall1Ref.current.image = 'https://i.imgur.com/09CdZNf.png'
+    enemySeed3Ref.current.image = 'https://i.imgur.com/cqiU108.png'
+    
+
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
 
-  const colorRef = useRef('grey')
-
   useEffect(()=>{
-
-    
 
     const canvas = canvasRef.current;
     canvas.width = window.innerWidth * 2; 
@@ -24,7 +26,7 @@ function EnemiesBall1Canvas({enemyBall1Ref, ball1, ball1StartRef}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 19;
+    canvas.style['z-index'] = 14;
     
     const context = canvas.getContext("2d");
     context.scale(2,2);
@@ -35,19 +37,51 @@ function EnemiesBall1Canvas({enemyBall1Ref, ball1, ball1StartRef}) {
 
     let i = 0
 
+    const movementStopper = () => {
+      console.log("noway")
+      seedThree.dx = 0;
+      seedThree.dy = 0;
+      enemySeed3Ref.current.image = "https://i.imgur.com/9Gtot1h.png"
+    }
+  
+    const explosionMaker = () => {
+      console.log("superNoWay")
+      enemySeed3Ref.current.image = "https://i.imgur.com/Tg4i9DW.png"
+      enemySeed3ExplosionRef.current.x = enemySeed3Ref.current.x;
+      enemySeed3ExplosionRef.current.y = enemySeed3Ref.current.y;
+      enemySeed3ExplosionRef.current.w = enemySeed3Ref.current.w;
+      enemySeed3ExplosionRef.current.h = enemySeed3Ref.current.h;
+    }
+  
+    const disappearMaker = () => {
+      console.log("Not gonna happen")
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+      console.log( enemySeed3Ref.current.image)
+      enemySeed3ExplosionRef.current.x = -1;
+      enemySeed3ExplosionRef.current.y = -1;
+      enemySeed3ExplosionRef.current.w = 0;
+      enemySeed3ExplosionRef.current.h = 0;
+    }
+  
+    setTimeout(movementStopper,3000)
+    setTimeout(explosionMaker,4000)
+    setTimeout(disappearMaker,5000)
+  
+
      const update = () => {
-    if(ball1StartRef.current){
-      drawEnemyPlane(ballOne,i,enemyBall1Ref)
-      moveEnemy(ballOne,enemyBall1Ref)
-      requestAnimationFrame(update)}
+       if(seed3StartRef.current)
+    {drawSeed(seedThree,i,enemySeed3Ref)
+    moveEnemy(seedThree,enemySeed3Ref)
+    requestAnimationFrame(update)}
     else{
       contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
       return
     }
   }
-  
-    update()
-  },[ball1])
+
+
+  update()
+  },[seed3])
 
 //   //SCREEN HEIGHT/WIDTH
 
@@ -70,14 +104,12 @@ class EnemyCreator {
 }
 
 
-const ballOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(1/8),400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,5,0)
+const seedThree = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(2/3),400, SCREEN_WIDTH/8,SCREEN_HEIGHT/4,20,2)
 
 
 //Draw Function
 
-function drawEnemyPlane(EnemyObject,i,refObject){
-
-  
+function drawSeed(EnemyObject,i,refObject){
   let enemy = new Image();
   enemy.src = refObject.current.image
   enemy.onload = function() {
@@ -125,19 +157,16 @@ const boundariesUp = (objectZ) => {
   }}
   
 const boundariesDown = (objectZ) => {
-  if(objectZ.y > 300){
+  if(objectZ.y > 600){
     objectZ.dy *= -1
   }}  
-
-
 
   return (
     <canvas
     tabIndex="0" 
-    // onKeyUp = {KeyUp}
     ref = {canvasRef}
     />
   );
 }
 
-export default EnemiesBall1Canvas;
+export default EnemiesSeed3Canvas;

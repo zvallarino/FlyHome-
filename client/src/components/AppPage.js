@@ -3,9 +3,12 @@ import { Switch, Route, useHistory, Router, NavLink } from "react-router-dom";
 import {useState} from "react"
 import GameStore from './GameStore';
 import Game from './Game';
-import GameTitleScreen from './GameTitleScreen';
-import FlyHomeToTitle from './FlyHomeToTitle';
+import FlyHomeTitleScreen from './FlyHomeTitleScreen';
+import FlyHomeCardAppPage from './FlyHomeCardAppPage';
+import FlyHomeMainMenu from './FlyHomeMainMenu';
 import GameCardContainer from './GameCardContainer';
+import FlyHomeLevel2 from './FlyHomeLevel2';
+import HomeLogo from './HomeLogo';
 
 function AppPage({setUser, user}) {
 
@@ -37,12 +40,19 @@ function AppPage({setUser, user}) {
       <Route exact path="/RedFish">
         <GameStore user = {user} /> 
       </Route>
+      <Route exact path = "/titleflyhome">
+        <FlyHomeTitleScreen setDisappearFlyHome = {setDisappearFlyHome}/>
+      </Route>
+      <Route exact path = "/flyhomemainmenu">
+      <FlyHomeMainMenu setDisappearFlyHome = {setDisappearFlyHome} />
+      </Route>
       <Route exact path ="/flyhome">
         <Game user ={user} />
       </Route>
-      <Route exact path = "/titleflyhome">
-        <GameTitleScreen />
+      <Route exact path ="/flyhomelevel2">
+        <FlyHomeLevel2 />
       </Route>
+  
       </Switch>
 
       <div className = {disppearFlyHome? "disappearX" : ""}>
@@ -54,10 +64,13 @@ function AppPage({setUser, user}) {
       <div className = "MiddleAppPage">
          <div className = "GameCardContainer">
             <GameCardContainer user = {user}/>
+  
+          <FlyHomeCardAppPage setDisappearFlyHome ={setDisappearFlyHome} disppearFlyHome = {disppearFlyHome} />
           </div>
-          <FlyHomeToTitle setDisappearFlyHome ={setDisappearFlyHome} disppearFlyHome = {disppearFlyHome} />
       </div>
-      <div className = "BottomAppPage"></div>
+      <div className = "BottomAppPage">
+        <div className = "triangle-element"></div>
+      </div>
      </div>
      </div>
      </>

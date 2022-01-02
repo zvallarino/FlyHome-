@@ -1,10 +1,16 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function LightningBolts({ lightningBoltsXRef, ligtningBoltsYRef, lightningBoltsWRef, lightningBoltsHRef }) {
+function LightningBolts({ lightningBoltsRef, lightning, lightningStartRef }) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
+
+ lightningBoltsRef.current.x = -1
+ lightningBoltsRef.current.y = -1
+ lightningBoltsRef.current.w = 0
+ lightningBoltsRef.current.h = 0
+  
 
 
 
@@ -46,10 +52,10 @@ const outerLoop = () => {
   
     if(loopCounter === 2)
     {
-      lightningBoltsXRef.current = boltsOfDoom[randomNumber][loopCounter-1].x
-      ligtningBoltsYRef.current = boltsOfDoom[randomNumber][loopCounter-1].y
-      lightningBoltsWRef.current = boltsOfDoom[randomNumber][loopCounter-1].w
-      lightningBoltsHRef.current = boltsOfDoom[randomNumber][loopCounter-1].h
+      lightningBoltsRef.current.x = boltsOfDoom[randomNumber][loopCounter-1].x
+      lightningBoltsRef.current.y = boltsOfDoom[randomNumber][loopCounter-1].y
+      lightningBoltsRef.current.w = boltsOfDoom[randomNumber][loopCounter-1].w
+      lightningBoltsRef.current.h = boltsOfDoom[randomNumber][loopCounter-1].h
     loopCounter = 0
     randomNumber = getRandomInt(7)
     }
@@ -60,41 +66,25 @@ const outerLoop = () => {
     }
 }
 
-
-setInterval(outerLoop, 750)  
-
+if(lightningStartRef.current){
+let myInterval = setInterval(outerLoop, 750)  
+const clearingOfInterval = () => {
+  clearInterval(myInterval)
+  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
+}
+setTimeout(clearingOfInterval,5000)}else{
+  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
+  return
+}
 
 
 const update = () => {
-
-
-  // drawLightning(boltOneL)
-  // drawLightning(boltOneS)
-
-  // drawLightning(boltTwoL)
-  // drawLightning(boltTwoS)
-
-  // drawLightning(boltThreeL)
-  // drawLightning(boltThreeS)
-
-  // drawLightning(boltFourL)
-  // drawLightning(boltFourS)
-
-  // drawLightning(boltFiveL)
-  // drawLightning(boltFiveS)
-
-  // drawLightning(boltSixL)
-  // drawLightning(boltSixS)
-
-  // drawLightning(boltSevenL)
-  // drawLightning(boltSevenS)
-
-  requestAnimationFrame(update)
+ requestAnimationFrame(update)
 }
 
 
   update()
-  },[])
+  },[lightning])
 
 
   //SCREEN HEIGHT/WIDTH
@@ -160,14 +150,6 @@ const update = () => {
       const boltSeven = [boltSevenS, boltSevenL]
 
     const boltsOfDoom = [boltOne, boltTwo, boltThree, boltFour, boltFive, boltSix, boltSeven]
-
- 
-
-      // const boltTwo = [boltTwoS, boltTwoL]
-      
-
- 
-
 
   // Drawing function for Rectangles of Doom
 

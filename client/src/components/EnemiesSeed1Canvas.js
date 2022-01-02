@@ -1,11 +1,11 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesBall1Canvas({enemyBall1Ref, ball1, ball1StartRef}) {
+function EnemiesSeed1Canvas({enemySeed1Ref, enemySeed1ExplosionRef, seed1, seed1StartRef}) {
 
- 
 
-  enemyBall1Ref.current.image = 'https://i.imgur.com/09CdZNf.png'
+ enemySeed1Ref.current.image = 'https://i.imgur.com/cqiU108.png'
+
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -13,8 +13,6 @@ function EnemiesBall1Canvas({enemyBall1Ref, ball1, ball1StartRef}) {
   const colorRef = useRef('grey')
 
   useEffect(()=>{
-
-    
 
     const canvas = canvasRef.current;
     canvas.width = window.innerWidth * 2; 
@@ -24,7 +22,7 @@ function EnemiesBall1Canvas({enemyBall1Ref, ball1, ball1StartRef}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 19;
+    canvas.style['z-index'] = 16;
     
     const context = canvas.getContext("2d");
     context.scale(2,2);
@@ -36,18 +34,49 @@ function EnemiesBall1Canvas({enemyBall1Ref, ball1, ball1StartRef}) {
     let i = 0
 
      const update = () => {
-    if(ball1StartRef.current){
-      drawEnemyPlane(ballOne,i,enemyBall1Ref)
-      moveEnemy(ballOne,enemyBall1Ref)
+       if(seed1StartRef.current){
+      drawSeed(seedOne,i,enemySeed1Ref)
+      moveEnemy(seedOne,enemySeed1Ref)
       requestAnimationFrame(update)}
-    else{
-      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
-      return
-    }
+      else{
+        contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+        return
+      }
   }
-  
-    update()
-  },[ball1])
+
+  const movementStopper = () => {
+    // console.log("noway")
+    seedOne.dx = 0;
+    seedOne.dy = 0;
+    enemySeed1Ref.current.image = "https://i.imgur.com/9Gtot1h.png"
+  }
+
+  const explosionMaker = () => {
+    // console.log("superNoWay")
+    enemySeed1Ref.current.image = "https://i.imgur.com/Tg4i9DW.png"
+    enemySeed1ExplosionRef.current.x = enemySeed1Ref.current.x;
+    enemySeed1ExplosionRef.current.y = enemySeed1Ref.current.y;
+    enemySeed1ExplosionRef.current.w = enemySeed1Ref.current.w;
+    enemySeed1ExplosionRef.current.h = enemySeed1Ref.current.h;
+  }
+
+  const disappearMaker = () => {
+    // console.log("Not gonna happen")
+    contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+    // console.log( enemySeed1Ref.current.image)
+    enemySeed1ExplosionRef.current.x = -1;
+    enemySeed1ExplosionRef.current.y = -1;
+    enemySeed1ExplosionRef.current.w = 0;
+    enemySeed1ExplosionRef.current.h = 0;
+  }
+
+  setTimeout(movementStopper,3000)
+  setTimeout(explosionMaker,4000)
+  setTimeout(disappearMaker,5000)
+
+
+  update()
+  },[seed1])
 
 //   //SCREEN HEIGHT/WIDTH
 
@@ -70,14 +99,12 @@ class EnemyCreator {
 }
 
 
-const ballOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(1/8),400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,5,0)
+const seedOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(1/8),400, SCREEN_WIDTH/8,SCREEN_HEIGHT/4,15,2)
 
 
 //Draw Function
 
-function drawEnemyPlane(EnemyObject,i,refObject){
-
-  
+function drawSeed(EnemyObject,i,refObject){
   let enemy = new Image();
   enemy.src = refObject.current.image
   enemy.onload = function() {
@@ -129,8 +156,6 @@ const boundariesDown = (objectZ) => {
     objectZ.dy *= -1
   }}  
 
-
-
   return (
     <canvas
     tabIndex="0" 
@@ -140,4 +165,4 @@ const boundariesDown = (objectZ) => {
   );
 }
 
-export default EnemiesBall1Canvas;
+export default EnemiesSeed1Canvas;

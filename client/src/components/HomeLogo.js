@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function BackgroundPreludeCanvas({pleaseStopRef, prefixStopper, setPrefixStopper}) {
+function HomeLogo() {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -18,7 +18,7 @@ function BackgroundPreludeCanvas({pleaseStopRef, prefixStopper, setPrefixStopper
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 1;
+    canvas.style['z-index'] = 3;
     
     
     const context = canvas.getContext("2d");
@@ -28,8 +28,12 @@ function BackgroundPreludeCanvas({pleaseStopRef, prefixStopper, setPrefixStopper
     context.lineWidth = 5
     contextRef.current = context;
 
+    const SCREEN_WIDTH = window.innerWidth;
+    const SCREEN_HEIGHT = window.innerHeight;
   
-    const space = {
+
+  
+    const LogoObject = {
         w:SCREEN_WIDTH,
         h:SCREEN_HEIGHT,
         x:0,
@@ -40,35 +44,27 @@ function BackgroundPreludeCanvas({pleaseStopRef, prefixStopper, setPrefixStopper
       }
   
   
-    const drawSpace = () => {
-      let spaceImage = new Image();
-      spaceImage.src = "https://i.imgur.com/FCRONl9.jpg"
-      spaceImage.onload = function() {
+    const DrawLogo = () => {
+      let Logo = new Image();
+      Logo.src = "https://i.imgur.com/EZba7KU.png"
+      Logo.onload = function() {
       contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-      contextRef.current.drawImage(spaceImage,space.x,space.y,space.w,space.h);  
+      contextRef.current.drawImage(Logo,LogoObject.x,LogoObject.y,LogoObject.w,LogoObject.h);  
       // contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
     }}
   
     const update = () => {
-     
-      if(pleaseStopRef.current)
-    { drawSpace()
-      requestAnimationFrame(update)
-      ;}
-    else{
-      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-      return
-    }}
 
-    update()
+        requestAnimationFrame(update)
+    }
   
-  },[prefixStopper])
+  
+    update()
+  },[])
 
 
   //SCREEN HEIGHT/WIDTH
 
-  const SCREEN_WIDTH = window.innerWidth;
-  const SCREEN_HEIGHT = window.innerHeight;
 
  
 
@@ -82,4 +78,4 @@ function BackgroundPreludeCanvas({pleaseStopRef, prefixStopper, setPrefixStopper
   );
 }
 
-export default BackgroundPreludeCanvas;
+export default HomeLogo;

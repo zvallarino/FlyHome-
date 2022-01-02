@@ -1,10 +1,10 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemyPlane2Canvas({enemyPlane2Ref}) {
+function EnemyPlane2Canvas({enemyPlane2Ref, plane2, plane2StartRef}) {
 
 
-  enemyPlane2Ref.current.image = 'https://i.imgur.com/qZaFU1N.png'
+  enemyPlane2Ref.current.image = 'https://i.imgur.com/FJ20n1X.png'
 
 
   const canvasRef = useRef(null)
@@ -22,7 +22,7 @@ function EnemyPlane2Canvas({enemyPlane2Ref}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 5;
+    canvas.style['z-index'] = 12;
     
     
     const context = canvas.getContext("2d");
@@ -35,14 +35,19 @@ function EnemyPlane2Canvas({enemyPlane2Ref}) {
     let i = 0
 
   const update = () => {
+    if(plane2StartRef.current){
     drawEnemyPlane(planeTwo,i,enemyPlane2Ref)
     moveEnemy(planeTwo, enemyPlane2Ref)
-    requestAnimationFrame(update)
+    requestAnimationFrame(update)}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+      return
+    }
   }
 
 
   update()
-  },[])
+  },[plane2])
 
 //   //SCREEN HEIGHT/WIDTH
 
@@ -65,7 +70,7 @@ class EnemyCreator {
 }
 
 
-const planeTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', 200, 250, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
+const planeTwo = new EnemyCreator('https://i.imgur.com/FJ20n1X.png', 200, 250, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
 
 
 //Draw Function

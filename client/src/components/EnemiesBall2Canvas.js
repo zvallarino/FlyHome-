@@ -1,9 +1,9 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function EnemiesBall2Canvas({enemyBall2Ref}) {
+function EnemiesBall2Canvas({enemyBall2Ref, ball2StartRef, ball2}) {
 
-  enemyBall2Ref.current.image = 'https://i.imgur.com/IGLm67Z.png'
+  enemyBall2Ref.current.image = 'https://i.imgur.com/09CdZNf.png'
 
 
   const canvasRef = useRef(null)
@@ -21,7 +21,7 @@ function EnemiesBall2Canvas({enemyBall2Ref}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 8;
+    canvas.style['z-index'] = 18;
     
     
     const context = canvas.getContext("2d");
@@ -35,14 +35,19 @@ function EnemiesBall2Canvas({enemyBall2Ref}) {
 
     
   const update = () => {
-    drawEnemyPlane(ballTwo,i,enemyBall2Ref)
-    moveEnemy(ballTwo,enemyBall2Ref)
-    requestAnimationFrame(update)
+    if(ball2StartRef.current){
+      drawEnemyPlane(ballTwo,i,enemyBall2Ref)
+      moveEnemy(ballTwo,enemyBall2Ref)
+      requestAnimationFrame(update)}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
+      return
+    }
   }
 
 
   update()
-  },[])
+  },[ball2])
 
 //   //SCREEN HEIGHT/WIDTH
 

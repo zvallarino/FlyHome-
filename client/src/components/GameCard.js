@@ -13,7 +13,7 @@ const shootToLink = () => {
   return (
     <div onClick = {shootToLink} className='GameCard'>
     <img src = {game.picture}></img>
-    <h1>{game.name}</h1>
+  
     </div>
   );
 }

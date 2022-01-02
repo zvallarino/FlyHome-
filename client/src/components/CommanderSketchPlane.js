@@ -1,12 +1,12 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, PrefixStopper, levelOneRef,setLevelOneState}) {
+function CommanderSketchPlane({textRef,setText}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
   const playerRef = useRef(null)
-  const imageRef = useRef("https://i.imgur.com/KTMDmL2.png")
+  const imageRef = useRef("https://i.imgur.com/rCd4KGV.png")
 
   //left, down, right
 
@@ -35,12 +35,12 @@ function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, Pr
     //Player Initial Position and Movement Speed
   
     const player = {
-      w:SCREEN_WIDTH/20,
-      h:SCREEN_HEIGHT/20,
-      x:SCREEN_WIDTH + SCREEN_WIDTH/8,
+      w:SCREEN_WIDTH*(4/20),
+      h:SCREEN_HEIGHT*(2/20),
+      x:SCREEN_WIDTH,
       y:SCREEN_HEIGHT/2,
       speed:10,
-      dx:3,
+      dx:12,
       dy:0
     }
 
@@ -56,28 +56,27 @@ function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, Pr
   }}
   
   const update = () => {
-    if(pleaseStopRef.current)
-    {NextLevel();
     drawPlane();
     moveLeft();
-    requestAnimationFrame(update)}
-    else{
-      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
-      levelOneRef.current = true
-      setLevelOneState(true)
-      return
-    }
+    requestAnimationFrame(update)
   }
 
-  if(pleaseStopRef.current){
+  const sketchStopinTheMiddle = () =>{
+    playerRef.current.dx = 0
+  }
+
+  const sketchGoAway = () => {
+    playerRef.current.dx = -10
+    playerRef.current.dy = 2
+  }
+
+  setTimeout(sketchStopinTheMiddle,2000)
+  setTimeout(sketchGoAway,10000)
+
+
     update()
-  }
-  else{
-    console.log("It hit")
-  return
-  }
 
-  },[PrefixStopper])
+  },[])
 
 
   //SCREEN HEIGHT/WIDTH
@@ -90,22 +89,7 @@ function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, Pr
 
 const moveLeft = () => {
   playerRef.current.x -= playerRef.current.dx
-  if(playerRef.current.x>1200||playerRef.current.x<500){
-    textRef.current = false
-    setText(false)
-  }else{
-    textRef.current = true
-    setText(true)
-  }
-}
-
-const NextLevel = () =>{
-  if(playerRef.current.x < -100){
-    pleaseStopRef.current = false
-    setPrefixStopper(true)
-    playerRef.current.dx = 0
-    contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-  }
+  playerRef.current.y -= playerRef.current.dy
 }
 
 
@@ -113,9 +97,15 @@ const NextLevel = () =>{
 // Boundaries //
 
 const boundariesLeft = (objectZ) => {
-  if(objectZ.x < 0-(playerRef.current.w)*4){
+  if(objectZ.x < 0){
+    setTimeout(functionTime,2000)
     objectZ.x = 1700
   }
+
+  const functionTime = () => {
+      console.log("Are We too deep")
+  }
+  setTimeout(functionTime,2000)
 }
 
 
@@ -129,4 +119,4 @@ const boundariesLeft = (objectZ) => {
   );
 }
 
-export default PlayerTitleCanvas;
+export default CommanderSketchPlane;

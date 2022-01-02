@@ -1,11 +1,12 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function RectangleOfDoom1Canvas({rectOfDoomRef, setdoomOfRectState}) {
+function RectangleOfDoom1Canvas({rectOfDoomRef, setdoomOfRectState, doomStartRef, startOfDoom}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
 
+  
 
   useEffect(()=>{
 
@@ -27,30 +28,11 @@ function RectangleOfDoom1Canvas({rectOfDoomRef, setdoomOfRectState}) {
     context.lineWidth = 5
     contextRef.current = context;
 
+    if(doomStartRef.current){
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
-
-//
-// doesnt work at the moment but V close
-
-// const nonduplicatingFunction = () =>{
-//   if (randomNumber !== newNumber){
-//     randomNumber = newNumber
-//   } else if (randomNumber === 4){
-//     randomNumber = 3
-//   } else if (randomNumber === 0){
-//     randomNumber = 1
-//   } else {
-//     console.log(randomNumber)
-//     randomNumber = randomNumber + 1
-//   }
-// }
-
-
-//30 Seconds then Hurry Up
-//15 Seconds of Double Speed
-//Blast Off to Earth/
 
 
 let i = 0;
@@ -63,6 +45,7 @@ let randomNumber = 0;
 
 
 const outerLoop = () => {
+
     for (i; i < arrayOfDoom.length;){
       drawRectOfDoom(arrayOfDoom[randomNumber][loopCounter])
       loopCounter++;
@@ -118,7 +101,7 @@ contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.heigh
 contextRef.current.drawImage(planet,planetObject.x,planetObject.y,planetObject.w,planetObject.h);  
 // contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
 }
-console.log('this just fired')
+
 }
 
 const myInterval = setInterval(outerLoop, 1500);
@@ -138,23 +121,60 @@ const drawPlanetLarge = () =>{
    console.log("I fire now")
 }
 
+const sketch = {
+  w:300,
+  h:400,
+  x:SCREEN_WIDTH*(15.5/20),
+  y:10,
+  speed:0,
+  dx:0,
+  dy:0
+}
+
+const drawSketch = () => {
+  let sketchOne = new Image();
+  sketchOne.src = "https://i.imgur.com/PpJW78X.png"
+  sketchOne.onload = function() {
+  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
+  contextRef.current.fillStyle = "grey"
+  contextRef.current.fillRect(sketch.x, sketch.y, sketch.w, sketch.h);
+  contextRef.current.fillStyle = "white" 
+  contextRef.current.fillRect(sketch.x+20, sketch.y+5, sketch.w-40, sketch.h-20); 
+  contextRef.current.drawImage(sketchOne,sketch.x,sketch.y,sketch.w,sketch.h); 
+  drawRectangle()
+  contextRef.current.font = "30px Arial"
+  contextRef.current.lineWidth = 1
+  contextRef.current.strokeText("Hurry Up, Private!",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
+}}
+
+
+
+const drawRectangle = () => {
+  contextRef.current.fillStyle = "white";
+  contextRef.current.fillRect(SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
+  contextRef.current.strokeStyle = "black";
+  contextRef.current.strokeRect(SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
+}
+
 function myStopFunction() {
   clearInterval(myInterval);
-  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-  //Makes it so you dont hit a regular and die when they are invisible
-  // rectOfDoomRef.current = -1
-  // enemyYRef.current = -1
-  // enemyWRef.current = 0
-  // enemyHRef.current = 0
-  // setTimeout(drawPlanetSmall,1000)
-  // setTimeout(drawPlanetMedium,2000)
-  // setTimeout(drawPlanetLarge,3000)
-  setdoomOfRectState(true)
+  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
+  drawSketch()
+  setTimeout(timeoutAttempt,2000) 
 }
 
 
 
-setTimeout(myStopFunction, 20000);
+const timeoutAttempt = () => {
+  setdoomOfRectState(true)
+}
+
+if(doomStartRef.current)
+{setTimeout(myStopFunction, 20000);}
+else{
+  contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
+  return
+}
 
 
 // myInterval
@@ -164,12 +184,16 @@ setTimeout(myStopFunction, 20000);
 
 
 const update = () => {
-  requestAnimationFrame(update)
+ 
+    requestAnimationFrame(update)
+ 
 }
 
 
-  update()
-  },[])
+  update()} else{
+    return
+  }
+  },[startOfDoom])
 
 
   //SCREEN HEIGHT/WIDTH
