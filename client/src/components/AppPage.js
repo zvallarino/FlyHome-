@@ -2,7 +2,7 @@ import './App.css';
 import { Switch, Route, useHistory, Router, NavLink } from "react-router-dom";
 import {useState} from "react"
 import GameStore from './GameStore';
-import Game from './Game';
+import FlyHomeLevel1 from './FlyHomeLevel1';
 import FlyHomeTitleScreen from './FlyHomeTitleScreen';
 import FlyHomeCardAppPage from './FlyHomeCardAppPage';
 import FlyHomeMainMenu from './FlyHomeMainMenu';
@@ -47,7 +47,7 @@ function AppPage({setUser, user}) {
       <FlyHomeMainMenu setDisappearFlyHome = {setDisappearFlyHome} />
       </Route>
       <Route exact path ="/flyhome">
-        <Game user ={user} />
+        <FlyHomeLevel1 user ={user} />
       </Route>
       <Route exact path ="/flyhomelevel2">
         <FlyHomeLevel2 />

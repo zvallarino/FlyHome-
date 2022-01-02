@@ -21,7 +21,7 @@ function EnemyPlane3Canvas({enemyPlane3Ref, plane3, plane3StartRef}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 11;
+    canvas.style['z-index'] = 13;
     
     
     const context = canvas.getContext("2d");
@@ -132,7 +132,6 @@ const boundariesDown = (objectZ) => {
 
   return (
     <canvas
-    tabIndex="0" 
     // onKeyUp = {KeyUp}
     ref = {canvasRef}
     />

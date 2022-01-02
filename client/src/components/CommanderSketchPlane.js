@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function CommanderSketchPlane({textRef,setText}) {
+function CommanderSketchPlane({cutSceneRef, endOfCutScene, setterCutScene, setFirstWave, firstWaveRef}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -22,7 +22,7 @@ function CommanderSketchPlane({textRef,setText}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 3;
+    canvas.style['z-index'] = 5;
     
     
     const context = canvas.getContext("2d");
@@ -56,9 +56,16 @@ function CommanderSketchPlane({textRef,setText}) {
   }}
   
   const update = () => {
+    if(cutSceneRef.current){
     drawPlane();
     moveLeft();
-    requestAnimationFrame(update)
+    sketchStop();
+    requestAnimationFrame(update)}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+  
+      return
+    }
   }
 
   const sketchStopinTheMiddle = () =>{
@@ -70,13 +77,26 @@ function CommanderSketchPlane({textRef,setText}) {
     playerRef.current.dy = 2
   }
 
+  const sketchStop = () => {
+
+    if(playerRef.current.y < 280){
+      playerRef.current.dy = 0
+      playerRef.current.dx = 0
+      cutSceneRef.current = false
+      firstWaveRef.current = true
+      setFirstWave(true)
+      setterCutScene(false)
+    
+    }
+  }
+
   setTimeout(sketchStopinTheMiddle,2000)
   setTimeout(sketchGoAway,10000)
 
 
     update()
 
-  },[])
+  },[endOfCutScene])
 
 
   //SCREEN HEIGHT/WIDTH
@@ -113,7 +133,7 @@ const boundariesLeft = (objectZ) => {
 
   return (
     <canvas
-    tabIndex="0" 
+  
     ref = {canvasRef}
     />
   );

@@ -3,7 +3,6 @@ import './App.css';
 
 function BossCanvas({bossRef, bossStartRef, bossSet}) {
 
-  console.log(bossStartRef.current)
 
   bossRef.current.image = "https://i.imgur.com/3PjKfOy.png"
 
@@ -21,7 +20,7 @@ function BossCanvas({bossRef, bossStartRef, bossSet}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 8;
+    canvas.style['z-index'] = 10;
     
     
     const context = canvas.getContext("2d");
@@ -151,7 +150,7 @@ const boundariesDown = (objectZ) => {
 
   return (
     <canvas
-    tabIndex="0" 
+
     // onKeyUp = {KeyUp}
     ref = {canvasRef}
     />

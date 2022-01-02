@@ -62,6 +62,7 @@ function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, Pr
     moveLeft();
     requestAnimationFrame(update)}
     else{
+      
       contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
       levelOneRef.current = true
       setLevelOneState(true)
@@ -73,7 +74,7 @@ function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, Pr
     update()
   }
   else{
-    console.log("It hit")
+  
   return
   }
 

@@ -133,7 +133,7 @@ const sketch = {
 
 const drawSketch = () => {
   let sketchOne = new Image();
-  sketchOne.src = "https://i.imgur.com/PpJW78X.png"
+  sketchOne.src = "https://i.imgur.com/ONdG4YH.png"
   sketchOne.onload = function() {
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
   contextRef.current.fillStyle = "grey"

@@ -14,7 +14,7 @@ function SpaceCanvas({levelOneRef,levelOneState}) {
     canvas.height = window.innerHeight * 2;
     canvas.style.width = `${window.innerWidth}px`;
     canvas.style.height = `${window.innerHeight}px`;
-    canvas.style.backgroundColor = "black";
+    // canvas.style.backgroundColor = "black";
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
@@ -28,9 +28,32 @@ function SpaceCanvas({levelOneRef,levelOneState}) {
     context.lineWidth = 5
     contextRef.current = context;
 
+    const space = {
+      w:SCREEN_WIDTH,
+      h:SCREEN_HEIGHT,
+      x:0,
+      y:0,
+      speed:0,
+      dx:0,
+      dy:0
+    }
+
+
+  const drawSpace = () => {
+    let spaceZ = new Image();
+    spaceZ.src = "https://i.imgur.com/bEfxI6B.png"
+    spaceZ.onload = function() {
+    contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+    contextRef.current.drawImage(spaceZ,space.x,space.y,space.w,space.h);  
+    // contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
+  }}
+
+
 const update = () => {
   if(levelOneRef.current)
-  {requestAnimationFrame(update)}
+  {
+    drawSpace()
+    requestAnimationFrame(update)}
   else{
     contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
     return

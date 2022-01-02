@@ -1,22 +1,8 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref, levelOneRef, levelOneState}) {
-
-
-
-  //This prevents it from checking at the beginning for the hit
-
-  rectOfDoomRef.current.x = -1
-  rectOfDoomRef.current.y = -1
-  rectOfDoomRef.current.h = 0
-  rectOfDoomRef.current.w = 0
-
+function PlayerCanvasLvl2Static() {
   
-  rectOfDoom2Ref.current.x = -1
-  rectOfDoom2Ref.current.y = -1
-  rectOfDoom2Ref.current.h = 0
-  rectOfDoom2Ref.current.w = 0
 
 
   const canvasRef = useRef(null)
@@ -29,9 +15,9 @@ function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref, levelOneRef, levelOneState
  
 
     // Right Down Left Up
-  let rotationArray = ["https://i.imgur.com/5rjTnM5.png", "https://i.imgur.com/KuhriMc.png", "https://i.imgur.com/R1ZZM9i.png", "https://i.imgur.com/Zbuzj3K.png"]
-  let firingRotationArray = ['https://i.imgur.com/9lDQkp9.png','https://i.imgur.com/6Zq7JC8.png','https://i.imgur.com/LlvH1ZX.png','https://i.imgur.com/YYMtBNz.png']
-  let ouchArray = ["https://i.imgur.com/3BndMiB.png", "https://i.imgur.com/6drQQey.png", "https://i.imgur.com/hlwPzh2.png", "https://i.imgur.com/fiC5k5A.png"]
+    let rotationArray = ["https://i.imgur.com/xXGDB6n.png", "https://i.imgur.com/eR1OYjO.png", "https://i.imgur.com/yOSSK7V.png", "https://i.imgur.com/5rSfjsg.png"]
+    let firingRotationArray = ['https://i.imgur.com/7vaIib6.png','https://i.imgur.com/xsRPixH.png','https://i.imgur.com/S776W1H.png','https://i.imgur.com/ARL4Jm4.png']
+    let ouchArray = ["https://i.imgur.com/3BndMiB.png", "https://i.imgur.com/6drQQey.png", "https://i.imgur.com/hlwPzh2.png", "https://i.imgur.com/fiC5k5A.png"]
   
   let rotationCounter = 0
 
@@ -61,13 +47,14 @@ function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref, levelOneRef, levelOneState
     //Player Initial Position and Movement Speed
   
     const player = {
-      w:400,
-      h:100,
-      x:700,
-      y:400,
-      dx:3,
-      dy:3
-    }
+        x:700,
+        y:400,
+        w:SCREEN_WIDTH*(4/20),
+        h:SCREEN_HEIGHT*(2/20),
+        speed:10,
+        dx:3,
+        dy:3
+      }
 
   playerRef.current = player
 
@@ -81,20 +68,14 @@ function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref, levelOneRef, levelOneState
   }}
 
   const update = () => {
-    if(levelOneRef.current){
     drawPlane();
-    hit(rectOfDoomRef);
-    hit(rectOfDoom2Ref);
-    requestAnimationFrame(update)}
-    else{
-      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-      return
-    }
+    requestAnimationFrame(update)
   }
 
 
   update()
-  },[levelOneState])
+
+  },[])
 
 
   //SCREEN HEIGHT/WIDTH
@@ -104,88 +85,47 @@ function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref, levelOneRef, levelOneState
 
   // MOVEMENT FUNCTIONS // First Level
 
-// const moveUp = () => {
-//   playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
 
-//   boundariesUp(playerRef.current) 
-
-//   secondsCounter(counter => counter +3)
-// }
-
-// const moveLeft = () => {
-//   playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
-
-
-//   boundariesLeft(playerRef.current)
-
-//   secondsCounter(counter => counter +3)
+  const moveUp = () => {
+    playerRef.current.y = playerRef.current.y - (playerRef.current.dy * counter)
   
-// }
-// const moveRight = () => {
-//   playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
-
-//   if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current === 4){
-//     boundariesRight(playerRef.current)
-//   } else{
-//     boundariesRightTurn(playerRef.current)
-//   }
-
-//   secondsCounter(counter => counter +3)
-// }
-
-// const moveDown = () => {
-//   playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
-
-
-//   if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current   === 4){
-//     boundariesDown(playerRef.current)
-//   } else {
-//     boundariesDownTurn(playerRef.current)
-//   }
-//   secondsCounter(counter => counter +3)
-// }
-
-
-
-const moveUp = () => {
-  playerRef.current.y = playerRef.current.y - SCREEN_HEIGHT/2
-  boundariesUp(playerRef.current) 
-
-  secondsCounter(counter => counter +3)
-}
-
-const moveLeft = () => {
-  playerRef.current.x =  playerRef.current.x - SCREEN_WIDTH/2
-
-
-  boundariesLeft(playerRef.current)
-
-  secondsCounter(counter => counter +3)
+    boundariesUp(playerRef.current) 
   
-}
-const moveRight = () => {
-  playerRef.current.x = playerRef.current.x + SCREEN_WIDTH/2
-
-  if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current === 4){
-    boundariesRight(playerRef.current)
-  } else{
-    boundariesRightTurn(playerRef.current)
+    secondsCounter(counter => counter +3)
   }
-
-  secondsCounter(counter => counter +3)
-}
-
-const moveDown = () => {
-  playerRef.current.y = playerRef.current.y + SCREEN_HEIGHT/2
-
-
-  if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current   === 4){
-    boundariesDown(playerRef.current)
-  } else {
-    boundariesDownTurn(playerRef.current)
+  
+  const moveLeft = () => {
+    playerRef.current.x =  playerRef.current.x - (playerRef.current.dx * counter)
+  
+  
+    boundariesLeft(playerRef.current)
+  
+    secondsCounter(counter => counter +3)
+    
   }
-  secondsCounter(counter => counter +3)
-}
+  const moveRight = () => {
+    playerRef.current.x = playerRef.current.x + (playerRef.current.dx * counter)
+  
+    if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current === 4){
+      boundariesRight(playerRef.current)
+    } else{
+      boundariesRightTurn(playerRef.current)
+    }
+  
+    secondsCounter(counter => counter +3)
+  }
+  
+  const moveDown = () => {
+    playerRef.current.y = playerRef.current.y + (playerRef.current.dy * counter)
+  
+  
+    if(rotationRef.current === 0||rotationRef.current === 2||rotationRef.current   === 4){
+      boundariesDown(playerRef.current)
+    } else {
+      boundariesDownTurn(playerRef.current)
+    }
+    secondsCounter(counter => counter +3)
+  }
   
   const moveRightUp = () => {
     moveUp()
@@ -307,33 +247,12 @@ const boundariesDownTurn = (objectZ) => {
 //HIT MARKERS
 
   const hit = (refObject) => {
-    
-
       if(playerRef.current.y > refObject.current.y + refObject.current.h||playerRef.current.y + playerRef.current.h < refObject.current.y||playerRef.current.x > (refObject.current.x+refObject.current.w) || playerRef.current.x + playerRef.current.w < (refObject.current.x)){
         return
       } else {
-        // console.log("hit")
         rotationFunction()
         imageRef.current = ouchArray[rotationRef.current]
       }
-
-      // console.log('This is the player')
-      // console.log('This is the x')
-      // console.log(playerRef.current.x)
-      // console.log('This is the y')
-      // console.log(playerRef.current.y)
-      // // console.log(playerRef.current.w)
-      // // console.log(playerRef.current.h)
-
-
-      // console.log('This is the Enemy')
-
-      // console.log(enemyYRef.current+enemyHRef.current)
-      // // console.log(enemyXRef)
-      // // console.log(enemyYRef)
-      // // console.log(enemyWRef)
-      // console.log(enemyHRef)
-      // console.log(colorRef)
   }
 
 
@@ -366,4 +285,4 @@ const KeyUp = (e) => {
   );
 }
 
-export default PlayerCanvas;
+export default PlayerCanvasLvl2Static;

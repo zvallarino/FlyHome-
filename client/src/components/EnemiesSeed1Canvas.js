@@ -22,7 +22,7 @@ function EnemiesSeed1Canvas({enemySeed1Ref, enemySeed1ExplosionRef, seed1, seed1
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 16;
+    canvas.style['z-index'] = 14;
     
     const context = canvas.getContext("2d");
     context.scale(2,2);
@@ -158,7 +158,7 @@ const boundariesDown = (objectZ) => {
 
   return (
     <canvas
-    tabIndex="0" 
+  
     // onKeyUp = {KeyUp}
     ref = {canvasRef}
     />
