@@ -178,7 +178,7 @@ function getRandomInt(max) {
 
   return (
     <canvas
-    tabIndex="0" 
+  
     // onKeyDown ={movementFunction}
     ref = {canvasRef}
     />

@@ -50,7 +50,7 @@ function BackgroundCanvas() {
 
   return (
     <canvas
-    tabIndex="0" 
+
 
     ref = {canvasRef}
     />

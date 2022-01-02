@@ -133,7 +133,7 @@ const drawRectOfDoom = (rectangleOfDoom) => {
 
   return (
     <canvas
-    tabIndex="0" 
+
 
     ref = {canvasRef}
     />

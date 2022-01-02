@@ -1,9 +1,6 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
-// import { render } from "react-dom";
-// import { Stage, Layer, Image } from "react-konva";
-// // gifler will be imported into global window object
-// import "/gifler";
+
 
 
 

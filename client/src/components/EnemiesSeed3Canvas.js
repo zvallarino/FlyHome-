@@ -160,7 +160,7 @@ const boundariesDown = (objectZ) => {
 
   return (
     <canvas
-    tabIndex="0" 
+   
     ref = {canvasRef}
     />
   );

@@ -129,7 +129,7 @@ const boundariesDown = (objectZ) => {
 
   return (
     <canvas
-    tabIndex="0" 
+
     // onKeyUp = {KeyUp}
     ref = {canvasRef}
     />
