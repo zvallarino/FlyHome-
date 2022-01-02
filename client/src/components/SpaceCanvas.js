@@ -28,6 +28,27 @@ function SpaceCanvas({levelOneRef,levelOneState}) {
     context.lineWidth = 5
     contextRef.current = context;
 
+    const space = {
+      w:2000,
+      h:500,
+      x:0,
+      y:0,
+      speed:0,
+      dx:0,
+      dy:0
+    }
+
+
+  const drawSpace = () => {
+    let spaceZ = new Image();
+    spaceZ.src = "https://i.imgur.com/PwbWghf.png"
+    spaceZ.onload = function() {
+    contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+    contextRef.current.drawImage(spaceZ,space.x,space.y,space.w,space.h);  
+    // contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
+  }}
+
+
 const update = () => {
   if(levelOneRef.current)
   {requestAnimationFrame(update)}

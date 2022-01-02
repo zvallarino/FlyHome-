@@ -18,7 +18,7 @@ function CommanderSketchLevel2({levelOneState, levelOneRef, doomStartRef, setSta
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 3;
+    canvas.style['z-index'] = 5;
     
     
     const context = canvas.getContext("2d");
@@ -39,60 +39,61 @@ function CommanderSketchLevel2({levelOneState, levelOneRef, doomStartRef, setSta
         dy:0
       }
   
-    const drawSketch = () => {
-      let sketchOne = new Image();
-      sketchOne.src = "https://i.imgur.com/PpJW78X.png"
-      sketchOne.onload = function() {
-      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
-      contextRef.current.fillStyle = "grey"
-      contextRef.current.fillRect(sketch.x, sketch.y, sketch.w, sketch.h);
-      contextRef.current.fillStyle = "white" 
-      contextRef.current.fillRect(sketch.x+20, sketch.y+5, sketch.w-40, sketch.h-20); 
-      contextRef.current.drawImage(sketchOne,sketch.x,sketch.y,sketch.w,sketch.h); 
-      drawRectangle()
-    }}
+      const drawSketch = () => {
+        let sketchOne = new Image();
+        sketchOne.src = "https://i.imgur.com/ONdG4YH.png"
+        sketchOne.onload = function() {
+        contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
+        contextRef.current.fillStyle = "grey"
+        contextRef.current.fillRect(sketch.x, sketch.y, sketch.w, sketch.h);
+        contextRef.current.fillStyle = "white" 
+        contextRef.current.fillRect(sketch.x+20, sketch.y+5, sketch.w-40, sketch.h-20); 
+        contextRef.current.drawImage(sketchOne,sketch.x,sketch.y,sketch.w,sketch.h); 
+        drawRectangle()
+      }}
+  
 
     
     const drawText1 = () => {
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Commander Sketch:",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20))
+        contextRef.current.strokeText("Commander Sketch:",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20))
       }
 
     const drawText2 = () => {
             drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Good Work.",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
+        contextRef.current.strokeText("Good Work.",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
       }
 
     const drawText3 = () => {
         drawRectangle()
     contextRef.current.font = "30px Arial  "
     contextRef.current.lineWidth = 1
-    contextRef.current.strokeText("I will take the West",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
+    contextRef.current.strokeText("I will take the West",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
     }
 
       const drawText4 = () => {
         drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Take down Professor Gillian",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
+        contextRef.current.strokeText("Take down Professor Gillian",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
      }
 
      const drawText5 = () => {
         drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("I'm counting on you",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
+        contextRef.current.strokeText("I'm counting on you",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
      }
 
-      const drawRectangle = () => {
-        contextRef.current.fillStyle = "white";
-        contextRef.current.fillRect(SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
-        contextRef.current.strokeStyle = "black";
-        contextRef.current.strokeRect(SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
-      }
+     const drawRectangle = () => {
+      contextRef.current.fillStyle = "white";
+      contextRef.current.fillRect(SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
+      contextRef.current.strokeStyle = "black";
+      contextRef.current.strokeRect(SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
+    }
 
       const clearRect = () =>{
         contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
