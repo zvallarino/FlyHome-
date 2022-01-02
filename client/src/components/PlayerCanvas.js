@@ -48,7 +48,7 @@ function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref, levelOneRef, levelOneState
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 4;
+    canvas.style['z-index'] = 5;
     
     
     const context = canvas.getContext("2d");
