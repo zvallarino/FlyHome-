@@ -21,7 +21,7 @@ function EnemiesBall3Canvas({enemyBall3Ref, ball3, ball3StartRef }) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 17;
+    canvas.style['z-index'] = 19;
     
     
     const context = canvas.getContext("2d");

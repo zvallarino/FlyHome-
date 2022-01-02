@@ -98,8 +98,8 @@ function PrivateImari({levelOneState, levelOneRef,  doomStartRef, setStartofDoom
     }
   
     const drawFunction = () => {
-        setTimeout(privateImari,7000)
-        setTimeout(drawText1,7200)
+        setTimeout(privateImari,8000)
+        setTimeout(drawText1,8200)
         setTimeout(drawText2,10000)
         setTimeout(drawText3,12000)
         setTimeout(clearRect,13000)  

@@ -125,7 +125,7 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
     
     function step() {
       frameCount++;
-      if (frameCount < 2) {
+      if (frameCount < 0.5) {
         window.requestAnimationFrame(step);
         return;
       }

@@ -49,14 +49,12 @@ function EnemiesSeed2Canvas({enemySeed2Ref, enemySeed2ExplosionRef, seed2,seed2S
 
   
   const movementStopper = () => {
-    console.log("noway")
     seedTwo.dx = 0;
     seedTwo.dy = 0;
     enemySeed2Ref.current.image = "https://i.imgur.com/9Gtot1h.png"
   }
 
   const explosionMaker = () => {
-    console.log("superNoWay")
     enemySeed2Ref.current.image = "https://i.imgur.com/Tg4i9DW.png"
     enemySeed2ExplosionRef.current.x = enemySeed2Ref.current.x;
     enemySeed2ExplosionRef.current.y = enemySeed2Ref.current.y;
@@ -65,7 +63,6 @@ function EnemiesSeed2Canvas({enemySeed2Ref, enemySeed2ExplosionRef, seed2,seed2S
   }
 
   const disappearMaker = () => {
-    console.log("Not gonna happen")
     contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
     console.log( enemySeed2Ref.current.image)
     enemySeed2ExplosionRef.current.x = -1;

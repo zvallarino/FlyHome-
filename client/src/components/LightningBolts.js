@@ -24,7 +24,7 @@ function LightningBolts({ lightningBoltsRef, lightning, lightningStartRef }) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 9;
+    canvas.style['z-index'] = 21;
     
     
     const context = canvas.getContext("2d");

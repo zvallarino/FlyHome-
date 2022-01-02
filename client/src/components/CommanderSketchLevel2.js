@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function CommanderSketchLevel2({levelOneState, levelOneRef, doomStartRef, setStartofDoom}) {
+function CommanderSketchLevel2({cutSceneRef, endOfCutScene}) {
    
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -18,7 +18,7 @@ function CommanderSketchLevel2({levelOneState, levelOneRef, doomStartRef, setSta
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 5;
+    canvas.style['z-index'] = 6;
     
     
     const context = canvas.getContext("2d");
@@ -78,7 +78,7 @@ function CommanderSketchLevel2({levelOneState, levelOneRef, doomStartRef, setSta
         drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Take down Professor Gillian",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
+        contextRef.current.strokeText("Take down Professor Gillian!",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
      }
 
      const drawText5 = () => {
@@ -97,26 +97,26 @@ function CommanderSketchLevel2({levelOneState, levelOneRef, doomStartRef, setSta
 
       const clearRect = () =>{
         contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
-        doomStartRef.current = true
-        setStartofDoom(true)
       }
       
       const drawFunction = () => {
-
         setTimeout(drawSketch,2000)
         setTimeout(drawText1,3000)
         setTimeout(drawText2,4000)
         setTimeout(drawText3,6000)
         setTimeout(drawText4,8000)
         setTimeout(drawText5,10000)
-        setTimeout(clearRect,12000)
+        setTimeout(clearRect,16000)
         
     }
   
     const update = () => {
-      
-        drawFunction();
-       
+      if(cutSceneRef.current)
+        {drawFunction();}
+        else{
+        contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+        return
+        }
     }
   
    
@@ -124,7 +124,7 @@ function CommanderSketchLevel2({levelOneState, levelOneRef, doomStartRef, setSta
 
     update()
 
-  },[])
+  },[endOfCutScene])
 
 
   //SCREEN HEIGHT/WIDTH

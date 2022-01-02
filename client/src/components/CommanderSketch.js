@@ -103,7 +103,7 @@ function CommanderSketch({levelOneState, levelOneRef, doomStartRef, setStartofDo
         setTimeout(drawText1,3000)
         setTimeout(drawText2,5000)
         setTimeout(drawText3,7000)
-        setTimeout(clearRect,9000)
+        setTimeout(clearRect,8000)
         
     }
 
