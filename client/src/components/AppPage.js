@@ -60,6 +60,7 @@ function AppPage({setUser, user}) {
       <div className = "HeaderAppPage">
       {user.username}
       <button onClick={handleLogout}>Log Out</button>
+
       </div>
       <div className = "MiddleAppPage">
          <div className = "GameCardContainer">
