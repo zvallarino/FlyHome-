@@ -248,8 +248,8 @@ useEffect(()=>{
     enemySeed3Ref = {enemySeed3Ref}
 
     />
-    
-    {/* <PlayerCanvasLvL2Gif
+{/*     
+    <PlayerCanvasLvL2Gif
     enemyPlane1Ref = {enemyPlane1Ref}
     enemyPlane2Ref = {enemyPlane2Ref}
     enemyPlane3Ref = {enemyPlane3Ref}
@@ -268,7 +268,7 @@ useEffect(()=>{
 
     /> */}
 
-    {/* <LightningBolts lightning = {lightning} lightningBoltsRef = {lightningBoltsRef} lightningStartRef ={lightningStartRef} />
+    <LightningBolts lightning = {lightning} lightningBoltsRef = {lightningBoltsRef} lightningStartRef ={lightningStartRef} />
     <BossCanvas bossSet = {bossSet} bossRef = {bossRef} bossStartRef = {bossStartRef} />
 
     
@@ -282,7 +282,7 @@ useEffect(()=>{
     
     <EnemyPlane1Canvas plane1 = {plane1} plane1StartRef = {plane1StartRef} enemyPlane1Ref ={enemyPlane1Ref}/>
     <EnemyPlane2Canvas plane2 = {plane2} plane2StartRef = {plane2StartRef} enemyPlane2Ref={enemyPlane2Ref}/>
-    <EnemyPlane3Canvas plane3 = {plane3} plane3StartRef = {plane3StartRef} enemyPlane3Ref={enemyPlane3Ref}/> */}
+    <EnemyPlane3Canvas plane3 = {plane3} plane3StartRef = {plane3StartRef} enemyPlane3Ref={enemyPlane3Ref}/>
 
 
     </>
