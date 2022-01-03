@@ -181,3 +181,61 @@ code {
   width: 100vw;
   height: 100vh;
 }
+
+.homeBox{
+  display:flex;
+  flex-direction:row;
+  box-sizing: border-box;
+  border: 10px solid red;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.homelogin{
+  display:flex;
+  box-sizing: border-box;
+  border: 10px solid rgb(0, 255, 55);
+  width: 100vw;
+  height: 100vh;
+}
+
+.SigninSignUpBox{
+  display:flex;
+  box-sizing: border-box;
+  border: 10px solid rgb(60, 0, 255);
+  width: 100vw;
+  height: 100vh;
+}
+
+.topboxSigninSignUp{
+  display:flex;
+  box-sizing: border-box;
+  border: 10px solid rgb(0, 255, 21);
+  width: 100vw;
+  height: 100vh;
+}
+
+.middleboxSigninSignUp{
+  display:flex;
+  box-sizing: border-box;
+  border: 10px solid rgb(255, 72, 0);
+  width: 100vw;
+  height: 100vh;
+}
+
+.bottomboxSigninSignUp{
+  display:flex;
+  box-sizing: border-box;
+  border: 10px solid rgb(234, 0, 255);
+  width: 100vw;
+  height: 100vh;
+}
+
+.homesignup{
+  display:flex;
+  box-sizing: border-box;
+  border: 10px solid rgb(255, 251, 0);
+  width: 100vw;
+  height: 100vh;
+}

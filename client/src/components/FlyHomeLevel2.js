@@ -20,9 +20,9 @@ function FlyHomeLevel2() {
   return (
     <>
     <EnemiesALevel2 startFirstWave = {startFirstWave}  firstWaveRef = {firstWaveRef}/>
-    {/* <CommanderSketchLevel2 endOfCutScene = {endOfCutScene} cutSceneRef = {cutSceneRef}  />
-    <CommanderSketchPlane setFirstWave = {setFirstWave} firstWaveRef = {firstWaveRef} endOfCutScene = {endOfCutScene} cutSceneRef = {cutSceneRef} setterCutScene = {setterCutScene}/> */}
-    {/* <CloudsMoving /> */}
+    <CommanderSketchLevel2 endOfCutScene = {endOfCutScene} cutSceneRef = {cutSceneRef}  />
+    <CommanderSketchPlane setFirstWave = {setFirstWave} firstWaveRef = {firstWaveRef} endOfCutScene = {endOfCutScene} cutSceneRef = {cutSceneRef} setterCutScene = {setterCutScene}/>
+    <CloudsMoving />
     <CloudsStatic />
     <SeaCanvas />
     <BackgroundCanvas />
