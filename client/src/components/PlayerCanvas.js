@@ -23,7 +23,7 @@ function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref, levelOneRef, levelOneState
   const contextRef = useRef(null)
   const playerRef = useRef(null)
   // const colorRef = useRef('grey')
-  const imageRef = useRef("https://i.imgur.com/5rjTnM5.png")
+  const imageRef = useRef("https://i.imgur.com/xXGDB6n.png")
   const [counter,secondsCounter] =useState(0)
   const rotationRef = useRef(0)
  
@@ -48,7 +48,7 @@ function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref, levelOneRef, levelOneState
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 5;
+    canvas.style['z-index'] = 10;
     
     
     const context = canvas.getContext("2d");

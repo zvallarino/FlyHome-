@@ -45,9 +45,7 @@ function CommanderSketchLevel2({cutSceneRef, endOfCutScene}) {
         sketchOne.onload = function() {
         contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
         contextRef.current.fillStyle = "grey"
-        contextRef.current.fillRect(sketch.x, sketch.y, sketch.w, sketch.h);
-        contextRef.current.fillStyle = "white" 
-        contextRef.current.fillRect(sketch.x+20, sketch.y+5, sketch.w-40, sketch.h-20); 
+        contextRef.current.fillRect(sketch.x-10, sketch.y-10, sketch.w+20, sketch.h+20);
         contextRef.current.drawImage(sketchOne,sketch.x,sketch.y,sketch.w,sketch.h); 
         drawRectangle()
       }}

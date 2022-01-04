@@ -18,7 +18,7 @@ function PrivateImari({levelOneState, levelOneRef,  doomStartRef, setStartofDoom
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 4;
+    canvas.style['z-index'] = 7;
     
     
     const context = canvas.getContext("2d");
@@ -63,7 +63,7 @@ function PrivateImari({levelOneState, levelOneRef,  doomStartRef, setStartofDoom
             drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Count on me.",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(10.2/20));
+        contextRef.current.strokeText("Count on me,sir.",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(10.2/20));
       }
 
       const drawText3 = () => {

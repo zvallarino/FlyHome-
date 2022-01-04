@@ -30,6 +30,8 @@ import BossCanvas from './BossCanvas';
 
 
 
+
+
 function EnemiesALevel2({firstWaveRef, startFirstWave}) {
 
   
@@ -182,8 +184,8 @@ function EnemiesALevel2({firstWaveRef, startFirstWave}) {
     setTimeout(ballsSetter, 15000);
     setTimeout(ballsStopper,20000);
 
-    setTimeout(bossSetter, 22000);
-    setTimeout(bossStopper, 30000);
+    // setTimeout(bossSetter, 22000);
+    // setTimeout(bossStopper, 30000);
 
     setTimeout(lightningSetter,25000);
     setTimeout(lightningStopper,30000);

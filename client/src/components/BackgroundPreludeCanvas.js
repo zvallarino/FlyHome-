@@ -18,7 +18,7 @@ function BackgroundPreludeCanvas({pleaseStopRef, prefixStopper, setPrefixStopper
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 1;
+    canvas.style['z-index'] = 2;
     
     
     const context = canvas.getContext("2d");
