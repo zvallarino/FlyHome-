@@ -1,7 +1,9 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function CommanderSketchFinal({}) {
+function CommanderSketchFinal({ setBossEnd, bossEndSceneRef, bossEndState}) {
+
+  console.log(bossEndSceneRef)
    
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -91,6 +93,11 @@ function CommanderSketchFinal({}) {
         // setStartofDoom(true)
       }
 
+      const startCutScene = () =>{
+        bossEndSceneRef.current = true
+        setBossEnd(fox=>!fox)
+      }
+
   
     const update = () => {
  
@@ -104,7 +111,7 @@ function CommanderSketchFinal({}) {
         setTimeout(drawText2,5000)
         setTimeout(drawText3,7000)
         setTimeout(clearRect,8000)
-
+        setTimeout(startCutScene,11000)
         setTimeout(drawSketch,11000)
         setTimeout(drawText4,11500)
         setTimeout(clearRect,13000)

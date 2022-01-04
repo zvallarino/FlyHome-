@@ -43,13 +43,6 @@ function FlyHomeLevel2() {
         {/* <PlayerCanvasSpaceToEarth setLevelTwoPrefixStopper = {setLevelTwoPrefixStopper} levelTwoPreFixStopper = {levelTwoPreFixStopper} pleaseLevel2StopRef = {pleaseLevel2StopRef}/> */}
     {/* <SpaceToEarth setLevelTwoPrefixStopper = {setLevelTwoPrefixStopper} levelTwoPreFixStopper = {levelTwoPreFixStopper} pleaseLevel2StopRef = {pleaseLevel2StopRef}/> */}
 
-    {/* <PrivateImariLevel2Boss />
-    <ProfessorGillian /> */}
-
-    {/* <CommanderSketchFinal />
-    <CommanderSketchPlaneFinal /> */}
-
-    {/* <EndOfGameHome /> */}
     
     <CloudsMoving />
     <CloudsStatic />

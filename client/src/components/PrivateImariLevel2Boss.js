@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function PrivateImariLevel2Boss({levelOneState, levelOneRef,  doomStartRef, setStartofDoom}) {
+function PrivateImariLevel2Boss({cutSceneRef, cutSceneStart}) {
    
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -81,15 +81,17 @@ function PrivateImariLevel2Boss({levelOneState, levelOneRef,  doomStartRef, setS
       }
 
       const clearRect = () =>{
-        contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
-        doomStartRef.current = true
-        setStartofDoom(true)
+        contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height)
       }
 
   
     const update = () => {
-    
-        drawFunction();
+      if(cutSceneRef.current)
+        {drawFunction();}
+        else{
+          contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height)
+          return
+        }
     }
   
     const drawFunction = () => {
@@ -103,7 +105,7 @@ function PrivateImariLevel2Boss({levelOneState, levelOneRef,  doomStartRef, setS
 
     update()
 
-  },[levelOneState])
+  },[cutSceneStart])
 
 
   //SCREEN HEIGHT/WIDTH

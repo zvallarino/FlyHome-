@@ -1,10 +1,13 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function ProfessorGillian({}) {
+function ProfessorGillian({cutSceneRef, cutSceneStart }) {
    
+  console.log(cutSceneRef)
+
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
+  
 
 
   useEffect(()=>{
@@ -108,9 +111,13 @@ function ProfessorGillian({}) {
 
   
     const update = () => {
-    
-        drawFunction()
-        
+      console.log(cutSceneRef.current)
+      if(cutSceneRef.current)
+        {drawFunction()}
+        else{
+          contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+          return
+        }  
     }
   
     const drawFunction = () => {
@@ -133,7 +140,7 @@ function ProfessorGillian({}) {
 
     update()
 
-  },[])
+  },[cutSceneStart])
 
 
   //SCREEN HEIGHT/WIDTH

@@ -64,7 +64,7 @@ function EnemiesSeed2Canvas({enemySeed2Ref, enemySeed2ExplosionRef, seed2,seed2S
 
   const disappearMaker = () => {
     contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-    console.log( enemySeed2Ref.current.image)
+ 
     enemySeed2ExplosionRef.current.x = 0;
     enemySeed2ExplosionRef.current.y = 0;
     enemySeed2ExplosionRef.current.w = 0;
