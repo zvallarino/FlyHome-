@@ -26,8 +26,8 @@ function FlyHomeLevel2() {
   const [endOfCutScene,setterCutScene] = useState(true)
   const cutSceneRef = useRef(true)
 
-  const [startFirstWave, setFirstWave] = useState(false)
-  const firstWaveRef = useRef(false)
+  const [startFirstWave, setFirstWave] = useState(true)
+  const firstWaveRef = useRef(true)
 
   const [levelTwoPreFixStopper, setLevelTwoPrefixStopper] = useState(true)
   const pleaseLevel2StopRef = useRef(true)
@@ -35,19 +35,21 @@ function FlyHomeLevel2() {
 
   return (
     <>
-    {/* <PlayerCanvasSpaceToEarth setLevelTwoPrefixStopper = {setLevelTwoPrefixStopper} levelTwoPreFixStopper = {levelTwoPreFixStopper} pleaseLevel2StopRef = {pleaseLevel2StopRef}/>
-    <SpaceToEarth setLevelTwoPrefixStopper = {setLevelTwoPrefixStopper} levelTwoPreFixStopper = {levelTwoPreFixStopper} pleaseLevel2StopRef = {pleaseLevel2StopRef}/> */}
+
     <EnemiesALevel2 startFirstWave = {startFirstWave}  firstWaveRef = {firstWaveRef}/>
     {/* <CommanderSketchLevel2 endOfCutScene = {endOfCutScene} cutSceneRef = {cutSceneRef}  />
     <CommanderSketchPlane setFirstWave = {setFirstWave} firstWaveRef = {firstWaveRef} endOfCutScene = {endOfCutScene} cutSceneRef = {cutSceneRef} setterCutScene = {setterCutScene}/> */}
 
+        {/* <PlayerCanvasSpaceToEarth setLevelTwoPrefixStopper = {setLevelTwoPrefixStopper} levelTwoPreFixStopper = {levelTwoPreFixStopper} pleaseLevel2StopRef = {pleaseLevel2StopRef}/> */}
+    {/* <SpaceToEarth setLevelTwoPrefixStopper = {setLevelTwoPrefixStopper} levelTwoPreFixStopper = {levelTwoPreFixStopper} pleaseLevel2StopRef = {pleaseLevel2StopRef}/> */}
+
     {/* <PrivateImariLevel2Boss />
     <ProfessorGillian /> */}
 
-    <CommanderSketchFinal />
-    <CommanderSketchPlaneFinal />
+    {/* <CommanderSketchFinal />
+    <CommanderSketchPlaneFinal /> */}
 
-    <EndOfGameHome />
+    {/* <EndOfGameHome /> */}
     
     <CloudsMoving />
     <CloudsStatic />

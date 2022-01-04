@@ -27,7 +27,13 @@ function EndOfGameHome({}) {
     context.lineWidth = 5
     contextRef.current = context;
 
-
+    const planetSuperSmall = {
+      w:SCREEN_WIDTH*(1/20),
+      h:SCREEN_HEIGHT*(1/20),
+    x:SCREEN_WIDTH*(9/20),
+    y:SCREEN_HEIGHT*(10.70/20),
+  }
+  
 
 
 
@@ -35,22 +41,16 @@ const planetSmall = {
     w:SCREEN_WIDTH*(2/20),
     h:SCREEN_HEIGHT*(2/20),
   x:SCREEN_WIDTH*(8.5/20),
-  y:SCREEN_HEIGHT*(10.5/20),
+  y:SCREEN_HEIGHT*(10.1/20),
 }
 
 const planetMedium = {
   w:SCREEN_WIDTH*(3/20),
   h:SCREEN_HEIGHT*(3/20),
   x:SCREEN_WIDTH*(8/20),
-  y:SCREEN_HEIGHT*(9.9/20),
+  y:SCREEN_HEIGHT*(9.5/20),
 }
 
-const planetSuperSmall = {
-    w:SCREEN_WIDTH*(1/20),
-    h:SCREEN_HEIGHT*(1/20),
-  x:SCREEN_WIDTH*(9/20),
-  y:SCREEN_HEIGHT*(11.1/20),
-}
 
 
 const drawplanet = (planetObject) => {

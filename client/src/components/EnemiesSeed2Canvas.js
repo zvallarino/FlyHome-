@@ -4,10 +4,10 @@ import './App.css';
 function EnemiesSeed2Canvas({enemySeed2Ref, enemySeed2ExplosionRef, seed2,seed2StartRef}) {
 
   
-  enemySeed2ExplosionRef.current.x = -1;
-  enemySeed2ExplosionRef.current.y = -1;
-  enemySeed2ExplosionRef.current.w = 0;
-  enemySeed2ExplosionRef.current.h = 0;
+  enemySeed2Ref.current.x = -1;
+  enemySeed2Ref.current.y = -1;
+  enemySeed2Ref.current.w = 0;
+  enemySeed2Ref.current.h = 0;
 
     enemySeed2Ref.current.image = 'https://i.imgur.com/cqiU108.png'
 
@@ -65,8 +65,8 @@ function EnemiesSeed2Canvas({enemySeed2Ref, enemySeed2ExplosionRef, seed2,seed2S
   const disappearMaker = () => {
     contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
     console.log( enemySeed2Ref.current.image)
-    enemySeed2ExplosionRef.current.x = -1;
-    enemySeed2ExplosionRef.current.y = -1;
+    enemySeed2ExplosionRef.current.x = 0;
+    enemySeed2ExplosionRef.current.y = 0;
     enemySeed2ExplosionRef.current.w = 0;
     enemySeed2ExplosionRef.current.h = 0;
   }

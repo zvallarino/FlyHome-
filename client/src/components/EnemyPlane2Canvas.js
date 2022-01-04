@@ -70,7 +70,7 @@ class EnemyCreator {
 }
 
 
-const planeTwo = new EnemyCreator('https://i.imgur.com/FJ20n1X.png', 200, 250, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,0,0)
+const planeTwo = new EnemyCreator('https://i.imgur.com/FJ20n1X.png', 200, 250, SCREEN_WIDTH*(1/8),SCREEN_HEIGHT/24,15,2)
 
 
 //Draw Function

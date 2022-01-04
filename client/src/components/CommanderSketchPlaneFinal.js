@@ -6,7 +6,7 @@ function CommanderSketchPlaneFinal({}) {
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
   const playerRef = useRef(null)
-  const imageRef = useRef("https://i.imgur.com/rCd4KGV.png")
+  const imageRef = useRef("https://i.imgur.com/ymnWF8N.png")
 
   //left, down, right
 

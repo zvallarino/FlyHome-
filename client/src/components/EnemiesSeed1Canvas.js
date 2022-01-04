@@ -6,6 +6,11 @@ function EnemiesSeed1Canvas({enemySeed1Ref, enemySeed1ExplosionRef, seed1, seed1
 
  enemySeed1Ref.current.image = 'https://i.imgur.com/cqiU108.png'
 
+  enemySeed1Ref.current.x = -1;
+  enemySeed1Ref.current.y = -1;
+  enemySeed1Ref.current.w = 0;
+  enemySeed1Ref.current.h = 0;
+
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -64,8 +69,8 @@ function EnemiesSeed1Canvas({enemySeed1Ref, enemySeed1ExplosionRef, seed1, seed1
     // console.log("Not gonna happen")
     contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
     // console.log( enemySeed1Ref.current.image)
-    enemySeed1ExplosionRef.current.x = -1;
-    enemySeed1ExplosionRef.current.y = -1;
+    enemySeed1ExplosionRef.current.x = 0;
+    enemySeed1ExplosionRef.current.y = 0;
     enemySeed1ExplosionRef.current.w = 0;
     enemySeed1ExplosionRef.current.h = 0;
   }

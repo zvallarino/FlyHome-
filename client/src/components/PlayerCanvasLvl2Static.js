@@ -1,7 +1,13 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerCanvasLvl2Static() {
+function PlayerCanvasLvl2Static({
+  enemyBall1Ref, enemyBall2Ref, enemyBall3Ref,
+  enemyPlane1Ref, enemyPlane2Ref, enemyPlane3Ref,
+  enemySeed1Ref, enemySeed2Ref, enemySeed3Ref,
+  enemySeed1ExplosionRef, enemySeed2ExplosionRef, enemySeed3ExplosionRef
+
+}) {
   
 
 
@@ -67,8 +73,24 @@ function PlayerCanvasLvl2Static() {
     // contextRef.current.strokeRect(playerRef.current.x, playerRef.current.y, playerRef.current.w, playerRef.current.h);
   }}
 
+  const initialStateSetter = (rebObject) =>{
+    rebObject.current.x = 0;
+    rebObject.current.y = 0;
+    rebObject.current.w = 0;
+    rebObject.current.h = 0;
+  }
+
+  initialStateSetter(enemySeed1ExplosionRef)
+  initialStateSetter(enemySeed2ExplosionRef)
+  initialStateSetter(enemySeed3ExplosionRef)
+
+
+
   const update = () => {
     drawPlane();
+    hitSeeds(enemySeed1ExplosionRef)
+    hitSeeds(enemySeed2ExplosionRef)
+    hitSeeds(enemySeed3ExplosionRef)
     requestAnimationFrame(update)
   }
 
@@ -173,7 +195,15 @@ function PlayerCanvasLvl2Static() {
     } else if( e.key === "l"){
       rotationFunction()
       imageRef.current = firingRotationArray[rotationRef.current]
-      // hit()
+      hit(enemyBall1Ref)
+      hit(enemyBall2Ref)
+      hit(enemyBall3Ref)
+      hit(enemyPlane1Ref)
+      hit(enemyPlane2Ref)
+      hit(enemyPlane3Ref)
+      hit(enemySeed1Ref)
+      hit(enemySeed2Ref)
+      hit(enemySeed3Ref)
     } else if ( e.key === "k"){
       console.log("superBlaster")
     } else if ( e.key === " "){
@@ -243,7 +273,9 @@ const boundariesDownTurn = (objectZ) => {
       objectZ.y = 534
     }} 
     
-
+const pleaseDisappear = (refObject) =>{
+  refObject.current.image = "https://i.imgur.com/09CdZNf.png"
+}
 //HIT MARKERS
 
   const hit = (refObject) => {
@@ -251,9 +283,28 @@ const boundariesDownTurn = (objectZ) => {
         return
       } else {
         rotationFunction()
-        imageRef.current = ouchArray[rotationRef.current]
+        if(refObject.current.image === "https://i.imgur.com/FUX7HjC.png")
+        {return} else {refObject.current.image = "https://i.imgur.com/FUX7HjC.png"}
+
       }
   }
+
+  const hitSeeds = (refObject) => {
+    
+    if(playerRef.current.y > refObject.current.y + refObject.current.h||playerRef.current.y + playerRef.current.h < refObject.current.y||playerRef.current.x > (refObject.current.x+refObject.current.w) || playerRef.current.x + playerRef.current.w < (refObject.current.x)){
+      return
+    } else {
+      rotationFunction()
+      // console.log(refObject.current)
+      // console.log(playerRef.current)
+
+      imageRef.current = ouchArray[rotationRef.current]
+      if(refObject.current.image === "https://i.imgur.com/FUX7HjC.png")
+      {return} else {refObject.current.image = "https://i.imgur.com/FUX7HjC.png"}
+
+    }
+}
+
 
 
   
@@ -261,7 +312,30 @@ const boundariesDownTurn = (objectZ) => {
 const KeyUp = (e) => {
   if(e.key === "l"){
     rotationFunction()
-    imageRef.current =rotationArray[rotationRef.current]
+    if(enemyPlane1Ref.current.image === "https://i.imgur.com/FUX7HjC.png")
+    {enemyPlane1Ref.current.image = "https://i.imgur.com/J6s56fV.png"}
+    if(enemyPlane2Ref.current.image === "https://i.imgur.com/FUX7HjC.png")
+    {enemyPlane2Ref.current.image = "https://i.imgur.com/J6s56fV.png"}
+    if(enemyPlane3Ref.current.image === "https://i.imgur.com/FUX7HjC.png")
+    {enemyPlane3Ref.current.image = "https://i.imgur.com/J6s56fV.png"}
+
+    if(enemyBall1Ref.current.image === "https://i.imgur.com/FUX7HjC.png")
+    {enemyBall1Ref.current.image = "https://i.imgur.com/J6s56fV.png"}
+    if(enemyBall2Ref.current.image === "https://i.imgur.com/FUX7HjC.png")
+    {enemyBall2Ref.current.image = "https://i.imgur.com/J6s56fV.png"}
+    if(enemyBall3Ref.current.image === "https://i.imgur.com/FUX7HjC.png")
+    {enemyBall3Ref.current.image = "https://i.imgur.com/J6s56fV.png"}
+
+    
+    if(enemySeed1Ref.current.image === "https://i.imgur.com/FUX7HjC.png")
+    {enemySeed1Ref.current.image = "https://i.imgur.com/J6s56fV.png"}
+    if(enemySeed2Ref.current.image === "https://i.imgur.com/FUX7HjC.png")
+    {enemySeed2Ref.current.image = "https://i.imgur.com/J6s56fV.png"}
+    if(enemySeed3Ref.current.image === "https://i.imgur.com/FUX7HjC.png")
+    {enemySeed3Ref.current.image = "https://i.imgur.com/J6s56fV.png"}
+
+
+    imageRef.current = rotationArray[rotationRef.current]
   } else if(e.key === " "){
    
   } else if (e.key === "k"){
@@ -274,6 +348,10 @@ const KeyUp = (e) => {
     secondsCounter(1)
   }
 }
+
+
+
+
 
   return (
     <canvas

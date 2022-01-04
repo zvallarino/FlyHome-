@@ -4,10 +4,10 @@ import './App.css';
 function EnemiesSeed3Canvas({enemySeed3Ref, enemySeed3ExplosionRef, seed3,seed3StartRef}) {
 
     
-    enemySeed3ExplosionRef.current.x = -1;
-    enemySeed3ExplosionRef.current.y = -1;
-    enemySeed3ExplosionRef.current.w = 0;
-    enemySeed3ExplosionRef.current.h = 0;
+  enemySeed3Ref.current.x = 0;
+  enemySeed3Ref.current.y = 0;
+  enemySeed3Ref.current.w = 0;
+  enemySeed3Ref.current.h = 0;
 
     enemySeed3Ref.current.image = 'https://i.imgur.com/cqiU108.png'
     
@@ -45,7 +45,11 @@ function EnemiesSeed3Canvas({enemySeed3Ref, enemySeed3ExplosionRef, seed3,seed3S
   
     const explosionMaker = () => {
       enemySeed3Ref.current.image = "https://i.imgur.com/Tg4i9DW.png"
+    
       enemySeed3ExplosionRef.current.x = enemySeed3Ref.current.x;
+      console.log(enemySeed3ExplosionRef.current.x)
+      console.log(enemySeed3Ref.current.x)
+
       enemySeed3ExplosionRef.current.y = enemySeed3Ref.current.y;
       enemySeed3ExplosionRef.current.w = enemySeed3Ref.current.w;
       enemySeed3ExplosionRef.current.h = enemySeed3Ref.current.h;

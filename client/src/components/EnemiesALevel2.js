@@ -176,7 +176,7 @@ function EnemiesALevel2({firstWaveRef, startFirstWave}) {
 
   const timingOfLevel2 = () => {
     setTimeout(planesSetter,3000);
-    setTimeout(planesStopper,8000);
+    setTimeout(planesStopper,9000);
 
     setTimeout(seedsSetter, 9000);
     setTimeout(seedsStopper, 15000);
@@ -270,8 +270,8 @@ useEffect(()=>{
 
     /> */}
 
-    <LightningBolts lightning = {lightning} lightningBoltsRef = {lightningBoltsRef} lightningStartRef ={lightningStartRef} />
-    <BossCanvas bossSet = {bossSet} bossRef = {bossRef} bossStartRef = {bossStartRef} />
+    {/* <LightningBolts lightning = {lightning} lightningBoltsRef = {lightningBoltsRef} lightningStartRef ={lightningStartRef} />
+    <BossCanvas bossSet = {bossSet} bossRef = {bossRef} bossStartRef = {bossStartRef} /> */}
 
     
     <EnemiesBall1Canvas ball1 = {ball1} ball1StartRef = {ball1StartRef} enemyBall1Ref = {enemyBall1Ref}/>
@@ -280,7 +280,7 @@ useEffect(()=>{
    
     <EnemiesSeed1Canvas seed1 = {seed1} seed1StartRef = {seed1StartRef} enemySeed1Ref = {enemySeed1Ref} enemySeed1ExplosionRef = {enemySeed1ExplosionRef}/>
     <EnemiesSeed2Canvas seed2 = {seed2} seed2StartRef = {seed2StartRef} enemySeed2Ref = {enemySeed2Ref} enemySeed2ExplosionRef = {enemySeed2ExplosionRef} />
-    <EnemiesSeed3Canvas seed3 = {seed3} seed3StartRef = {seed3StartRef} enemySeed3Ref = {enemySeed3Ref} enemySeed3ExplosionRef = {enemySeed3ExplosionRef}/>
+    <EnemiesSeed3Canvas seed3 = {seed3} seed3StartRef = {seed3StartRef} enemySeed3Ref = {enemySeed3Ref} enemySeed3ExplosionRef = {enemySeed3ExplosionRef}/> 
     
     <EnemyPlane1Canvas plane1 = {plane1} plane1StartRef = {plane1StartRef} enemyPlane1Ref ={enemyPlane1Ref}/>
     <EnemyPlane2Canvas plane2 = {plane2} plane2StartRef = {plane2StartRef} enemyPlane2Ref={enemyPlane2Ref}/>
