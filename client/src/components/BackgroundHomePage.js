@@ -19,7 +19,7 @@ function BackgroundHomeCanvas({canvasChoiceRef}) {
     canvas.height = window.innerHeight * 2;
     canvas.style.width = `${window.innerWidth}px`;
     canvas.style.height = `${window.innerHeight}px`;
-    // canvas.style.backgroundColor = "#B2FFFA";
+    canvas.style.backgroundColor = "#B2FFFA";
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
