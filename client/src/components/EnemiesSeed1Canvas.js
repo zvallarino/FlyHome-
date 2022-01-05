@@ -53,16 +53,32 @@ function EnemiesSeed1Canvas({enemySeed1Ref, enemySeed1ExplosionRef, seed1, seed1
     // console.log("noway")
     seedOne.dx = 0;
     seedOne.dy = 0;
-    enemySeed1Ref.current.image = "https://i.imgur.com/9Gtot1h.png"
+
+    if(enemySeed1Ref.current.image === "https://i.imgur.com/J6s56fV.png"){
+      enemySeed1ExplosionRef.current.x = 0;
+      enemySeed1ExplosionRef.current.y = 0;
+      enemySeed1ExplosionRef.current.w = 0;
+      enemySeed1ExplosionRef.current.h = 0;
+    } else {
+      enemySeed1Ref.current.image = "https://i.imgur.com/9Gtot1h.png"
+    }
   }
 
   const explosionMaker = () => {
     // console.log("superNoWay")
+    if(enemySeed1Ref.current.image === "https://i.imgur.com/J6s56fV.png"){
+      enemySeed1ExplosionRef.current.x = 0;
+      enemySeed1ExplosionRef.current.y = 0;
+      enemySeed1ExplosionRef.current.w = 0;
+      enemySeed1ExplosionRef.current.h = 0;
+    } else {
+
     enemySeed1Ref.current.image = "https://i.imgur.com/Tg4i9DW.png"
     enemySeed1ExplosionRef.current.x = enemySeed1Ref.current.x;
     enemySeed1ExplosionRef.current.y = enemySeed1Ref.current.y;
     enemySeed1ExplosionRef.current.w = enemySeed1Ref.current.w;
     enemySeed1ExplosionRef.current.h = enemySeed1Ref.current.h;
+    }
   }
 
   const disappearMaker = () => {

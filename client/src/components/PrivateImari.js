@@ -56,28 +56,28 @@ function PrivateImari({levelOneState, levelOneRef,  doomStartRef, setStartofDoom
     const drawText1 = () => {
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Private Imari:",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(10.2/20))
+        contextRef.current.strokeText("Private Imari:",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(9.7/20))
       }
 
  const drawText2 = () => {
             drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Count on me,sir.",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(10.2/20));
+        contextRef.current.strokeText("Count on me,sir.",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(9.7/20));
       }
 
       const drawText3 = () => {
         drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Engaging Hyperspeed!",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(10.2/20));
+        contextRef.current.strokeText("Engaging Hyperspeed!",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(9.7/20));
       }
 
       const drawRectangle = () => {
         contextRef.current.fillStyle = "white";
-        contextRef.current.fillRect(SCREEN_WIDTH*(0.5/20), SCREEN_HEIGHT*(9.5/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
+        contextRef.current.fillRect(SCREEN_WIDTH*(0.5/20), SCREEN_HEIGHT*(9/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
         contextRef.current.strokeStyle = "black";
-        contextRef.current.strokeRect(SCREEN_WIDTH*(0.5/20), SCREEN_HEIGHT*(9.5/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
+        contextRef.current.strokeRect(SCREEN_WIDTH*(0.5/20), SCREEN_HEIGHT*(9/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
       }
 
       const clearRect = () =>{

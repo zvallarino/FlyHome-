@@ -51,15 +51,28 @@ function EnemiesSeed2Canvas({enemySeed2Ref, enemySeed2ExplosionRef, seed2,seed2S
   const movementStopper = () => {
     seedTwo.dx = 0;
     seedTwo.dy = 0;
-    enemySeed2Ref.current.image = "https://i.imgur.com/9Gtot1h.png"
+    console.log(enemySeed2Ref.current.image)
+    if(enemySeed2Ref.current.image === "https://i.imgur.com/J6s56fV.png"){
+      enemySeed2ExplosionRef.current.x = 0;
+      enemySeed2ExplosionRef.current.y = 0;
+      enemySeed2ExplosionRef.current.w = 0;
+      enemySeed2ExplosionRef.current.h = 0;}
+      else{
+    enemySeed2Ref.current.image = "https://i.imgur.com/9Gtot1h.png"}
   }
 
   const explosionMaker = () => {
+    if(enemySeed2Ref.current.image === "https://i.imgur.com/J6s56fV.png"){
+      enemySeed2ExplosionRef.current.x = 0;
+      enemySeed2ExplosionRef.current.y = 0;
+      enemySeed2ExplosionRef.current.w = 0;
+      enemySeed2ExplosionRef.current.h = 0;}
+      else{
     enemySeed2Ref.current.image = "https://i.imgur.com/Tg4i9DW.png"
     enemySeed2ExplosionRef.current.x = enemySeed2Ref.current.x;
     enemySeed2ExplosionRef.current.y = enemySeed2Ref.current.y;
     enemySeed2ExplosionRef.current.w = enemySeed2Ref.current.w;
-    enemySeed2ExplosionRef.current.h = enemySeed2Ref.current.h;
+    enemySeed2ExplosionRef.current.h = enemySeed2Ref.current.h;}
   }
 
   const disappearMaker = () => {

@@ -71,7 +71,7 @@ function CommanderSketchPlaneFinal({commanderSketchRef, commanderSketchFinal}) {
 
   
   
-  setTimeout(sketchStopinTheMiddle,3000)
+  setTimeout(sketchStopinTheMiddle,1500)
 
 
     update()}

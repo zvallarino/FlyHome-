@@ -234,6 +234,8 @@ useEffect(()=>{
   }
 },[startFirstWave])
 
+bossRef.current.counter = 0;
+
 
 
 
@@ -245,6 +247,9 @@ useEffect(()=>{
 
     <PlayerCanvasLvL2Static
 
+    bossRef = {bossRef}
+    bossStopper = {bossStopper}
+  
     setplayerAppear = {setplayerAppear}
     playerAppearRef ={playerAppearRef}
     playerAppear = {playerAppear}
@@ -302,7 +307,11 @@ useEffect(()=>{
     <EnemyPlane2Canvas plane2 = {plane2} plane2StartRef = {plane2StartRef} enemyPlane2Ref={enemyPlane2Ref}/>
     <EnemyPlane3Canvas plane3 = {plane3} plane3StartRef = {plane3StartRef} enemyPlane3Ref={enemyPlane3Ref}/>
 
-    <PrivateImariLevel2Boss bossSetter = {bossSetter} bossStopper = {bossStopper} cutSceneRef = {cutSceneRef} cutSceneStart ={cutSceneStart} />
+    <PrivateImariLevel2Boss
+    bossSetter = {bossSetter} 
+    bossStopper = {bossStopper}
+    cutSceneRef = {cutSceneRef}
+    cutSceneStart ={cutSceneStart} />
     <ProfessorGillian cutSceneRef = {cutSceneRef} cutSceneStart ={cutSceneStart} />
 
     <CommanderSketchFinal 

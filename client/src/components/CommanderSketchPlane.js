@@ -90,7 +90,7 @@ function CommanderSketchPlane({cutSceneRef, endOfCutScene, setterCutScene, setFi
     }
   }
 
-  setTimeout(sketchStopinTheMiddle,3000)
+  setTimeout(sketchStopinTheMiddle,1500)
   setTimeout(sketchGoAway,10000)
 
 
