@@ -1,7 +1,10 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerCanvasSpaceToEarth({setLevelTwoPrefixStopper, levelTwoPreFixStopper, pleaseLevel2StopRef}) {
+function PlayerCanvasSpaceToEarth({
+  setLevelTwoPrefixStopper,levelTwoPreFixStopper, pleaseLevel2StopRef,
+  cutSceneRef,setterCutScene,setplayerAppear, playerAppearRef, playerAppear
+}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -22,7 +25,7 @@ function PlayerCanvasSpaceToEarth({setLevelTwoPrefixStopper, levelTwoPreFixStopp
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 3;
+    canvas.style['z-index'] = 6;
     
     
     const context = canvas.getContext("2d");
@@ -97,7 +100,11 @@ const NextLevel = () =>{
 
     if(playerRef.current.y > 800){
         pleaseLevel2StopRef.current = false
+        cutSceneRef.current = true
+        playerAppearRef.current = true
         setLevelTwoPrefixStopper(false)
+        setplayerAppear(dog=>!dog)
+        setterCutScene(fox=>!fox)
         playerRef.current.dy = 0
         playerRef.current.dx = 0
         // contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  

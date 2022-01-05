@@ -100,19 +100,18 @@ function CommanderSketchFinal({ setBossEnd, bossEndSceneRef, bossEndState}) {
 
   
     const update = () => {
- 
         drawFunction();
     }
   
     const drawFunction = () => {
-
+      
         setTimeout(drawSketch,2000)
         setTimeout(drawText1,3000)
         setTimeout(drawText2,5000)
         setTimeout(drawText3,7000)
+        setTimeout(startCutScene,8000)
         setTimeout(clearRect,8000)
-        setTimeout(startCutScene,11000)
-        setTimeout(drawSketch,11000)
+        setTimeout(drawSketch,10000)
         setTimeout(drawText4,11500)
         setTimeout(clearRect,13000)
         

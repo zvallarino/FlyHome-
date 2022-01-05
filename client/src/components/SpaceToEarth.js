@@ -18,7 +18,7 @@ function SpaceToEarth({setLevelTwoPrefixStopper, levelTwoPreFixStopper, pleaseLe
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 1;
+    canvas.style['z-index'] = 5;
     
     
     const context = canvas.getContext("2d");

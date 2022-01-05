@@ -5,7 +5,8 @@ function PlayerCanvasLvl2Static({
   enemyBall1Ref, enemyBall2Ref, enemyBall3Ref,
   enemyPlane1Ref, enemyPlane2Ref, enemyPlane3Ref,
   enemySeed1Ref, enemySeed2Ref, enemySeed3Ref,
-  enemySeed1ExplosionRef, enemySeed2ExplosionRef, enemySeed3ExplosionRef
+  enemySeed1ExplosionRef, enemySeed2ExplosionRef, enemySeed3ExplosionRef,
+  setplayerAppear, playerAppearRef, playerAppear
 
 }) {
   
@@ -87,17 +88,22 @@ function PlayerCanvasLvl2Static({
 
 
   const update = () => {
-    drawPlane();
+    if(playerAppearRef.current)
+    {drawPlane();
     hitSeeds(enemySeed1ExplosionRef)
     hitSeeds(enemySeed2ExplosionRef)
     hitSeeds(enemySeed3ExplosionRef)
-    requestAnimationFrame(update)
+    requestAnimationFrame(update)}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+      return
+    }
   }
 
 
   update()
 
-  },[])
+  },[playerAppear])
 
 
   //SCREEN HEIGHT/WIDTH

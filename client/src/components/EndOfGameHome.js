@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function EndOfGameHome({}) {
+function EndOfGameHome({ bossEndSceneRef, bossEndState}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -26,6 +26,8 @@ function EndOfGameHome({}) {
     context.stokeStyle = "black"
     context.lineWidth = 5
     contextRef.current = context;
+
+    if(bossEndSceneRef.current){
 
     const planetSuperSmall = {
       w:SCREEN_WIDTH*(1/20),
@@ -103,8 +105,11 @@ const update = () => {
 }
 
 
-  update()
-  },[])
+  update()}
+  else{
+    return
+  }
+  },[bossEndState])
 
 
   //SCREEN HEIGHT/WIDTH

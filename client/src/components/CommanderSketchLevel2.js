@@ -18,7 +18,7 @@ function CommanderSketchLevel2({cutSceneRef, endOfCutScene}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 6;
+    canvas.style['z-index'] = 8;
     
     
     const context = canvas.getContext("2d");

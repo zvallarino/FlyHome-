@@ -23,8 +23,8 @@ import CommanderSketchPlaneFinal from './CommanderSketchPlaneFinal';
 
 function FlyHomeLevel2() {
 
-  const [endOfCutScene,setterCutScene] = useState(true)
-  const cutSceneRef = useRef(true)
+  const [endOfCutScene,setterCutScene] = useState(false)
+  const cutSceneRef = useRef(false)
 
   const [startFirstWave, setFirstWave] = useState(true)
   const firstWaveRef = useRef(true)
@@ -32,16 +32,38 @@ function FlyHomeLevel2() {
   const [levelTwoPreFixStopper, setLevelTwoPrefixStopper] = useState(true)
   const pleaseLevel2StopRef = useRef(true)
 
+  const [playerAppear,setplayerAppear] = useState(false)
+  const playerAppearRef = useRef(false)
+
 
   return (
     <>
 
-    <EnemiesALevel2 startFirstWave = {startFirstWave}  firstWaveRef = {firstWaveRef}/>
-    {/* <CommanderSketchLevel2 endOfCutScene = {endOfCutScene} cutSceneRef = {cutSceneRef}  />
-    <CommanderSketchPlane setFirstWave = {setFirstWave} firstWaveRef = {firstWaveRef} endOfCutScene = {endOfCutScene} cutSceneRef = {cutSceneRef} setterCutScene = {setterCutScene}/> */}
+    <EnemiesALevel2 
+      setplayerAppear = {setplayerAppear}
+      playerAppearRef ={playerAppearRef}
+      playerAppear = {playerAppear}
+      startFirstWave = {startFirstWave} 
+      firstWaveRef = {firstWaveRef}/>
+    <CommanderSketchLevel2 endOfCutScene = {endOfCutScene} cutSceneRef = {cutSceneRef}  />
+    <CommanderSketchPlane
+      setFirstWave = {setFirstWave}
+      firstWaveRef = {firstWaveRef}
+      endOfCutScene = {endOfCutScene}
+      cutSceneRef = {cutSceneRef}
+      setterCutScene = {setterCutScene}/>
 
-        {/* <PlayerCanvasSpaceToEarth setLevelTwoPrefixStopper = {setLevelTwoPrefixStopper} levelTwoPreFixStopper = {levelTwoPreFixStopper} pleaseLevel2StopRef = {pleaseLevel2StopRef}/> */}
-    {/* <SpaceToEarth setLevelTwoPrefixStopper = {setLevelTwoPrefixStopper} levelTwoPreFixStopper = {levelTwoPreFixStopper} pleaseLevel2StopRef = {pleaseLevel2StopRef}/> */}
+    <PlayerCanvasSpaceToEarth
+    setterCutScene = {setterCutScene}
+    cutSceneRef ={cutSceneRef}
+    setLevelTwoPrefixStopper = {setLevelTwoPrefixStopper}
+    levelTwoPreFixStopper = {levelTwoPreFixStopper}
+    pleaseLevel2StopRef = {pleaseLevel2StopRef}
+    setplayerAppear = {setplayerAppear}
+    playerAppearRef ={playerAppearRef}
+    playerAppear = {playerAppear}
+    />
+    <SpaceToEarth setLevelTwoPrefixStopper = {setLevelTwoPrefixStopper} levelTwoPreFixStopper = {levelTwoPreFixStopper} pleaseLevel2StopRef = {pleaseLevel2StopRef}/>
 
     
     <CloudsMoving />

@@ -40,7 +40,7 @@ import PlanesFlyHome from './PlanesFlyHome';
 
 
 
-function EnemiesALevel2({firstWaveRef, startFirstWave}) {
+function EnemiesALevel2({firstWaveRef, startFirstWave, setplayerAppear, playerAppearRef, playerAppear}) {
 
 
   
@@ -235,6 +235,11 @@ useEffect(()=>{
     {/* level 2 */}
 
     <PlayerCanvasLvL2Static
+
+    setplayerAppear = {setplayerAppear}
+    playerAppearRef ={playerAppearRef}
+    playerAppear = {playerAppear}
+
     enemyPlane1Ref = {enemyPlane1Ref}
     enemyPlane2Ref = {enemyPlane2Ref}
     enemyPlane3Ref = {enemyPlane3Ref}
@@ -291,11 +296,11 @@ useEffect(()=>{
     <PrivateImariLevel2Boss cutSceneRef = {cutSceneRef} cutSceneStart ={cutSceneStart} />
     <ProfessorGillian cutSceneRef = {cutSceneRef} cutSceneStart ={cutSceneStart} /> */}
 
-    <CommanderSketchFinal setBossEnd = {setBossEnd} bossEndSceneRef = {bossEndSceneRef} bossEndState = {bossEndState} bossEndState = {bossEndState} />
+    {/* <CommanderSketchFinal setBossEnd = {setBossEnd} bossEndSceneRef = {bossEndSceneRef} bossEndState = {bossEndState} bossEndState = {bossEndState} />
     <CommanderSketchPlaneFinal  bossEndState = {bossEndState} />
 
-    <EndOfGameHome bossEndState = {bossEndState} />
-    <PlanesFlyHome bossEndSceneRef = {bossEndSceneRef} bossEndState = {bossEndState} />
+    <EndOfGameHome bossEndState = {bossEndState}  bossEndSceneRef = {bossEndSceneRef} /> */}
+    {/* <PlanesFlyHome bossEndSceneRef = {bossEndSceneRef} bossEndState = {bossEndState} /> */}
     
 
 
