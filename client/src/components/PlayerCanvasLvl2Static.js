@@ -7,7 +7,7 @@ function PlayerCanvasLvl2Static({
   enemySeed1Ref, enemySeed2Ref, enemySeed3Ref,
   enemySeed1ExplosionRef, enemySeed2ExplosionRef, enemySeed3ExplosionRef,
   setplayerAppear, playerAppearRef, playerAppear,
-  bossRef, bossStopper
+  bossRef, bossStopper, lightningStopper, lightningBoltsRef
 
 }) {
   
@@ -95,6 +95,8 @@ function PlayerCanvasLvl2Static({
     hitSeeds(enemySeed1ExplosionRef)
     hitSeeds(enemySeed2ExplosionRef)
     hitSeeds(enemySeed3ExplosionRef)
+    hitSeeds(lightningBoltsRef)
+
     requestAnimationFrame(update)}
     else{
       contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
@@ -318,6 +320,7 @@ const hitBoss = (refObject) => {
   } else {
     if(bossRef.current.counter>10){
       bossStopper()
+      lightningStopper()
     }
     rotationFunction()
     bossRef.current.counter =  bossRef.current.counter + 1

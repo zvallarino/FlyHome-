@@ -85,7 +85,7 @@ function ProfessorGillian({cutSceneRef, cutSceneStart }) {
         drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("I will take you to your",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
+        contextRef.current.strokeText("You Fool. Get Ready for your ",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
       }
 
       const drawText6 = () => {

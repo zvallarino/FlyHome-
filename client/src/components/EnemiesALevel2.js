@@ -177,6 +177,7 @@ function EnemiesALevel2({firstWaveRef, startFirstWave, setplayerAppear, playerAp
   const lightningSetter = () =>{
     lightningStartRef.current = true
     setLightning(hats=>!hats)
+    console.log("yo I fired")
   }
   
   const lightningStopper = () =>{
@@ -249,6 +250,9 @@ bossRef.current.counter = 0;
 
     bossRef = {bossRef}
     bossStopper = {bossStopper}
+    lightningStopper = {lightningStopper}
+
+    lightningBoltsRef={lightningBoltsRef}
   
     setplayerAppear = {setplayerAppear}
     playerAppearRef ={playerAppearRef}
@@ -291,7 +295,7 @@ bossRef.current.counter = 0;
 
     /> */}
 
-    {/* <LightningBolts lightning = {lightning} lightningBoltsRef = {lightningBoltsRef} lightningStartRef ={lightningStartRef} /> */}
+    <LightningBolts lightning = {lightning} lightningBoltsRef = {lightningBoltsRef} lightningStartRef ={lightningStartRef} />
     <BossCanvas bossSet = {bossSet} bossRef = {bossRef} bossStartRef = {bossStartRef} />
 
     
@@ -309,7 +313,7 @@ bossRef.current.counter = 0;
 
     <PrivateImariLevel2Boss
     bossSetter = {bossSetter} 
-    bossStopper = {bossStopper}
+    lightningSetter = {lightningSetter}
     cutSceneRef = {cutSceneRef}
     cutSceneStart ={cutSceneStart} />
     <ProfessorGillian cutSceneRef = {cutSceneRef} cutSceneStart ={cutSceneStart} />

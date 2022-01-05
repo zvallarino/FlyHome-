@@ -219,6 +219,7 @@ code {
 .TextDiv h2{
   display: flex;
   margin-top: 0;
+  color:rgb(88, 88, 88)
 }
 
 .onlineButton{
