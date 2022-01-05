@@ -1,7 +1,7 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function CommanderSketchPlaneFinal({}) {
+function CommanderSketchPlaneFinal({commanderSketchRef, commanderSketchFinal}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -12,6 +12,7 @@ function CommanderSketchPlaneFinal({}) {
 
   useEffect(()=>{
     // console.log(levelOneRef.current)
+
     
     const canvas = canvasRef.current;
     canvas.width = window.innerWidth * 2; 
@@ -33,6 +34,9 @@ function CommanderSketchPlaneFinal({}) {
     contextRef.current = context;
 
     //Player Initial Position and Movement Speed
+
+    
+    if(commanderSketchRef.current){
   
     const player = {
       w:SCREEN_WIDTH*(4/20),
@@ -70,9 +74,12 @@ function CommanderSketchPlaneFinal({}) {
   setTimeout(sketchStopinTheMiddle,3000)
 
 
-    update()
+    update()}
+    else{
+      return
+    }
 
-  },[])
+  },[commanderSketchFinal])
 
 
   //SCREEN HEIGHT/WIDTH

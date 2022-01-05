@@ -62,6 +62,7 @@ function EnemiesALevel2({firstWaveRef, startFirstWave, setplayerAppear, playerAp
   const enemyBall3Ref = useRef({});
 
   const lightningBoltsRef = useRef({});
+  const bossRef = useRef({})
 
 
 
@@ -96,7 +97,6 @@ function EnemiesALevel2({firstWaveRef, startFirstWave, setplayerAppear, playerAp
   const lightningStartRef = useRef(false)
 
   const [bossSet,setBoss] = useState(false)
-
   const bossStartRef = useRef(false)
 
   // cutscene starter 
@@ -108,6 +108,11 @@ function EnemiesALevel2({firstWaveRef, startFirstWave, setplayerAppear, playerAp
 
   const bossEndSceneRef = useRef(false)
   const [bossEndState, setBossEnd] = useState(false)
+
+  // Commander Sketch Final 
+
+  const [commanderSketchFinal,setCommanderSketchFinal] = useState(false);
+  const commanderSketchRef = useRef(false)
 
   const ballsSetter = () =>{
     ball1StartRef.current = true
@@ -147,6 +152,7 @@ function EnemiesALevel2({firstWaveRef, startFirstWave, setplayerAppear, playerAp
     setBall1(foxs=>!foxs)
     setBall2(foxs=>!foxs)
     setBall3(foxs=>!foxs)
+
   }
 
   const seedsStopper = () =>{
@@ -186,6 +192,9 @@ function EnemiesALevel2({firstWaveRef, startFirstWave, setplayerAppear, playerAp
 
   const bossStopper = ()=>{
     bossStartRef.current = false
+    commanderSketchRef.current = true
+    setCommanderSketchFinal(dragons=>!dragons)
+
     console.log('this fired')
     setBoss(dogs=>!dogs)
   }
@@ -206,10 +215,10 @@ function EnemiesALevel2({firstWaveRef, startFirstWave, setplayerAppear, playerAp
     setTimeout(ballsSetter, 15000);
     setTimeout(ballsStopper,20000);
 
-    // setTimeout(bossSetter, 22000);
-    // setTimeout(bossStopper, 30000);
+    // setTimeout(bossSetter, 2000);
+    // setTimeout(bossStopper, 2000);
 
-    setTimeout(cutSceneSetter,2000);
+    setTimeout(cutSceneSetter,22000);
 
     // setTimeout(lightningSetter,25000);
     // setTimeout(lightningStopper,30000);
@@ -277,10 +286,10 @@ useEffect(()=>{
 
     /> */}
 
-    {/* <LightningBolts lightning = {lightning} lightningBoltsRef = {lightningBoltsRef} lightningStartRef ={lightningStartRef} />
-    <BossCanvas bossSet = {bossSet} bossRef = {bossRef} bossStartRef = {bossStartRef} /> */}
+    {/* <LightningBolts lightning = {lightning} lightningBoltsRef = {lightningBoltsRef} lightningStartRef ={lightningStartRef} /> */}
+    <BossCanvas bossSet = {bossSet} bossRef = {bossRef} bossStartRef = {bossStartRef} />
 
-{/*     
+    
     <EnemiesBall1Canvas ball1 = {ball1} ball1StartRef = {ball1StartRef} enemyBall1Ref = {enemyBall1Ref}/>
     <EnemiesBall2Canvas ball2 = {ball2} ball2StartRef = {ball2StartRef} enemyBall2Ref = {enemyBall2Ref}/>
     <EnemiesBall3Canvas ball3 = {ball3} ball3StartRef = {ball3StartRef} enemyBall3Ref = {enemyBall3Ref}/>
@@ -293,14 +302,33 @@ useEffect(()=>{
     <EnemyPlane2Canvas plane2 = {plane2} plane2StartRef = {plane2StartRef} enemyPlane2Ref={enemyPlane2Ref}/>
     <EnemyPlane3Canvas plane3 = {plane3} plane3StartRef = {plane3StartRef} enemyPlane3Ref={enemyPlane3Ref}/>
 
-    <PrivateImariLevel2Boss cutSceneRef = {cutSceneRef} cutSceneStart ={cutSceneStart} />
-    <ProfessorGillian cutSceneRef = {cutSceneRef} cutSceneStart ={cutSceneStart} /> */}
+    <PrivateImariLevel2Boss bossSetter = {bossSetter} bossStopper = {bossStopper} cutSceneRef = {cutSceneRef} cutSceneStart ={cutSceneStart} />
+    <ProfessorGillian cutSceneRef = {cutSceneRef} cutSceneStart ={cutSceneStart} />
 
-    {/* <CommanderSketchFinal setBossEnd = {setBossEnd} bossEndSceneRef = {bossEndSceneRef} bossEndState = {bossEndState} bossEndState = {bossEndState} />
-    <CommanderSketchPlaneFinal  bossEndState = {bossEndState} />
+    <CommanderSketchFinal 
+    commanderSketchRef = {commanderSketchRef}
+    commanderSketchFinal = {commanderSketchFinal}
 
-    <EndOfGameHome bossEndState = {bossEndState}  bossEndSceneRef = {bossEndSceneRef} /> */}
-    {/* <PlanesFlyHome bossEndSceneRef = {bossEndSceneRef} bossEndState = {bossEndState} /> */}
+    playerAppearRef ={playerAppearRef}
+    setplayerAppear = {setplayerAppear}
+    
+    
+    setBossEnd = {setBossEnd}
+    bossEndSceneRef = {bossEndSceneRef}
+    bossEndState = {bossEndState} />
+
+    <CommanderSketchPlaneFinal 
+    commanderSketchRef = {commanderSketchRef}
+    commanderSketchFinal = {commanderSketchFinal}
+
+    bossEndState = {bossEndState} />
+
+    <EndOfGameHome
+    bossEndState = {bossEndState}
+    bossEndSceneRef = {bossEndSceneRef} />
+    <PlanesFlyHome 
+    bossEndSceneRef = {bossEndSceneRef}
+    bossEndState = {bossEndState} />
     
 
 

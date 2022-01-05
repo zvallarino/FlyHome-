@@ -1,8 +1,9 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function PrivateImariLevel2Boss({cutSceneRef, cutSceneStart}) {
+function PrivateImariLevel2Boss({cutSceneRef, cutSceneStart,bossSetter, bossStopper}) {
    
+
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
 
@@ -84,6 +85,8 @@ function PrivateImariLevel2Boss({cutSceneRef, cutSceneStart}) {
         contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height)
       }
 
+      
+
   
     const update = () => {
       if(cutSceneRef.current)
@@ -100,6 +103,9 @@ function PrivateImariLevel2Boss({cutSceneRef, cutSceneStart}) {
         setTimeout(drawText2,10000)
         setTimeout(drawText3,12000)
         setTimeout(clearRect,14000)  
+        setTimeout(bossSetter,16000)
+        setTimeout(bossStopper,20000)
+      
     }
 
 
