@@ -13,6 +13,9 @@ import TextTitle from './TextTitle';
 
 import CommanderSketch from './CommanderSketch';
 import PrivateImari from './PrivateImari';
+import PlaneFlysToEarth from './PlaneFlysToEarth';
+
+
 
 
 function FlyHomeLevel1() {
@@ -36,11 +39,18 @@ function FlyHomeLevel1() {
   const [startOfDoom, setStartofDoom] = useState(false)
   const doomStartRef = useRef(false)
 
+  const [planeLeaveAnimation,setPlaneLeaveAnimation] = useState(true)
+  const planeAnimationRef = useRef(true)
+
+
 
   return (
     <>
 
     {/* level One */}
+
+    <PlaneFlysToEarth planeAnimationRef ={planeAnimationRef} planeLeaveAnimation = {planeLeaveAnimation}/>
+    
     <PlayerCanvas levelOneState = {levelOneState} levelOneRef = {levelOneRef} rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/> 
     <CommanderSketch doomStartRef = {doomStartRef} setStartofDoom = {setStartofDoom} levelOneState = {levelOneState} levelOneRef = {levelOneRef} levelOneRef = {levelOneRef} />
     <PrivateImari doomStartRef = {doomStartRef} setStartofDoom = {setStartofDoom} levelOneState = {levelOneState} levelOneRef = {levelOneRef} levelOneRef = {levelOneRef}/>
