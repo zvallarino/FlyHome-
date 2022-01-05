@@ -76,9 +76,9 @@ function PrivateImariLevel2Boss({cutSceneRef, cutSceneStart,bossSetter, bossStop
 
       const drawRectangle = () => {
         contextRef.current.fillStyle = "white";
-        contextRef.current.fillRect(SCREEN_WIDTH*(0.5/20), SCREEN_HEIGHT*(9.5/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
+        contextRef.current.fillRect(SCREEN_WIDTH*(0.5/20), SCREEN_HEIGHT*(9.3/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
         contextRef.current.strokeStyle = "black";
-        contextRef.current.strokeRect(SCREEN_WIDTH*(0.5/20), SCREEN_HEIGHT*(9.5/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
+        contextRef.current.strokeRect(SCREEN_WIDTH*(0.5/20), SCREEN_HEIGHT*(9.3/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
       }
 
       const clearRect = () =>{
