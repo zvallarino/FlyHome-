@@ -1,8 +1,10 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
+import CommanderSketchPlaneFinal from './CommanderSketchPlaneFinal';
 
-function CommanderSketchFinal({ setBossEnd, bossEndSceneRef, bossEndState, commanderSketchRef, commanderSketchFinal, playerAppearRef, setplayerAppear }) {
+function CommanderSketchFinal({ setBossEnd, bossEndSceneRef, bossEndState, commanderSketchRef, commanderSketchFinal, playerAppearRef, setplayerAppear,setcommanderSketchPlaneFinal, CommanderSketchPlaneFinal, commanderSketchPlaneRef }) {
    
+  
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
 
@@ -94,6 +96,10 @@ function CommanderSketchFinal({ setBossEnd, bossEndSceneRef, bossEndState, comma
       const startCutScene = () =>{
         bossEndSceneRef.current = true
         playerAppearRef.current = false
+        commanderSketchPlaneRef.current = false
+        setcommanderSketchPlaneFinal(pigs=>!pigs)
+        // commanderSketchRef.current = false
+        // commanderSketchFinal(pigs=>!pigs)
         setplayerAppear(cats=>!cats)
         setBossEnd(fox=>!fox)
      
@@ -115,9 +121,9 @@ function CommanderSketchFinal({ setBossEnd, bossEndSceneRef, bossEndState, comma
         setTimeout(drawText1,3000)
         setTimeout(drawText2,5000)
         setTimeout(drawText3,7000)
-        setTimeout(startCutScene,8000)
         setTimeout(clearRect,8000)
         setTimeout(drawSketch,10000)
+        setTimeout(startCutScene,11000)
         setTimeout(drawText4,11500)
         setTimeout(clearRect,13000)
         

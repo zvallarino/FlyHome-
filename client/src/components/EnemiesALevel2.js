@@ -114,6 +114,9 @@ function EnemiesALevel2({firstWaveRef, startFirstWave, setplayerAppear, playerAp
   const [commanderSketchFinal,setCommanderSketchFinal] = useState(false);
   const commanderSketchRef = useRef(false)
 
+  const [commanderSketchPlaneFinal,setcommanderSketchPlaneFinal] = useState(false);
+  const commanderSketchPlaneRef = useRef(false)
+
   const ballsSetter = () =>{
     ball1StartRef.current = true
     ball2StartRef.current = true
@@ -193,7 +196,11 @@ function EnemiesALevel2({firstWaveRef, startFirstWave, setplayerAppear, playerAp
   const bossStopper = ()=>{
     bossStartRef.current = false
     commanderSketchRef.current = true
+    commanderSketchPlaneRef.current = true
+
     setCommanderSketchFinal(dragons=>!dragons)
+    setcommanderSketchPlaneFinal(bears=>!bears)
+    
 
     console.log('this fired')
     setBoss(dogs=>!dogs)
@@ -308,9 +315,13 @@ useEffect(()=>{
     <CommanderSketchFinal 
     commanderSketchRef = {commanderSketchRef}
     commanderSketchFinal = {commanderSketchFinal}
+    setcommanderSketchPlaneFinal = {setcommanderSketchPlaneFinal}
 
     playerAppearRef ={playerAppearRef}
     setplayerAppear = {setplayerAppear}
+
+    commanderSketchPlaneFinal = {commanderSketchPlaneFinal}
+    commanderSketchPlaneRef = {commanderSketchPlaneRef}
     
     
     setBossEnd = {setBossEnd}
@@ -321,6 +332,8 @@ useEffect(()=>{
     commanderSketchRef = {commanderSketchRef}
     commanderSketchFinal = {commanderSketchFinal}
 
+    commanderSketchPlaneFinal = {commanderSketchPlaneFinal}
+    commanderSketchPlaneRef = {commanderSketchPlaneRef}
     bossEndState = {bossEndState} />
 
     <EndOfGameHome
