@@ -1,9 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function CommanderSketchFinal({ setBossEnd, bossEndSceneRef, bossEndState}) {
-
-  console.log(bossEndSceneRef)
+function CommanderSketchFinal({ setBossEnd, bossEndSceneRef, bossEndState, commanderSketchRef, commanderSketchFinal, playerAppearRef, setplayerAppear }) {
    
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -95,12 +93,20 @@ function CommanderSketchFinal({ setBossEnd, bossEndSceneRef, bossEndState}) {
 
       const startCutScene = () =>{
         bossEndSceneRef.current = true
+        playerAppearRef.current = false
+        setplayerAppear(cats=>!cats)
         setBossEnd(fox=>!fox)
+     
       }
 
-  
+
     const update = () => {
-        drawFunction();
+      if(commanderSketchRef.current)
+        {drawFunction();}
+        else{
+          contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+          return
+        }
     }
   
     const drawFunction = () => {
@@ -120,7 +126,7 @@ function CommanderSketchFinal({ setBossEnd, bossEndSceneRef, bossEndState}) {
 
     update()
 
-  },[])
+  },[commanderSketchFinal])
 
 
   //SCREEN HEIGHT/WIDTH
