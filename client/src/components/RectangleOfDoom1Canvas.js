@@ -18,7 +18,7 @@ function RectangleOfDoom1Canvas({rectOfDoomRef, setdoomOfRectState, doomStartRef
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 2;
+    canvas.style['z-index'] = 5;
     
     
     const context = canvas.getContext("2d");
@@ -137,14 +137,12 @@ const drawSketch = () => {
   sketchOne.onload = function() {
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
   contextRef.current.fillStyle = "grey"
-  contextRef.current.fillRect(sketch.x, sketch.y, sketch.w, sketch.h);
-  contextRef.current.fillStyle = "white" 
-  contextRef.current.fillRect(sketch.x+20, sketch.y+5, sketch.w-40, sketch.h-20); 
+  contextRef.current.fillRect(sketch.x-10, sketch.y-10, sketch.w+20, sketch.h+20);
   contextRef.current.drawImage(sketchOne,sketch.x,sketch.y,sketch.w,sketch.h); 
   drawRectangle()
   contextRef.current.font = "30px Arial"
   contextRef.current.lineWidth = 1
-  contextRef.current.strokeText("Hurry Up, Private!",SCREEN_WIDTH*(15/20), SCREEN_HEIGHT*(9.75/20));
+  contextRef.current.strokeText("Hurry Up, Private!",SCREEN_WIDTH*(15.2/20), SCREEN_HEIGHT*(9.75/20));
 }}
 
 

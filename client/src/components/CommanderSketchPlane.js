@@ -6,7 +6,7 @@ function CommanderSketchPlane({cutSceneRef, endOfCutScene, setterCutScene, setFi
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
   const playerRef = useRef(null)
-  const imageRef = useRef("https://i.imgur.com/rCd4KGV.png")
+  const imageRef = useRef("https://i.imgur.com/ymnWF8N.png")
 
   //left, down, right
 
@@ -22,7 +22,7 @@ function CommanderSketchPlane({cutSceneRef, endOfCutScene, setterCutScene, setFi
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 5;
+    canvas.style['z-index'] = 7;
     
     
     const context = canvas.getContext("2d");
@@ -90,7 +90,7 @@ function CommanderSketchPlane({cutSceneRef, endOfCutScene, setterCutScene, setFi
     }
   }
 
-  setTimeout(sketchStopinTheMiddle,2000)
+  setTimeout(sketchStopinTheMiddle,3000)
   setTimeout(sketchGoAway,10000)
 
 

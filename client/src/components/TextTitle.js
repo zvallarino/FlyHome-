@@ -18,7 +18,7 @@ function TextTitle({textRef, textState}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 2;
+    canvas.style['z-index'] = 4;
     
     
     const context = canvas.getContext("2d");

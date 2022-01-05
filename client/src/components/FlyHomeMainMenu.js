@@ -14,18 +14,21 @@ function FlyHomeMainMenu({setDisappearFlyHome}) {
         <>
         <div className = "MainMenu">
         <div className = "MainMenuTop">
-          <h1>FLY HOME</h1>
+          <div className = "MMTopLeft"></div>
+          <div className = "MMTopMiddle">FLY HOME</div>
+          <div className = "MMTopRight"></div>
         </div>
         <div className = "MainMenuMiddle">
-        <button onClick = {shootToLink}>Campaign</button>
+        <div className ="MainMenuMiddleSpacing"></div>
+          <button onClick = {shootToLink}>CAMPAIGN</button>
+          <div className = "smallbetweenCampaignandEndless"></div>
+          <button onClick = {shootToLink}>ENDLESS</button>
+        <div className ="BetweenButtonSpacing"></div>
+          <button onClick = {shootToLink}>SETTINGS</button>
+          <button onClick = {shootToLink}>CREDITS</button>
+        <div className ="MainMenuMiddleSpacing"></div>
         </div>
         <div className = "MainMenuBottom"></div>
-          {/* <img src ="https://i.imgur.com/FNpMme4.png"/> */}
-        {/* <div>FLY HOME</div> */}
-
-        {/* <button>Endless</button>
-        <button>Settings</button>
-        <button>Credits</button> */}
         </div>
         </>
       );

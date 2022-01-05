@@ -23,14 +23,14 @@ function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref, levelOneRef, levelOneState
   const contextRef = useRef(null)
   const playerRef = useRef(null)
   // const colorRef = useRef('grey')
-  const imageRef = useRef("https://i.imgur.com/5rjTnM5.png")
+  const imageRef = useRef("https://i.imgur.com/xXGDB6n.png")
   const [counter,secondsCounter] =useState(0)
   const rotationRef = useRef(0)
  
 
     // Right Down Left Up
-  let rotationArray = ["https://i.imgur.com/5rjTnM5.png", "https://i.imgur.com/KuhriMc.png", "https://i.imgur.com/R1ZZM9i.png", "https://i.imgur.com/Zbuzj3K.png"]
-  let firingRotationArray = ['https://i.imgur.com/9lDQkp9.png','https://i.imgur.com/6Zq7JC8.png','https://i.imgur.com/LlvH1ZX.png','https://i.imgur.com/YYMtBNz.png']
+    let rotationArray = ["https://i.imgur.com/xXGDB6n.png", "https://i.imgur.com/eR1OYjO.png", "https://i.imgur.com/yOSSK7V.png", "https://i.imgur.com/5rSfjsg.png"]
+    let firingRotationArray = ['https://i.imgur.com/7vaIib6.png','https://i.imgur.com/xsRPixH.png','https://i.imgur.com/S776W1H.png','https://i.imgur.com/ARL4Jm4.png']
   let ouchArray = ["https://i.imgur.com/3BndMiB.png", "https://i.imgur.com/6drQQey.png", "https://i.imgur.com/hlwPzh2.png", "https://i.imgur.com/fiC5k5A.png"]
   
   let rotationCounter = 0
@@ -48,7 +48,7 @@ function PlayerCanvas({rectOfDoomRef, rectOfDoom2Ref, levelOneRef, levelOneState
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 5;
+    canvas.style['z-index'] = 10;
     
     
     const context = canvas.getContext("2d");

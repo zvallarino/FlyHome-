@@ -1,7 +1,9 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function CommanderSketch({levelOneState, levelOneRef, doomStartRef, setStartofDoom}) {
+function CommanderSketchFinal({ setBossEnd, bossEndSceneRef, bossEndState}) {
+
+  console.log(bossEndSceneRef)
    
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -61,14 +63,21 @@ function CommanderSketch({levelOneState, levelOneRef, doomStartRef, setStartofDo
             drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Private, I need you home now.",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
+        contextRef.current.strokeText("I knew I could count on you.",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
       }
 
       const drawText3 = () => {
         drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Professor Gillian is attacking!",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
+        contextRef.current.strokeText("Good Work! Lets Fly Home",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
+      }
+
+      const drawText4 = () => {
+        drawRectangle()
+        contextRef.current.font = "30px Arial  "
+        contextRef.current.lineWidth = 1
+        contextRef.current.strokeText("and get off the computer",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
       }
 
       const drawRectangle = () => {
@@ -84,31 +93,34 @@ function CommanderSketch({levelOneState, levelOneRef, doomStartRef, setStartofDo
         // setStartofDoom(true)
       }
 
+      const startCutScene = () =>{
+        bossEndSceneRef.current = true
+        setBossEnd(fox=>!fox)
+      }
+
   
     const update = () => {
-        if(levelOneRef.current)
-      {  
-        drawFunction();}
-        else{
-            contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
-            return
-        }
+        drawFunction();
     }
   
     const drawFunction = () => {
-
+      
         setTimeout(drawSketch,2000)
         setTimeout(drawText1,3000)
         setTimeout(drawText2,5000)
         setTimeout(drawText3,7000)
+        setTimeout(startCutScene,8000)
         setTimeout(clearRect,8000)
+        setTimeout(drawSketch,10000)
+        setTimeout(drawText4,11500)
+        setTimeout(clearRect,13000)
         
     }
 
 
     update()
 
-  },[levelOneState])
+  },[])
 
 
   //SCREEN HEIGHT/WIDTH
@@ -121,11 +133,10 @@ function CommanderSketch({levelOneState, levelOneRef, doomStartRef, setStartofDo
 
   return (
     <canvas
-    tabIndex="0" 
 
     ref = {canvasRef}
     />
   );
 }
 
-export default CommanderSketch;
+export default CommanderSketchFinal;

@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function SpaceCanvas({levelOneRef,levelOneState}) {
+function SpaceToEarth({setLevelTwoPrefixStopper, levelTwoPreFixStopper, pleaseLevel2StopRef}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -18,7 +18,7 @@ function SpaceCanvas({levelOneRef,levelOneState}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 1;
+    canvas.style['z-index'] = 5;
     
     
     const context = canvas.getContext("2d");
@@ -41,7 +41,7 @@ function SpaceCanvas({levelOneRef,levelOneState}) {
 
   const drawSpace = () => {
     let spaceZ = new Image();
-    spaceZ.src = "https://i.imgur.com/bEfxI6B.png"
+    spaceZ.src = "https://i.imgur.com/tGoWszp.jpg"
     spaceZ.onload = function() {
     contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
     contextRef.current.drawImage(spaceZ,space.x,space.y,space.w,space.h);  
@@ -50,14 +50,20 @@ function SpaceCanvas({levelOneRef,levelOneState}) {
 
 
 const update = () => {
-
-    drawSpace()
+    if(pleaseLevel2StopRef.current)
+    { drawSpace()
+      requestAnimationFrame(update)
+      ;}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+      return
+    }
     
 }
 
 
   update()
-  },[])
+  },[levelTwoPreFixStopper])
 
 
   //SCREEN HEIGHT/WIDTH
@@ -78,4 +84,4 @@ const update = () => {
   );
 }
 
-export default SpaceCanvas;
+export default SpaceToEarth;

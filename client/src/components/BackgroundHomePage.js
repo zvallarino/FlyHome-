@@ -1,10 +1,15 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function BackgroundPreludeCanvas({pleaseStopRef, prefixStopper, setPrefixStopper}) {
+function BackgroundHomeCanvas({canvasChoiceRef}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
+  
+
+  // Yellow, Green, Main
+  const canvasOptions = ["https://i.imgur.com/Zs6FLf3.png","https://i.imgur.com/lTXQLAc.png","https://i.imgur.com/sCwapKA.png"]
+
 
 
   useEffect(()=>{
@@ -14,11 +19,11 @@ function BackgroundPreludeCanvas({pleaseStopRef, prefixStopper, setPrefixStopper
     canvas.height = window.innerHeight * 2;
     canvas.style.width = `${window.innerWidth}px`;
     canvas.style.height = `${window.innerHeight}px`;
-    // canvas.style.backgroundColor = "#B2FFFA";
+    canvas.style.backgroundColor = "#B2FFFA";
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 2;
+    canvas.style['z-index'] = -1;
     
     
     const context = canvas.getContext("2d");
@@ -42,7 +47,7 @@ function BackgroundPreludeCanvas({pleaseStopRef, prefixStopper, setPrefixStopper
   
     const drawSpace = () => {
       let spaceImage = new Image();
-      spaceImage.src = "https://i.imgur.com/FCRONl9.jpg"
+      spaceImage.src = canvasOptions[canvasChoiceRef.current]
       spaceImage.onload = function() {
       contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
       contextRef.current.drawImage(spaceImage,space.x,space.y,space.w,space.h);  
@@ -51,18 +56,14 @@ function BackgroundPreludeCanvas({pleaseStopRef, prefixStopper, setPrefixStopper
   
     const update = () => {
      
-      if(pleaseStopRef.current)
-    { drawSpace()
+    drawSpace()
       requestAnimationFrame(update)
-      ;}
-    else{
-      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-      return
-    }}
+      ;
+    }
 
     update()
   
-  },[prefixStopper])
+  },[])
 
 
   //SCREEN HEIGHT/WIDTH
@@ -75,11 +76,10 @@ function BackgroundPreludeCanvas({pleaseStopRef, prefixStopper, setPrefixStopper
 
   return (
     <canvas
-    tabIndex="0" 
 
     ref = {canvasRef}
     />
   );
 }
 
-export default BackgroundPreludeCanvas;
+export default BackgroundHomeCanvas;

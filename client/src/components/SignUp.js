@@ -37,7 +37,7 @@ const handleSubmit = (e) => {
 
   return (
     <>
-      <h1 className="title">Fly Home</h1> 
+   
       <form onSubmit={handleSubmit}>
 
         <div className="input">
@@ -68,7 +68,7 @@ const handleSubmit = (e) => {
 
         <div className="input">
         <label>
-          Password Confirmation:
+          Check Ya Self:
           <input
             type="password"
             className="password-confirmation"

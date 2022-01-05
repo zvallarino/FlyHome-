@@ -1,12 +1,15 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, PrefixStopper, levelOneRef,setLevelOneState}) {
+function PlayerCanvasSpaceToEarth({
+  setLevelTwoPrefixStopper,levelTwoPreFixStopper, pleaseLevel2StopRef,
+  cutSceneRef,setterCutScene,setplayerAppear, playerAppearRef, playerAppear
+}) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
   const playerRef = useRef(null)
-  const imageRef = useRef("https://i.imgur.com/KTMDmL2.png")
+  const imageRef = useRef("https://i.imgur.com/oUoF9Nx.png")
 
   //left, down, right
 
@@ -22,7 +25,7 @@ function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, Pr
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 3;
+    canvas.style['z-index'] = 6;
     
     
     const context = canvas.getContext("2d");
@@ -35,13 +38,13 @@ function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, Pr
     //Player Initial Position and Movement Speed
   
     const player = {
-      w:SCREEN_WIDTH/20,
-      h:SCREEN_HEIGHT/20,
-      x:SCREEN_WIDTH + SCREEN_WIDTH/8,
-      y:SCREEN_HEIGHT/2,
+      w:SCREEN_WIDTH*(1/40),
+      h:SCREEN_HEIGHT*(2/40),
+      x:SCREEN_WIDTH*(19/20),
+      y:SCREEN_HEIGHT*(1/20),
       speed:10,
       dx:3,
-      dy:0
+      dy:3
     }
 
   playerRef.current = player
@@ -56,29 +59,24 @@ function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, Pr
   }}
   
   const update = () => {
-    if(pleaseStopRef.current)
-    {NextLevel();
-    drawPlane();
-    moveLeft();
-    requestAnimationFrame(update)}
-    else{
-      
-      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
-      levelOneRef.current = true
-      setLevelOneState(true)
-      return
-    }
-  }
-
-  if(pleaseStopRef.current){
-    update()
-  }
-  else{
+      if(pleaseLevel2StopRef.current)
+        {NextLevel();
+        drawPlane();
+        moveDownandLeft();
+        requestAnimationFrame(update)}
+        else{
+            contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+            return
+        }
+}
+   
   
-  return
-  }
 
-  },[PrefixStopper])
+  
+    update()
+  
+  
+  },[levelTwoPreFixStopper])
 
 
   //SCREEN HEIGHT/WIDTH
@@ -89,24 +87,30 @@ function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, Pr
   // MOVEMENT FUNCTIONS // First Level
 
 
-const moveLeft = () => {
+const moveDownandLeft = () => {
   playerRef.current.x -= playerRef.current.dx
-  if(playerRef.current.x>1200||playerRef.current.x<500){
-    textRef.current = false
-    setText(false)
-  }else{
-    textRef.current = true
-    setText(true)
-  }
+  playerRef.current.y += playerRef.current.dy
+
+  console.log(playerRef.current.y)
+  
+  
 }
 
 const NextLevel = () =>{
-  if(playerRef.current.x < -100){
-    pleaseStopRef.current = false
-    setPrefixStopper(false)
-    playerRef.current.dx = 0
-    contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-  }
+
+    if(playerRef.current.y > 800){
+        pleaseLevel2StopRef.current = false
+        cutSceneRef.current = true
+        playerAppearRef.current = true
+        setLevelTwoPrefixStopper(false)
+        setplayerAppear(dog=>!dog)
+        setterCutScene(fox=>!fox)
+        playerRef.current.dy = 0
+        playerRef.current.dx = 0
+        // contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+      }
+
+  
 }
 
 
@@ -124,10 +128,9 @@ const boundariesLeft = (objectZ) => {
 
   return (
     <canvas
-    tabIndex="0" 
     ref = {canvasRef}
     />
   );
 }
 
-export default PlayerTitleCanvas;
+export default PlayerCanvasSpaceToEarth;

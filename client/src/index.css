@@ -17,15 +17,16 @@ code {
   display:flex;
   width: 100vw;
   height: 100vh;
-  background-image: url("https://i.imgur.com/mTmGfvm.png");
+  /* background-image: url("https://i.imgur.com/mTmGfvm.png"); */
   box-sizing: border-box;
-  background-color: rgb(134, 255, 255);
+  /* background-color: rgb(134, 255, 255); */
   justify-content: center;
   align-items: center;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 
 /* .home bg{
   display:flex;
@@ -66,31 +67,89 @@ code {
 
  .MainMenuTop {
    display:flex;
+   box-sizing: border-box;
     /* border: 10px solid green; */
     width:100vw;
-    justify-content: center;
-    height: 10vh;
+    height: 13vh;
  }
 
- .MainMenuTop h1{
-  font-size: 3em;
+
+
+ .MMTopLeft{
+  display:flex;
+  box-sizing: border-box;
+  /* border: 10px solid green; */
+  width:40vw;
+  height: 13vh;
  }
+
+ .MMTopMiddle{
+  display:flex;
+  box-sizing: border-box;
+  /* border: 10px solid green; */
+  justify-content: center;
+  align-items: center;
+  font-size: 4em;
+  /* font-weight: bold; */
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  width:20vw;
+  height: 13vh;
+ }
+
+ .MMTopRight{
+  display:flex;
+  box-sizing: border-box;
+  /* border: 10px solid rgb(9, 0, 128); */
+  width:40vw;
+  height: 13vh;
+ }
+
 
  .MainMenuMiddle{
   display:flex;
-  justify-content:space-between;
+  box-sizing: border-box;
+  /* justify-content:space-between; */
   /* border: 10px solid blue; */
   width:100vw;
   height: 15vh;
+ }
 
+ .MainMenuMiddle button{
+  display:flex;
+  background-color: transparent;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.4em;
+  /* font-weight: bold; */
+  width:12vw;
+  border: none;
  }
 
  .MainMenuBottom{
   display:flex;
+  box-sizing: border-box;
   /* border: 10px solid red; */
   width:100vw;
-  height: 75vh;
+  height: 72vh;
+ }
 
+ .MainMenuMiddleSpacing{
+  display:flex;
+  width:20vw;
+  /* border: 10px solid greenyellow; */
+ }
+
+ .smallbetweenCampaignandEndless{
+   display:flex;
+   width:1vw;
+ }
+ 
+ .BetweenButtonSpacing{
+  display:flex;
+  width:10vw;
+  /* border: 10px solid rgb(9, 255, 0); */
  }
  /* .MainMenu img{
   display:flex;
@@ -104,11 +163,11 @@ code {
   display:flex;
   box-sizing: border-box;
   width: 100vw;
-  height: 10vh;
+  height: 14vh;
   justify-content: center;
   align-items: center;
   /* background-color: rgb(255, 255, 60); */
-  border: 10px solid black;
+  /* border: 10px solid red; */
 }
 
 .MiddleAppPage{
@@ -116,29 +175,114 @@ code {
   box-sizing: border-box;
   flex-direction: column;
   width: 100vw;
-  height: 80vh;
+  height: 72vh;
   justify-content: center;
   align-items: center;
   /* border: 10px solid green; */
 }
 
-
-
-.BottomAppPage{
+.TopOfMiddleAppPage{
   display:flex;
   box-sizing: border-box;
   width: 100vw;
-  height: 10vh;
-  /* background-color: rgb(255, 255, 60); */
-  border: 10px solid black;
+  height: 19vh;
+  /* border: 10px solid blueviolet; */
 }
 
-.gametitlescreen{
+.ProfilePicUserName{
   display:flex;
-
-  width: 100vw;
-  height: 100vh;
+  box-sizing: border-box;
+  flex-direction: row;
+  width: 40vw;
+  height: 21vh;
 }
+
+.ProfilePicDiv{
+  display:flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  /* border: 10px solid rgb(0, 217, 255); */
+  width: 8vw;
+  height: 21vh;
+}
+
+.ProfilePicDiv img{
+  display: flex;
+  box-sizing: border-box;
+  width: 7vw;
+  height: 14vh;
+  border-radius: 50%;
+  background-color: white;
+  border: 10px solid rgb(1, 3, 3);
+}
+
+.TextDiv h2{
+  display: flex;
+  margin-top: 0;
+}
+
+.onlineButton{
+  display:flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  /* border: 10px solid rgb(0, 217, 255); */
+  justify-content: center;
+  align-items: center;
+}
+
+.onlineButton img{
+  display:flex;
+  justify-content: center;
+  width: 1vw;
+  height: 2vh;
+}
+
+
+
+.MiddleBoxSpacing{
+  display:flex;
+  box-sizing: border-box;
+  /* border: 10px solid rgb(255, 0, 200); */
+  width: 30vw;
+  height: 21vh;
+}
+
+.EndBoxWithTimeAndFriends{
+  display:flex;
+  box-sizing: border-box;
+  /* border: 10px solid rgb(25, 0, 255); */
+  width: 30vw;
+  height: 21vh;
+}
+
+.EndBoxWithTimeAndFriends h1{
+  display:flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 8px solid rgb(0, 0, 0);
+  border-radius: 10%;
+  height: 8vh;
+  width: 10vw
+}
+
+.EndBoxWithTimeAndFriends img{
+  display:flex;
+  box-sizing: border-box;
+  height: 4vh;
+  width: 1.5vw
+}
+
+.NumberOfFriends{
+  display:flex;
+  box-sizing: border-box;
+  align-items: center;
+  /* border: 10px solid rgb(0, 255, 0); */
+  height: 14vh;
+  width: 10vw
+}
+
 
 .GameCardContainer{
   display:flex;
@@ -151,15 +295,56 @@ code {
   height: 40vh;
 }
 
+.BottomOfMiddleAppPage{
+  display:flex;
+  box-sizing: border-box;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100vw;
+  height: 23vh;
+  /* border: 10px solid rgb(198, 226, 43); */
+}
+
+.BottomOfMiddleAppPage img{
+  width: 5vw;
+  height: 10vh;
+  border-radius: 50%;
+  border: 10px solid rgb(0, 0, 0);
+  background-color:white;
+}
+
+.BottomAppPage{
+  display:flex;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 14vh;
+  /* background-color: rgb(255, 255, 60); */
+  /* border: 10px solid red; */
+}
+
+.gametitlescreen{
+  display:flex;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+
+
 .GameCard{
   display:flex;
   flex-direction:column;
   border: 10px solid black;
   box-sizing: border-box;
-
   width: 15vw;
   height: 30vh;
 }
+
+.GameCard:hover{
+  background:#000000;
+  border: 5px solid black;
+  box-shadow: 1px 1px 120px 60px rgb(129, 236, 255);
+} 
 
 .GameCard img{
   display:flex;
@@ -180,4 +365,106 @@ code {
   background-color: #1EADFF;
   width: 100vw;
   height: 100vh;
+}
+
+.homeBox{
+  display:flex;
+  flex-direction:row;
+  box-sizing: border-box;
+  /* border: 10px solid red; */
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.homelogin{
+  display:flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: flex-end;
+  /* border: 10px solid rgb(0, 255, 55); */
+  width: 100vw;
+  height: 100vh;
+}
+
+.homelogin img{
+  display:flex;
+  width:10vw; 
+  height:20vh;
+}
+
+.signinSignUpBox{
+  display:flex;
+  box-sizing: border-box;
+  flex-direction:column;
+  /* border: 10px solid rgb(60, 0, 255); */
+  width: 100vw;
+  height: 100vh;
+}
+
+.signinSignUpTopSpacing{
+  display:flex;
+  box-sizing: border-box;
+  /* border: 10px solid rgb(51, 255, 0); */
+  width: 40vw;
+  height: 30vh;
+
+}
+
+.signinsignupForm{
+  display:flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  /* border: 10px solid rgb(255, 0, 212); */
+  width: 40vw;
+  height: 40vh;
+}
+
+.signinSignUpBottomSpacing{
+  display:flex;
+  box-sizing: border-box;
+  /* border: 10px solid rgb(217, 255, 0); */
+  width: 40vw;
+  height: 30vh;
+}
+
+.topboxSigninSignUp{
+  display:flex;
+  box-sizing: border-box;
+  border: 10px solid rgb(0, 255, 21);
+  width: 100vw;
+  height: 100vh;
+}
+
+.middleboxSigninSignUp{
+  display:flex;
+  box-sizing: border-box;
+  border: 10px solid rgb(255, 72, 0);
+  width: 100vw;
+  height: 100vh;
+}
+
+.bottomboxSigninSignUp{
+  display:flex;
+  box-sizing: border-box;
+  border: 10px solid rgb(234, 0, 255);
+  width: 100vw;
+  height: 100vh;
+}
+
+.homesignup{
+  display:flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: flex-end;
+  /* border: 10px solid rgb(255, 251, 0); */
+  width: 100vw;
+  height: 100vh;
+}
+
+.homesignup img{
+  display:flex;
+  width:10vw; 
+  height:20vh;
 }
