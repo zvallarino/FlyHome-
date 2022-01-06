@@ -17,7 +17,7 @@ function EndOfGameHome({ bossEndSceneRef, bossEndState}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 18;
+    canvas.style['z-index'] = 16;
     
     
     const context = canvas.getContext("2d");
@@ -33,7 +33,7 @@ function EndOfGameHome({ bossEndSceneRef, bossEndState}) {
       w:SCREEN_WIDTH*(1/20),
       h:SCREEN_HEIGHT*(1/20),
     x:SCREEN_WIDTH*(9/20),
-    y:SCREEN_HEIGHT*(10.70/20),
+    y:SCREEN_HEIGHT*(11.1/20),
   }
   
 
@@ -43,14 +43,14 @@ const planetSmall = {
     w:SCREEN_WIDTH*(2/20),
     h:SCREEN_HEIGHT*(2/20),
   x:SCREEN_WIDTH*(8.5/20),
-  y:SCREEN_HEIGHT*(10.1/20),
+  y:SCREEN_HEIGHT*(10.5/20),
 }
 
 const planetMedium = {
   w:SCREEN_WIDTH*(3/20),
   h:SCREEN_HEIGHT*(3/20),
   x:SCREEN_WIDTH*(8/20),
-  y:SCREEN_HEIGHT*(9.5/20),
+  y:SCREEN_HEIGHT*(10/20),
 }
 
 

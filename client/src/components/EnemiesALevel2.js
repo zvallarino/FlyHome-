@@ -43,8 +43,6 @@ import PlanesFlyHome from './PlanesFlyHome';
 function EnemiesALevel2({firstWaveRef, startFirstWave, setplayerAppear, playerAppearRef, playerAppear}) {
 
 
-  
-
   const enemyPlane1Ref = useRef({});
   const enemyPlane2Ref = useRef({});
   const enemyPlane3Ref = useRef({});
@@ -113,6 +111,16 @@ function EnemiesALevel2({firstWaveRef, startFirstWave, setplayerAppear, playerAp
 
   const [commanderSketchFinal,setCommanderSketchFinal] = useState(false);
   const commanderSketchRef = useRef(false)
+
+  //Commander Sketch Plane Final
+
+  const [commanderPlane, setCommanderPlaneFinal] = useState(false)
+  const commanderPlaneFinalRef = useRef(false)
+
+  //PlanesFlyAway 
+
+  const [planesFlyAway, setPlanesFlyAway] = useState(false)
+  const planesFlyAwayRef = useRef(false)
 
   const ballsSetter = () =>{
     ball1StartRef.current = true
@@ -194,6 +202,8 @@ function EnemiesALevel2({firstWaveRef, startFirstWave, setplayerAppear, playerAp
   const bossStopper = ()=>{
     bossStartRef.current = false
     commanderSketchRef.current = true
+    commanderPlaneFinalRef.current = true
+    setCommanderPlaneFinal(pigs=>!pigs)
     setCommanderSketchFinal(dragons=>!dragons)
 
     console.log('this fired')
@@ -322,17 +332,33 @@ bossRef.current.counter = 0;
     commanderSketchRef = {commanderSketchRef}
     commanderSketchFinal = {commanderSketchFinal}
 
+    
+    commanderPlaneFinalRef = {commanderPlaneFinalRef}
+    commanderPlane = {commanderPlane}
+    setCommanderPlaneFinal = {setCommanderPlaneFinal}
+
+
     playerAppearRef ={playerAppearRef}
     setplayerAppear = {setplayerAppear}
     
+    planesFlyAway = {planesFlyAway}
+    setPlanesFlyAway = {setPlanesFlyAway}
+    planesFlyAwayRef = {planesFlyAwayRef}
     
     setBossEnd = {setBossEnd}
     bossEndSceneRef = {bossEndSceneRef}
     bossEndState = {bossEndState} />
 
+
+
     <CommanderSketchPlaneFinal 
     commanderSketchRef = {commanderSketchRef}
     commanderSketchFinal = {commanderSketchFinal}
+
+    commanderPlaneFinalRef = {commanderPlaneFinalRef}
+    commanderPlane = {commanderPlane}
+
+
 
     bossEndState = {bossEndState} />
 
@@ -340,8 +366,10 @@ bossRef.current.counter = 0;
     bossEndState = {bossEndState}
     bossEndSceneRef = {bossEndSceneRef} />
     <PlanesFlyHome 
-    bossEndSceneRef = {bossEndSceneRef}
-    bossEndState = {bossEndState} />
+    planesFlyAwayRef = {planesFlyAwayRef}
+    planesFlyAway = {planesFlyAway} />
+
+
     
 
 

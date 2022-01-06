@@ -1,10 +1,10 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlanesFlyHome({bossEndSceneRef, bossEndState}) {
+function PlanesFlyHome({planesFlyAway, planesFlyAwayRef}) {
 
 
-    console.log(bossEndSceneRef.current)
+
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
 
@@ -29,7 +29,7 @@ function PlanesFlyHome({bossEndSceneRef, bossEndState}) {
     context.lineWidth = 5
     contextRef.current = context;
 
-    if(bossEndSceneRef.current){
+    if(planesFlyAwayRef.current){
   let bossA = new Image();
   let heightImage = 2000;
   let widthImage = 4000;
@@ -53,7 +53,7 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
     
     function step() {
 
-        if(bossEndSceneRef.current){
+        if(planesFlyAwayRef.current){
             frameCount++;
             if (frameCount < 2) {
             window.requestAnimationFrame(step);
@@ -88,7 +88,7 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
   }
 
 }
-  ,[bossEndState])
+  ,[planesFlyAway])
 
 //   //SCREEN HEIGHT/WIDTH
 

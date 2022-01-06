@@ -1,7 +1,8 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function CommanderSketchPlaneFinal({commanderSketchRef, commanderSketchFinal}) {
+function CommanderSketchPlaneFinal({commanderSketchRef, commanderSketchFinal, commanderPlane, commanderPlaneFinalRef}) {
+  console.log(commanderPlaneFinalRef.current)
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -36,7 +37,7 @@ function CommanderSketchPlaneFinal({commanderSketchRef, commanderSketchFinal}) {
     //Player Initial Position and Movement Speed
 
     
-    if(commanderSketchRef.current){
+    if(commanderPlaneFinalRef.current){
   
     const player = {
       w:SCREEN_WIDTH*(4/20),
@@ -60,9 +61,14 @@ function CommanderSketchPlaneFinal({commanderSketchRef, commanderSketchFinal}) {
   }}
   
   const update = () => {
-    drawPlane();
+    if(commanderPlaneFinalRef.current)
+   { drawPlane();
     moveLeft();
-    requestAnimationFrame(update)
+    requestAnimationFrame(update)}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
+      return
+    }
   }
 
   const sketchStopinTheMiddle = () =>{
@@ -76,10 +82,11 @@ function CommanderSketchPlaneFinal({commanderSketchRef, commanderSketchFinal}) {
 
     update()}
     else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
       return
     }
 
-  },[commanderSketchFinal])
+  },[commanderPlane])
 
 
   //SCREEN HEIGHT/WIDTH
