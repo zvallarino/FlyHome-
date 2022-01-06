@@ -1,7 +1,9 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function RectangleOfDoom2Canvas({rectOfDoom2Ref}) {
+function RectangleOfDoom2Canvas({rectOfDoom2Ref, spaceAnimation, spaceAnimationRef, setSpaceAnimation}) {
+
+ 
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -17,7 +19,7 @@ function RectangleOfDoom2Canvas({rectOfDoom2Ref}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 6;
+    canvas.style['z-index'] = 7;
     
     
     const context = canvas.getContext("2d");
@@ -125,11 +127,14 @@ const myInterval = setInterval(outerLoop, 500);
 
 const drawPlanetSmall = () =>{
   //  drawplanet(planetObject)
+  spaceAnimationRef.current = false
+  setSpaceAnimation(dogs=>!dogs)
   drawplanet(planetSmall)
 }
 
 const drawPlanetMedium = () =>{
   drawplanet(planetMedium)
+
    console.log("I fire now")
 }
 

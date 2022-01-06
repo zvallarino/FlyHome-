@@ -18,7 +18,7 @@ function RectangleOfDoom1Canvas({rectOfDoomRef, setdoomOfRectState, doomStartRef
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 5;
+    canvas.style['z-index'] = 6;
     
     
     const context = canvas.getContext("2d");

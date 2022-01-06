@@ -1,8 +1,9 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, PrefixStopper, levelOneRef,setLevelOneState}) {
+function PlayerTitleCanvas({textRef,setText, pleaseStopRef, setPrefixStopper, PrefixStopper, levelOneRef,setLevelOneState }) {
 
+  
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
   const playerRef = useRef(null)

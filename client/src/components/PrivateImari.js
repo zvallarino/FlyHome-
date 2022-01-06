@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function PrivateImari({levelOneState, levelOneRef,  doomStartRef, setStartofDoom}) {
+function PrivateImari({levelOneState, levelOneRef,  doomStartRef, setStartofDoom, spaceAnimationRef, setSpaceAnimation}) {
    
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -71,6 +71,9 @@ function PrivateImari({levelOneState, levelOneRef,  doomStartRef, setStartofDoom
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
         contextRef.current.strokeText("Engaging Hyperspeed!",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(9.7/20));
+        spaceAnimationRef.current = true
+        setSpaceAnimation(fox=>!fox)
+        console.log(spaceAnimationRef.current)
       }
 
       const drawRectangle = () => {
@@ -82,6 +85,8 @@ function PrivateImari({levelOneState, levelOneRef,  doomStartRef, setStartofDoom
 
       const clearRect = () =>{
         contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);
+ 
+
         doomStartRef.current = true
         setStartofDoom(true)
       }

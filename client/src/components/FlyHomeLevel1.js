@@ -14,6 +14,7 @@ import TextTitle from './TextTitle';
 import CommanderSketch from './CommanderSketch';
 import PrivateImari from './PrivateImari';
 
+import SpaceAnimation from './SpaceAnimation';
 
 function FlyHomeLevel1() {
 
@@ -36,16 +37,20 @@ function FlyHomeLevel1() {
   const [startOfDoom, setStartofDoom] = useState(false)
   const doomStartRef = useRef(false)
 
+  const [spaceAnimation, setSpaceAnimation] = useState(false)
+  const spaceAnimationRef = useRef(false)
+
 
   return (
     <>
-
+    
     {/* level One */}
     <PlayerCanvas levelOneState = {levelOneState} levelOneRef = {levelOneRef} rectOfDoomRef = {rectOfDoomRef} rectOfDoom2Ref ={rectOfDoom2Ref}/> 
     <CommanderSketch doomStartRef = {doomStartRef} setStartofDoom = {setStartofDoom} levelOneState = {levelOneState} levelOneRef = {levelOneRef} levelOneRef = {levelOneRef} />
-    <PrivateImari doomStartRef = {doomStartRef} setStartofDoom = {setStartofDoom} levelOneState = {levelOneState} levelOneRef = {levelOneRef} levelOneRef = {levelOneRef}/>
-    {doomOfRectState? <RectangleOfDoom2Canvas rectOfDoom2Ref = {rectOfDoom2Ref}/>:<RectangleOfDoom1Canvas doomStartRef = {doomStartRef} startOfDoom = {startOfDoom} setdoomOfRectState ={setdoomOfRectState} rectOfDoomRef = {rectOfDoomRef} />}
+    <PrivateImari  spaceAnimationRef = {spaceAnimationRef} setSpaceAnimation = {setSpaceAnimation} doomStartRef = {doomStartRef} setStartofDoom = {setStartofDoom} levelOneState = {levelOneState} levelOneRef = {levelOneRef} levelOneRef = {levelOneRef}/>
+    {doomOfRectState? <RectangleOfDoom2Canvas spaceAnimation = {spaceAnimation} spaceAnimationRef = {spaceAnimationRef} setSpaceAnimation = {setSpaceAnimation} rectOfDoom2Ref = {rectOfDoom2Ref}/>:<RectangleOfDoom1Canvas doomStartRef = {doomStartRef} startOfDoom = {startOfDoom} setdoomOfRectState ={setdoomOfRectState} rectOfDoomRef = {rectOfDoomRef} />}
     <SpaceCanvas levelOneState = {levelOneState} levelOneRef = {levelOneRef} levelOneRef ={levelOneRef}/>
+    <SpaceAnimation  spaceAnimation = {spaceAnimation} spaceAnimationRef = {spaceAnimationRef} setSpaceAnimation = {setSpaceAnimation}/>
 
     {/* Prelude */}
     <TextTitle textRef ={textRef} textState={textState} />
