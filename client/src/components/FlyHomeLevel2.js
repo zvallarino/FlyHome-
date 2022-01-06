@@ -23,8 +23,8 @@ import CommanderSketchPlaneFinal from './CommanderSketchPlaneFinal';
 
 function FlyHomeLevel2() {
 
-  const [endOfCutScene,setterCutScene] = useState(true)
-  const cutSceneRef = useRef(true)
+  const [endOfCutScene,setterCutScene] = useState(false)
+  const cutSceneRef = useRef(false)
 
   const [startFirstWave, setFirstWave] = useState(false)
   const firstWaveRef = useRef(false)
@@ -32,8 +32,8 @@ function FlyHomeLevel2() {
   const [levelTwoPreFixStopper, setLevelTwoPrefixStopper] = useState(true)
   const pleaseLevel2StopRef = useRef(true)
 
-  const [playerAppear,setplayerAppear] = useState(true)
-  const playerAppearRef = useRef(true)
+  const [playerAppear,setplayerAppear] = useState(false)
+  const playerAppearRef = useRef(false)
 
 
   return (
@@ -58,7 +58,7 @@ function FlyHomeLevel2() {
       cutSceneRef = {cutSceneRef}
       setterCutScene = {setterCutScene}/>
 
-    {/* <PlayerCanvasSpaceToEarth
+    <PlayerCanvasSpaceToEarth
     setterCutScene = {setterCutScene}
     cutSceneRef ={cutSceneRef}
     setLevelTwoPrefixStopper = {setLevelTwoPrefixStopper}
@@ -67,8 +67,12 @@ function FlyHomeLevel2() {
     setplayerAppear = {setplayerAppear}
     playerAppearRef ={playerAppearRef}
     playerAppear = {playerAppear}
-    /> */}
-    {/* <SpaceToEarth setLevelTwoPrefixStopper = {setLevelTwoPrefixStopper} levelTwoPreFixStopper = {levelTwoPreFixStopper} pleaseLevel2StopRef = {pleaseLevel2StopRef}/> */}
+    /> 
+    
+  <SpaceToEarth
+  setLevelTwoPrefixStopper = {setLevelTwoPrefixStopper}
+  levelTwoPreFixStopper = {levelTwoPreFixStopper}
+  pleaseLevel2StopRef = {pleaseLevel2StopRef}/>
 
     
     <CloudsMoving />

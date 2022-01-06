@@ -33,6 +33,8 @@ function CommanderSketchPlane({cutSceneRef, endOfCutScene, setterCutScene, setFi
     contextRef.current = context;
 
     //Player Initial Position and Movement Speed
+
+    if(cutSceneRef.current){
   
     const player = {
       w:SCREEN_WIDTH*(4/20),
@@ -94,7 +96,11 @@ function CommanderSketchPlane({cutSceneRef, endOfCutScene, setterCutScene, setFi
   setTimeout(sketchGoAway,10000)
 
 
-    update()
+    update()}
+    else{
+      contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
+      return
+    }
 
   },[endOfCutScene])
 

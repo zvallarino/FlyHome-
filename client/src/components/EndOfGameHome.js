@@ -54,6 +54,13 @@ const planetMedium = {
 }
 
 
+const planetLarge = {
+  w:SCREEN_WIDTH*(7/20),
+  h:SCREEN_HEIGHT*(7/20),
+  x:SCREEN_WIDTH*(6.5/20),
+  y:SCREEN_HEIGHT*(7.7/20),
+}
+
 
 const drawplanet = (planetObject) => {
 let planet = new Image();
@@ -66,7 +73,10 @@ contextRef.current.drawImage(planet,planetObject.x,planetObject.y,planetObject.w
 console.log('this just fired')
 }
 
-
+const drawPlanetSuperSmall = () =>{
+  drawplanet(planetSuperSmall)
+   console.log("I fire now")
+}
 
 const drawPlanetSmall = () =>{
   //  drawplanet(planetObject)
@@ -78,8 +88,8 @@ const drawPlanetMedium = () =>{
    console.log("I fire now")
 }
 
-const drawPlanetSuperSmall = () =>{
-  drawplanet(planetSuperSmall)
+const drawPlanetLarge = () =>{
+  drawplanet(planetLarge)
    console.log("I fire now")
 }
 
@@ -94,6 +104,7 @@ function myStopFunction() {
 setTimeout(drawPlanetSuperSmall,3000)
 setTimeout(drawPlanetSmall,6000)
 setTimeout(drawPlanetMedium,9000)
+setTimeout(drawPlanetLarge,12000)
 
 
 

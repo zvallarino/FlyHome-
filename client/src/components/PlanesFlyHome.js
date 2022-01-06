@@ -55,7 +55,7 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
 
         if(planesFlyAwayRef.current){
             frameCount++;
-            if (frameCount < 2) {
+            if (frameCount < 3) {
             window.requestAnimationFrame(step);
             return;
             }

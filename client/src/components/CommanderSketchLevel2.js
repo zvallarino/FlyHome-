@@ -62,7 +62,7 @@ function CommanderSketchLevel2({cutSceneRef, endOfCutScene}) {
             drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Good Work.",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
+        contextRef.current.strokeText("What took you so long?",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
       }
 
     const drawText3 = () => {

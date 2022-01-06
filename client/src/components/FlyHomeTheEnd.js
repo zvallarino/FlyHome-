@@ -27,14 +27,14 @@ function FlyHomeTheEnd({planesFlyAway, planesFlyAwayRef}) {
     const context = canvas.getContext("2d");
     context.scale(2,2);
     context.lineCap = "round"
-
+    context.stokeStyle = "red"
     context.lineWidth = 5
     contextRef.current = context;
 
   
     const drawText = () => {
       contextRef.current.font = "72px Courier New"
-      contextRef.current.fillStyle = "red";
+   
 
       
     //   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
