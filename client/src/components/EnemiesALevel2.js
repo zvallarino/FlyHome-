@@ -7,6 +7,7 @@ import PlayerCanvasLvL2Gif from './PlayerCanvasLvL2Gif';
 
 
 import EnemiesSeedsReturn from './EnemiesSeedsReturn';
+import FlyHomeTheEnd from './FlyHomeTheEnd';
 
 import EnemiesBallsReturn from './EnemiesBallsReturn';
 import EnemiesPlanesReturn from './EnemyPlanesReturn';
@@ -361,6 +362,11 @@ bossRef.current.counter = 0;
 
 
     bossEndState = {bossEndState} />
+
+    <FlyHomeTheEnd
+        planesFlyAwayRef = {planesFlyAwayRef}
+        planesFlyAway = {planesFlyAway}
+    />
 
     <EndOfGameHome
     bossEndState = {bossEndState}
