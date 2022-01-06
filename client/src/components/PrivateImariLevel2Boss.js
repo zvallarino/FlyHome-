@@ -103,8 +103,8 @@ function PrivateImariLevel2Boss({cutSceneRef, cutSceneStart,bossSetter, lightnin
         setTimeout(drawText2,10000)
         setTimeout(drawText3,12000)
         setTimeout(clearRect,14000)  
-        setTimeout(bossSetter,16000)
-        setTimeout(lightningSetter,17000)
+        setTimeout(bossSetter,18000)
+        setTimeout(lightningSetter,19000)
     }
 
 

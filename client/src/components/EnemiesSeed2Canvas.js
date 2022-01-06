@@ -113,7 +113,7 @@ class EnemyCreator {
 }
 
 
-const seedTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH/3,400, SCREEN_WIDTH/8,SCREEN_HEIGHT/4,15,1)
+const seedTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH/3,400, SCREEN_WIDTH/8,SCREEN_HEIGHT/4,-15,1)
 
 
 //Draw Function

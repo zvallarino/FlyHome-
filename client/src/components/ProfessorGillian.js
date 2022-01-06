@@ -128,12 +128,12 @@ function ProfessorGillian({cutSceneRef, cutSceneStart }) {
         setTimeout(drawText3,5000)
         setTimeout(clearRect,7000)
 
-        setTimeout(drawGillian,13000)
-        setTimeout(drawText4,13300)
-        setTimeout(drawText5,15000)
-        setTimeout(drawText6,17000)
+        setTimeout(drawGillian,14000)
+        setTimeout(drawText4,14300)
+        setTimeout(drawText5,16000)
+        setTimeout(drawText6,18000)
         
-        setTimeout(clearRect,19000)
+        setTimeout(clearRect,20000)
         
     }
 

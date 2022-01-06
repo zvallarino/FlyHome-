@@ -57,7 +57,7 @@ const planetMedium = {
 const planetLarge = {
   w:SCREEN_WIDTH*(7/20),
   h:SCREEN_HEIGHT*(7/20),
-  x:SCREEN_WIDTH*(6.5/20),
+  x:SCREEN_WIDTH*(6.3/20),
   y:SCREEN_HEIGHT*(7.7/20),
 }
 

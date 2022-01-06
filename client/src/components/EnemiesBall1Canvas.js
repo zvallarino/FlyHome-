@@ -120,12 +120,12 @@ const boundariesRight = (objectZ) => {
 }
 
 const boundariesUp = (objectZ) => {
-  if(objectZ.y < 150){
+  if(objectZ.y < 100){
     objectZ.dy *= -1
   }}
   
 const boundariesDown = (objectZ) => {
-  if(objectZ.y > 300){
+  if(objectZ.y > 500){
     objectZ.dy *= -1
   }}  
 

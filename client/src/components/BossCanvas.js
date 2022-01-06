@@ -98,7 +98,7 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
   
 
 let boss = {
-  x: SCREEN_WIDTH*(1/7),
+  x: SCREEN_WIDTH*(1/18),
   y: SCREEN_HEIGHT*(1/12),
   w: 800,
   h: 400,
