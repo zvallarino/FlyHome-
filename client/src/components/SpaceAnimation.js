@@ -54,7 +54,8 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
     let frameCount = 0;
     
     function step() {
-     
+      if(spaceAnimationRef.current){
+
       frameCount++;
       if (frameCount < 4) {
        requestAnimationFrame(step);
@@ -67,7 +68,11 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
       if (currentLoopIndex >= cycleLoop.length) {
         currentLoopIndex = 0;
       }
-     requestAnimationFrame(step);
+     requestAnimationFrame(step);}
+     else{
+      contextRef.current.clearRect(0, 0, canvas.width, canvas.height);
+      return
+     }
     }
 
     function init() {
