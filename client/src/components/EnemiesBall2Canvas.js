@@ -69,7 +69,7 @@ class EnemyCreator {
   }
 }
 
-const ballTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH/2,400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,2,0)
+const ballTwo = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH/2,400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,-2,0)
 
 
 //Draw Function

@@ -5,7 +5,7 @@ function EnemiesBall1Canvas({enemyBall1Ref, ball1, ball1StartRef}) {
 
  
 
-  enemyBall1Ref.current.image = 'https://i.imgur.com/09CdZNf.png'
+  enemyBall1Ref.current.image = 'https://i.imgur.com/JNAzAIA.png'
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -70,7 +70,7 @@ class EnemyCreator {
 }
 
 
-const ballOne = new EnemyCreator('https://i.imgur.com/qZaFU1N.png', SCREEN_WIDTH*(1/8),400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,5,0)
+const ballOne = new EnemyCreator('https://i.imgur.com/JNAzAIA.png', SCREEN_WIDTH*(1/8),400, SCREEN_WIDTH/16,SCREEN_HEIGHT/8,5,2)
 
 
 //Draw Function
@@ -120,12 +120,12 @@ const boundariesRight = (objectZ) => {
 }
 
 const boundariesUp = (objectZ) => {
-  if(objectZ.y < 150){
+  if(objectZ.y < 100){
     objectZ.dy *= -1
   }}
   
 const boundariesDown = (objectZ) => {
-  if(objectZ.y > 300){
+  if(objectZ.y > 500){
     objectZ.dy *= -1
   }}  
 

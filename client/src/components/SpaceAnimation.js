@@ -1,15 +1,15 @@
 import React, { useRef,useEffect,useState } from 'react';
 import './App.css';
 
-function PlanesFlyHome({planesFlyAway, planesFlyAwayRef}) {
-
-
+function SpaceAnimation({   spaceAnimationRef, setSpaceAnimation, spaceAnimation}) {
+  console.log(spaceAnimationRef.current)
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
 
 
   useEffect(()=>{
+    console.log(spaceAnimationRef.current )
 
     const canvas = canvasRef.current;
     canvas.width = window.innerWidth * 2; 
@@ -19,7 +19,7 @@ function PlanesFlyHome({planesFlyAway, planesFlyAwayRef}) {
     canvas.style.position = "absolute";
     canvas.style.left = 0;
     canvas.style.top = 0;
-    canvas.style['z-index'] = 19;
+    canvas.style['z-index'] = 5;
     
     
     const context = canvas.getContext("2d");
@@ -29,14 +29,16 @@ function PlanesFlyHome({planesFlyAway, planesFlyAwayRef}) {
     context.lineWidth = 5
     contextRef.current = context;
 
-    if(planesFlyAwayRef.current){
+
+    if(spaceAnimationRef.current){
+      console.log(spaceAnimationRef.current )
   let bossA = new Image();
   let heightImage = 2000;
   let widthImage = 4000;
-  const scale = .25;
+  const scale = .45;
   let scaledHeight = heightImage * scale;
   let scaledWidth = widthImage * scale; 
-  bossA.src = 'https://i.imgur.com/WnkyOFd.png';
+  bossA.src = 'https://i.imgur.com/mjwW9nO.png';
   bossA.onload = function() {
       init();
     };
@@ -47,48 +49,47 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
     ,canvasX, canvasY, scaledWidth, scaledHeight);
     }
 
-    const cycleLoop = [0,1,2,3,4,5,6,7];
+    const cycleLoop = [0,1,2,3,4,5];
     let currentLoopIndex = 0;
     let frameCount = 0;
     
     function step() {
+      if(spaceAnimationRef.current){
 
-        if(planesFlyAwayRef.current){
-            frameCount++;
-            if (frameCount < 3) {
-            window.requestAnimationFrame(step);
-            return;
-            }
+      frameCount++;
+      if (frameCount < 4) {
+       requestAnimationFrame(step);
+        return;
+      }
       frameCount = 0;
       contextRef.current.clearRect(0, 0, canvas.width, canvas.height);
       drawFrame(cycleLoop[currentLoopIndex], currentLoopIndex, boss.x, boss.y);
       currentLoopIndex++;
       if (currentLoopIndex >= cycleLoop.length) {
-        contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
-        return
+        currentLoopIndex = 0;
       }
-      window.requestAnimationFrame(step);}
-      else{
-          return
-      }
-   }
+     requestAnimationFrame(step);}
+     else{
+      contextRef.current.clearRect(0, 0, canvas.width, canvas.height);
+      return
+     }
+    }
 
     function init() {
-      window.requestAnimationFrame(step);
+     requestAnimationFrame(step);
     }
 
     
   const update = () => {
-    window.requestAnimationFrame(update);
+    // if(bossStartRef.current){
+    requestAnimationFrame(update);
   }
 
   update()}
   else{
-      return
+    return
   }
-
-}
-  ,[planesFlyAway])
+  },[spaceAnimation])
 
 //   //SCREEN HEIGHT/WIDTH
 
@@ -99,16 +100,12 @@ function drawFrame(frameX, frameY, canvasX, canvasY) {
   
 
 let boss = {
-  x: SCREEN_WIDTH*(2/7),
-  y: SCREEN_HEIGHT*(1/12),
-  w: 800,
-  h: 400,
-  dx: 2,
-  dy: 1
+  x: 0,
+  y: 0,
+  w: SCREEN_WIDTH,
+  h: SCREEN_HEIGHT,
+
 }
-
-
-
 
 
   return (
@@ -120,4 +117,4 @@ let boss = {
   );
 }
 
-export default PlanesFlyHome;
+export default SpaceAnimation;

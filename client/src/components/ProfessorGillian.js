@@ -85,7 +85,7 @@ function ProfessorGillian({cutSceneRef, cutSceneStart }) {
         drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("I will take you to your",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
+        contextRef.current.strokeText("You Fool. Get Ready for your ",SCREEN_WIDTH*(15.05/20), SCREEN_HEIGHT*(9.75/20));
       }
 
       const drawText6 = () => {
@@ -128,12 +128,12 @@ function ProfessorGillian({cutSceneRef, cutSceneStart }) {
         setTimeout(drawText3,5000)
         setTimeout(clearRect,7000)
 
-        setTimeout(drawGillian,13000)
-        setTimeout(drawText4,13300)
-        setTimeout(drawText5,15000)
-        setTimeout(drawText6,17000)
+        setTimeout(drawGillian,14000)
+        setTimeout(drawText4,14300)
+        setTimeout(drawText5,16000)
+        setTimeout(drawText6,18000)
         
-        setTimeout(clearRect,19000)
+        setTimeout(clearRect,20000)
         
     }
 

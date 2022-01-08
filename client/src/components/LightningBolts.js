@@ -72,7 +72,7 @@ const clearingOfInterval = () => {
   clearInterval(myInterval)
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
 }
-setTimeout(clearingOfInterval,5000)}else{
+setTimeout(clearingOfInterval,10000)}else{
   contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height); 
   return
 }

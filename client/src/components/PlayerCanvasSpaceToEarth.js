@@ -98,7 +98,7 @@ const moveDownandLeft = () => {
 
 const NextLevel = () =>{
 
-    if(playerRef.current.y > 800){
+    if(playerRef.current.y > 900){
         pleaseLevel2StopRef.current = false
         cutSceneRef.current = true
         playerAppearRef.current = true

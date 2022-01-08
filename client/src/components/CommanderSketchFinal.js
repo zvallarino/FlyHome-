@@ -1,7 +1,14 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function CommanderSketchFinal({ setBossEnd, bossEndSceneRef, bossEndState, commanderSketchRef, commanderSketchFinal, playerAppearRef, setplayerAppear }) {
+function CommanderSketchFinal({ 
+  setBossEnd, bossEndSceneRef, bossEndState, 
+  commanderSketchRef, commanderSketchFinal, playerAppearRef,
+  setplayerAppear, commanderPlaneFinalRef, commanderPlane, 
+  setCommanderPlaneFinal, planesFlyAway, setPlanesFlyAway, 
+  planesFlyAwayRef
+}) {
+
    
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
@@ -93,10 +100,17 @@ function CommanderSketchFinal({ setBossEnd, bossEndSceneRef, bossEndState, comma
 
       const startCutScene = () =>{
         bossEndSceneRef.current = true
-        playerAppearRef.current = false
-        setplayerAppear(cats=>!cats)
         setBossEnd(fox=>!fox)
-     
+      }
+
+      const playerDisappearPlease = () =>{
+        playerAppearRef.current = false
+        commanderPlaneFinalRef.current = false
+        planesFlyAwayRef.current = true
+        setplayerAppear(cats=>!cats)
+        setCommanderPlaneFinal(fox=>!fox)
+        setPlanesFlyAway(dragonbears => !dragonbears)
+    
       }
 
 
@@ -113,13 +127,14 @@ function CommanderSketchFinal({ setBossEnd, bossEndSceneRef, bossEndState, comma
       
         setTimeout(drawSketch,2000)
         setTimeout(drawText1,3000)
+        setTimeout(startCutScene,4000)
         setTimeout(drawText2,5000)
         setTimeout(drawText3,7000)
-        setTimeout(startCutScene,8000)
         setTimeout(clearRect,8000)
         setTimeout(drawSketch,10000)
         setTimeout(drawText4,11500)
-        setTimeout(clearRect,13000)
+        setTimeout(playerDisappearPlease,12000)
+        setTimeout(clearRect,14000)
         
     }
 

@@ -1,7 +1,7 @@
 import React, { useRef,useEffect } from 'react';
 import './App.css';
 
-function PrivateImariLevel2Boss({cutSceneRef, cutSceneStart,bossSetter, bossStopper}) {
+function PrivateImariLevel2Boss({cutSceneRef, cutSceneStart,bossSetter, lightningSetter}) {
    
 
   const canvasRef = useRef(null)
@@ -57,28 +57,28 @@ function PrivateImariLevel2Boss({cutSceneRef, cutSceneStart,bossSetter, bossStop
     const drawText1 = () => {
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Private Imari:",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(10.2/20))
+        contextRef.current.strokeText("Private Imari:",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(9.7/20))
       }
 
  const drawText2 = () => {
             drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Return to your home planet",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(10.2/20));
+        contextRef.current.strokeText("Return to your home planet",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(9.7/20));
       }
 
       const drawText3 = () => {
         drawRectangle()
         contextRef.current.font = "30px Arial  "
         contextRef.current.lineWidth = 1
-        contextRef.current.strokeText("Or prepare to GIT LIT",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(10.2/20));
+        contextRef.current.strokeText("Or prepare to GIT LIT",SCREEN_WIDTH*(.6/20), SCREEN_HEIGHT*(9.7/20));
       }
 
       const drawRectangle = () => {
         contextRef.current.fillStyle = "white";
-        contextRef.current.fillRect(SCREEN_WIDTH*(0.5/20), SCREEN_HEIGHT*(9.5/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
+        contextRef.current.fillRect(SCREEN_WIDTH*(0.5/20), SCREEN_HEIGHT*(9/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
         contextRef.current.strokeStyle = "black";
-        contextRef.current.strokeRect(SCREEN_WIDTH*(0.5/20), SCREEN_HEIGHT*(9.5/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
+        contextRef.current.strokeRect(SCREEN_WIDTH*(0.5/20), SCREEN_HEIGHT*(9/20), SCREEN_WIDTH*(4.3/20), SCREEN_HEIGHT*(1/20));
       }
 
       const clearRect = () =>{
@@ -103,9 +103,8 @@ function PrivateImariLevel2Boss({cutSceneRef, cutSceneStart,bossSetter, bossStop
         setTimeout(drawText2,10000)
         setTimeout(drawText3,12000)
         setTimeout(clearRect,14000)  
-        setTimeout(bossSetter,16000)
-        setTimeout(bossStopper,20000)
-      
+        setTimeout(bossSetter,18000)
+        setTimeout(lightningSetter,19000)
     }
 
 

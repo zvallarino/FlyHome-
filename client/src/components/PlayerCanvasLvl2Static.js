@@ -6,10 +6,12 @@ function PlayerCanvasLvl2Static({
   enemyPlane1Ref, enemyPlane2Ref, enemyPlane3Ref,
   enemySeed1Ref, enemySeed2Ref, enemySeed3Ref,
   enemySeed1ExplosionRef, enemySeed2ExplosionRef, enemySeed3ExplosionRef,
-  setplayerAppear, playerAppearRef, playerAppear
+  setplayerAppear, playerAppearRef, playerAppear,
+  bossRef, bossStopper, lightningStopper, lightningBoltsRef
 
 }) {
   
+
 
 
   const canvasRef = useRef(null)
@@ -93,6 +95,8 @@ function PlayerCanvasLvl2Static({
     hitSeeds(enemySeed1ExplosionRef)
     hitSeeds(enemySeed2ExplosionRef)
     hitSeeds(enemySeed3ExplosionRef)
+    hitSeeds(lightningBoltsRef)
+
     requestAnimationFrame(update)}
     else{
       contextRef.current.clearRect(0,0,canvasRef.current.width,canvasRef.current.height);  
@@ -210,6 +214,7 @@ function PlayerCanvasLvl2Static({
       hit(enemySeed1Ref)
       hit(enemySeed2Ref)
       hit(enemySeed3Ref)
+      hitBoss(bossRef)
     } else if ( e.key === "k"){
       console.log("superBlaster")
     } else if ( e.key === " "){
@@ -301,15 +306,31 @@ const pleaseDisappear = (refObject) =>{
       return
     } else {
       rotationFunction()
-      // console.log(refObject.current)
-      // console.log(playerRef.current)
-
       imageRef.current = ouchArray[rotationRef.current]
       if(refObject.current.image === "https://i.imgur.com/FUX7HjC.png")
       {return} else {refObject.current.image = "https://i.imgur.com/FUX7HjC.png"}
 
     }
 }
+
+const hitBoss = (refObject) => {
+    
+  if(playerRef.current.y > refObject.current.y + refObject.current.h||playerRef.current.y + playerRef.current.h < refObject.current.y||playerRef.current.x > (refObject.current.x+refObject.current.w) || playerRef.current.x + playerRef.current.w < (refObject.current.x)){
+    return
+  } else {
+    if(bossRef.current.counter>10){
+      bossStopper()
+      lightningStopper()
+    }
+    rotationFunction()
+    bossRef.current.counter =  bossRef.current.counter + 1
+    console.log(bossRef.current.counter)
+    if(refObject.current.image === "https://i.imgur.com/FUX7HjC.png")
+    {return} else {refObject.current.image = "https://i.imgur.com/FUX7HjC.png"}
+
+  }
+}
+
 
 
 
